@@ -1,0 +1,29 @@
+{
+    "BaseDef": 31,
+    "BaseSpeed": 37,
+    "NormalAbilities": [
+        "てんねん"
+    ],
+    "Height": 0.2,
+    "HiddenAbility": "なし",
+    "Learnset": [
+        "はねる",
+        "テレポート"
+    ],
+    "BaseAtk": 29,
+    "BaseSpDef": 31,
+    "BaseHP": 43,
+    "EggGroups": [
+        "タマゴ未発見"
+    ],
+    "Gender": "不明",
+    "AllAbilities": [
+        "てんねん"
+    ],
+    "Weight": 0.1,
+    "Category": "伝説のポケモン",
+    "BaseSpAtk": 29,
+    "Types": [
+        "エスパー"
+    ]
+}

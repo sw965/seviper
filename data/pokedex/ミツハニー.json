@@ -1,0 +1,36 @@
+{
+    "BaseDef": 42,
+    "BaseSpeed": 70,
+    "NormalAbilities": [
+        "みつあつめ"
+    ],
+    "Height": 0.3,
+    "HiddenAbility": "はりきり",
+    "Learnset": [
+        "あまいかおり",
+        "かぜおこし",
+        "むしのていこう",
+        "むしくい",
+        "いびき",
+        "むしのさざめき",
+        "ダブルウイング"
+    ],
+    "BaseAtk": 30,
+    "BaseSpDef": 42,
+    "BaseHP": 30,
+    "EggGroups": [
+        "虫"
+    ],
+    "Gender": "♂♀両方",
+    "AllAbilities": [
+        "みつあつめ",
+        "はりきり"
+    ],
+    "Weight": 5.5,
+    "Category": "通常ポケモン",
+    "BaseSpAtk": 30,
+    "Types": [
+        "むし",
+        "ひこう"
+    ]
+}

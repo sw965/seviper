@@ -1,0 +1,34 @@
+{
+    "BaseDef": 55,
+    "BaseSpeed": 80,
+    "NormalAbilities": [
+        "すいすい"
+    ],
+    "Height": 0.9,
+    "HiddenAbility": "びびり",
+    "Learnset": [
+        "はねる",
+        "たいあたり",
+        "じたばた",
+        "とびはねる",
+        "ハイドロポンプ"
+    ],
+    "BaseAtk": 10,
+    "BaseSpDef": 20,
+    "BaseHP": 20,
+    "EggGroups": [
+        "水中2",
+        "ドラゴン"
+    ],
+    "Gender": "♂♀両方",
+    "AllAbilities": [
+        "すいすい",
+        "びびり"
+    ],
+    "Weight": 10.0,
+    "Category": "通常ポケモン",
+    "BaseSpAtk": 15,
+    "Types": [
+        "みず"
+    ]
+}

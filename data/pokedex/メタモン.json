@@ -1,0 +1,29 @@
+{
+    "BaseDef": 48,
+    "BaseSpeed": 48,
+    "NormalAbilities": [
+        "じゅうなん"
+    ],
+    "Height": 0.3,
+    "HiddenAbility": "かわりもの",
+    "Learnset": [
+        "へんしん"
+    ],
+    "BaseAtk": 48,
+    "BaseSpDef": 48,
+    "BaseHP": 48,
+    "EggGroups": [
+        "メタモン"
+    ],
+    "Gender": "不明",
+    "AllAbilities": [
+        "じゅうなん",
+        "かわりもの"
+    ],
+    "Weight": 4.0,
+    "Category": "通常ポケモン",
+    "BaseSpAtk": 48,
+    "Types": [
+        "ノーマル"
+    ]
+}
