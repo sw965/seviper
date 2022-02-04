@@ -1,12 +1,22 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 13.0,
+    "AllAbilities": [
+        "ぼうおん",
+        "フィルター",
+        "テクニシャン"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "ぼうおん",
         "フィルター"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "テクニシャン",
     "Learnset": [
         "はたく",
         "まねっこ",
@@ -69,23 +79,13 @@
         "くすぐる",
         "パワーシェア"
     ],
-    "BaseAtk": 25,
-    "BaseSpDef": 90,
+    "HiddenAbility": "テクニシャン",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 20,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうおん",
-        "フィルター",
-        "テクニシャン"
-    ],
-    "Weight": 13.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 25
 }

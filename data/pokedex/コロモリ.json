@@ -1,12 +1,22 @@
 {
-    "BaseDef": 43,
+    "BaseSpDef": 43,
+    "Gender": "♂♀両方",
+    "Weight": 2.1,
+    "AllAbilities": [
+        "てんねん",
+        "ぶきよう",
+        "たんじゅん"
+    ],
     "BaseSpeed": 72,
+    "Types": [
+        "エスパー",
+        "ひこう"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "てんねん",
         "ぶきよう"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "たんじゅん",
     "Learnset": [
         "かぜおこし",
         "メロメロ",
@@ -70,24 +80,14 @@
         "ワイドフォース",
         "ダブルウイング"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 43,
+    "HiddenAbility": "たんじゅん",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上",
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "てんねん",
-        "ぶきよう",
-        "たんじゅん"
-    ],
-    "Weight": 2.1,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "エスパー",
-        "ひこう"
-    ]
+    "BaseDef": 43,
+    "BaseAtk": 45
 }

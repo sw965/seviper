@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 110,
+    "Gender": "♂♀両方",
+    "Weight": 0.3,
+    "AllAbilities": [
+        "フラワーベール",
+        "ヒーリングシフト",
+        "しぜんかいふく"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 82,
     "NormalAbilities": [
         "フラワーベール",
         "ヒーリングシフト"
     ],
-    "Height": 0.1,
-    "HiddenAbility": "しぜんかいふく",
     "Learnset": [
         "まきつく",
         "せいちょう",
@@ -64,22 +73,13 @@
         "グラスミキサー",
         "グラススライダー"
     ],
-    "BaseAtk": 52,
-    "BaseSpDef": 110,
+    "HiddenAbility": "しぜんかいふく",
+    "Height": 0.1,
+    "Category": "通常ポケモン",
     "BaseHP": 51,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "フラワーベール",
-        "ヒーリングシフト",
-        "しぜんかいふく"
-    ],
-    "Weight": 0.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 82,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 52
 }

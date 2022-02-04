@@ -1,11 +1,20 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♀のみ",
+    "Weight": 26.6,
+    "AllAbilities": [
+        "ゆきがくれ",
+        "のろわれボディ"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "こおり",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ゆきがくれ"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "のろわれボディ",
     "Learnset": [
         "たたりめ",
         "みちづれ",
@@ -69,23 +78,14 @@
         "ポルターガイスト",
         "トリプルアクセル"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 70,
+    "HiddenAbility": "のろわれボディ",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "妖精",
         "鉱物"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "ゆきがくれ",
-        "のろわれボディ"
-    ],
-    "Weight": 26.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "こおり",
-        "ゴースト"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 80
 }

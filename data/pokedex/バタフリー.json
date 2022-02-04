@@ -1,11 +1,20 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 32.0,
+    "AllAbilities": [
+        "ふくがん",
+        "いろめがね"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "むし",
+        "ひこう"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "ふくがん"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "いろめがね",
     "Learnset": [
         "かぜおこし",
         "かたくなる",
@@ -57,22 +66,13 @@
         "かふんだんご",
         "ダブルウイング"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 80,
+    "HiddenAbility": "いろめがね",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくがん",
-        "いろめがね"
-    ],
-    "Weight": 32.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "むし",
-        "ひこう"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 45
 }

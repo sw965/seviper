@@ -1,12 +1,21 @@
 {
-    "BaseDef": 20,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 8.0,
+    "AllAbilities": [
+        "むしのしらせ",
+        "ふくがん",
+        "テレパシー"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "むし"
+    ],
+    "BaseSpAtk": 25,
     "NormalAbilities": [
         "むしのしらせ",
         "ふくがん"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "むしのていこう",
         "ちょうおんぱ",
@@ -14,22 +23,13 @@
         "まとわりつく",
         "ねばねばネット"
     ],
-    "BaseAtk": 20,
-    "BaseSpDef": 45,
+    "HiddenAbility": "テレパシー",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 25,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "ふくがん",
-        "テレパシー"
-    ],
-    "Weight": 8.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 25,
-    "Types": [
-        "むし"
-    ]
+    "BaseDef": 20,
+    "BaseAtk": 20
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 76,
+    "BaseSpDef": 81,
+    "Gender": "♀のみ",
+    "Weight": 8.5,
+    "AllAbilities": [
+        "するどいめ",
+        "すりぬけ",
+        "かちき"
+    ],
     "BaseSpeed": 104,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 83,
     "NormalAbilities": [
         "するどいめ",
         "すりぬけ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "かちき",
     "Learnset": [
         "マジカルリーフ",
         "ひっかく",
@@ -70,22 +79,13 @@
         "くすぐる",
         "ワイドフォース"
     ],
-    "BaseAtk": 48,
-    "BaseSpDef": 81,
+    "HiddenAbility": "かちき",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 74,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "するどいめ",
-        "すりぬけ",
-        "かちき"
-    ],
-    "Weight": 8.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 83,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 76,
+    "BaseAtk": 48
 }

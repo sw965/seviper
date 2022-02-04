@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 325.0,
+    "AllAbilities": [
+        "テラボルテージ"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "ドラゴン",
+        "こおり"
+    ],
+    "BaseSpAtk": 120,
     "NormalAbilities": [
         "テラボルテージ"
     ],
-    "Height": 3.3,
-    "HiddenAbility": "なし",
     "Learnset": [
         "りゅうのいぶき",
         "おたけび",
@@ -68,21 +76,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 170,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 3.3,
+    "Category": "伝説のポケモン",
     "BaseHP": 125,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "テラボルテージ"
-    ],
-    "Weight": 325.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 120,
-    "Types": [
-        "ドラゴン",
-        "こおり"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 170
 }

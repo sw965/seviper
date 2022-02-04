@@ -1,12 +1,22 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 115.0,
+    "AllAbilities": [
+        "ひらいしん",
+        "いしあたま",
+        "すてみ"
+    ],
     "BaseSpeed": 25,
+    "Types": [
+        "じめん",
+        "いわ"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "ひらいしん",
         "いしあたま"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "すてみ",
     "Learnset": [
         "しっぽをふる",
         "たいあたり",
@@ -73,24 +83,14 @@
         "ガードシェア",
         "ねっさのだいち"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 30,
+    "HiddenAbility": "すてみ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ひらいしん",
-        "いしあたま",
-        "すてみ"
-    ],
-    "Weight": 115.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "じめん",
-        "いわ"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 85
 }

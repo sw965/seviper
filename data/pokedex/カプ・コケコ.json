@@ -1,11 +1,20 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 75,
+    "Gender": "不明",
+    "Weight": 20.5,
+    "AllAbilities": [
+        "エレキメイカー",
+        "テレパシー"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "でんき",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "エレキメイカー"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "でんこうせっか",
         "でんきショック",
@@ -63,22 +72,13 @@
         "ふるいたてる",
         "マジカルシャイン"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 75,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.8,
+    "Category": "準伝説ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "エレキメイカー",
-        "テレパシー"
-    ],
-    "Weight": 20.5,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "でんき",
-        "フェアリー"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 115
 }

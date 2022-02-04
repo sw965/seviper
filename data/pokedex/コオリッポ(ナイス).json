@@ -1,11 +1,18 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 89.0,
+    "AllAbilities": [
+        "アイスフェイス"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "アイスフェイス"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "こなゆき",
         "たいあたり",
@@ -51,21 +58,14 @@
         "みずびたし",
         "つららおとし"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "アイスフェイス"
-    ],
-    "Weight": 89.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 80
 }

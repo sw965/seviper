@@ -1,12 +1,22 @@
 {
-    "BaseDef": 112,
+    "BaseSpDef": 48,
+    "Gender": "♂♀両方",
+    "Weight": 33.0,
+    "AllAbilities": [
+        "むしのしらせ",
+        "はりきり",
+        "なまけ"
+    ],
     "BaseSpeed": 109,
+    "Types": [
+        "むし",
+        "はがね"
+    ],
+    "BaseSpAtk": 48,
     "NormalAbilities": [
         "むしのしらせ",
         "はりきり"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "なまけ",
     "Learnset": [
         "すなかけ",
         "れんぞくぎり",
@@ -57,23 +67,13 @@
         "はいよるいちげき",
         "てっていこうせん"
     ],
-    "BaseAtk": 109,
-    "BaseSpDef": 48,
+    "HiddenAbility": "なまけ",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 58,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "はりきり",
-        "なまけ"
-    ],
-    "Weight": 33.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 48,
-    "Types": [
-        "むし",
-        "はがね"
-    ]
+    "BaseDef": 112,
+    "BaseAtk": 109
 }

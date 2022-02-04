@@ -1,11 +1,19 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 152.0,
+    "AllAbilities": [
+        "だっぴ"
+    ],
     "BaseSpeed": 51,
+    "Types": [
+        "いわ",
+        "じめん"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "だっぴ"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "てっぺき",
         "にらみつける",
@@ -59,21 +67,13 @@
         "のろい",
         "げんしのちから"
     ],
-    "BaseAtk": 84,
-    "BaseSpDef": 70,
+    "HiddenAbility": "なし",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "だっぴ"
-    ],
-    "Weight": 152.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "いわ",
-        "じめん"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 84
 }

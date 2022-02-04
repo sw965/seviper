@@ -1,12 +1,22 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 61,
+    "Gender": "♂♀両方",
+    "Weight": 38.0,
+    "AllAbilities": [
+        "あくしゅう",
+        "ゆうばく",
+        "するどいめ"
+    ],
     "BaseSpeed": 84,
+    "Types": [
+        "どく",
+        "あく"
+    ],
+    "BaseSpAtk": 71,
     "NormalAbilities": [
         "あくしゅう",
         "ゆうばく"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "するどいめ",
     "Learnset": [
         "かえんほうしゃ",
         "ひっかく",
@@ -72,23 +82,13 @@
         "うっぷんばらし",
         "ふしょくガス"
     ],
-    "BaseAtk": 93,
-    "BaseSpDef": 61,
+    "HiddenAbility": "するどいめ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 103,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "あくしゅう",
-        "ゆうばく",
-        "するどいめ"
-    ],
-    "Weight": 38.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 71,
-    "Types": [
-        "どく",
-        "あく"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 93
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 120,
+    "Gender": "♂♀両方",
+    "Weight": 55.0,
+    "AllAbilities": [
+        "クリアボディ",
+        "ヘドロえき",
+        "あめうけざら"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "みず",
+        "どく"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "クリアボディ",
         "ヘドロえき"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "ミラータイプ",
         "どくばり",
@@ -68,23 +78,13 @@
         "アクアリング",
         "ふしょくガス"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 120,
+    "HiddenAbility": "あめうけざら",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "クリアボディ",
-        "ヘドロえき",
-        "あめうけざら"
-    ],
-    "Weight": 55.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "みず",
-        "どく"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 70
 }

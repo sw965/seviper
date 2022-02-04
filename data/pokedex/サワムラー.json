@@ -1,12 +1,21 @@
 {
-    "BaseDef": 53,
+    "BaseSpDef": 110,
+    "Gender": "♂のみ",
+    "Weight": 49.8,
+    "AllAbilities": [
+        "じゅうなん",
+        "すてみ",
+        "かるわざ"
+    ],
     "BaseSpeed": 87,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "じゅうなん",
         "すてみ"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "かるわざ",
     "Learnset": [
         "かわらわり",
         "フェイント",
@@ -65,22 +74,13 @@
         "バレットパンチ",
         "コーチング"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 110,
+    "HiddenAbility": "かるわざ",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "じゅうなん",
-        "すてみ",
-        "かるわざ"
-    ],
-    "Weight": 49.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 53,
+    "BaseAtk": 120
 }

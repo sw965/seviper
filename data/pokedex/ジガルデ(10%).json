@@ -1,11 +1,19 @@
 {
-    "BaseDef": 71,
+    "BaseSpDef": 85,
+    "Gender": "不明",
+    "Weight": 33.5,
+    "AllAbilities": [
+        "オーラブレイク"
+    ],
     "BaseSpeed": 115,
+    "Types": [
+        "ドラゴン",
+        "じめん"
+    ],
+    "BaseSpAtk": 61,
     "NormalAbilities": [
         "オーラブレイク"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "じならし",
         "りゅうのいぶき",
@@ -61,21 +69,13 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 85,
+    "HiddenAbility": "なし",
+    "Height": 1.2,
+    "Category": "伝説のポケモン",
     "BaseHP": 54,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "オーラブレイク"
-    ],
-    "Weight": 33.5,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 61,
-    "Types": [
-        "ドラゴン",
-        "じめん"
-    ]
+    "BaseDef": 71,
+    "BaseAtk": 100
 }

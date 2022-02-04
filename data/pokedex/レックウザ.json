@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 206.5,
+    "AllAbilities": [
+        "エアロック"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "ドラゴン",
+        "ひこう"
+    ],
+    "BaseSpAtk": 150,
     "NormalAbilities": [
         "エアロック"
     ],
-    "Height": 7.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たつまき",
         "ガリョウテンセイ",
@@ -76,21 +84,13 @@
         "メテオビーム",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 150,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 7.0,
+    "Category": "伝説のポケモン",
     "BaseHP": 105,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "エアロック"
-    ],
-    "Weight": 206.5,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 150,
-    "Types": [
-        "ドラゴン",
-        "ひこう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 150
 }

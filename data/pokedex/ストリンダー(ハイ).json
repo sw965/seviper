@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "パンクロック",
+        "プラス",
+        "テクニシャン"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "でんき",
+        "どく"
+    ],
+    "BaseSpAtk": 114,
     "NormalAbilities": [
         "パンクロック",
         "プラス"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "テクニシャン",
     "Learnset": [
         "スパーク",
         "かいでんぱ",
@@ -73,23 +83,13 @@
         "グロウパンチ",
         "ライジングボルト"
     ],
-    "BaseAtk": 98,
-    "BaseSpDef": 70,
+    "HiddenAbility": "テクニシャン",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "パンクロック",
-        "プラス",
-        "テクニシャン"
-    ],
-    "Weight": 40.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 114,
-    "Types": [
-        "でんき",
-        "どく"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 98
 }

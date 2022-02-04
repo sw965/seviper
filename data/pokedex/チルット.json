@@ -1,11 +1,20 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 1.2,
+    "AllAbilities": [
+        "しぜんかいふく",
+        "ノーてんき"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ノーマル",
+        "ひこう"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "しぜんかいふく"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ノーてんき",
     "Learnset": [
         "つつく",
         "なきごえ",
@@ -56,23 +65,14 @@
         "きりばらい",
         "ダブルウイング"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ノーてんき",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "飛行",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しぜんかいふく",
-        "ノーてんき"
-    ],
-    "Weight": 1.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル",
-        "ひこう"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 40
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 80,
+    "Gender": "♂のみ",
+    "Weight": 61.0,
+    "AllAbilities": [
+        "ちくでん"
+    ],
     "BaseSpeed": 101,
+    "Types": [
+        "でんき",
+        "ひこう"
+    ],
+    "BaseSpAtk": 145,
     "NormalAbilities": [
         "ちくでん"
     ],
-    "Height": 3.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "おどろかす",
         "でんきショック",
@@ -70,21 +78,13 @@
         "ライジングボルト",
         "うっぷんばらし"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 80,
+    "HiddenAbility": "なし",
+    "Height": 3.0,
+    "Category": "準伝説ポケモン",
     "BaseHP": 79,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "ちくでん"
-    ],
-    "Weight": 61.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 145,
-    "Types": [
-        "でんき",
-        "ひこう"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 105
 }

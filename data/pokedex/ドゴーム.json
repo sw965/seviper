@@ -1,11 +1,19 @@
 {
-    "BaseDef": 43,
+    "BaseSpDef": 43,
+    "Gender": "♂♀両方",
+    "Weight": 40.5,
+    "AllAbilities": [
+        "ぼうおん",
+        "きもったま"
+    ],
     "BaseSpeed": 48,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 71,
     "NormalAbilities": [
         "ぼうおん"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "かみつく",
         "はたく",
@@ -65,22 +73,14 @@
         "ともえなげ",
         "チャームボイス"
     ],
-    "BaseAtk": 71,
-    "BaseSpDef": 43,
+    "HiddenAbility": "きもったま",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 84,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうおん",
-        "きもったま"
-    ],
-    "Weight": 40.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 71,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 43,
+    "BaseAtk": 71
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "不明",
+    "Weight": 330.0,
+    "AllAbilities": [
+        "てつのこぶし",
+        "ぶきよう",
+        "ノーガード"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "じめん",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "てつのこぶし",
         "ぶきよう"
     ],
-    "Height": 2.8,
-    "HiddenAbility": "ノーガード",
     "Learnset": [
         "きあいパンチ",
         "はたく",
@@ -80,23 +90,13 @@
         "ポルターガイスト",
         "ねっさのだいち"
     ],
-    "BaseAtk": 124,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ノーガード",
+    "Height": 2.8,
+    "Category": "通常ポケモン",
     "BaseHP": 89,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "てつのこぶし",
-        "ぶきよう",
-        "ノーガード"
-    ],
-    "Weight": 330.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "じめん",
-        "ゴースト"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 124
 }

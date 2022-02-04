@@ -1,12 +1,22 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 54.0,
+    "AllAbilities": [
+        "むしのしらせ",
+        "こんじょう",
+        "じしんかじょう"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "むし",
+        "かくとう"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "むしのしらせ",
         "こんじょう"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "じしんかじょう",
     "Learnset": [
         "たいあたり",
         "にらみつける",
@@ -71,23 +81,13 @@
         "つじぎり",
         "コーチング"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 95,
+    "HiddenAbility": "じしんかじょう",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "こんじょう",
-        "じしんかじょう"
-    ],
-    "Weight": 54.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "むし",
-        "かくとう"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 125
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 60.0,
+    "AllAbilities": [
+        "がんじょう",
+        "いしあたま",
+        "ヘヴィメタル"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "はがね",
+        "いわ"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "がんじょう",
         "いしあたま"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ヘヴィメタル",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -57,23 +67,13 @@
         "アイアンローラー",
         "てっていこうせん"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 40,
+    "HiddenAbility": "ヘヴィメタル",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "いしあたま",
-        "ヘヴィメタル"
-    ],
-    "Weight": 60.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "はがね",
-        "いわ"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 70
 }

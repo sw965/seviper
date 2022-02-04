@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 135.0,
+    "AllAbilities": [
+        "もふもふ",
+        "ぶきよう",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ノーマル",
+        "かくとう"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "もふもふ",
         "ぶきよう"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "しめつける",
         "たいあたり",
@@ -70,23 +80,13 @@
         "はっけい",
         "コーチング"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 60,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 2.1,
+    "Category": "通常ポケモン",
     "BaseHP": 120,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もふもふ",
-        "ぶきよう",
-        "きんちょうかん"
-    ],
-    "Weight": 135.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "ノーマル",
-        "かくとう"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 125
 }

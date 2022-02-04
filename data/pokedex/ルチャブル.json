@@ -1,12 +1,22 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 63,
+    "Gender": "♂♀両方",
+    "Weight": 21.5,
+    "AllAbilities": [
+        "じゅうなん",
+        "かるわざ",
+        "かたやぶり"
+    ],
     "BaseSpeed": 118,
+    "Types": [
+        "かくとう",
+        "ひこう"
+    ],
+    "BaseSpAtk": 74,
     "NormalAbilities": [
         "じゅうなん",
         "かるわざ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "かたやぶり",
     "Learnset": [
         "たいあたり",
         "つめとぎ",
@@ -86,24 +96,14 @@
         "コーチング",
         "ダブルウイング"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 63,
+    "HiddenAbility": "かたやぶり",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "飛行",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅうなん",
-        "かるわざ",
-        "かたやぶり"
-    ],
-    "Weight": 21.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 74,
-    "Types": [
-        "かくとう",
-        "ひこう"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 92
 }

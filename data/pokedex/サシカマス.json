@@ -1,11 +1,19 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 1.0,
+    "AllAbilities": [
+        "すいすい",
+        "スクリューおびれ"
+    ],
     "BaseSpeed": 66,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "すいすい"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "スクリューおびれ",
     "Learnset": [
         "つつく",
         "アクアジェット",
@@ -47,21 +55,13 @@
         "つじぎり",
         "スケイルショット"
     ],
-    "BaseAtk": 63,
-    "BaseSpDef": 30,
+    "HiddenAbility": "スクリューおびれ",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 41,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "スクリューおびれ"
-    ],
-    "Weight": 1.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 63
 }

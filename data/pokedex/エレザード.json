@@ -1,12 +1,22 @@
 {
-    "BaseDef": 52,
+    "BaseSpDef": 94,
+    "Gender": "♂♀両方",
+    "Weight": 21.0,
+    "AllAbilities": [
+        "かんそうはだ",
+        "すながくれ",
+        "サンパワー"
+    ],
     "BaseSpeed": 109,
+    "Types": [
+        "でんき",
+        "ノーマル"
+    ],
+    "BaseSpAtk": 109,
     "NormalAbilities": [
         "かんそうはだ",
         "すながくれ"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "サンパワー",
     "Learnset": [
         "かいでんぱ",
         "そうでん",
@@ -72,24 +82,14 @@
         "スケイルショット",
         "ライジングボルト"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 94,
+    "HiddenAbility": "サンパワー",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 62,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かんそうはだ",
-        "すながくれ",
-        "サンパワー"
-    ],
-    "Weight": 21.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 109,
-    "Types": [
-        "でんき",
-        "ノーマル"
-    ]
+    "BaseDef": 52,
+    "BaseAtk": 55
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 220.0,
+    "AllAbilities": [
+        "ちょすい",
+        "シェルアーマー",
+        "うるおいボディ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "みず",
+        "こおり"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "ちょすい",
         "シェルアーマー"
     ],
-    "Height": 2.5,
-    "HiddenAbility": "うるおいボディ",
     "Learnset": [
         "なきごえ",
         "みずでっぽう",
@@ -71,24 +81,14 @@
         "フリーズドライ",
         "うたかたのアリア"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 95,
+    "HiddenAbility": "うるおいボディ",
+    "Height": 2.5,
+    "Category": "通常ポケモン",
     "BaseHP": 130,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちょすい",
-        "シェルアーマー",
-        "うるおいボディ"
-    ],
-    "Weight": 220.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "みず",
-        "こおり"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 85
 }

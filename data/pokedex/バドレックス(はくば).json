@@ -1,11 +1,19 @@
 {
-    "BaseDef": 150,
+    "BaseSpDef": 130,
+    "Gender": "不明",
+    "Weight": 809.1,
+    "AllAbilities": [
+        "じんばいったい"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "エスパー",
+        "こおり"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "じんばいったい"
     ],
-    "Height": 2.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ブリザードランス",
         "たいあたり",
@@ -108,21 +116,13 @@
         "ワイドフォース",
         "うっぷんばらし"
     ],
-    "BaseAtk": 165,
-    "BaseSpDef": 130,
+    "HiddenAbility": "なし",
+    "Height": 2.4,
+    "Category": "伝説のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "じんばいったい"
-    ],
-    "Weight": 809.1,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "エスパー",
-        "こおり"
-    ]
+    "BaseDef": 150,
+    "BaseAtk": 165
 }

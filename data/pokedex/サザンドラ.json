@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 160.0,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 98,
+    "Types": [
+        "あく",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "トライアタック",
         "きあいだめ",
@@ -85,21 +93,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 92,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 160.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "あく",
-        "ドラゴン"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 105
 }

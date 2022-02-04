@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 32.0,
+    "AllAbilities": [
+        "じゅうなん",
+        "テクニシャン",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 115,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "じゅうなん",
         "テクニシャン"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "パワージェム",
         "すりかえ",
@@ -68,22 +77,13 @@
         "はいよるいちげき",
         "うっぷんばらし"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 65,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅうなん",
-        "テクニシャン",
-        "きんちょうかん"
-    ],
-    "Weight": 32.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 70
 }

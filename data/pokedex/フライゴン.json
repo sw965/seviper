@@ -1,11 +1,19 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 82.0,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "じめん",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ドラゴンクロー",
         "すなかけ",
@@ -82,22 +90,14 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 80,
+    "HiddenAbility": "なし",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "虫",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 82.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "じめん",
-        "ドラゴン"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 100
 }

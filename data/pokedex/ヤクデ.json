@@ -1,12 +1,22 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 1.0,
+    "AllAbilities": [
+        "もらいび",
+        "しろいけむり",
+        "ほのおのからだ"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "ほのお",
+        "むし"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "もらいび",
         "しろいけむり"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "ほのおのからだ",
     "Learnset": [
         "ひのこ",
         "えんまく",
@@ -46,23 +56,13 @@
         "はいよるいちげき",
         "ねっさのだいち"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 50,
+    "HiddenAbility": "ほのおのからだ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もらいび",
-        "しろいけむり",
-        "ほのおのからだ"
-    ],
-    "Weight": 1.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ほのお",
-        "むし"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 65
 }

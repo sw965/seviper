@@ -1,12 +1,22 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 16.0,
+    "AllAbilities": [
+        "やるき",
+        "はりきり",
+        "ふみん"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "こおり",
+        "ひこう"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "やるき",
         "はりきり"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "ふみん",
     "Learnset": [
         "プレゼント",
         "ドリルくちばし",
@@ -63,24 +73,14 @@
         "トリプルアクセル",
         "ダブルウイング"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 45,
+    "HiddenAbility": "ふみん",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "やるき",
-        "はりきり",
-        "ふみん"
-    ],
-    "Weight": 16.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "こおり",
-        "ひこう"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 55
 }

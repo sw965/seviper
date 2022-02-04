@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 120,
+    "Gender": "♂♀両方",
+    "Weight": 2.5,
+    "AllAbilities": [
+        "わたげ",
+        "さいせいりょく",
+        "ほうし"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "わたげ",
         "さいせいりょく"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "ほうし",
     "Learnset": [
         "わたほうし",
         "このは",
@@ -53,22 +62,13 @@
         "なやみのタネ",
         "グラススライダー"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 120,
+    "HiddenAbility": "ほうし",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "わたげ",
-        "さいせいりょく",
-        "ほうし"
-    ],
-    "Weight": 2.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 50
 }

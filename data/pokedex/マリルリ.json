@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 28.5,
+    "AllAbilities": [
+        "あついしぼう",
+        "ちからもち",
+        "そうしょく"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "みず",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "あついしぼう",
         "ちからもち"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "そうしょく",
     "Learnset": [
         "たいあたり",
         "まるくなる",
@@ -84,24 +94,14 @@
         "ミストバースト",
         "はねる"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 80,
+    "HiddenAbility": "そうしょく",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "水中1",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "あついしぼう",
-        "ちからもち",
-        "そうしょく"
-    ],
-    "Weight": 28.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "みず",
-        "フェアリー"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 50
 }

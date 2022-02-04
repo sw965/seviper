@@ -1,12 +1,22 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 95,
+    "Gender": "♀のみ",
+    "Weight": 40.6,
+    "AllAbilities": [
+        "どんかん",
+        "よちむ",
+        "かんそうはだ"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "こおり",
+        "エスパー"
+    ],
+    "BaseSpAtk": 115,
     "NormalAbilities": [
         "どんかん",
         "よちむ"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "かんそうはだ",
     "Learnset": [
         "はたく",
         "したでなめる",
@@ -82,23 +92,13 @@
         "ワイドフォース",
         "トリプルアクセル"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 95,
+    "HiddenAbility": "かんそうはだ",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "どんかん",
-        "よちむ",
-        "かんそうはだ"
-    ],
-    "Weight": 40.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 115,
-    "Types": [
-        "こおり",
-        "エスパー"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 50
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 121,
+    "Gender": "♀のみ",
+    "Weight": 0.5,
+    "AllAbilities": [
+        "スイートベール",
+        "アロマベール"
+    ],
     "BaseSpeed": 64,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "スイートベール"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "アロマベール",
     "Learnset": [
         "デコレーション",
         "たいあたり",
@@ -57,22 +65,14 @@
         "つぶらなひとみ",
         "ミストバースト"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 121,
+    "HiddenAbility": "アロマベール",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "妖精",
         "不定形"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "スイートベール",
-        "アロマベール"
-    ],
-    "Weight": 0.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 60
 }

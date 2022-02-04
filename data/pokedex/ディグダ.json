@@ -1,12 +1,21 @@
 {
-    "BaseDef": 25,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 0.8,
+    "AllAbilities": [
+        "すながくれ",
+        "ありじごく",
+        "すなのちから"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "すながくれ",
         "ありじごく"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "すなのちから",
     "Learnset": [
         "ひっかく",
         "すなかけ",
@@ -54,22 +63,13 @@
         "いのちがけ",
         "ねっさのだいち"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 45,
+    "HiddenAbility": "すなのちから",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 10,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すながくれ",
-        "ありじごく",
-        "すなのちから"
-    ],
-    "Weight": 0.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 25,
+    "BaseAtk": 55
 }

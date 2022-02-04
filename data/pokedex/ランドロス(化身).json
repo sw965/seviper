@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 80,
+    "Gender": "♂のみ",
+    "Weight": 68.0,
+    "AllAbilities": [
+        "すなのちから",
+        "ちからずく"
+    ],
     "BaseSpeed": 101,
+    "Types": [
+        "じめん",
+        "ひこう"
+    ],
+    "BaseSpAtk": 115,
     "NormalAbilities": [
         "すなのちから"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "すなじごく",
         "いわおとし",
@@ -58,22 +67,13 @@
         "くさむすび",
         "ヘドロウェーブ"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ちからずく",
+    "Height": 1.5,
+    "Category": "準伝説ポケモン",
     "BaseHP": 89,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "すなのちから",
-        "ちからずく"
-    ],
-    "Weight": 68.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 115,
-    "Types": [
-        "じめん",
-        "ひこう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 125
 }

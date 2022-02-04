@@ -1,12 +1,21 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 75,
+    "Gender": "不明",
+    "Weight": 34.0,
+    "AllAbilities": [
+        "てきおうりょく",
+        "ダウンロード",
+        "アナライズ"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 135,
     "NormalAbilities": [
         "てきおうりょく",
         "ダウンロード"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "アナライズ",
     "Learnset": [
         "トリックルーム",
         "たいあたり",
@@ -63,22 +72,13 @@
         "イカサマ",
         "サイドチェンジ"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 75,
+    "HiddenAbility": "アナライズ",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "てきおうりょく",
-        "ダウンロード",
-        "アナライズ"
-    ],
-    "Weight": 34.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 135,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 80
 }

@@ -1,11 +1,20 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 36.6,
+    "AllAbilities": [
+        "しんりょく",
+        "えんかく"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "くさ",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "えんかく",
     "Learnset": [
         "かげぬい",
         "とんぼがえり",
@@ -72,22 +81,13 @@
         "ハードプラント",
         "くさのちかい"
     ],
-    "BaseAtk": 107,
-    "BaseSpDef": 100,
+    "HiddenAbility": "えんかく",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "えんかく"
-    ],
-    "Weight": 36.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "くさ",
-        "ゴースト"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 107
 }

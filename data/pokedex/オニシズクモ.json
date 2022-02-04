@@ -1,11 +1,20 @@
 {
-    "BaseDef": 92,
+    "BaseSpDef": 132,
+    "Gender": "♂♀両方",
+    "Weight": 82.0,
+    "AllAbilities": [
+        "すいほう",
+        "ちょすい"
+    ],
     "BaseSpeed": 42,
+    "Types": [
+        "みず",
+        "むし"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "すいほう"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "ちょすい",
     "Learnset": [
         "ワイドガード",
         "まとわりつく",
@@ -55,23 +64,14 @@
         "ねばねばネット",
         "はいよるいちげき"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 132,
+    "HiddenAbility": "ちょすい",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "水中1",
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいほう",
-        "ちょすい"
-    ],
-    "Weight": 82.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "みず",
-        "むし"
-    ]
+    "BaseDef": 92,
+    "BaseAtk": 70
 }

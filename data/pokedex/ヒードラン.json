@@ -1,11 +1,20 @@
 {
-    "BaseDef": 106,
+    "BaseSpDef": 106,
+    "Gender": "♂♀両方",
+    "Weight": 430.0,
+    "AllAbilities": [
+        "もらいび",
+        "ほのおのからだ"
+    ],
     "BaseSpeed": 77,
+    "Types": [
+        "ほのお",
+        "はがね"
+    ],
+    "BaseSpAtk": 130,
     "NormalAbilities": [
         "もらいび"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "ほのおのからだ",
     "Learnset": [
         "ほのおのうず",
         "にらみつける",
@@ -62,22 +71,13 @@
         "ねっさのだいち",
         "てっていこうせん"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 106,
+    "HiddenAbility": "ほのおのからだ",
+    "Height": 1.7,
+    "Category": "準伝説ポケモン",
     "BaseHP": 91,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もらいび",
-        "ほのおのからだ"
-    ],
-    "Weight": 430.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 130,
-    "Types": [
-        "ほのお",
-        "はがね"
-    ]
+    "BaseDef": 106,
+    "BaseAtk": 90
 }

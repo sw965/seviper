@@ -1,12 +1,22 @@
 {
-    "BaseDef": 63,
+    "BaseSpDef": 73,
+    "Gender": "♂♀両方",
+    "Weight": 3.3,
+    "AllAbilities": [
+        "てつのトゲ",
+        "ひらいしん",
+        "がんじょう"
+    ],
     "BaseSpeed": 96,
+    "Types": [
+        "でんき",
+        "はがね"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "てつのトゲ",
         "ひらいしん"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "がんじょう",
     "Learnset": [
         "たいあたり",
         "ほっぺすりすり",
@@ -69,24 +79,14 @@
         "ライジングボルト",
         "てっていこうせん"
     ],
-    "BaseAtk": 98,
-    "BaseSpDef": 73,
+    "HiddenAbility": "がんじょう",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "てつのトゲ",
-        "ひらいしん",
-        "がんじょう"
-    ],
-    "Weight": 3.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "でんき",
-        "はがね"
-    ]
+    "BaseDef": 63,
+    "BaseAtk": 98
 }

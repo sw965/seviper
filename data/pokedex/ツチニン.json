@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 5.5,
+    "AllAbilities": [
+        "ふくがん",
+        "にげあし"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "むし",
+        "じめん"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "ふくがん"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "にげあし",
     "Learnset": [
         "ひっかく",
         "すなかけ",
@@ -40,22 +49,13 @@
         "いのちがけ",
         "はいよるいちげき"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 30,
+    "HiddenAbility": "にげあし",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 31,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくがん",
-        "にげあし"
-    ],
-    "Weight": 5.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "むし",
-        "じめん"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 45
 }

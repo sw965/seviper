@@ -1,11 +1,20 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 46.0,
+    "AllAbilities": [
+        "ほのおのからだ",
+        "むしのしらせ"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "むし",
+        "ほのお"
+    ],
+    "BaseSpAtk": 135,
     "NormalAbilities": [
         "ほのおのからだ"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "むしのしらせ",
     "Learnset": [
         "ちょうのまい",
         "ひのこ",
@@ -63,22 +72,13 @@
         "はいよるいちげき",
         "ダブルウイング"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 105,
+    "HiddenAbility": "むしのしらせ",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほのおのからだ",
-        "むしのしらせ"
-    ],
-    "Weight": 46.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 135,
-    "Types": [
-        "むし",
-        "ほのお"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 60
 }

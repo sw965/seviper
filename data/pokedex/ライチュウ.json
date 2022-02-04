@@ -1,11 +1,19 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 30.0,
+    "AllAbilities": [
+        "せいでんき",
+        "ひらいしん"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "せいでんき"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "ひらいしん",
     "Learnset": [
         "かみなりパンチ",
         "でんきショック",
@@ -78,22 +86,14 @@
         "ライジングボルト",
         "ボルテッカー"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ひらいしん",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "陸上",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいでんき",
-        "ひらいしん"
-    ],
-    "Weight": 30.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 90
 }

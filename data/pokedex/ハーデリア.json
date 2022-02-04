@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 14.7,
+    "AllAbilities": [
+        "いかく",
+        "すなかき",
+        "きもったま"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "いかく",
         "すなかき"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "にらみつける",
         "たいあたり",
@@ -56,22 +65,13 @@
         "ほしがる",
         "おさきにどうぞ"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 65,
+    "HiddenAbility": "きもったま",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "すなかき",
-        "きもったま"
-    ],
-    "Weight": 14.7,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 80
 }

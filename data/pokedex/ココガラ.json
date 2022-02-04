@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 1.8,
+    "AllAbilities": [
+        "するどいめ",
+        "きんちょうかん",
+        "はとむね"
+    ],
     "BaseSpeed": 57,
+    "Types": [
+        "ひこう"
+    ],
+    "BaseSpAtk": 33,
     "NormalAbilities": [
         "するどいめ",
         "きんちょうかん"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "はとむね",
     "Learnset": [
         "つつく",
         "にらみつける",
@@ -52,22 +61,13 @@
         "きりばらい",
         "ダブルウイング"
     ],
-    "BaseAtk": 47,
-    "BaseSpDef": 35,
+    "HiddenAbility": "はとむね",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 38,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "するどいめ",
-        "きんちょうかん",
-        "はとむね"
-    ],
-    "Weight": 1.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 33,
-    "Types": [
-        "ひこう"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 47
 }

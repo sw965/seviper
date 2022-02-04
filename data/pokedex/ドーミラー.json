@@ -1,12 +1,22 @@
 {
-    "BaseDef": 86,
+    "BaseSpDef": 86,
+    "Gender": "不明",
+    "Weight": 60.5,
+    "AllAbilities": [
+        "ふゆう",
+        "たいねつ",
+        "ヘヴィメタル"
+    ],
     "BaseSpeed": 23,
+    "Types": [
+        "はがね",
+        "エスパー"
+    ],
+    "BaseSpAtk": 24,
     "NormalAbilities": [
         "ふゆう",
         "たいねつ"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "ヘヴィメタル",
     "Learnset": [
         "たいあたり",
         "ねんりき",
@@ -59,23 +69,13 @@
         "アイアンローラー",
         "てっていこうせん"
     ],
-    "BaseAtk": 24,
-    "BaseSpDef": 86,
+    "HiddenAbility": "ヘヴィメタル",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 57,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふゆう",
-        "たいねつ",
-        "ヘヴィメタル"
-    ],
-    "Weight": 60.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 24,
-    "Types": [
-        "はがね",
-        "エスパー"
-    ]
+    "BaseDef": 86,
+    "BaseAtk": 24
 }

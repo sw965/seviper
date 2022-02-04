@@ -1,12 +1,21 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 55,
+    "Gender": "♀のみ",
+    "Weight": 20.0,
+    "AllAbilities": [
+        "どくのトゲ",
+        "とうそうしん",
+        "はりきり"
+    ],
     "BaseSpeed": 56,
+    "Types": [
+        "どく"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "どくのトゲ",
         "とうそうしん"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "はりきり",
     "Learnset": [
         "なきごえ",
         "ひっかく",
@@ -57,22 +66,13 @@
         "どくどくのキバ",
         "ポイズンテール"
     ],
-    "BaseAtk": 62,
-    "BaseSpDef": 55,
+    "HiddenAbility": "はりきり",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "どくのトゲ",
-        "とうそうしん",
-        "はりきり"
-    ],
-    "Weight": 20.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "どく"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 62
 }

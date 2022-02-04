@@ -1,11 +1,19 @@
 {
-    "BaseDef": 69,
+    "BaseSpDef": 81,
+    "Gender": "♂♀両方",
+    "Weight": 17.5,
+    "AllAbilities": [
+        "げきりゅう",
+        "うるおいボイス"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 91,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "うるおいボイス",
     "Learnset": [
         "はたく",
         "みずでっぽう",
@@ -57,22 +65,14 @@
         "トリプルアクセル",
         "みずのちかい"
     ],
-    "BaseAtk": 69,
-    "BaseSpDef": 81,
+    "HiddenAbility": "うるおいボイス",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "うるおいボイス"
-    ],
-    "Weight": 17.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 91,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 69,
+    "BaseAtk": 69
 }

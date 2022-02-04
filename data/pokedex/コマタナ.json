@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 10.2,
+    "AllAbilities": [
+        "まけんき",
+        "せいしんりょく",
+        "プレッシャー"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "あく",
+        "はがね"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "まけんき",
         "せいしんりょく"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "プレッシャー",
     "Learnset": [
         "ひっかく",
         "にらみつける",
@@ -65,23 +75,13 @@
         "うっぷんばらし",
         "てっていこうせん"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 40,
+    "HiddenAbility": "プレッシャー",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "まけんき",
-        "せいしんりょく",
-        "プレッシャー"
-    ],
-    "Weight": 10.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "あく",
-        "はがね"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 85
 }

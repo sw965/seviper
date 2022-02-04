@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 94.6,
+    "AllAbilities": [
+        "すてみ",
+        "そうしょく",
+        "ぼうおん"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "すてみ",
         "そうしょく"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "ぼうおん",
     "Learnset": [
         "にらみつける",
         "たいあたり",
@@ -66,22 +75,13 @@
         "ゲップ",
         "うっぷんばらし"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 95,
+    "HiddenAbility": "ぼうおん",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すてみ",
-        "そうしょく",
-        "ぼうおん"
-    ],
-    "Weight": 94.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 110
 }

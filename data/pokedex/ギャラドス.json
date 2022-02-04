@@ -1,11 +1,20 @@
 {
-    "BaseDef": 79,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 235.0,
+    "AllAbilities": [
+        "いかく",
+        "じしんかじょう"
+    ],
     "BaseSpeed": 81,
+    "Types": [
+        "みず",
+        "ひこう"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "いかく"
     ],
-    "Height": 6.5,
-    "HiddenAbility": "じしんかじょう",
     "Learnset": [
         "かみつく",
         "にらみつける",
@@ -69,23 +78,14 @@
         "スケイルショット",
         "うっぷんばらし"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 100,
+    "HiddenAbility": "じしんかじょう",
+    "Height": 6.5,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "水中2",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "じしんかじょう"
-    ],
-    "Weight": 235.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "みず",
-        "ひこう"
-    ]
+    "BaseDef": 79,
+    "BaseAtk": 125
 }

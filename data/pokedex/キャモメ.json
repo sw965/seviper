@@ -1,12 +1,22 @@
 {
-    "BaseDef": 30,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 9.5,
+    "AllAbilities": [
+        "するどいめ",
+        "うるおいボディ",
+        "あめうけざら"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "みず",
+        "ひこう"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "するどいめ",
         "うるおいボディ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "なきごえ",
         "みずでっぽう",
@@ -52,24 +62,14 @@
         "みずびたし",
         "ダブルウイング"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 30,
+    "HiddenAbility": "あめうけざら",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "水中1",
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "するどいめ",
-        "うるおいボディ",
-        "あめうけざら"
-    ],
-    "Weight": 9.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "みず",
-        "ひこう"
-    ]
+    "BaseDef": 30,
+    "BaseAtk": 30
 }

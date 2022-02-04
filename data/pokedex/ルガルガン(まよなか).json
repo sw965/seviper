@@ -1,12 +1,21 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 25.0,
+    "AllAbilities": [
+        "するどいめ",
+        "やるき",
+        "ノーガード"
+    ],
     "BaseSpeed": 82,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "するどいめ",
         "やるき"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "ノーガード",
     "Learnset": [
         "カウンター",
         "きしかいせい",
@@ -69,22 +78,13 @@
         "とっておき",
         "うっぷんばらし"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ノーガード",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "するどいめ",
-        "やるき",
-        "ノーガード"
-    ],
-    "Weight": 25.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 115
 }

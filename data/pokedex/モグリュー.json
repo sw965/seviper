@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 8.5,
+    "AllAbilities": [
+        "すなかき",
+        "すなのちから",
+        "かたやぶり"
+    ],
     "BaseSpeed": 68,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "すなかき",
         "すなのちから"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "かたやぶり",
     "Learnset": [
         "どろかけ",
         "こうそくスピン",
@@ -50,22 +59,13 @@
         "きんぞくおん",
         "ねっさのだいち"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 45,
+    "HiddenAbility": "かたやぶり",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すなかき",
-        "すなのちから",
-        "かたやぶり"
-    ],
-    "Weight": 8.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 85
 }

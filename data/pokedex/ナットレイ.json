@@ -1,11 +1,20 @@
 {
-    "BaseDef": 131,
+    "BaseSpDef": 116,
+    "Gender": "♂♀両方",
+    "Weight": 110.0,
+    "AllAbilities": [
+        "てつのトゲ",
+        "きけんよち"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "くさ",
+        "はがね"
+    ],
+    "BaseSpAtk": 54,
     "NormalAbilities": [
         "てつのトゲ"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "きけんよち",
     "Learnset": [
         "パワーウィップ",
         "たいあたり",
@@ -62,23 +71,14 @@
         "アイアンローラー",
         "てっていこうせん"
     ],
-    "BaseAtk": 94,
-    "BaseSpDef": 116,
+    "HiddenAbility": "きけんよち",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 74,
     "EggGroups": [
         "植物",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "てつのトゲ",
-        "きけんよち"
-    ],
-    "Weight": 110.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 54,
-    "Types": [
-        "くさ",
-        "はがね"
-    ]
+    "BaseDef": 131,
+    "BaseAtk": 94
 }

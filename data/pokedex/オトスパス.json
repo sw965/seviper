@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 39.0,
+    "AllAbilities": [
+        "じゅうなん",
+        "テクニシャン"
+    ],
     "BaseSpeed": 42,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "じゅうなん"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "テクニシャン",
     "Learnset": [
         "たこがため",
         "オクタンほう",
@@ -64,22 +72,14 @@
         "はいよるいちげき",
         "コーチング"
     ],
-    "BaseAtk": 118,
-    "BaseSpDef": 80,
+    "HiddenAbility": "テクニシャン",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中1",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅうなん",
-        "テクニシャン"
-    ],
-    "Weight": 39.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 118
 }

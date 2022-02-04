@@ -1,11 +1,20 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 72.0,
+    "AllAbilities": [
+        "こんじょう",
+        "すながくれ"
+    ],
     "BaseSpeed": 41,
+    "Types": [
+        "いわ",
+        "じめん"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "こんじょう"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "すながくれ",
     "Learnset": [
         "にらみつける",
         "たいあたり",
@@ -59,22 +68,13 @@
         "のろい",
         "げんしのちから"
     ],
-    "BaseAtk": 64,
-    "BaseSpDef": 50,
+    "HiddenAbility": "すながくれ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "こんじょう",
-        "すながくれ"
-    ],
-    "Weight": 72.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "いわ",
-        "じめん"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 64
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 6.5,
+    "AllAbilities": [
+        "いしあたま",
+        "ひらいしん",
+        "カブトアーマー"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "いしあたま",
         "ひらいしん"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "カブトアーマー",
     "Learnset": [
         "なきごえ",
         "どろかけ",
@@ -71,22 +80,13 @@
         "げんしのちから",
         "ねっさのだいち"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 50,
+    "HiddenAbility": "カブトアーマー",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いしあたま",
-        "ひらいしん",
-        "カブトアーマー"
-    ],
-    "Weight": 6.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 50
 }

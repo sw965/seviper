@@ -1,12 +1,21 @@
 {
-    "BaseDef": 38,
+    "BaseSpDef": 38,
+    "Gender": "♀のみ",
+    "Weight": 3.2,
+    "AllAbilities": [
+        "リーフガード",
+        "どんかん",
+        "スイートベール"
+    ],
     "BaseSpeed": 32,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "リーフガード",
         "どんかん"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "スイートベール",
     "Learnset": [
         "はねる",
         "なかよくする",
@@ -48,22 +57,13 @@
         "つぼをつく",
         "グラススライダー"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 38,
+    "HiddenAbility": "スイートベール",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 42,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "リーフガード",
-        "どんかん",
-        "スイートベール"
-    ],
-    "Weight": 3.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 38,
+    "BaseAtk": 30
 }

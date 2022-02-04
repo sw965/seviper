@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 41.0,
+    "AllAbilities": [
+        "アイスボディ",
+        "ゆきがくれ",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 59,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "アイスボディ",
         "ゆきがくれ"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "かたくなる",
         "おどろかす",
@@ -46,22 +55,13 @@
         "つららおとし",
         "オーロラベール"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 75,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 51,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "アイスボディ",
-        "ゆきがくれ",
-        "くだけるよろい"
-    ],
-    "Weight": 41.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 65
 }

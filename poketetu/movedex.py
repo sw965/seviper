@@ -62,6 +62,11 @@ def parse_magic_coat(poketetu_move_data_lines):
     assert data[0] == "マジックコート"
     return data[1]
 
+def parse_snatch(poketetu_move_data_lines):
+    data = poketetu_move_data_lines[7].split()
+    assert data[2] == "よこどり"
+    return data[3]
+
 def parse_mirror_move(poketetu_move_data_lines):
     data = poketetu_move_data_lines[8].split()
     assert data[0] == "オウムがえし"
@@ -132,6 +137,7 @@ def parse_move_data(path):
     result["Contact"] = parse_contact(poketetu_move_data_lines)
     result["Protect"] = parse_protect(poketetu_move_data_lines)
     result["MagicCoat"] = parse_magic_coat(poketetu_move_data_lines)
+    result["Snatch"] = parse_snatch(poketetu_move_data_lines)
     result["MirrorMove"] = parse_mirror_move(poketetu_move_data_lines)
     result["Substitute"] = parse_substitute(poketetu_move_data_lines)
     result["GigantamaxMove"] = parse_gigantamax_move(poketetu_move_data_lines)

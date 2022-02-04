@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 5.8,
+    "AllAbilities": [
+        "おみとおし",
+        "かちき",
+        "かげふみ"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "おみとおし",
         "かちき"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "かげふみ",
     "Learnset": [
         "はたく",
         "ねんりき",
@@ -66,22 +75,13 @@
         "いやしのはどう",
         "ワイドフォース"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 65,
+    "HiddenAbility": "かげふみ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "おみとおし",
-        "かちき",
-        "かげふみ"
-    ],
-    "Weight": 5.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 30
 }

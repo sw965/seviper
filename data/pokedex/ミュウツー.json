@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 122.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 154,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "ねんりき",
         "かなしばり",
@@ -100,21 +108,13 @@
         "ぼうふう",
         "ワイドフォース"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 90,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 2.0,
+    "Category": "伝説のポケモン",
     "BaseHP": 106,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "きんちょうかん"
-    ],
-    "Weight": 122.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 154,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 110
 }

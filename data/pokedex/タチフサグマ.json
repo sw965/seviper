@@ -1,12 +1,22 @@
 {
-    "BaseDef": 101,
+    "BaseSpDef": 81,
+    "Gender": "♂♀両方",
+    "Weight": 46.0,
+    "AllAbilities": [
+        "すてみ",
+        "こんじょう",
+        "まけんき"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "あく",
+        "ノーマル"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "すてみ",
         "こんじょう"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "まけんき",
     "Learnset": [
         "ブロッキング",
         "クロスチョップ",
@@ -93,23 +103,13 @@
         "すてゼリフ",
         "うっぷんばらし"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 81,
+    "HiddenAbility": "まけんき",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 93,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すてみ",
-        "こんじょう",
-        "まけんき"
-    ],
-    "Weight": 46.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "あく",
-        "ノーマル"
-    ]
+    "BaseDef": 101,
+    "BaseAtk": 90
 }

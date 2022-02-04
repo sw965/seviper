@@ -1,12 +1,21 @@
 {
-    "BaseDef": 86,
+    "BaseSpDef": 86,
+    "Gender": "♂♀両方",
+    "Weight": 31.0,
+    "AllAbilities": [
+        "いやしのこころ",
+        "さいせいりょく",
+        "ぶきよう"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "いやしのこころ",
         "さいせいりょく"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "ぶきよう",
     "Learnset": [
         "なかよくする",
         "はたく",
@@ -85,22 +94,13 @@
         "あくび",
         "いやしのねがい"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 86,
+    "HiddenAbility": "ぶきよう",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 103,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いやしのこころ",
-        "さいせいりょく",
-        "ぶきよう"
-    ],
-    "Weight": 31.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 86,
+    "BaseAtk": 60
 }

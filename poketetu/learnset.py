@@ -17,7 +17,7 @@ def parse_move_name(move_name):
     else:
         return move_name
 
-def parse_learnset(poketetu_learnset):
+def parse(poketetu_learnset):
     split_data = poketetu_learnset.split()
     result = []
     for i, split_data_ele in enumerate(split_data):

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 79,
+    "BaseSpDef": 125,
+    "Gender": "♂♀両方",
+    "Weight": 162.0,
+    "AllAbilities": [
+        "ふしぎなうろこ",
+        "かちき",
+        "メロメロボディ"
+    ],
     "BaseSpeed": 81,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "ふしぎなうろこ",
         "かちき"
     ],
-    "Height": 6.2,
-    "HiddenAbility": "メロメロボディ",
     "Learnset": [
         "みずのはどう",
         "みずでっぽう",
@@ -74,23 +83,14 @@
         "クイックターン",
         "トリプルアクセル"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 125,
+    "HiddenAbility": "メロメロボディ",
+    "Height": 6.2,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふしぎなうろこ",
-        "かちき",
-        "メロメロボディ"
-    ],
-    "Weight": 162.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 79,
+    "BaseAtk": 60
 }

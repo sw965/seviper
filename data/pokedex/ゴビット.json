@@ -1,12 +1,22 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "不明",
+    "Weight": 92.0,
+    "AllAbilities": [
+        "てつのこぶし",
+        "ぶきよう",
+        "ノーガード"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "じめん",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "てつのこぶし",
         "ぶきよう"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "ノーガード",
     "Learnset": [
         "おどろかす",
         "どろかけ",
@@ -64,23 +74,13 @@
         "ポルターガイスト",
         "ねっさのだいち"
     ],
-    "BaseAtk": 74,
-    "BaseSpDef": 50,
+    "HiddenAbility": "ノーガード",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 59,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "てつのこぶし",
-        "ぶきよう",
-        "ノーガード"
-    ],
-    "Weight": 92.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "じめん",
-        "ゴースト"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 74
 }

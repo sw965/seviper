@@ -1,11 +1,19 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 6.0,
+    "AllAbilities": [
+        "ほおぶくろ",
+        "くいしんぼう"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "ほおぶくろ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "くいしんぼう",
     "Learnset": [
         "ほしがる",
         "たいあたり",
@@ -61,21 +69,13 @@
         "ころがる",
         "とっておき"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 75,
+    "HiddenAbility": "くいしんぼう",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 120,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほおぶくろ",
-        "くいしんぼう"
-    ],
-    "Weight": 6.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 95
 }

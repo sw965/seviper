@@ -1,12 +1,22 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 86,
+    "Gender": "♂♀両方",
+    "Weight": 96.0,
+    "AllAbilities": [
+        "かたいツメ",
+        "スナイパー",
+        "わるいてぐせ"
+    ],
     "BaseSpeed": 68,
+    "Types": [
+        "いわ",
+        "みず"
+    ],
+    "BaseSpAtk": 54,
     "NormalAbilities": [
         "かたいツメ",
         "スナイパー"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "わるいてぐせ",
     "Learnset": [
         "ロケットずつき",
         "ひっかく",
@@ -85,23 +95,13 @@
         "すりかえ",
         "メテオビーム"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 86,
+    "HiddenAbility": "わるいてぐせ",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 72,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かたいツメ",
-        "スナイパー",
-        "わるいてぐせ"
-    ],
-    "Weight": 96.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 54,
-    "Types": [
-        "いわ",
-        "みず"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 105
 }

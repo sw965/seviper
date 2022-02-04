@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 20.0,
+    "AllAbilities": [
+        "ちょすい",
+        "しめりけ",
+        "すいすい"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "ちょすい",
         "しめりけ"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "みずでっぽう",
         "さいみんじゅつ",
@@ -58,22 +67,13 @@
         "がむしゃら",
         "みずのはどう"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 50,
+    "HiddenAbility": "すいすい",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちょすい",
-        "しめりけ",
-        "すいすい"
-    ],
-    "Weight": 20.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 65
 }

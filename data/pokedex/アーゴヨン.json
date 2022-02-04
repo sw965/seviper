@@ -1,11 +1,19 @@
 {
-    "BaseDef": 73,
+    "BaseSpDef": 73,
+    "Gender": "不明",
+    "Weight": 150.0,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 121,
+    "Types": [
+        "どく",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 127,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 3.6,
-    "HiddenAbility": "なし",
     "Learnset": [
         "エアカッター",
         "りゅうのはどう",
@@ -70,21 +78,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 73,
-    "BaseSpDef": 73,
+    "HiddenAbility": "なし",
+    "Height": 3.6,
+    "Category": "準伝説ポケモン",
     "BaseHP": 73,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 150.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 127,
-    "Types": [
-        "どく",
-        "ドラゴン"
-    ]
+    "BaseDef": 73,
+    "BaseAtk": 73
 }

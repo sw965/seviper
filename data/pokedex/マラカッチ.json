@@ -1,12 +1,21 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 67,
+    "Gender": "♂♀両方",
+    "Weight": 28.0,
+    "AllAbilities": [
+        "ちょすい",
+        "ようりょくそ",
+        "よびみず"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 106,
     "NormalAbilities": [
         "ちょすい",
         "ようりょくそ"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "よびみず",
     "Learnset": [
         "おさきにどうぞ",
         "つつく",
@@ -60,22 +69,13 @@
         "ウッドハンマー",
         "グラススライダー"
     ],
-    "BaseAtk": 86,
-    "BaseSpDef": 67,
+    "HiddenAbility": "よびみず",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちょすい",
-        "ようりょくそ",
-        "よびみず"
-    ],
-    "Weight": 28.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 106,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 86
 }

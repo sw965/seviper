@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "はりきり",
+        "スナイパー",
+        "ムラっけ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "はりきり",
         "スナイパー"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "ムラっけ",
     "Learnset": [
         "みずでっぽう",
         "てだすけ",
@@ -60,23 +69,14 @@
         "しおふき",
         "アシッドボム"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 35,
+    "HiddenAbility": "ムラっけ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 35,
     "EggGroups": [
         "水中1",
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はりきり",
-        "スナイパー",
-        "ムラっけ"
-    ],
-    "Weight": 12.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 65
 }

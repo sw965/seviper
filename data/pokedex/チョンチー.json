@@ -1,12 +1,22 @@
 {
-    "BaseDef": 38,
+    "BaseSpDef": 56,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "ちくでん",
+        "はっこう",
+        "ちょすい"
+    ],
     "BaseSpeed": 67,
+    "Types": [
+        "みず",
+        "でんき"
+    ],
+    "BaseSpAtk": 56,
     "NormalAbilities": [
         "ちくでん",
         "はっこう"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "ちょすい",
     "Learnset": [
         "みずでっぽう",
         "ちょうおんぱ",
@@ -56,23 +66,13 @@
         "みずびたし",
         "ライジングボルト"
     ],
-    "BaseAtk": 38,
-    "BaseSpDef": 56,
+    "HiddenAbility": "ちょすい",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちくでん",
-        "はっこう",
-        "ちょすい"
-    ],
-    "Weight": 12.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 56,
-    "Types": [
-        "みず",
-        "でんき"
-    ]
+    "BaseDef": 38,
+    "BaseAtk": 38
 }

@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 154,
+    "Gender": "不明",
+    "Weight": 199.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ほのお",
+        "ひこう"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 3.8,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "ふきとばし",
         "ウェザーボール",
@@ -66,22 +75,13 @@
         "ダブルウイング",
         "ねっさのだいち"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 154,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 3.8,
+    "Category": "伝説のポケモン",
     "BaseHP": 106,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "さいせいりょく"
-    ],
-    "Weight": 199.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "ほのお",
-        "ひこう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 130
 }

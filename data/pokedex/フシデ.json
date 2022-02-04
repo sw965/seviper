@@ -1,12 +1,22 @@
 {
-    "BaseDef": 59,
+    "BaseSpDef": 39,
+    "Gender": "♂♀両方",
+    "Weight": 5.3,
+    "AllAbilities": [
+        "どくのトゲ",
+        "むしのしらせ",
+        "かそく"
+    ],
     "BaseSpeed": 57,
+    "Types": [
+        "むし",
+        "どく"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "どくのトゲ",
         "むしのしらせ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "かそく",
     "Learnset": [
         "まるくなる",
         "どくばり",
@@ -45,23 +55,13 @@
         "アイアンローラー",
         "はいよるいちげき"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 39,
+    "HiddenAbility": "かそく",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 30,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "どくのトゲ",
-        "むしのしらせ",
-        "かそく"
-    ],
-    "Weight": 5.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "むし",
-        "どく"
-    ]
+    "BaseDef": 59,
+    "BaseAtk": 45
 }

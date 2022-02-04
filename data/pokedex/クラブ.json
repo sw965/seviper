@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 25,
+    "Gender": "♂♀両方",
+    "Weight": 6.5,
+    "AllAbilities": [
+        "かいりきバサミ",
+        "シェルアーマー",
+        "ちからずく"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 25,
     "NormalAbilities": [
         "かいりきバサミ",
         "シェルアーマー"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "にらみつける",
         "みずでっぽう",
@@ -61,22 +70,13 @@
         "アームハンマー",
         "つじぎり"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 25,
+    "HiddenAbility": "ちからずく",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 30,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かいりきバサミ",
-        "シェルアーマー",
-        "ちからずく"
-    ],
-    "Weight": 6.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 25,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 105
 }

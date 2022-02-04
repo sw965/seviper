@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 130.0,
+    "AllAbilities": [
+        "みずのベール",
+        "どんかん",
+        "プレッシャー"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "みずのベール",
         "どんかん"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "プレッシャー",
     "Learnset": [
         "はねる",
         "なきごえ",
@@ -60,23 +69,14 @@
         "みずびたし",
         "アイアンローラー"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 35,
+    "HiddenAbility": "プレッシャー",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 130,
     "EggGroups": [
         "陸上",
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "みずのベール",
-        "どんかん",
-        "プレッシャー"
-    ],
-    "Weight": 130.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 70
 }

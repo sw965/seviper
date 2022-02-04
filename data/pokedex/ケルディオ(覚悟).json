@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 48.5,
+    "AllAbilities": [
+        "せいぎのこころ"
+    ],
     "BaseSpeed": 108,
+    "Types": [
+        "みず",
+        "かくとう"
+    ],
+    "BaseSpAtk": 129,
     "NormalAbilities": [
         "せいぎのこころ"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "アクアジェット",
         "にらみつける",
@@ -63,21 +71,13 @@
         "コーチング",
         "クイックターン"
     ],
-    "BaseAtk": 72,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 1.4,
+    "Category": "幻のポケモン",
     "BaseHP": 91,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "せいぎのこころ"
-    ],
-    "Weight": 48.5,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 129,
-    "Types": [
-        "みず",
-        "かくとう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 72
 }

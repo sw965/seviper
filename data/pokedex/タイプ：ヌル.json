@@ -1,11 +1,18 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 120.5,
+    "AllAbilities": [
+        "カブトアーマー"
+    ],
     "BaseSpeed": 59,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "カブトアーマー"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "ふういん",
@@ -47,20 +54,13 @@
         "ふるいたてる",
         "だいちのはどう"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 95,
+    "HiddenAbility": "なし",
+    "Height": 1.9,
+    "Category": "準伝説ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "カブトアーマー"
-    ],
-    "Weight": 120.5,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 95
 }

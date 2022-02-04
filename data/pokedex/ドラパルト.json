@@ -1,12 +1,22 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 50.0,
+    "AllAbilities": [
+        "クリアボディ",
+        "すりぬけ",
+        "のろわれボディ"
+    ],
     "BaseSpeed": 142,
+    "Types": [
+        "ドラゴン",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "クリアボディ",
         "すりぬけ"
     ],
-    "Height": 3.0,
-    "HiddenAbility": "のろわれボディ",
     "Learnset": [
         "ドラゴンアロー",
         "りゅうのいぶき",
@@ -77,24 +87,14 @@
         "ドラゴンテール",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 75,
+    "HiddenAbility": "のろわれボディ",
+    "Height": 3.0,
+    "Category": "通常ポケモン",
     "BaseHP": 88,
     "EggGroups": [
         "不定形",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "クリアボディ",
-        "すりぬけ",
-        "のろわれボディ"
-    ],
-    "Weight": 50.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ドラゴン",
-        "ゴースト"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 120
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 15,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 19.5,
+    "AllAbilities": [
+        "シンクロ",
+        "せいしんりょく",
+        "マジックガード"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 105,
     "NormalAbilities": [
         "シンクロ",
         "せいしんりょく"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "マジックガード",
     "Learnset": [
         "テレポート",
         "メガトンパンチ",
@@ -62,22 +71,13 @@
         "マジックコート",
         "ガードシェア"
     ],
-    "BaseAtk": 20,
-    "BaseSpDef": 55,
+    "HiddenAbility": "マジックガード",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 25,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "せいしんりょく",
-        "マジックガード"
-    ],
-    "Weight": 19.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 105,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 15,
+    "BaseAtk": 20
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 5.8,
+    "AllAbilities": [
+        "メロメロボディ",
+        "テクニシャン",
+        "スキルリンク"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "メロメロボディ",
         "テクニシャン"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "スキルリンク",
     "Learnset": [
         "はたく",
         "つぶらなひとみ",
@@ -57,22 +66,13 @@
         "アクアテール",
         "トリプルアクセル"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 40,
+    "HiddenAbility": "スキルリンク",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "テクニシャン",
-        "スキルリンク"
-    ],
-    "Weight": 5.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 50
 }

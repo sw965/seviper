@@ -1,12 +1,22 @@
 {
-    "BaseDef": 125,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 78.2,
+    "AllAbilities": [
+        "ぼうだん",
+        "ぼうおん",
+        "ぼうじん"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "ドラゴン",
+        "かくとう"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "ぼうだん",
         "ぼうおん"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "ぼうじん",
     "Learnset": [
         "スケイルノイズ",
         "はらだいこ",
@@ -84,23 +94,13 @@
         "コーチング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 105,
+    "HiddenAbility": "ぼうじん",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうだん",
-        "ぼうおん",
-        "ぼうじん"
-    ],
-    "Weight": 78.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ドラゴン",
-        "かくとう"
-    ]
+    "BaseDef": 125,
+    "BaseAtk": 110
 }

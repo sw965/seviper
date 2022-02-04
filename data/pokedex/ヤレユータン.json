@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 110,
+    "Gender": "♂♀両方",
+    "Weight": 76.0,
+    "AllAbilities": [
+        "せいしんりょく",
+        "テレパシー",
+        "きょうせい"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ノーマル",
+        "エスパー"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "せいしんりょく",
         "テレパシー"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "きょうせい",
     "Learnset": [
         "ねんりき",
         "ちょうはつ",
@@ -68,23 +78,13 @@
         "ワイドフォース",
         "だいちのはどう"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 110,
+    "HiddenAbility": "きょうせい",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "テレパシー",
-        "きょうせい"
-    ],
-    "Weight": 76.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "ノーマル",
-        "エスパー"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 60
 }

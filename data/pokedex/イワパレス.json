@@ -1,12 +1,22 @@
 {
-    "BaseDef": 125,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 200.0,
+    "AllAbilities": [
+        "がんじょう",
+        "シェルアーマー",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "むし",
+        "いわ"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "がんじょう",
         "シェルアーマー"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "からにこもる",
         "すなかけ",
@@ -59,24 +69,14 @@
         "メテオビーム",
         "はいよるいちげき"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 75,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "虫",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "シェルアーマー",
-        "くだけるよろい"
-    ],
-    "Weight": 200.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "むし",
-        "いわ"
-    ]
+    "BaseDef": 125,
+    "BaseAtk": 105
 }

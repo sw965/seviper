@@ -1,11 +1,19 @@
 {
-    "BaseDef": 131,
+    "BaseSpDef": 31,
+    "Gender": "不明",
+    "Weight": 0.1,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 109,
+    "Types": [
+        "くさ",
+        "はがね"
+    ],
+    "BaseSpAtk": 59,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "なし",
     "Learnset": [
         "しんくうは",
         "れんぞくぎり",
@@ -43,21 +51,13 @@
         "シザークロス",
         "てっていこうせん"
     ],
-    "BaseAtk": 181,
-    "BaseSpDef": 31,
+    "HiddenAbility": "なし",
+    "Height": 0.3,
+    "Category": "準伝説ポケモン",
     "BaseHP": 59,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 0.1,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 59,
-    "Types": [
-        "くさ",
-        "はがね"
-    ]
+    "BaseDef": 131,
+    "BaseAtk": 181
 }

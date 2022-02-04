@@ -1,12 +1,21 @@
 {
-    "BaseDef": 28,
+    "BaseSpDef": 52,
+    "Gender": "♂♀両方",
+    "Weight": 8.9,
+    "AllAbilities": [
+        "にげあし",
+        "かるわざ",
+        "はりこみ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 47,
     "NormalAbilities": [
         "にげあし",
         "かるわざ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "はりこみ",
     "Learnset": [
         "でんこうせっか",
         "しっぽをふる",
@@ -44,22 +53,13 @@
         "ファストガード",
         "うっぷんばらし"
     ],
-    "BaseAtk": 28,
-    "BaseSpDef": 52,
+    "HiddenAbility": "はりこみ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "かるわざ",
-        "はりこみ"
-    ],
-    "Weight": 8.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 47,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 28,
+    "BaseAtk": 28
 }

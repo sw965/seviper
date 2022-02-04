@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 15.0,
+    "AllAbilities": [
+        "がんじょう",
+        "いしあたま",
+        "びびり"
+    ],
     "BaseSpeed": 10,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 10,
     "NormalAbilities": [
         "がんじょう",
         "いしあたま"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "びびり",
     "Learnset": [
         "うそなき",
         "まねっこ",
@@ -51,22 +60,13 @@
         "ころがる",
         "ロックカット"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 45,
+    "HiddenAbility": "びびり",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "いしあたま",
-        "びびり"
-    ],
-    "Weight": 15.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 10,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 80
 }

@@ -2,8 +2,6 @@ import re
 import boa
 import base_data
 
-FOLDER_PATH = "C:/Python35/pyckage/seviper/poketetu_data/pokedex/"
-
 def read_poketetu_poke_data_lines(path):
     return [re.sub("\t", " ", line) for line in boa.readlines_txt(path, True)]
 
@@ -25,7 +23,7 @@ def parse_category(poketetu_poke_data_lines):
             return data[1]
     assert False
 
-def parse_gender(poketetu_poke_data_lines):
+def parse_gender_data(poketetu_poke_data_lines):
     for line in poketetu_poke_data_lines:
         data = line.split()
         if data[0] == "性別":
@@ -122,7 +120,7 @@ def parse_poke_data(path):
     result = {}
     result.update(parse_base_statuses(poketetu_poke_data_lines))
     result["Category"] = parse_category(poketetu_poke_data_lines)
-    result["Gender"] = parse_gender(poketetu_poke_data_lines)
+    result["Gender"] = parse_gender_data(poketetu_poke_data_lines)
     result["EggGroups"] = parse_egg_groups(poketetu_poke_data_lines)
     result["NormalAbilities"] = parse_abilities(poketetu_poke_data_lines)
     result["HiddenAbility"] = parse_hidden_ability(poketetu_poke_data_lines)

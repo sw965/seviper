@@ -1,11 +1,19 @@
 {
-    "BaseDef": 145,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 66.6,
+    "AllAbilities": [
+        "さまようたましい"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "じめん",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "さまようたましい"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "なし",
     "Learnset": [
         "シャドークロー",
         "こわいかお",
@@ -76,22 +84,14 @@
         "おきみやげ",
         "ポルターガイスト"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 105,
+    "HiddenAbility": "なし",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 58,
     "EggGroups": [
         "鉱物",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "さまようたましい"
-    ],
-    "Weight": 66.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "じめん",
-        "ゴースト"
-    ]
+    "BaseDef": 145,
+    "BaseAtk": 95
 }

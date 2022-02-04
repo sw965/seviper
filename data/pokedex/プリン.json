@@ -1,12 +1,22 @@
 {
-    "BaseDef": 20,
+    "BaseSpDef": 25,
+    "Gender": "♂♀両方",
+    "Weight": 5.5,
+    "AllAbilities": [
+        "メロメロボディ",
+        "かちき",
+        "フレンドガード"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "ノーマル",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "メロメロボディ",
         "かちき"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "フレンドガード",
     "Learnset": [
         "うたう",
         "てんしのキッス",
@@ -88,23 +98,13 @@
         "アイアンローラー",
         "ミストバースト"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 25,
+    "HiddenAbility": "フレンドガード",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 115,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "かちき",
-        "フレンドガード"
-    ],
-    "Weight": 5.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "ノーマル",
-        "フェアリー"
-    ]
+    "BaseDef": 20,
+    "BaseAtk": 45
 }

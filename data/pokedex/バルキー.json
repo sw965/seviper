@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂のみ",
+    "Weight": 21.0,
+    "AllAbilities": [
+        "こんじょう",
+        "ふくつのこころ",
+        "やるき"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "こんじょう",
         "ふくつのこころ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "やるき",
     "Learnset": [
         "たいあたり",
         "てだすけ",
@@ -47,22 +56,13 @@
         "しんくうは",
         "バレットパンチ"
     ],
-    "BaseAtk": 35,
-    "BaseSpDef": 35,
+    "HiddenAbility": "やるき",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 35,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "こんじょう",
-        "ふくつのこころ",
-        "やるき"
-    ],
-    "Weight": 21.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 35
 }

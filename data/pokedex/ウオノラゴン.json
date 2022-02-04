@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 80,
+    "Gender": "不明",
+    "Weight": 215.0,
+    "AllAbilities": [
+        "ちょすい",
+        "がんじょうあご",
+        "すなかき"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "みず",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "ちょすい",
         "がんじょうあご"
     ],
-    "Height": 2.3,
-    "HiddenAbility": "すなかき",
     "Learnset": [
         "たいあたり",
         "みずでっぽう",
@@ -59,23 +69,13 @@
         "メテオビーム",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 80,
+    "HiddenAbility": "すなかき",
+    "Height": 2.3,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちょすい",
-        "がんじょうあご",
-        "すなかき"
-    ],
-    "Weight": 215.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "みず",
-        "ドラゴン"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 90
 }

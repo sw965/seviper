@@ -1,12 +1,22 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 2.0,
+    "AllAbilities": [
+        "シンクロ",
+        "はやおき",
+        "マジックミラー"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "エスパー",
+        "ひこう"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "シンクロ",
         "はやおき"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "マジックミラー",
     "Learnset": [
         "つつく",
         "にらみつける",
@@ -65,23 +75,13 @@
         "ワイドフォース",
         "ダブルウイング"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 45,
+    "HiddenAbility": "マジックミラー",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "はやおき",
-        "マジックミラー"
-    ],
-    "Weight": 2.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "エスパー",
-        "ひこう"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 50
 }

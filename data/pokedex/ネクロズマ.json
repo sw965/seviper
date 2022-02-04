@@ -1,11 +1,18 @@
 {
-    "BaseDef": 101,
+    "BaseSpDef": 89,
+    "Gender": "不明",
+    "Weight": 230.0,
+    "AllAbilities": [
+        "プリズムアーマー"
+    ],
     "BaseSpeed": 79,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 127,
     "NormalAbilities": [
         "プリズムアーマー"
     ],
-    "Height": 2.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "つきのひかり",
         "あさのひざし",
@@ -75,20 +82,13 @@
         "ワイドフォース",
         "メテオビーム"
     ],
-    "BaseAtk": 107,
-    "BaseSpDef": 89,
+    "HiddenAbility": "なし",
+    "Height": 2.4,
+    "Category": "伝説のポケモン",
     "BaseHP": 97,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プリズムアーマー"
-    ],
-    "Weight": 230.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 127,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 101,
+    "BaseAtk": 107
 }

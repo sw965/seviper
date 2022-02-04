@@ -1,11 +1,19 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 30,
+    "Gender": "不明",
+    "Weight": 1.2,
+    "AllAbilities": [
+        "ふしぎなまもり"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "むし",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "ふしぎなまもり"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ひっかく",
         "かたくなる",
@@ -55,21 +63,13 @@
         "はいよるいちげき",
         "ポルターガイスト"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 30,
+    "HiddenAbility": "なし",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 1,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふしぎなまもり"
-    ],
-    "Weight": 1.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "むし",
-        "ゴースト"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 90
 }

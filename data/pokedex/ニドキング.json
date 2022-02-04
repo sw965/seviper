@@ -1,12 +1,22 @@
 {
-    "BaseDef": 77,
+    "BaseSpDef": 75,
+    "Gender": "♂のみ",
+    "Weight": 62.0,
+    "AllAbilities": [
+        "どくのトゲ",
+        "とうそうしん",
+        "ちからずく"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "どく",
+        "じめん"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "どくのトゲ",
         "とうそうしん"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "メガホーン",
         "つつく",
@@ -100,24 +110,14 @@
         "もろはのずつき",
         "ねっさのだいち"
     ],
-    "BaseAtk": 102,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ちからずく",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 81,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "どくのトゲ",
-        "とうそうしん",
-        "ちからずく"
-    ],
-    "Weight": 62.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "どく",
-        "じめん"
-    ]
+    "BaseDef": 77,
+    "BaseAtk": 102
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 18.0,
+    "AllAbilities": [
+        "とうそうしん",
+        "かたやぶり",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 57,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "とうそうしん",
         "かたやぶり"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "ひっかく",
         "にらみつける",
@@ -57,23 +66,14 @@
         "スケイルショット",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 87,
-    "BaseSpDef": 40,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 46,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "とうそうしん",
-        "かたやぶり",
-        "きんちょうかん"
-    ],
-    "Weight": 18.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 87
 }

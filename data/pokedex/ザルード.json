@@ -1,11 +1,19 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 70.0,
+    "AllAbilities": [
+        "リーフガード"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "あく",
+        "くさ"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "リーフガード"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "しめつける",
         "ひっかく",
@@ -77,21 +85,13 @@
         "グラススライダー",
         "うっぷんばらし"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 95,
+    "HiddenAbility": "なし",
+    "Height": 1.8,
+    "Category": "幻のポケモン",
     "BaseHP": 105,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "リーフガード"
-    ],
-    "Weight": 70.0,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "あく",
-        "くさ"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 120
 }

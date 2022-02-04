@@ -1,11 +1,20 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 45.5,
+    "AllAbilities": [
+        "グラスメイカー",
+        "テレパシー"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "くさ",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "グラスメイカー"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "このは",
         "いわくだき",
@@ -72,22 +81,13 @@
         "DDラリアット",
         "10まんばりき"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 95,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.9,
+    "Category": "準伝説ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "グラスメイカー",
-        "テレパシー"
-    ],
-    "Weight": 45.5,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "くさ",
-        "フェアリー"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 130
 }

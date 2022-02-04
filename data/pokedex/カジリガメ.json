@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 68,
+    "Gender": "♂♀両方",
+    "Weight": 115.5,
+    "AllAbilities": [
+        "がんじょうあご",
+        "シェルアーマー",
+        "すいすい"
+    ],
     "BaseSpeed": 74,
+    "Types": [
+        "みず",
+        "いわ"
+    ],
+    "BaseSpAtk": 48,
     "NormalAbilities": [
         "がんじょうあご",
         "シェルアーマー"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "がんせきふうじ",
         "シェルブレード",
@@ -77,24 +87,14 @@
         "メテオビーム",
         "はいよるいちげき"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 68,
+    "HiddenAbility": "すいすい",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょうあご",
-        "シェルアーマー",
-        "すいすい"
-    ],
-    "Weight": 115.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 48,
-    "Types": [
-        "みず",
-        "いわ"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 115
 }

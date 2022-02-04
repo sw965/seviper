@@ -1,11 +1,20 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 415.6,
+    "AllAbilities": [
+        "おみとおし",
+        "しゅうかく"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "くさ",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "おみとおし"
     ],
-    "Height": 10.9,
-    "HiddenAbility": "しゅうかく",
     "Learnset": [
         "ドラゴンハンマー",
         "タネばくだん",
@@ -77,22 +86,13 @@
         "だいちのはどう",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 75,
+    "HiddenAbility": "しゅうかく",
+    "Height": 10.9,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "おみとおし",
-        "しゅうかく"
-    ],
-    "Weight": 415.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "くさ",
-        "ドラゴン"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 105
 }

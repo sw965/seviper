@@ -1,12 +1,21 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 150,
+    "Gender": "♂♀両方",
+    "Weight": 150.5,
+    "AllAbilities": [
+        "そうしょく",
+        "うるおいボディ",
+        "ぬめぬめ"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "そうしょく",
         "うるおいボディ"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "ぬめぬめ",
     "Learnset": [
         "アクアテール",
         "フェイント",
@@ -71,22 +80,13 @@
         "はいよるいちげき",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 150,
+    "HiddenAbility": "ぬめぬめ",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "そうしょく",
-        "うるおいボディ",
-        "ぬめぬめ"
-    ],
-    "Weight": 150.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 100
 }

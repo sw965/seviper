@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 110,
+    "Gender": "♂♀両方",
+    "Weight": 460.0,
+    "AllAbilities": [
+        "めんえき",
+        "あついしぼう",
+        "くいしんぼう"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "めんえき",
         "あついしぼう"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "くいしんぼう",
     "Learnset": [
         "たいあたり",
         "リサイクル",
@@ -95,22 +104,13 @@
         "アイアンローラー",
         "だいちのはどう"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 110,
+    "HiddenAbility": "くいしんぼう",
+    "Height": 2.1,
+    "Category": "通常ポケモン",
     "BaseHP": 160,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "めんえき",
-        "あついしぼう",
-        "くいしんぼう"
-    ],
-    "Weight": 460.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 110
 }

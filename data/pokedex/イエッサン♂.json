@@ -1,12 +1,22 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 95,
+    "Gender": "♂のみ",
+    "Weight": 28.0,
+    "AllAbilities": [
+        "せいしんりょく",
+        "シンクロ",
+        "サイコメイカー"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "エスパー",
+        "ノーマル"
+    ],
+    "BaseSpAtk": 105,
     "NormalAbilities": [
         "せいしんりょく",
         "シンクロ"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "サイコメイカー",
     "Learnset": [
         "アシストパワー",
         "なかよくする",
@@ -59,23 +69,13 @@
         "ワイドフォース",
         "だいちのはどう"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 95,
+    "HiddenAbility": "サイコメイカー",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "せいしんりょく",
-        "シンクロ",
-        "サイコメイカー"
-    ],
-    "Weight": 28.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 105,
-    "Types": [
-        "エスパー",
-        "ノーマル"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 65
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 7.7,
+    "AllAbilities": [
+        "うるおいボディ",
+        "シェルアーマー",
+        "ぼうじん"
+    ],
     "BaseSpeed": 25,
+    "Types": [
+        "むし"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "うるおいボディ",
         "シェルアーマー"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ぼうじん",
     "Learnset": [
         "すいとる",
         "まもる",
@@ -46,22 +55,13 @@
         "ガードシェア",
         "はいよるいちげき"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 65,
+    "HiddenAbility": "ぼうじん",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "うるおいボディ",
-        "シェルアーマー",
-        "ぼうじん"
-    ],
-    "Weight": 7.7,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "むし"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 40
 }

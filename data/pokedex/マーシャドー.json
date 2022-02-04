@@ -1,11 +1,19 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 22.2,
+    "AllAbilities": [
+        "テクニシャン"
+    ],
     "BaseSpeed": 125,
+    "Types": [
+        "かくとう",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "テクニシャン"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ほのおのパンチ",
         "かみなりパンチ",
@@ -76,21 +84,13 @@
         "ポルターガイスト",
         "コーチング"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 0.7,
+    "Category": "幻のポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "テクニシャン"
-    ],
-    "Weight": 22.2,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "かくとう",
-        "ゴースト"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 125
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 18.0,
+    "AllAbilities": [
+        "すてみ",
+        "てきおうりょく",
+        "かたやぶり"
+    ],
     "BaseSpeed": 98,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "すてみ",
         "てきおうりょく"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "かたやぶり",
     "Learnset": [
         "しっぽをふる",
         "みずでっぽう",
@@ -64,22 +73,13 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 55,
+    "HiddenAbility": "かたやぶり",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すてみ",
-        "てきおうりょく",
-        "かたやぶり"
-    ],
-    "Weight": 18.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 92
 }

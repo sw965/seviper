@@ -1,12 +1,21 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♀のみ",
+    "Weight": 80.0,
+    "AllAbilities": [
+        "はやおき",
+        "きもったま",
+        "せいしんりょく"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "はやおき",
         "きもったま"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "せいしんりょく",
     "Learnset": [
         "はたく",
         "しっぽをふる",
@@ -84,22 +93,13 @@
         "ともえなげ",
         "だいちのはどう"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 80,
+    "HiddenAbility": "せいしんりょく",
+    "Height": 2.2,
+    "Category": "通常ポケモン",
     "BaseHP": 105,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "はやおき",
-        "きもったま",
-        "せいしんりょく"
-    ],
-    "Weight": 80.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 95
 }

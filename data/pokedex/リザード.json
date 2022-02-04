@@ -1,11 +1,19 @@
 {
-    "BaseDef": 58,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 19.0,
+    "AllAbilities": [
+        "もうか",
+        "サンパワー"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "サンパワー",
     "Learnset": [
         "ひっかく",
         "なきごえ",
@@ -68,22 +76,14 @@
         "ドラゴンテール",
         "ほのおのちかい"
     ],
-    "BaseAtk": 64,
-    "BaseSpDef": 65,
+    "HiddenAbility": "サンパワー",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 58,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "サンパワー"
-    ],
-    "Weight": 19.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 58,
+    "BaseAtk": 64
 }

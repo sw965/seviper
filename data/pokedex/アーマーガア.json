@@ -1,12 +1,22 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 75.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "きんちょうかん",
+        "ミラーアーマー"
+    ],
     "BaseSpeed": 67,
+    "Types": [
+        "ひこう",
+        "はがね"
+    ],
+    "BaseSpAtk": 53,
     "NormalAbilities": [
         "プレッシャー",
         "きんちょうかん"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "ミラーアーマー",
     "Learnset": [
         "はがねのつばさ",
         "てっぺき",
@@ -68,23 +78,13 @@
         "ダブルウイング",
         "てっていこうせん"
     ],
-    "BaseAtk": 87,
-    "BaseSpDef": 85,
+    "HiddenAbility": "ミラーアーマー",
+    "Height": 2.2,
+    "Category": "通常ポケモン",
     "BaseHP": 98,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "プレッシャー",
-        "きんちょうかん",
-        "ミラーアーマー"
-    ],
-    "Weight": 75.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 53,
-    "Types": [
-        "ひこう",
-        "はがね"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 87
 }

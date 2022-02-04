@@ -1,11 +1,20 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 120,
+    "Gender": "不明",
+    "Weight": 336.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "テレパシー"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "みず",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 150,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 4.2,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "こわいかお",
         "みずのはどう",
@@ -72,22 +81,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 120,
+    "HiddenAbility": "テレパシー",
+    "Height": 4.2,
+    "Category": "伝説のポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "テレパシー"
-    ],
-    "Weight": 336.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 150,
-    "Types": [
-        "みず",
-        "ドラゴン"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 120
 }

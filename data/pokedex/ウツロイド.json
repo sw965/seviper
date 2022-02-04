@@ -1,11 +1,19 @@
 {
-    "BaseDef": 47,
+    "BaseSpDef": 131,
+    "Gender": "不明",
+    "Weight": 55.5,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 103,
+    "Types": [
+        "いわ",
+        "どく"
+    ],
+    "BaseSpAtk": 127,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "はたく",
         "まきつく",
@@ -60,21 +68,13 @@
         "メテオビーム",
         "ふしょくガス"
     ],
-    "BaseAtk": 53,
-    "BaseSpDef": 131,
+    "HiddenAbility": "なし",
+    "Height": 1.2,
+    "Category": "準伝説ポケモン",
     "BaseHP": 109,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 55.5,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 127,
-    "Types": [
-        "いわ",
-        "どく"
-    ]
+    "BaseDef": 47,
+    "BaseAtk": 53
 }

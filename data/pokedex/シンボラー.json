@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 14.0,
+    "AllAbilities": [
+        "ミラクルスキン",
+        "マジックガード",
+        "いろめがね"
+    ],
     "BaseSpeed": 97,
+    "Types": [
+        "エスパー",
+        "ひこう"
+    ],
+    "BaseSpAtk": 103,
     "NormalAbilities": [
         "ミラクルスキン",
         "マジックガード"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "いろめがね",
     "Learnset": [
         "かぜおこし",
         "ねんりき",
@@ -68,23 +78,13 @@
         "ワイドフォース",
         "ダブルウイング"
     ],
-    "BaseAtk": 58,
-    "BaseSpDef": 80,
+    "HiddenAbility": "いろめがね",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 72,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ミラクルスキン",
-        "マジックガード",
-        "いろめがね"
-    ],
-    "Weight": 14.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 103,
-    "Types": [
-        "エスパー",
-        "ひこう"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 58
 }

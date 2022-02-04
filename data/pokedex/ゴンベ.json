@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 105.0,
+    "AllAbilities": [
+        "ものひろい",
+        "あついしぼう",
+        "くいしんぼう"
+    ],
     "BaseSpeed": 5,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "ものひろい",
         "あついしぼう"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "くいしんぼう",
     "Learnset": [
         "したでなめる",
         "たいあたり",
@@ -78,22 +87,13 @@
         "のろい",
         "ゲップ"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 85,
+    "HiddenAbility": "くいしんぼう",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 135,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ものひろい",
-        "あついしぼう",
-        "くいしんぼう"
-    ],
-    "Weight": 105.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 85
 }

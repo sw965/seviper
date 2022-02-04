@@ -1,12 +1,21 @@
 {
-    "BaseDef": 5,
+    "BaseSpDef": 105,
+    "Gender": "♀のみ",
+    "Weight": 34.6,
+    "AllAbilities": [
+        "しぜんかいふく",
+        "てんのめぐみ",
+        "いやしのこころ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "しぜんかいふく",
         "てんのめぐみ"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "いやしのこころ",
     "Learnset": [
         "はたく",
         "まるくなる",
@@ -90,22 +99,13 @@
         "アロマセラピー",
         "じゅうりょく"
     ],
-    "BaseAtk": 5,
-    "BaseSpDef": 105,
+    "HiddenAbility": "いやしのこころ",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 250,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "しぜんかいふく",
-        "てんのめぐみ",
-        "いやしのこころ"
-    ],
-    "Weight": 34.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 5,
+    "BaseAtk": 5
 }

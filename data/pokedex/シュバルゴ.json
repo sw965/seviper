@@ -1,12 +1,22 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 33.0,
+    "AllAbilities": [
+        "むしのしらせ",
+        "シェルアーマー",
+        "ぼうじん"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "むし",
+        "はがね"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "むしのしらせ",
         "シェルアーマー"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "ぼうじん",
     "Learnset": [
         "すてみタックル",
         "とどめばり",
@@ -61,23 +71,13 @@
         "むしくい",
         "てっていこうせん"
     ],
-    "BaseAtk": 135,
-    "BaseSpDef": 105,
+    "HiddenAbility": "ぼうじん",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "シェルアーマー",
-        "ぼうじん"
-    ],
-    "Weight": 33.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "むし",
-        "はがね"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 135
 }

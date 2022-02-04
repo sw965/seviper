@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 25.3,
+    "AllAbilities": [
+        "うるおいボディ",
+        "ねんちゃく",
+        "かるわざ"
+    ],
     "BaseSpeed": 145,
+    "Types": [
+        "むし"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "うるおいボディ",
         "ねんちゃく"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "かるわざ",
     "Learnset": [
         "アシッドボム",
         "かげぶんしん",
@@ -62,22 +71,13 @@
         "ガードシェア",
         "はいよるいちげき"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 60,
+    "HiddenAbility": "かるわざ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "うるおいボディ",
-        "ねんちゃく",
-        "かるわざ"
-    ],
-    "Weight": 25.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "むし"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 70
 }

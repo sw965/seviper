@@ -1,11 +1,19 @@
 {
-    "BaseDef": 139,
+    "BaseSpDef": 53,
+    "Gender": "不明",
+    "Weight": 333.6,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 79,
+    "Types": [
+        "むし",
+        "かくとう"
+    ],
+    "BaseSpAtk": 53,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 2.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かたくなる",
         "グロウパンチ",
@@ -60,21 +68,13 @@
         "コーチング",
         "ダブルウイング"
     ],
-    "BaseAtk": 139,
-    "BaseSpDef": 53,
+    "HiddenAbility": "なし",
+    "Height": 2.4,
+    "Category": "準伝説ポケモン",
     "BaseHP": 107,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 333.6,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 53,
-    "Types": [
-        "むし",
-        "かくとう"
-    ]
+    "BaseDef": 139,
+    "BaseAtk": 139
 }

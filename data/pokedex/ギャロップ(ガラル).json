@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 80.0,
+    "AllAbilities": [
+        "にげあし",
+        "パステルベール",
+        "きけんよち"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "にげあし",
         "パステルベール"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "きけんよち",
     "Learnset": [
         "サイコカッター",
         "メガホーン",
@@ -70,23 +80,13 @@
         "あさのひざし",
         "ワイドフォース"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 80,
+    "HiddenAbility": "きけんよち",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "パステルベール",
-        "きけんよち"
-    ],
-    "Weight": 80.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 100
 }

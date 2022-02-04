@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 29.0,
+    "AllAbilities": [
+        "ちょすい",
+        "うるおいボディ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "ちょすい"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "うるおいボディ",
     "Learnset": [
         "みずでっぽう",
         "たいあたり",
@@ -77,21 +85,13 @@
         "くすぐる",
         "クイックターン"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 95,
+    "HiddenAbility": "うるおいボディ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 130,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちょすい",
-        "うるおいボディ"
-    ],
-    "Weight": 29.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 65
 }

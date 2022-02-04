@@ -1,11 +1,19 @@
 {
-    "BaseDef": 48,
+    "BaseSpDef": 48,
+    "Gender": "♂♀両方",
+    "Weight": 14.0,
+    "AllAbilities": [
+        "かげふみ",
+        "テレパシー"
+    ],
     "BaseSpeed": 23,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 23,
     "NormalAbilities": [
         "かげふみ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "はねる",
         "あまえる",
@@ -16,21 +24,13 @@
         "みちづれ",
         "ドわすれ"
     ],
-    "BaseAtk": 23,
-    "BaseSpDef": 48,
+    "HiddenAbility": "テレパシー",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かげふみ",
-        "テレパシー"
-    ],
-    "Weight": 14.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 23,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 48,
+    "BaseAtk": 23
 }

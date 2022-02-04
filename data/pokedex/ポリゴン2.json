@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 32.5,
+    "AllAbilities": [
+        "トレース",
+        "ダウンロード",
+        "アナライズ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 105,
     "NormalAbilities": [
         "トレース",
         "ダウンロード"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "アナライズ",
     "Learnset": [
         "たいあたり",
         "テクスチャー",
@@ -60,22 +69,13 @@
         "イカサマ",
         "サイドチェンジ"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 95,
+    "HiddenAbility": "アナライズ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "トレース",
-        "ダウンロード",
-        "アナライズ"
-    ],
-    "Weight": 32.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 105,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 80
 }

@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 81.9,
+    "AllAbilities": [
+        "げきりゅう",
+        "しめりけ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "みず",
+        "じめん"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "しめりけ",
     "Learnset": [
         "アームハンマー",
         "たいあたり",
@@ -88,23 +97,14 @@
         "ハイドロカノン",
         "みずのちかい"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 90,
+    "HiddenAbility": "しめりけ",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "しめりけ"
-    ],
-    "Weight": 81.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "みず",
-        "じめん"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 110
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "はりきり",
+        "せいしんりょく"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 15,
     "NormalAbilities": [
         "はりきり"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "せいしんりょく",
     "Learnset": [
         "こなゆき",
         "たいあたり",
@@ -65,21 +73,13 @@
         "グロウパンチ",
         "フリーズドライ"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 45,
+    "HiddenAbility": "せいしんりょく",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はりきり",
-        "せいしんりょく"
-    ],
-    "Weight": 40.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 15,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 90
 }

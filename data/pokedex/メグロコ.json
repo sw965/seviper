@@ -1,12 +1,22 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 15.2,
+    "AllAbilities": [
+        "いかく",
+        "じしんかじょう",
+        "いかりのつぼ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "じめん",
+        "あく"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "いかく",
         "じしんかじょう"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "いかりのつぼ",
     "Learnset": [
         "にらみつける",
         "つけあがる",
@@ -60,23 +70,13 @@
         "うっぷんばらし",
         "ねっさのだいち"
     ],
-    "BaseAtk": 72,
-    "BaseSpDef": 35,
+    "HiddenAbility": "いかりのつぼ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "じしんかじょう",
-        "いかりのつぼ"
-    ],
-    "Weight": 15.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "じめん",
-        "あく"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 72
 }

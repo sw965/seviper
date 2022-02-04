@@ -1,11 +1,18 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 67,
+    "Gender": "不明",
+    "Weight": 1.8,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 73,
+    "Types": [
+        "どく"
+    ],
+    "BaseSpAtk": 73,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "なし",
     "Learnset": [
         "りゅうのはどう",
         "つつく",
@@ -37,20 +44,13 @@
         "ダストシュート",
         "ヘドロウェーブ"
     ],
-    "BaseAtk": 73,
-    "BaseSpDef": 67,
+    "HiddenAbility": "なし",
+    "Height": 0.6,
+    "Category": "準伝説ポケモン",
     "BaseHP": 67,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 1.8,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 73,
-    "Types": [
-        "どく"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 73
 }

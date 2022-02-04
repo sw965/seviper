@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "ゆきがくれ",
+        "ゆきかき"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "こおり",
+        "はがね"
+    ],
+    "BaseSpAtk": 10,
     "NormalAbilities": [
         "ゆきがくれ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "ゆきかき",
     "Learnset": [
         "ひっかく",
         "まるくなる",
@@ -67,22 +76,13 @@
         "トリプルアクセル",
         "てっていこうせん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 35,
+    "HiddenAbility": "ゆきかき",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆきがくれ",
-        "ゆきかき"
-    ],
-    "Weight": 40.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 10,
-    "Types": [
-        "こおり",
-        "はがね"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 75
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 109,
+    "BaseSpDef": 127,
+    "Gender": "不明",
+    "Weight": 350.0,
+    "AllAbilities": [
+        "プリズムアーマー"
+    ],
     "BaseSpeed": 77,
+    "Types": [
+        "エスパー",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 157,
     "NormalAbilities": [
         "プリズムアーマー"
     ],
-    "Height": 4.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ねんりき",
         "メタルクロー",
@@ -76,21 +84,13 @@
         "メテオビーム",
         "シャドーレイ"
     ],
-    "BaseAtk": 113,
-    "BaseSpDef": 127,
+    "HiddenAbility": "なし",
+    "Height": 4.2,
+    "Category": "伝説のポケモン",
     "BaseHP": 97,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プリズムアーマー"
-    ],
-    "Weight": 350.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 157,
-    "Types": [
-        "エスパー",
-        "ゴースト"
-    ]
+    "BaseDef": 109,
+    "BaseAtk": 113
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 1.5,
+    "AllAbilities": [
+        "リーフガード",
+        "あまのじゃく"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "リーフガード"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "あまのじゃく",
     "Learnset": [
         "れんぞくぎり",
         "このは",
@@ -48,21 +56,13 @@
         "きりばらい",
         "グラススライダー"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 35,
+    "HiddenAbility": "あまのじゃく",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "リーフガード",
-        "あまのじゃく"
-    ],
-    "Weight": 1.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 55
 }

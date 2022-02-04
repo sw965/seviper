@@ -1,11 +1,19 @@
 {
-    "BaseDef": 66,
+    "BaseSpDef": 57,
+    "Gender": "♂♀両方",
+    "Weight": 3.5,
+    "AllAbilities": [
+        "スイートベール",
+        "かるわざ"
+    ],
     "BaseSpeed": 49,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 59,
     "NormalAbilities": [
         "スイートベール"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "かるわざ",
     "Learnset": [
         "あまいかおり",
         "たいあたり",
@@ -50,21 +58,13 @@
         "ねばねばネット",
         "ミストバースト"
     ],
-    "BaseAtk": 48,
-    "BaseSpDef": 57,
+    "HiddenAbility": "かるわざ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 62,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "スイートベール",
-        "かるわざ"
-    ],
-    "Weight": 3.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 59,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 66,
+    "BaseAtk": 48
 }

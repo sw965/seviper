@@ -1,11 +1,19 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 25.9,
+    "AllAbilities": [
+        "ゆきがくれ",
+        "アイスボディ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 130,
     "NormalAbilities": [
         "ゆきがくれ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "アイスボディ",
     "Learnset": [
         "こごえるかぜ",
         "たいあたり",
@@ -68,21 +76,13 @@
         "くすぐる",
         "トリプルアクセル"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 95,
+    "HiddenAbility": "アイスボディ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆきがくれ",
-        "アイスボディ"
-    ],
-    "Weight": 25.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 130,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 60
 }

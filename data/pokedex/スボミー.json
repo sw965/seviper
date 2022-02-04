@@ -1,12 +1,22 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 1.2,
+    "AllAbilities": [
+        "しぜんかいふく",
+        "どくのトゲ",
+        "リーフガード"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "しぜんかいふく",
         "どくのトゲ"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "リーフガード",
     "Learnset": [
         "すいとる",
         "せいちょう",
@@ -48,23 +58,13 @@
         "いのちのしずく",
         "グラススライダー"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 70,
+    "HiddenAbility": "リーフガード",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しぜんかいふく",
-        "どくのトゲ",
-        "リーフガード"
-    ],
-    "Weight": 1.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 30
 }

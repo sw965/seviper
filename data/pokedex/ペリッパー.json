@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 28.0,
+    "AllAbilities": [
+        "するどいめ",
+        "あめふらし",
+        "あめうけざら"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "みず",
+        "ひこう"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "するどいめ",
         "あめふらし"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "おいかぜ",
         "なきごえ",
@@ -67,24 +77,14 @@
         "ワイドガード",
         "ダブルウイング"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 70,
+    "HiddenAbility": "あめうけざら",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "水中1",
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "するどいめ",
-        "あめふらし",
-        "あめうけざら"
-    ],
-    "Weight": 28.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "みず",
-        "ひこう"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 50
 }

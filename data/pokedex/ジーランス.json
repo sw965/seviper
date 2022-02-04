@@ -1,12 +1,22 @@
 {
-    "BaseDef": 130,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 23.4,
+    "AllAbilities": [
+        "すいすい",
+        "いしあたま",
+        "がんじょう"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "みず",
+        "いわ"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "すいすい",
         "いしあたま"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "がんじょう",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -67,24 +77,14 @@
         "スケイルショット",
         "メテオビーム"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 65,
+    "HiddenAbility": "がんじょう",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "水中1",
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "いしあたま",
-        "がんじょう"
-    ],
-    "Weight": 23.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "みず",
-        "いわ"
-    ]
+    "BaseDef": 130,
+    "BaseAtk": 90
 }

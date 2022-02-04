@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 85.5,
+    "AllAbilities": [
+        "げきりゅう",
+        "あめうけざら"
+    ],
     "BaseSpeed": 78,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "ラスターカノン",
         "たいあたり",
@@ -85,22 +93,14 @@
         "ハイドロカノン",
         "みずのちかい"
     ],
-    "BaseAtk": 83,
-    "BaseSpDef": 105,
+    "HiddenAbility": "あめうけざら",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 79,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "あめうけざら"
-    ],
-    "Weight": 85.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 83
 }

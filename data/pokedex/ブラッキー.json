@@ -1,11 +1,19 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 130,
+    "Gender": "♂♀両方",
+    "Weight": 27.0,
+    "AllAbilities": [
+        "シンクロ",
+        "せいしんりょく"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "シンクロ"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "せいしんりょく",
     "Learnset": [
         "バークアウト",
         "たいあたり",
@@ -74,21 +82,13 @@
         "くすぐる",
         "うっぷんばらし"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 130,
+    "HiddenAbility": "せいしんりょく",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "せいしんりょく"
-    ],
-    "Weight": 27.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 65
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 32.0,
+    "AllAbilities": [
+        "よわき"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "いわ",
+        "ひこう"
+    ],
+    "BaseSpAtk": 112,
     "NormalAbilities": [
         "よわき"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "でんこうせっか",
         "にらみつける",
@@ -72,22 +80,14 @@
         "うっぷんばらし",
         "ダブルウイング"
     ],
-    "BaseAtk": 140,
-    "BaseSpDef": 65,
+    "HiddenAbility": "なし",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "飛行",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "よわき"
-    ],
-    "Weight": 32.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 112,
-    "Types": [
-        "いわ",
-        "ひこう"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 140
 }

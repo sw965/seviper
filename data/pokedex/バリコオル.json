@@ -1,12 +1,22 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 58.2,
+    "AllAbilities": [
+        "ちどりあし",
+        "バリアフリー",
+        "アイスボディ"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "こおり",
+        "エスパー"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "ちどりあし",
         "バリアフリー"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "アイスボディ",
     "Learnset": [
         "うそなき",
         "なまける",
@@ -102,23 +112,13 @@
         "ワイドフォース",
         "トリプルアクセル"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 100,
+    "HiddenAbility": "アイスボディ",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちどりあし",
-        "バリアフリー",
-        "アイスボディ"
-    ],
-    "Weight": 58.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "こおり",
-        "エスパー"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 85
 }

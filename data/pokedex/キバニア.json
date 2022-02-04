@@ -1,11 +1,20 @@
 {
-    "BaseDef": 20,
+    "BaseSpDef": 20,
+    "Gender": "♂♀両方",
+    "Weight": 20.8,
+    "AllAbilities": [
+        "さめはだ",
+        "かそく"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "みず",
+        "あく"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "さめはだ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "かそく",
     "Learnset": [
         "にらみつける",
         "アクアジェット",
@@ -61,22 +70,13 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 20,
+    "HiddenAbility": "かそく",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "さめはだ",
-        "かそく"
-    ],
-    "Weight": 20.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず",
-        "あく"
-    ]
+    "BaseDef": 20,
+    "BaseAtk": 90
 }

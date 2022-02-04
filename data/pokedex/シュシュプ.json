@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 0.5,
+    "AllAbilities": [
+        "いやしのこころ",
+        "アロマベール"
+    ],
     "BaseSpeed": 23,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 63,
     "NormalAbilities": [
         "いやしのこころ"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "アロマベール",
     "Learnset": [
         "あまいかおり",
         "ようせいのかぜ",
@@ -49,21 +57,13 @@
         "おさきにどうぞ",
         "ミストバースト"
     ],
-    "BaseAtk": 52,
-    "BaseSpDef": 65,
+    "HiddenAbility": "アロマベール",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いやしのこころ",
-        "アロマベール"
-    ],
-    "Weight": 0.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 63,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 52
 }

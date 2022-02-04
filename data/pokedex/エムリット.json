@@ -1,11 +1,18 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 105,
+    "Gender": "不明",
+    "Weight": 0.3,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 105,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ねむる",
         "ねんりき",
@@ -73,20 +80,13 @@
         "マジカルシャイン",
         "ワイドフォース"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 105,
+    "HiddenAbility": "なし",
+    "Height": 0.3,
+    "Category": "準伝説ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 0.3,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 105,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 105
 }

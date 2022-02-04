@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 5.0,
+    "AllAbilities": [
+        "しんりょく",
+        "グラスメイカー"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "グラスメイカー",
     "Learnset": [
         "ひっかく",
         "なきごえ",
@@ -57,22 +65,14 @@
         "グラススライダー",
         "くさのちかい"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 40,
+    "HiddenAbility": "グラスメイカー",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "グラスメイカー"
-    ],
-    "Weight": 5.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 65
 }

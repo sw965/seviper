@@ -1,11 +1,19 @@
 {
-    "BaseDef": 53,
+    "BaseSpDef": 53,
+    "Gender": "不明",
+    "Weight": 888.0,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 43,
+    "Types": [
+        "あく",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 97,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 5.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かみつく",
         "ドラゴンテール",
@@ -71,21 +79,13 @@
         "ふしょくガス",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 101,
-    "BaseSpDef": 53,
+    "HiddenAbility": "なし",
+    "Height": 5.5,
+    "Category": "準伝説ポケモン",
     "BaseHP": 223,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 888.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 97,
-    "Types": [
-        "あく",
-        "ドラゴン"
-    ]
+    "BaseDef": 53,
+    "BaseAtk": 101
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 7.5,
+    "AllAbilities": [
+        "メロメロボディ",
+        "テクニシャン",
+        "スキルリンク"
+    ],
     "BaseSpeed": 115,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "メロメロボディ",
         "テクニシャン"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "スキルリンク",
     "Learnset": [
         "タネマシンガン",
         "ロックブラスト",
@@ -64,22 +73,13 @@
         "アクアテール",
         "トリプルアクセル"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 60,
+    "HiddenAbility": "スキルリンク",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "テクニシャン",
-        "スキルリンク"
-    ],
-    "Weight": 7.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 95
 }

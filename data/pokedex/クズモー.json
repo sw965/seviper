@@ -1,12 +1,22 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 7.3,
+    "AllAbilities": [
+        "どくのトゲ",
+        "どくしゅ",
+        "てきおうりょく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "どく",
+        "みず"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "どくのトゲ",
         "どくしゅ"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "てきおうりょく",
     "Learnset": [
         "たいあたり",
         "えんまく",
@@ -55,24 +65,14 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 60,
+    "HiddenAbility": "てきおうりょく",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "どくのトゲ",
-        "どくしゅ",
-        "てきおうりょく"
-    ],
-    "Weight": 7.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "どく",
-        "みず"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 60
 }

@@ -1,11 +1,20 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 75.0,
+    "AllAbilities": [
+        "せいしんりょく",
+        "すりぬけ"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "どく",
+        "ひこう"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "せいしんりょく"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "すりぬけ",
     "Learnset": [
         "クロスポイズン",
         "いやなおと",
@@ -70,22 +79,13 @@
         "きりばらい",
         "ダブルウイング"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 80,
+    "HiddenAbility": "すりぬけ",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "すりぬけ"
-    ],
-    "Weight": 75.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "どく",
-        "ひこう"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 90
 }

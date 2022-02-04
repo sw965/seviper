@@ -1,11 +1,18 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 25.0,
+    "AllAbilities": [
+        "かたいツメ"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "かたいツメ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ブレイククロー",
         "アクセルロック",
@@ -66,20 +73,13 @@
         "がむしゃら",
         "とっておき"
     ],
-    "BaseAtk": 117,
-    "BaseSpDef": 65,
+    "HiddenAbility": "なし",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かたいツメ"
-    ],
-    "Weight": 25.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 117
 }

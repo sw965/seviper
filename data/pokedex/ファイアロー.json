@@ -1,11 +1,20 @@
 {
-    "BaseDef": 71,
+    "BaseSpDef": 69,
+    "Gender": "♂♀両方",
+    "Weight": 24.5,
+    "AllAbilities": [
+        "ほのおのからだ",
+        "はやてのつばさ"
+    ],
     "BaseSpeed": 126,
+    "Types": [
+        "ほのお",
+        "ひこう"
+    ],
+    "BaseSpAtk": 74,
     "NormalAbilities": [
         "ほのおのからだ"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "はやてのつばさ",
     "Learnset": [
         "フレアドライブ",
         "なきごえ",
@@ -54,22 +63,13 @@
         "ファストガード",
         "ダブルウイング"
     ],
-    "BaseAtk": 81,
-    "BaseSpDef": 69,
+    "HiddenAbility": "はやてのつばさ",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほのおのからだ",
-        "はやてのつばさ"
-    ],
-    "Weight": 24.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 74,
-    "Types": [
-        "ほのお",
-        "ひこう"
-    ]
+    "BaseDef": 71,
+    "BaseAtk": 81
 }

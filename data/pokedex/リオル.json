@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 20.2,
+    "AllAbilities": [
+        "ふくつのこころ",
+        "せいしんりょく",
+        "いたずらごころ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "ふくつのこころ",
         "せいしんりょく"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "いたずらごころ",
     "Learnset": [
         "でんこうせっか",
         "こらえる",
@@ -73,22 +82,13 @@
         "ともえなげ",
         "コーチング"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 40,
+    "HiddenAbility": "いたずらごころ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくつのこころ",
-        "せいしんりょく",
-        "いたずらごころ"
-    ],
-    "Weight": 20.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 70
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 120,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 310.5,
+    "AllAbilities": [
+        "じょうききかん",
+        "ほのおのからだ",
+        "もらいび"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "いわ",
+        "ほのお"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "じょうききかん",
         "ほのおのからだ"
     ],
-    "Height": 2.8,
-    "HiddenAbility": "もらいび",
     "Learnset": [
         "タールショット",
         "ニトロチャージ",
@@ -69,23 +79,13 @@
         "メテオビーム",
         "ねっさのだいち"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 90,
+    "HiddenAbility": "もらいび",
+    "Height": 2.8,
+    "Category": "通常ポケモン",
     "BaseHP": 110,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じょうききかん",
-        "ほのおのからだ",
-        "もらいび"
-    ],
-    "Weight": 310.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "いわ",
-        "ほのお"
-    ]
+    "BaseDef": 120,
+    "BaseAtk": 80
 }

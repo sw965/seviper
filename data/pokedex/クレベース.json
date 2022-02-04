@@ -1,12 +1,21 @@
 {
-    "BaseDef": 184,
+    "BaseSpDef": 46,
+    "Gender": "♂♀両方",
+    "Weight": 505.0,
+    "AllAbilities": [
+        "マイペース",
+        "アイスボディ",
+        "がんじょう"
+    ],
     "BaseSpeed": 28,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 44,
     "NormalAbilities": [
         "マイペース",
         "アイスボディ"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "がんじょう",
     "Learnset": [
         "のしかかり",
         "たいあたり",
@@ -61,23 +70,14 @@
         "ミラーコート",
         "オーロラベール"
     ],
-    "BaseAtk": 117,
-    "BaseSpDef": 46,
+    "HiddenAbility": "がんじょう",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "怪獣",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "マイペース",
-        "アイスボディ",
-        "がんじょう"
-    ],
-    "Weight": 505.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 44,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 184,
+    "BaseAtk": 117
 }

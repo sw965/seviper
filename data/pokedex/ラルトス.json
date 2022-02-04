@@ -1,12 +1,22 @@
 {
-    "BaseDef": 25,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 6.6,
+    "AllAbilities": [
+        "シンクロ",
+        "トレース",
+        "テレパシー"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "シンクロ",
         "トレース"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "なきごえ",
         "チャームボイス",
@@ -79,24 +89,14 @@
         "かげうち",
         "ワイドフォース"
     ],
-    "BaseAtk": 25,
-    "BaseSpDef": 35,
+    "HiddenAbility": "テレパシー",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 28,
     "EggGroups": [
         "人型",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "トレース",
-        "テレパシー"
-    ],
-    "Weight": 6.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 25,
+    "BaseAtk": 25
 }

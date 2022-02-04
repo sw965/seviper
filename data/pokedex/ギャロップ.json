@@ -1,12 +1,21 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 95.0,
+    "AllAbilities": [
+        "にげあし",
+        "もらいび",
+        "ほのおのからだ"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "にげあし",
         "もらいび"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "ほのおのからだ",
     "Learnset": [
         "スマートホーン",
         "どくづき",
@@ -67,22 +76,13 @@
         "あさのひざし",
         "ねっさのだいち"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ほのおのからだ",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "もらいび",
-        "ほのおのからだ"
-    ],
-    "Weight": 95.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 100
 }

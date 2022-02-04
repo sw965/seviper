@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 118.0,
+    "AllAbilities": [
+        "むしのしらせ",
+        "テクニシャン",
+        "ライトメタル"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "むし",
+        "はがね"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "むしのしらせ",
         "テクニシャン"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "ライトメタル",
     "Learnset": [
         "バレットパンチ",
         "でんこうせっか",
@@ -68,23 +78,13 @@
         "ダブルウイング",
         "てっていこうせん"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ライトメタル",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "テクニシャン",
-        "ライトメタル"
-    ],
-    "Weight": 118.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "むし",
-        "はがね"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 130
 }

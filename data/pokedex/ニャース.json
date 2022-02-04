@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 4.2,
+    "AllAbilities": [
+        "ものひろい",
+        "テクニシャン",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "ものひろい",
         "テクニシャン"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "なきごえ",
         "ねこだまし",
@@ -63,22 +72,13 @@
         "とっておき",
         "うっぷんばらし"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 40,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ものひろい",
-        "テクニシャン",
-        "きんちょうかん"
-    ],
-    "Weight": 4.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 45
 }

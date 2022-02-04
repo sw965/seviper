@@ -1,11 +1,18 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 98,
+    "Gender": "不明",
+    "Weight": 215.0,
+    "AllAbilities": [
+        "フェアリーオーラ"
+    ],
     "BaseSpeed": 99,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 131,
     "NormalAbilities": [
         "フェアリーオーラ"
     ],
-    "Height": 3.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "じゅうりょく",
@@ -61,20 +68,13 @@
         "ミストバースト",
         "だいちのはどう"
     ],
-    "BaseAtk": 131,
-    "BaseSpDef": 98,
+    "HiddenAbility": "なし",
+    "Height": 3.0,
+    "Category": "伝説のポケモン",
     "BaseHP": 126,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "フェアリーオーラ"
-    ],
-    "Weight": 215.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 131,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 131
 }

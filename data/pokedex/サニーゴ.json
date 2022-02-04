@@ -1,12 +1,22 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 5.0,
+    "AllAbilities": [
+        "はりきり",
+        "しぜんかいふく",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "みず",
+        "いわ"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "はりきり",
         "しぜんかいふく"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -72,24 +82,14 @@
         "もろはのずつき",
         "メテオビーム"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 95,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はりきり",
-        "しぜんかいふく",
-        "さいせいりょく"
-    ],
-    "Weight": 5.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず",
-        "いわ"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 55
 }

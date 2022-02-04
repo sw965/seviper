@@ -1,11 +1,20 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 102.6,
+    "AllAbilities": [
+        "いかく",
+        "じしんかじょう"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "ドラゴン",
+        "ひこう"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "いかく"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "じしんかじょう",
     "Learnset": [
         "そらをとぶ",
         "かみつく",
@@ -66,22 +75,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 135,
-    "BaseSpDef": 80,
+    "HiddenAbility": "じしんかじょう",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "じしんかじょう"
-    ],
-    "Weight": 102.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "ドラゴン",
-        "ひこう"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 135
 }

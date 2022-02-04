@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 70,
+    "Gender": "不明",
+    "Weight": 190.0,
+    "AllAbilities": [
+        "ちくでん",
+        "はりきり",
+        "すなかき"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "でんき",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ちくでん",
         "はりきり"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "すなかき",
     "Learnset": [
         "たいあたり",
         "でんきショック",
@@ -67,23 +77,13 @@
         "ライジングボルト",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 70,
+    "HiddenAbility": "すなかき",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちくでん",
-        "はりきり",
-        "すなかき"
-    ],
-    "Weight": 190.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "でんき",
-        "ドラゴン"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 100
 }

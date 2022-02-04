@@ -1,12 +1,21 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 43.0,
+    "AllAbilities": [
+        "もふもふ",
+        "ふくつのこころ",
+        "ぼうだん"
+    ],
     "BaseSpeed": 88,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "もふもふ",
         "ふくつのこころ"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "ぼうだん",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -50,22 +59,13 @@
         "いばる",
         "グラススライダー"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 90,
+    "HiddenAbility": "ぼうだん",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 72,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もふもふ",
-        "ふくつのこころ",
-        "ぼうだん"
-    ],
-    "Weight": 43.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 80
 }

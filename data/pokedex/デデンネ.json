@@ -1,12 +1,22 @@
 {
-    "BaseDef": 57,
+    "BaseSpDef": 67,
+    "Gender": "♂♀両方",
+    "Weight": 2.2,
+    "AllAbilities": [
+        "ほおぶくろ",
+        "ものひろい",
+        "プラス"
+    ],
     "BaseSpeed": 101,
+    "Types": [
+        "でんき",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 81,
     "NormalAbilities": [
         "ほおぶくろ",
         "ものひろい"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "プラス",
     "Learnset": [
         "しっぽをふる",
         "ほっぺすりすり",
@@ -56,24 +66,14 @@
         "なみだめ",
         "ライジングボルト"
     ],
-    "BaseAtk": 58,
-    "BaseSpDef": 67,
+    "HiddenAbility": "プラス",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 67,
     "EggGroups": [
         "陸上",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほおぶくろ",
-        "ものひろい",
-        "プラス"
-    ],
-    "Weight": 2.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 81,
-    "Types": [
-        "でんき",
-        "フェアリー"
-    ]
+    "BaseDef": 57,
+    "BaseAtk": 58
 }

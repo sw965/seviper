@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 130,
+    "Gender": "♀のみ",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "ドラゴン",
+        "エスパー"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "あまえる",
         "アシストパワー",
@@ -83,21 +91,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 130,
+    "HiddenAbility": "なし",
+    "Height": 1.4,
+    "Category": "準伝説ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 40.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "ドラゴン",
-        "エスパー"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 80
 }

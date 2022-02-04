@@ -1,12 +1,22 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 6.6,
+    "AllAbilities": [
+        "いたずらごころ",
+        "すりぬけ",
+        "ようりょくそ"
+    ],
     "BaseSpeed": 116,
+    "Types": [
+        "くさ",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 77,
     "NormalAbilities": [
         "いたずらごころ",
         "すりぬけ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "ようりょくそ",
     "Learnset": [
         "せいちょう",
         "やどりぎのタネ",
@@ -66,24 +76,14 @@
         "すりかえ",
         "グラススライダー"
     ],
-    "BaseAtk": 67,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ようりょくそ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "植物",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いたずらごころ",
-        "すりぬけ",
-        "ようりょくそ"
-    ],
-    "Weight": 6.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 77,
-    "Types": [
-        "くさ",
-        "フェアリー"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 67
 }

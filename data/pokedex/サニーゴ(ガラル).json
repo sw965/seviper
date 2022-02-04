@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 0.5,
+    "AllAbilities": [
+        "くだけるよろい",
+        "のろわれボディ"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ゴースト"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "くだけるよろい"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "のろわれボディ",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -75,22 +83,14 @@
         "もろはのずつき",
         "メテオビーム"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 100,
+    "HiddenAbility": "のろわれボディ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "くだけるよろい",
-        "のろわれボディ"
-    ],
-    "Weight": 0.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ゴースト"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 55
 }

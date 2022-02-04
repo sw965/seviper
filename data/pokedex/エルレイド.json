@@ -1,11 +1,20 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 115,
+    "Gender": "♂のみ",
+    "Weight": 52.0,
+    "AllAbilities": [
+        "ふくつのこころ",
+        "せいぎのこころ"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "エスパー",
+        "かくとう"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "ふくつのこころ"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "せいぎのこころ",
     "Learnset": [
         "きりさく",
         "つじぎり",
@@ -117,23 +126,14 @@
         "コーチング",
         "トリプルアクセル"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 115,
+    "HiddenAbility": "せいぎのこころ",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "人型",
         "不定形"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "ふくつのこころ",
-        "せいぎのこころ"
-    ],
-    "Weight": 52.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "エスパー",
-        "かくとう"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 125
 }

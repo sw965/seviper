@@ -1,11 +1,18 @@
 {
-    "BaseDef": 20,
+    "BaseSpDef": 25,
+    "Gender": "♂♀両方",
+    "Weight": 0.3,
+    "AllAbilities": [
+        "ぎょぐん"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 25,
     "NormalAbilities": [
         "ぎょぐん"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "みずでっぽう",
         "なきごえ",
@@ -50,20 +57,13 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 20,
-    "BaseSpDef": 25,
+    "HiddenAbility": "なし",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぎょぐん"
-    ],
-    "Weight": 0.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 25,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 20,
+    "BaseAtk": 20
 }

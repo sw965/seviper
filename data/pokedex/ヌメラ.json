@@ -1,12 +1,21 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 2.8,
+    "AllAbilities": [
+        "そうしょく",
+        "うるおいボディ",
+        "ぬめぬめ"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "そうしょく",
         "うるおいボディ"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "ぬめぬめ",
     "Learnset": [
         "たいあたり",
         "すいとる",
@@ -41,22 +50,13 @@
         "はいよるいちげき",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ぬめぬめ",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "そうしょく",
-        "うるおいボディ",
-        "ぬめぬめ"
-    ],
-    "Weight": 2.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 50
 }

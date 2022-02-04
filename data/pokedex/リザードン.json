@@ -1,11 +1,20 @@
 {
-    "BaseDef": 78,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 90.5,
+    "AllAbilities": [
+        "もうか",
+        "サンパワー"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "ほのお",
+        "ひこう"
+    ],
+    "BaseSpAtk": 109,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "サンパワー",
     "Learnset": [
         "エアスラッシュ",
         "ねっぷう",
@@ -87,23 +96,14 @@
         "ブラストバーン",
         "ほのおのちかい"
     ],
-    "BaseAtk": 84,
-    "BaseSpDef": 85,
+    "HiddenAbility": "サンパワー",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "サンパワー"
-    ],
-    "Weight": 90.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 109,
-    "Types": [
-        "ほのお",
-        "ひこう"
-    ]
+    "BaseDef": 78,
+    "BaseAtk": 84
 }

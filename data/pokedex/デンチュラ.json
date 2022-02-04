@@ -1,12 +1,22 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 14.3,
+    "AllAbilities": [
+        "ふくがん",
+        "きんちょうかん",
+        "むしのしらせ"
+    ],
     "BaseSpeed": 108,
+    "Types": [
+        "むし",
+        "でんき"
+    ],
+    "BaseSpAtk": 97,
     "NormalAbilities": [
         "ふくがん",
         "きんちょうかん"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "むしのしらせ",
     "Learnset": [
         "ねばねばネット",
         "すいとる",
@@ -60,23 +70,13 @@
         "ライジングボルト",
         "はいよるいちげき"
     ],
-    "BaseAtk": 77,
-    "BaseSpDef": 60,
+    "HiddenAbility": "むしのしらせ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくがん",
-        "きんちょうかん",
-        "むしのしらせ"
-    ],
-    "Weight": 14.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 97,
-    "Types": [
-        "むし",
-        "でんき"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 77
 }

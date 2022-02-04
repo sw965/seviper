@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 1.0,
+    "AllAbilities": [
+        "ふゆう",
+        "かがくへんかガス",
+        "あくしゅう"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "どく"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "ふゆう",
         "かがくへんかガス"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "あくしゅう",
     "Learnset": [
         "どくガス",
         "たいあたり",
@@ -61,22 +70,13 @@
         "おんねん",
         "ふしょくガス"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 45,
+    "HiddenAbility": "あくしゅう",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふゆう",
-        "かがくへんかガス",
-        "あくしゅう"
-    ],
-    "Weight": 1.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "どく"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 65
 }

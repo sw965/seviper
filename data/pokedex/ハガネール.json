@@ -1,12 +1,22 @@
 {
-    "BaseDef": 200,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 400.0,
+    "AllAbilities": [
+        "いしあたま",
+        "がんじょう",
+        "ちからずく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "はがね",
+        "じめん"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "いしあたま",
         "がんじょう"
     ],
-    "Height": 9.2,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "かみなりのキバ",
         "こおりのキバ",
@@ -81,23 +91,13 @@
         "ねっさのだいち",
         "てっていこうせん"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 65,
+    "HiddenAbility": "ちからずく",
+    "Height": 9.2,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いしあたま",
-        "がんじょう",
-        "ちからずく"
-    ],
-    "Weight": 400.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "はがね",
-        "じめん"
-    ]
+    "BaseDef": 200,
+    "BaseAtk": 85
 }

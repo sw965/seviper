@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 13.0,
+    "AllAbilities": [
+        "じゅくせい",
+        "くいしんぼう",
+        "あついしぼう"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "くさ",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "じゅくせい",
         "くいしんぼう"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "あついしぼう",
     "Learnset": [
         "ずつき",
         "リサイクル",
@@ -59,24 +69,14 @@
         "グラススライダー",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 80,
+    "HiddenAbility": "あついしぼう",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 110,
     "EggGroups": [
         "植物",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅくせい",
-        "くいしんぼう",
-        "あついしぼう"
-    ],
-    "Weight": 13.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "くさ",
-        "ドラゴン"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 85
 }

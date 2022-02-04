@@ -1,11 +1,19 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 2.5,
+    "AllAbilities": [
+        "もうか",
+        "かそく"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "かそく",
     "Learnset": [
         "ひっかく",
         "なきごえ",
@@ -60,21 +68,13 @@
         "つじぎり",
         "ほのおのちかい"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 50,
+    "HiddenAbility": "かそく",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "かそく"
-    ],
-    "Weight": 2.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 60
 }

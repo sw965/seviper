@@ -1,11 +1,19 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 100,
+    "Gender": "不明",
+    "Weight": 50.9,
+    "AllAbilities": [
+        "かちき"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "エスパー",
+        "ひこう"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "かちき"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かぜおこし",
         "サイコシフト",
@@ -55,21 +63,13 @@
         "ワイドフォース",
         "ダブルウイング"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 100,
+    "HiddenAbility": "なし",
+    "Height": 1.7,
+    "Category": "準伝説ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "かちき"
-    ],
-    "Weight": 50.9,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "エスパー",
-        "ひこう"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 85
 }

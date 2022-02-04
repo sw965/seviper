@@ -1,12 +1,22 @@
 {
-    "BaseDef": 68,
+    "BaseSpDef": 82,
+    "Gender": "♂♀両方",
+    "Weight": 29.9,
+    "AllAbilities": [
+        "ねんちゃく",
+        "よびみず",
+        "すなのちから"
+    ],
     "BaseSpeed": 39,
+    "Types": [
+        "みず",
+        "じめん"
+    ],
+    "BaseSpAtk": 92,
     "NormalAbilities": [
         "ねんちゃく",
         "よびみず"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "すなのちから",
     "Learnset": [
         "どろかけ",
         "かたくなる",
@@ -68,24 +78,14 @@
         "クリアスモッグ",
         "はいよるいちげき"
     ],
-    "BaseAtk": 83,
-    "BaseSpDef": 82,
+    "HiddenAbility": "すなのちから",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 111,
     "EggGroups": [
         "水中1",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ねんちゃく",
-        "よびみず",
-        "すなのちから"
-    ],
-    "Weight": 29.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 92,
-    "Types": [
-        "みず",
-        "じめん"
-    ]
+    "BaseDef": 68,
+    "BaseAtk": 83
 }

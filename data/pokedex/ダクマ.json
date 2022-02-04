@@ -1,11 +1,18 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "せいしんりょく"
+    ],
     "BaseSpeed": 72,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 53,
     "NormalAbilities": [
         "せいしんりょく"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "なし",
     "Learnset": [
         "いわくだき",
         "にらみつける",
@@ -50,20 +57,13 @@
         "ふるいたてる",
         "コーチング"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 0.6,
+    "Category": "準伝説ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく"
-    ],
-    "Weight": 12.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 53,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 90
 }

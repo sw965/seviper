@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂のみ",
+    "Weight": 9.0,
+    "AllAbilities": [
+        "どくのトゲ",
+        "とうそうしん",
+        "はりきり"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "どく"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "どくのトゲ",
         "とうそうしん"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "はりきり",
     "Learnset": [
         "にらみつける",
         "どくばり",
@@ -59,23 +68,14 @@
         "ふいうち",
         "もろはのずつき"
     ],
-    "BaseAtk": 57,
-    "BaseSpDef": 40,
+    "HiddenAbility": "はりきり",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 46,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "どくのトゲ",
-        "とうそうしん",
-        "はりきり"
-    ],
-    "Weight": 9.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "どく"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 57
 }

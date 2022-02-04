@@ -1,11 +1,19 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 82.5,
+    "AllAbilities": [
+        "ダウンロード"
+    ],
     "BaseSpeed": 99,
+    "Types": [
+        "むし",
+        "はがね"
+    ],
+    "BaseSpAtk": 120,
     "NormalAbilities": [
         "ダウンロード"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "でんこうせっか",
         "れんぞくぎり",
@@ -62,21 +70,13 @@
         "サイドチェンジ",
         "てっていこうせん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 95,
+    "HiddenAbility": "なし",
+    "Height": 1.5,
+    "Category": "幻のポケモン",
     "BaseHP": 71,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ダウンロード"
-    ],
-    "Weight": 82.5,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 120,
-    "Types": [
-        "むし",
-        "はがね"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 120
 }

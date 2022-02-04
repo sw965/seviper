@@ -1,12 +1,22 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 85,
+    "Gender": "不明",
+    "Weight": 80.0,
+    "AllAbilities": [
+        "はっこう",
+        "しぜんかいふく",
+        "アナライズ"
+    ],
     "BaseSpeed": 115,
+    "Types": [
+        "みず",
+        "エスパー"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "はっこう",
         "しぜんかいふく"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "アナライズ",
     "Learnset": [
         "ハイドロポンプ",
         "みずでっぽう",
@@ -65,23 +75,13 @@
         "メテオビーム",
         "クイックターン"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 85,
+    "HiddenAbility": "アナライズ",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "はっこう",
-        "しぜんかいふく",
-        "アナライズ"
-    ],
-    "Weight": 80.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "みず",
-        "エスパー"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 75
 }

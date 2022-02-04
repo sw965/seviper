@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 25.0,
+    "AllAbilities": [
+        "するどいめ",
+        "すなかき",
+        "ふくつのこころ"
+    ],
     "BaseSpeed": 112,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "するどいめ",
         "すなかき"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "ふくつのこころ",
     "Learnset": [
         "ふいうち",
         "アクセルロック",
@@ -64,22 +73,13 @@
         "がむしゃら",
         "とっておき"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 65,
+    "HiddenAbility": "ふくつのこころ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "するどいめ",
-        "すなかき",
-        "ふくつのこころ"
-    ],
-    "Weight": 25.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 115
 }

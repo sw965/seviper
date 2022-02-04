@@ -1,11 +1,18 @@
 {
-    "BaseDef": 62,
+    "BaseSpDef": 63,
+    "Gender": "♂♀両方",
+    "Weight": 8.3,
+    "AllAbilities": [
+        "メガランチャー"
+    ],
     "BaseSpeed": 44,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 58,
     "NormalAbilities": [
         "メガランチャー"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "はねる",
         "みずでっぽう",
@@ -51,21 +58,14 @@
         "だいちのはどう",
         "クイックターン"
     ],
-    "BaseAtk": 53,
-    "BaseSpDef": 63,
+    "HiddenAbility": "なし",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メガランチャー"
-    ],
-    "Weight": 8.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 58,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 62,
+    "BaseAtk": 53
 }

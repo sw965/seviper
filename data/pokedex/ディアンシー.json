@@ -1,11 +1,19 @@
 {
-    "BaseDef": 150,
+    "BaseSpDef": 150,
+    "Gender": "不明",
+    "Weight": 8.8,
+    "AllAbilities": [
+        "クリアボディ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "いわ",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "クリアボディ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -66,21 +74,13 @@
         "ミストバースト",
         "だいちのはどう"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 150,
+    "HiddenAbility": "なし",
+    "Height": 0.7,
+    "Category": "幻のポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "クリアボディ"
-    ],
-    "Weight": 8.8,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "いわ",
-        "フェアリー"
-    ]
+    "BaseDef": 150,
+    "BaseAtk": 100
 }

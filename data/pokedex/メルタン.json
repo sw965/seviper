@@ -1,11 +1,18 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 35,
+    "Gender": "不明",
+    "Weight": 8.0,
+    "AllAbilities": [
+        "じりょく"
+    ],
     "BaseSpeed": 34,
+    "Types": [
+        "はがね"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "じりょく"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かたくなる",
         "でんきショック",
@@ -27,20 +34,13 @@
         "ジャイロボール",
         "てっていこうせん"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 35,
+    "HiddenAbility": "なし",
+    "Height": 0.2,
+    "Category": "幻のポケモン",
     "BaseHP": 46,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "じりょく"
-    ],
-    "Weight": 8.0,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "はがね"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 65
 }

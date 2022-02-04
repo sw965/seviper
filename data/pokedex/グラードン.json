@@ -1,11 +1,18 @@
 {
-    "BaseDef": 140,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 950.0,
+    "AllAbilities": [
+        "ひでり"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "ひでり"
     ],
-    "Height": 3.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "マッドショット",
         "げんしのちから",
@@ -66,20 +73,13 @@
         "10まんばりき",
         "ねっさのだいち"
     ],
-    "BaseAtk": 150,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 3.5,
+    "Category": "伝説のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ひでり"
-    ],
-    "Weight": 950.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 140,
+    "BaseAtk": 150
 }

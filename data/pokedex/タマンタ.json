@@ -1,12 +1,22 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 120,
+    "Gender": "♂♀両方",
+    "Weight": 65.0,
+    "AllAbilities": [
+        "すいすい",
+        "ちょすい",
+        "みずのベール"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "みず",
+        "ひこう"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "すいすい",
         "ちょすい"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "みずのベール",
     "Learnset": [
         "たいあたり",
         "みずでっぽう",
@@ -56,23 +66,13 @@
         "ミラーコート",
         "おいかぜ"
     ],
-    "BaseAtk": 20,
-    "BaseSpDef": 120,
+    "HiddenAbility": "みずのベール",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "ちょすい",
-        "みずのベール"
-    ],
-    "Weight": 65.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "みず",
-        "ひこう"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 20
 }

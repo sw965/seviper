@@ -1,12 +1,21 @@
 {
-    "BaseDef": 62,
+    "BaseSpDef": 48,
+    "Gender": "♂♀両方",
+    "Weight": 8.0,
+    "AllAbilities": [
+        "てつのこぶし",
+        "かたやぶり",
+        "きもったま"
+    ],
     "BaseSpeed": 43,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 46,
     "NormalAbilities": [
         "てつのこぶし",
         "かたやぶり"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "たいあたり",
         "にらみつける",
@@ -72,23 +81,14 @@
         "うっぷんばらし",
         "コーチング"
     ],
-    "BaseAtk": 82,
-    "BaseSpDef": 48,
+    "HiddenAbility": "きもったま",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 67,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "てつのこぶし",
-        "かたやぶり",
-        "きもったま"
-    ],
-    "Weight": 8.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 46,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 62,
+    "BaseAtk": 82
 }

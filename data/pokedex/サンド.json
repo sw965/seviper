@@ -1,11 +1,19 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "すながくれ",
+        "すなかき"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 20,
     "NormalAbilities": [
         "すながくれ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "すなかき",
     "Learnset": [
         "ひっかく",
         "まるくなる",
@@ -63,21 +71,13 @@
         "アイアンローラー",
         "ねっさのだいち"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 30,
+    "HiddenAbility": "すなかき",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すながくれ",
-        "すなかき"
-    ],
-    "Weight": 12.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 20,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 75
 }

@@ -1,11 +1,20 @@
 {
-    "BaseDef": 150,
+    "BaseSpDef": 150,
+    "Gender": "不明",
+    "Weight": 5.7,
+    "AllAbilities": [
+        "クリアボディ",
+        "がんじょう"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "いわ",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "クリアボディ"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "がんじょう",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -53,23 +62,14 @@
         "ミストバースト",
         "だいちのはどう"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 150,
+    "HiddenAbility": "がんじょう",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "妖精",
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "クリアボディ",
-        "がんじょう"
-    ],
-    "Weight": 5.7,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "いわ",
-        "フェアリー"
-    ]
+    "BaseDef": 150,
+    "BaseAtk": 50
 }

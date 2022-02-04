@@ -1,12 +1,22 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 55,
+    "Gender": "♂のみ",
+    "Weight": 12.5,
+    "AllAbilities": [
+        "いたずらごころ",
+        "おみとおし",
+        "わるいてぐせ"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "あく",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "いたずらごころ",
         "おみとおし"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "わるいてぐせ",
     "Learnset": [
         "どげざつき",
         "ねこだまし",
@@ -53,24 +63,14 @@
         "しっとのほのお",
         "うっぷんばらし"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 55,
+    "HiddenAbility": "わるいてぐせ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "妖精",
         "人型"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "いたずらごころ",
-        "おみとおし",
-        "わるいてぐせ"
-    ],
-    "Weight": 12.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "あく",
-        "フェアリー"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 60
 }

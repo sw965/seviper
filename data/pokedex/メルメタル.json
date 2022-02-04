@@ -1,11 +1,18 @@
 {
-    "BaseDef": 143,
+    "BaseSpDef": 65,
+    "Gender": "不明",
+    "Weight": 800.0,
+    "AllAbilities": [
+        "てつのこぶし"
+    ],
     "BaseSpeed": 34,
+    "Types": [
+        "はがね"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "てつのこぶし"
     ],
-    "Height": 2.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かみなりパンチ",
         "ずつき",
@@ -54,20 +61,13 @@
         "アイアンローラー",
         "てっていこうせん"
     ],
-    "BaseAtk": 143,
-    "BaseSpDef": 65,
+    "HiddenAbility": "なし",
+    "Height": 2.5,
+    "Category": "幻のポケモン",
     "BaseHP": 135,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "てつのこぶし"
-    ],
-    "Weight": 800.0,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "はがね"
-    ]
+    "BaseDef": 143,
+    "BaseAtk": 143
 }

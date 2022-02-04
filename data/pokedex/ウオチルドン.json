@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 175.0,
+    "AllAbilities": [
+        "ちょすい",
+        "アイスボディ",
+        "ゆきかき"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "みず",
+        "こおり"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ちょすい",
         "アイスボディ"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "ゆきかき",
     "Learnset": [
         "こなゆき",
         "みずでっぽう",
@@ -54,23 +64,13 @@
         "アクアブレイク",
         "メテオビーム"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 90,
+    "HiddenAbility": "ゆきかき",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちょすい",
-        "アイスボディ",
-        "ゆきかき"
-    ],
-    "Weight": 175.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "みず",
-        "こおり"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 90
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 4.5,
+    "AllAbilities": [
+        "もうか",
+        "リベロ"
+    ],
     "BaseSpeed": 69,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "リベロ",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -56,22 +64,14 @@
         "ふいうち",
         "ほのおのちかい"
     ],
-    "BaseAtk": 71,
-    "BaseSpDef": 40,
+    "HiddenAbility": "リベロ",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "リベロ"
-    ],
-    "Weight": 4.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 71
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 19.9,
+    "AllAbilities": [
+        "もらいび",
+        "ひでり"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 81,
     "NormalAbilities": [
         "もらいび"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "ひでり",
     "Learnset": [
         "ふういん",
         "わるだくみ",
@@ -71,21 +79,13 @@
         "しっとのほのお",
         "ねっさのだいち"
     ],
-    "BaseAtk": 76,
-    "BaseSpDef": 100,
+    "HiddenAbility": "ひでり",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 73,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もらいび",
-        "ひでり"
-    ],
-    "Weight": 19.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 81,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 76
 }

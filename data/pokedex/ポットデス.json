@@ -1,11 +1,19 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 114,
+    "Gender": "不明",
+    "Weight": 0.4,
+    "AllAbilities": [
+        "くだけるよろい",
+        "のろわれボディ"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "ゴースト"
+    ],
+    "BaseSpAtk": 134,
     "NormalAbilities": [
         "くだけるよろい"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "のろわれボディ",
     "Learnset": [
         "おちゃかい",
         "ちからをすいとる",
@@ -51,22 +59,14 @@
         "サイドチェンジ",
         "ポルターガイスト"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 114,
+    "HiddenAbility": "のろわれボディ",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "鉱物",
         "不定形"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "くだけるよろい",
-        "のろわれボディ"
-    ],
-    "Weight": 0.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 134,
-    "Types": [
-        "ゴースト"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 65
 }

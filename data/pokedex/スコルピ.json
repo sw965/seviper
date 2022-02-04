@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "カブトアーマー",
+        "スナイパー",
+        "するどいめ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "どく",
+        "むし"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "カブトアーマー",
         "スナイパー"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "するどいめ",
     "Learnset": [
         "どくばり",
         "にらみつける",
@@ -61,24 +71,14 @@
         "きりさく",
         "はいよるいちげき"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 55,
+    "HiddenAbility": "するどいめ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "虫",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "カブトアーマー",
-        "スナイパー",
-        "するどいめ"
-    ],
-    "Weight": 12.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "どく",
-        "むし"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 50
 }

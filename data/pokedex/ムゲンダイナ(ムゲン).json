@@ -1,11 +1,19 @@
 {
-    "BaseDef": 250,
+    "BaseSpDef": 250,
+    "Gender": "不明",
+    "Weight": 0.0,
+    "AllAbilities": [
+        "プレッシャー"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "どく",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 100.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ポイズンテール",
         "あやしいひかり",
@@ -51,21 +59,13 @@
         "メテオビーム",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 250,
+    "HiddenAbility": "なし",
+    "Height": 100.0,
+    "Category": "伝説のポケモン",
     "BaseHP": 255,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー"
-    ],
-    "Weight": 0.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "どく",
-        "ドラゴン"
-    ]
+    "BaseDef": 250,
+    "BaseAtk": 115
 }

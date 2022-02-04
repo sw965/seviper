@@ -1,12 +1,22 @@
 {
-    "BaseDef": 152,
+    "BaseSpDef": 142,
+    "Gender": "♂♀両方",
+    "Weight": 14.5,
+    "AllAbilities": [
+        "ひとでなし",
+        "じゅうなん",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "どく",
+        "みず"
+    ],
+    "BaseSpAtk": 53,
     "NormalAbilities": [
         "ひとでなし",
         "じゅうなん"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "トーチカ",
         "どくばり",
@@ -56,23 +66,13 @@
         "のみこむ",
         "まとわりつく"
     ],
-    "BaseAtk": 63,
-    "BaseSpDef": 142,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ひとでなし",
-        "じゅうなん",
-        "さいせいりょく"
-    ],
-    "Weight": 14.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 53,
-    "Types": [
-        "どく",
-        "みず"
-    ]
+    "BaseDef": 152,
+    "BaseAtk": 63
 }

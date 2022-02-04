@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 15.3,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "じめん",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "なし",
     "Learnset": [
         "りゅうのいぶき",
         "すなかけ",
@@ -67,22 +75,14 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "虫",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 15.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "じめん",
-        "ドラゴン"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 70
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 120,
+    "Gender": "不明",
+    "Weight": 330.0,
+    "AllAbilities": [
+        "ターボブレイズ"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ドラゴン",
+        "ほのお"
+    ],
+    "BaseSpAtk": 150,
     "NormalAbilities": [
         "ターボブレイズ"
     ],
-    "Height": 3.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ほのおのキバ",
         "りゅうのいぶき",
@@ -70,21 +78,13 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 120,
+    "HiddenAbility": "なし",
+    "Height": 3.2,
+    "Category": "伝説のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ターボブレイズ"
-    ],
-    "Weight": 330.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 150,
-    "Types": [
-        "ドラゴン",
-        "ほのお"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 120
 }

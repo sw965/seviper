@@ -1,12 +1,22 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 75.0,
+    "AllAbilities": [
+        "しめりけ",
+        "ちょすい",
+        "てんねん"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "みず",
+        "じめん"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "しめりけ",
         "ちょすい"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "てんねん",
     "Learnset": [
         "みずでっぽう",
         "しっぽをふる",
@@ -79,24 +89,14 @@
         "おさきにどうぞ",
         "グロウパンチ"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 65,
+    "HiddenAbility": "てんねん",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しめりけ",
-        "ちょすい",
-        "てんねん"
-    ],
-    "Weight": 75.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず",
-        "じめん"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 85
 }

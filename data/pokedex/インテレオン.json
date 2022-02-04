@@ -1,11 +1,19 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 45.2,
+    "AllAbilities": [
+        "げきりゅう",
+        "スナイパー"
+    ],
     "BaseSpeed": 120,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "スナイパー",
     "Learnset": [
         "ねらいうち",
         "アクロバット",
@@ -71,22 +79,14 @@
         "ハイドロカノン",
         "みずのちかい"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 65,
+    "HiddenAbility": "スナイパー",
+    "Height": 1.9,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "スナイパー"
-    ],
-    "Weight": 45.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 85
 }

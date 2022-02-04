@@ -1,12 +1,21 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 256.5,
+    "AllAbilities": [
+        "せいしんりょく",
+        "アイスボディ",
+        "ムラっけ"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "せいしんりょく",
         "アイスボディ"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "ムラっけ",
     "Learnset": [
         "フリーズドライ",
         "こなゆき",
@@ -62,23 +71,14 @@
         "つららおとし",
         "アイアンローラー"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ムラっけ",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "妖精",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "アイスボディ",
-        "ムラっけ"
-    ],
-    "Weight": 256.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 80
 }

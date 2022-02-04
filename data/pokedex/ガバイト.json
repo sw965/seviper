@@ -1,11 +1,20 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 56.0,
+    "AllAbilities": [
+        "すながくれ",
+        "さめはだ"
+    ],
     "BaseSpeed": 82,
+    "Types": [
+        "ドラゴン",
+        "じめん"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "すながくれ"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "さめはだ",
     "Learnset": [
         "たいあたり",
         "すなかけ",
@@ -56,23 +65,14 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 55,
+    "HiddenAbility": "さめはだ",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すながくれ",
-        "さめはだ"
-    ],
-    "Weight": 56.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ドラゴン",
-        "じめん"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 90
 }

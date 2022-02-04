@@ -1,12 +1,22 @@
 {
-    "BaseDef": 34,
+    "BaseSpDef": 44,
+    "Gender": "♂♀両方",
+    "Weight": 1.2,
+    "AllAbilities": [
+        "ゆうばく",
+        "かるわざ",
+        "ねつぼうそう"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "ゴースト",
+        "ひこう"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "ゆうばく",
         "かるわざ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ねつぼうそう",
     "Learnset": [
         "ちいさくなる",
         "おどろかす",
@@ -59,23 +69,13 @@
         "きりばらい",
         "クリアスモッグ"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 44,
+    "HiddenAbility": "ねつぼうそう",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆうばく",
-        "かるわざ",
-        "ねつぼうそう"
-    ],
-    "Weight": 1.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "ゴースト",
-        "ひこう"
-    ]
+    "BaseDef": 34,
+    "BaseAtk": 50
 }

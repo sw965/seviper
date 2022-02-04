@@ -1,12 +1,21 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 260.0,
+    "AllAbilities": [
+        "ゆきがくれ",
+        "ゆきかき",
+        "すいすい"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "ゆきがくれ",
         "ゆきかき"
     ],
-    "Height": 2.6,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "つららおとし",
         "アクアジェット",
@@ -73,22 +82,13 @@
         "あくび",
         "つじぎり"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 80,
+    "HiddenAbility": "すいすい",
+    "Height": 2.6,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆきがくれ",
-        "ゆきかき",
-        "すいすい"
-    ],
-    "Weight": 260.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 130
 }

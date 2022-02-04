@@ -1,12 +1,21 @@
 {
-    "BaseDef": 20,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 7.4,
+    "AllAbilities": [
+        "すいすい",
+        "どんかん",
+        "てきおうりょく"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 10,
     "NormalAbilities": [
         "すいすい",
         "どんかん"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "てきおうりょく",
     "Learnset": [
         "はねる",
         "たいあたり",
@@ -46,23 +55,14 @@
         "くすぐる",
         "スケイルショット"
     ],
-    "BaseAtk": 15,
-    "BaseSpDef": 55,
+    "HiddenAbility": "てきおうりょく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 20,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "どんかん",
-        "てきおうりょく"
-    ],
-    "Weight": 7.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 10,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 20,
+    "BaseAtk": 15
 }

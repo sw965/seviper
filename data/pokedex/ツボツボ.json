@@ -1,12 +1,22 @@
 {
-    "BaseDef": 230,
+    "BaseSpDef": 230,
+    "Gender": "♂♀両方",
+    "Weight": 20.5,
+    "AllAbilities": [
+        "がんじょう",
+        "くいしんぼう",
+        "あまのじゃく"
+    ],
     "BaseSpeed": 5,
+    "Types": [
+        "むし",
+        "いわ"
+    ],
+    "BaseSpAtk": 10,
     "NormalAbilities": [
         "がんじょう",
         "くいしんぼう"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "あまのじゃく",
     "Learnset": [
         "からにこもる",
         "まきつく",
@@ -65,23 +75,13 @@
         "メテオビーム",
         "はいよるいちげき"
     ],
-    "BaseAtk": 10,
-    "BaseSpDef": 230,
+    "HiddenAbility": "あまのじゃく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 20,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "くいしんぼう",
-        "あまのじゃく"
-    ],
-    "Weight": 20.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 10,
-    "Types": [
-        "むし",
-        "いわ"
-    ]
+    "BaseDef": 230,
+    "BaseAtk": 10
 }

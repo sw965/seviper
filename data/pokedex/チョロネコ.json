@@ -1,12 +1,21 @@
 {
-    "BaseDef": 37,
+    "BaseSpDef": 37,
+    "Gender": "♂♀両方",
+    "Weight": 10.1,
+    "AllAbilities": [
+        "じゅうなん",
+        "かるわざ",
+        "いたずらごころ"
+    ],
     "BaseSpeed": 66,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "じゅうなん",
         "かるわざ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "いたずらごころ",
     "Learnset": [
         "ひっかく",
         "なきごえ",
@@ -62,22 +71,13 @@
         "まねっこ",
         "うっぷんばらし"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 37,
+    "HiddenAbility": "いたずらごころ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 41,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅうなん",
-        "かるわざ",
-        "いたずらごころ"
-    ],
-    "Weight": 10.1,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 37,
+    "BaseAtk": 50
 }

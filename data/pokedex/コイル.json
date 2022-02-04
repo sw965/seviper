@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 55,
+    "Gender": "不明",
+    "Weight": 6.0,
+    "AllAbilities": [
+        "じりょく",
+        "がんじょう",
+        "アナライズ"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "でんき",
+        "はがね"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "じりょく",
         "がんじょう"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "アナライズ",
     "Learnset": [
         "たいあたり",
         "でんきショック",
@@ -44,23 +54,13 @@
         "ライジングボルト",
         "てっていこうせん"
     ],
-    "BaseAtk": 35,
-    "BaseSpDef": 55,
+    "HiddenAbility": "アナライズ",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 25,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "じりょく",
-        "がんじょう",
-        "アナライズ"
-    ],
-    "Weight": 6.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "でんき",
-        "はがね"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 35
 }

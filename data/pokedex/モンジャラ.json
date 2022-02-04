@@ -1,12 +1,21 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 35.0,
+    "AllAbilities": [
+        "ようりょくそ",
+        "リーフガード",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "ようりょくそ",
         "リーフガード"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "しめつける",
         "すいとる",
@@ -57,22 +66,13 @@
         "いかりのこな",
         "グラススライダー"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 40,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ようりょくそ",
-        "リーフガード",
-        "さいせいりょく"
-    ],
-    "Weight": 35.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 55
 }

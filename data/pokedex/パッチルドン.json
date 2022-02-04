@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 80,
+    "Gender": "不明",
+    "Weight": 150.0,
+    "AllAbilities": [
+        "ちくでん",
+        "せいでんき",
+        "ゆきかき"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "でんき",
+        "こおり"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "ちくでん",
         "せいでんき"
     ],
-    "Height": 2.3,
-    "HiddenAbility": "ゆきかき",
     "Learnset": [
         "こなゆき",
         "でんきショック",
@@ -63,23 +73,13 @@
         "メテオビーム",
         "ライジングボルト"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ゆきかき",
+    "Height": 2.3,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちくでん",
-        "せいでんき",
-        "ゆきかき"
-    ],
-    "Weight": 150.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "でんき",
-        "こおり"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 100
 }

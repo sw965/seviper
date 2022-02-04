@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 39.0,
+    "AllAbilities": [
+        "すいすい",
+        "みずのベール",
+        "ひらいしん"
+    ],
     "BaseSpeed": 68,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "すいすい",
         "みずのベール"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "ひらいしん",
     "Learnset": [
         "つつく",
         "しっぽをふる",
@@ -59,22 +68,13 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ひらいしん",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "みずのベール",
-        "ひらいしん"
-    ],
-    "Weight": 39.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 92
 }

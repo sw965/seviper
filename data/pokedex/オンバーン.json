@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 85.0,
+    "AllAbilities": [
+        "おみとおし",
+        "すりぬけ",
+        "テレパシー"
+    ],
     "BaseSpeed": 123,
+    "Types": [
+        "ひこう",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 97,
     "NormalAbilities": [
         "おみとおし",
         "すりぬけ"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "りゅうのはどう",
         "つきのひかり",
@@ -69,24 +79,14 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 80,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "飛行",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "おみとおし",
-        "すりぬけ",
-        "テレパシー"
-    ],
-    "Weight": 85.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 97,
-    "Types": [
-        "ひこう",
-        "ドラゴン"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 70
 }

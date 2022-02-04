@@ -1,11 +1,20 @@
 {
-    "BaseDef": 91,
+    "BaseSpDef": 87,
+    "Gender": "♂♀両方",
+    "Weight": 3.0,
+    "AllAbilities": [
+        "いたずらごころ",
+        "マジシャン"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "はがね",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "いたずらごころ"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "マジシャン",
     "Learnset": [
         "フェアリーロック",
         "おどろかす",
@@ -52,22 +61,13 @@
         "すりかえ",
         "てっていこうせん"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 87,
+    "HiddenAbility": "マジシャン",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 57,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いたずらごころ",
-        "マジシャン"
-    ],
-    "Weight": 3.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "はがね",
-        "フェアリー"
-    ]
+    "BaseDef": 91,
+    "BaseAtk": 80
 }

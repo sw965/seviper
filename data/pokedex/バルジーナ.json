@@ -1,12 +1,22 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 95,
+    "Gender": "♀のみ",
+    "Weight": 39.5,
+    "AllAbilities": [
+        "はとむね",
+        "ぼうじん",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "あく",
+        "ひこう"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "はとむね",
         "ぼうじん"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "ボーンラッシュ",
         "かぜおこし",
@@ -58,23 +68,13 @@
         "うっぷんばらし",
         "ダブルウイング"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 95,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 110,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "はとむね",
-        "ぼうじん",
-        "くだけるよろい"
-    ],
-    "Weight": 39.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "あく",
-        "ひこう"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 65
 }

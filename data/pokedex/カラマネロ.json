@@ -1,12 +1,22 @@
 {
-    "BaseDef": 88,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 47.0,
+    "AllAbilities": [
+        "あまのじゃく",
+        "きゅうばん",
+        "すりぬけ"
+    ],
     "BaseSpeed": 73,
+    "Types": [
+        "あく",
+        "エスパー"
+    ],
+    "BaseSpAtk": 68,
     "NormalAbilities": [
         "あまのじゃく",
         "きゅうばん"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "すりぬけ",
     "Learnset": [
         "きしかいせい",
         "たいあたり",
@@ -68,24 +78,14 @@
         "ワイドフォース",
         "うっぷんばらし"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 75,
+    "HiddenAbility": "すりぬけ",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 86,
     "EggGroups": [
         "水中1",
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "あまのじゃく",
-        "きゅうばん",
-        "すりぬけ"
-    ],
-    "Weight": 47.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 68,
-    "Types": [
-        "あく",
-        "エスパー"
-    ]
+    "BaseDef": 88,
+    "BaseAtk": 92
 }

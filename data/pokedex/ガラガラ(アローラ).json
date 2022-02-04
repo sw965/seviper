@@ -1,12 +1,22 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 34.0,
+    "AllAbilities": [
+        "のろわれボディ",
+        "ひらいしん",
+        "いしあたま"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "ほのお",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "のろわれボディ",
         "ひらいしん"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "いしあたま",
     "Learnset": [
         "シャドーボーン",
         "なきごえ",
@@ -93,23 +103,13 @@
         "ポルターガイスト",
         "ねっさのだいち"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 80,
+    "HiddenAbility": "いしあたま",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "のろわれボディ",
-        "ひらいしん",
-        "いしあたま"
-    ],
-    "Weight": 34.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ほのお",
-        "ゴースト"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 80
 }

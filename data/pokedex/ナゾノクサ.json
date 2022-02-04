@@ -1,11 +1,20 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 5.4,
+    "AllAbilities": [
+        "ようりょくそ",
+        "にげあし"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "ようりょくそ"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "にげあし",
     "Learnset": [
         "すいとる",
         "せいちょう",
@@ -53,22 +62,13 @@
         "ちからをすいとる",
         "グラススライダー"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 65,
+    "HiddenAbility": "にげあし",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ようりょくそ",
-        "にげあし"
-    ],
-    "Weight": 5.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 50
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 43,
+    "BaseSpDef": 41,
+    "Gender": "♂♀両方",
+    "Weight": 1.9,
+    "AllAbilities": [
+        "どんかん",
+        "きけんよち",
+        "うるおいボディ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "みず",
+        "じめん"
+    ],
+    "BaseSpAtk": 46,
     "NormalAbilities": [
         "どんかん",
         "きけんよち"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "うるおいボディ",
     "Learnset": [
         "どろかけ",
         "みずでっぽう",
@@ -49,23 +59,13 @@
         "じたばた",
         "スパーク"
     ],
-    "BaseAtk": 48,
-    "BaseSpDef": 41,
+    "HiddenAbility": "うるおいボディ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中2"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "どんかん",
-        "きけんよち",
-        "うるおいボディ"
-    ],
-    "Weight": 1.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 46,
-    "Types": [
-        "みず",
-        "じめん"
-    ]
+    "BaseDef": 43,
+    "BaseAtk": 48
 }

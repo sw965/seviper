@@ -1,11 +1,18 @@
 {
-    "BaseDef": 145,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 76.5,
+    "AllAbilities": [
+        "ミイラ"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ゴースト"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "ミイラ"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "シャドークロー",
         "おどろかす",
@@ -62,21 +69,14 @@
         "おきみやげ",
         "ポルターガイスト"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 105,
+    "HiddenAbility": "なし",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 58,
     "EggGroups": [
         "鉱物",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ミイラ"
-    ],
-    "Weight": 76.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "ゴースト"
-    ]
+    "BaseDef": 145,
+    "BaseAtk": 50
 }

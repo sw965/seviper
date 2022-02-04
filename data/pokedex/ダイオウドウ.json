@@ -1,11 +1,19 @@
 {
-    "BaseDef": 69,
+    "BaseSpDef": 69,
+    "Gender": "♂♀両方",
+    "Weight": 650.0,
+    "AllAbilities": [
+        "ちからずく",
+        "ヘヴィメタル"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "はがね"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ちからずく"
     ],
-    "Height": 3.0,
-    "HiddenAbility": "ヘヴィメタル",
     "Learnset": [
         "ヘビーボンバー",
         "たいあたり",
@@ -70,22 +78,14 @@
         "アイアンローラー",
         "てっていこうせん"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 69,
+    "HiddenAbility": "ヘヴィメタル",
+    "Height": 3.0,
+    "Category": "通常ポケモン",
     "BaseHP": 122,
     "EggGroups": [
         "陸上",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちからずく",
-        "ヘヴィメタル"
-    ],
-    "Weight": 650.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "はがね"
-    ]
+    "BaseDef": 69,
+    "BaseAtk": 130
 }

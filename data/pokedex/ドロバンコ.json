@@ -1,12 +1,21 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 110.0,
+    "AllAbilities": [
+        "マイペース",
+        "じきゅうりょく",
+        "せいしんりょく"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "マイペース",
         "じきゅうりょく"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "せいしんりょく",
     "Learnset": [
         "どろかけ",
         "いわくだき",
@@ -48,22 +57,13 @@
         "じわれ",
         "うちおとす"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 55,
+    "HiddenAbility": "せいしんりょく",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "マイペース",
-        "じきゅうりょく",
-        "せいしんりょく"
-    ],
-    "Weight": 110.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 100
 }

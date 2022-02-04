@@ -1,11 +1,20 @@
 {
-    "BaseDef": 120,
+    "BaseSpDef": 100,
+    "Gender": "不明",
+    "Weight": 683.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "テレパシー"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "はがね",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 150,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 5.4,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "こわいかお",
         "メタルクロー",
@@ -67,22 +76,13 @@
         "りゅうせいぐん",
         "てっていこうせん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 100,
+    "HiddenAbility": "テレパシー",
+    "Height": 5.4,
+    "Category": "伝説のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "テレパシー"
-    ],
-    "Weight": 683.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 150,
-    "Types": [
-        "はがね",
-        "ドラゴン"
-    ]
+    "BaseDef": 120,
+    "BaseAtk": 120
 }

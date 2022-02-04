@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 61.0,
+    "AllAbilities": [
+        "いかく",
+        "すなかき",
+        "きもったま"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "いかく",
         "すなかき"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "こおりのキバ",
         "ほのおのキバ",
@@ -61,22 +70,13 @@
         "ほしがる",
         "おさきにどうぞ"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 90,
+    "HiddenAbility": "きもったま",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "すなかき",
-        "きもったま"
-    ],
-    "Weight": 61.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 110
 }

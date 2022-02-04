@@ -1,12 +1,21 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 25,
+    "Gender": "♂♀両方",
+    "Weight": 4.0,
+    "AllAbilities": [
+        "シェルアーマー",
+        "スキルリンク",
+        "ぼうじん"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "シェルアーマー",
         "スキルリンク"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "ぼうじん",
     "Learnset": [
         "たいあたり",
         "みずでっぽう",
@@ -52,22 +61,13 @@
         "アクアリング",
         "いのちのしずく"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 25,
+    "HiddenAbility": "ぼうじん",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 30,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シェルアーマー",
-        "スキルリンク",
-        "ぼうじん"
-    ],
-    "Weight": 4.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 65
 }

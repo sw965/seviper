@@ -1,11 +1,19 @@
 {
-    "BaseDef": 37,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 23.5,
+    "AllAbilities": [
+        "せいでんき",
+        "やるき"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "せいでんき"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "やるき",
     "Learnset": [
         "でんこうせっか",
         "にらみつける",
@@ -52,21 +60,13 @@
         "アームハンマー",
         "フェイント"
     ],
-    "BaseAtk": 63,
-    "BaseSpDef": 55,
+    "HiddenAbility": "やるき",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいでんき",
-        "やるき"
-    ],
-    "Weight": 23.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 37,
+    "BaseAtk": 63
 }

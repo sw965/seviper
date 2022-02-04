@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 24.5,
+    "AllAbilities": [
+        "ちくでん",
+        "はやあし"
+    ],
     "BaseSpeed": 130,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "ちくでん"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "はやあし",
     "Learnset": [
         "でんきショック",
         "たいあたり",
@@ -70,21 +78,13 @@
         "くすぐる",
         "ライジングボルト"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 95,
+    "HiddenAbility": "はやあし",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ちくでん",
-        "はやあし"
-    ],
-    "Weight": 24.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 65
 }

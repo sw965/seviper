@@ -1,11 +1,20 @@
 {
-    "BaseDef": 43,
+    "BaseSpDef": 38,
+    "Gender": "♂♀両方",
+    "Weight": 1.7,
+    "AllAbilities": [
+        "はとむね",
+        "はやてのつばさ"
+    ],
     "BaseSpeed": 62,
+    "Types": [
+        "ノーマル",
+        "ひこう"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "はとむね"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "はやてのつばさ",
     "Learnset": [
         "なきごえ",
         "つつく",
@@ -43,22 +52,13 @@
         "ファストガード",
         "ダブルウイング"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 38,
+    "HiddenAbility": "はやてのつばさ",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はとむね",
-        "はやてのつばさ"
-    ],
-    "Weight": 1.7,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル",
-        "ひこう"
-    ]
+    "BaseDef": 43,
+    "BaseAtk": 50
 }

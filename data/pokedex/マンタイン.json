@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 140,
+    "Gender": "♂♀両方",
+    "Weight": 220.0,
+    "AllAbilities": [
+        "すいすい",
+        "ちょすい",
+        "みずのベール"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "みず",
+        "ひこう"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "すいすい",
         "ちょすい"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "みずのベール",
     "Learnset": [
         "サイケこうせん",
         "タネマシンガン",
@@ -73,23 +83,13 @@
         "おいかぜ",
         "ダブルウイング"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 140,
+    "HiddenAbility": "みずのベール",
+    "Height": 2.1,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "ちょすい",
-        "みずのベール"
-    ],
-    "Weight": 220.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "みず",
-        "ひこう"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 40
 }

@@ -1,11 +1,18 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 80,
+    "Gender": "不明",
+    "Weight": 44.5,
+    "AllAbilities": [
+        "ちくでん"
+    ],
     "BaseSpeed": 143,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 102,
     "NormalAbilities": [
         "ちくでん"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ひっかく",
         "スパーク",
@@ -76,20 +83,13 @@
         "ライジングボルト",
         "コーチング"
     ],
-    "BaseAtk": 112,
-    "BaseSpDef": 80,
+    "HiddenAbility": "なし",
+    "Height": 1.5,
+    "Category": "幻のポケモン",
     "BaseHP": 88,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちくでん"
-    ],
-    "Weight": 44.5,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 102,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 112
 }

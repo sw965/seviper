@@ -1,11 +1,20 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 10.5,
+    "AllAbilities": [
+        "ほうし",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "ほうし"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "すいとる",
         "せいちょう",
@@ -51,22 +60,13 @@
         "ころがる",
         "なやみのタネ"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 80,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 114,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほうし",
-        "さいせいりょく"
-    ],
-    "Weight": 10.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 85
 }

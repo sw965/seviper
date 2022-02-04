@@ -1,11 +1,19 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 105,
+    "Gender": "♂♀両方",
+    "Weight": 0.7,
+    "AllAbilities": [
+        "ばけのかわ"
+    ],
     "BaseSpeed": 96,
+    "Types": [
+        "ゴースト",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "ばけのかわ"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ウッドハンマー",
         "はねる",
@@ -67,21 +75,13 @@
         "おんねん",
         "しっとのほのお"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 105,
+    "HiddenAbility": "なし",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ばけのかわ"
-    ],
-    "Weight": 0.7,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ゴースト",
-        "フェアリー"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 90
 }

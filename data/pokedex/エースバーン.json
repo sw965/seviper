@@ -1,11 +1,19 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 33.0,
+    "AllAbilities": [
+        "もうか",
+        "リベロ"
+    ],
     "BaseSpeed": 119,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "リベロ",
     "Learnset": [
         "かえんボール",
         "フェイント",
@@ -75,22 +83,14 @@
         "ブラストバーン",
         "ほのおのちかい"
     ],
-    "BaseAtk": 116,
-    "BaseSpDef": 75,
+    "HiddenAbility": "リベロ",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "リベロ"
-    ],
-    "Weight": 33.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 116
 }

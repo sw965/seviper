@@ -1,12 +1,21 @@
 {
-    "BaseDef": 38,
+    "BaseSpDef": 36,
+    "Gender": "♂♀両方",
+    "Weight": 5.0,
+    "AllAbilities": [
+        "ものひろい",
+        "ほおぶくろ",
+        "ちからもち"
+    ],
     "BaseSpeed": 57,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 32,
     "NormalAbilities": [
         "ものひろい",
         "ほおぶくろ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ちからもち",
     "Learnset": [
         "にらみつける",
         "どろかけ",
@@ -54,22 +63,13 @@
         "まるくなる",
         "ころがる"
     ],
-    "BaseAtk": 36,
-    "BaseSpDef": 36,
+    "HiddenAbility": "ちからもち",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 38,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ものひろい",
-        "ほおぶくろ",
-        "ちからもち"
-    ],
-    "Weight": 5.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 32,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 38,
+    "BaseAtk": 36
 }

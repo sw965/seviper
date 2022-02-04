@@ -1,11 +1,20 @@
 {
-    "BaseDef": 130,
+    "BaseSpDef": 154,
+    "Gender": "不明",
+    "Weight": 216.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "マルチスケイル"
+    ],
     "BaseSpeed": 110,
+    "Types": [
+        "エスパー",
+        "ひこう"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 5.2,
-    "HiddenAbility": "マルチスケイル",
     "Learnset": [
         "ふきとばし",
         "ウェザーボール",
@@ -75,22 +84,13 @@
         "スケイルショット",
         "ダブルウイング"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 154,
+    "HiddenAbility": "マルチスケイル",
+    "Height": 5.2,
+    "Category": "伝説のポケモン",
     "BaseHP": 106,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "マルチスケイル"
-    ],
-    "Weight": 216.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "エスパー",
-        "ひこう"
-    ]
+    "BaseDef": 130,
+    "BaseAtk": 90
 }

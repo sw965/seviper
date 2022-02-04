@@ -1,11 +1,19 @@
 {
-    "BaseDef": 135,
+    "BaseSpDef": 135,
+    "Gender": "♂♀両方",
+    "Weight": 106.6,
+    "AllAbilities": [
+        "プレッシャー",
+        "おみとおし"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "ゴースト"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "おみとおし",
     "Learnset": [
         "ほのおのパンチ",
         "れいとうパンチ",
@@ -75,21 +83,13 @@
         "はいよるいちげき",
         "ポルターガイスト"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 135,
+    "HiddenAbility": "おみとおし",
+    "Height": 2.2,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "プレッシャー",
-        "おみとおし"
-    ],
-    "Weight": 106.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ゴースト"
-    ]
+    "BaseDef": 135,
+    "BaseAtk": 100
 }

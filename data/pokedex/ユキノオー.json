@@ -1,11 +1,20 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 135.5,
+    "AllAbilities": [
+        "ゆきふらし",
+        "ぼうおん"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ",
+        "こおり"
+    ],
+    "BaseSpAtk": 92,
     "NormalAbilities": [
         "ゆきふらし"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "ぼうおん",
     "Learnset": [
         "れいとうパンチ",
         "こなゆき",
@@ -70,23 +79,14 @@
         "ロケットずつき",
         "グラススライダー"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 85,
+    "HiddenAbility": "ぼうおん",
+    "Height": 2.2,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "怪獣",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆきふらし",
-        "ぼうおん"
-    ],
-    "Weight": 135.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 92,
-    "Types": [
-        "くさ",
-        "こおり"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 92
 }

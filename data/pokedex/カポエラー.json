@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 110,
+    "Gender": "♂のみ",
+    "Weight": 48.0,
+    "AllAbilities": [
+        "いかく",
+        "テクニシャン",
+        "ふくつのこころ"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "いかく",
         "テクニシャン"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "ふくつのこころ",
     "Learnset": [
         "トリプルキック",
         "きあいだめ",
@@ -66,22 +75,13 @@
         "コーチング",
         "トリプルアクセル"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 110,
+    "HiddenAbility": "ふくつのこころ",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "いかく",
-        "テクニシャン",
-        "ふくつのこころ"
-    ],
-    "Weight": 48.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 95
 }

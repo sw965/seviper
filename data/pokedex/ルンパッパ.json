@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 55.0,
+    "AllAbilities": [
+        "すいすい",
+        "あめうけざら",
+        "マイペース"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "みず",
+        "くさ"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "すいすい",
         "あめうけざら"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "マイペース",
     "Learnset": [
         "おどろかす",
         "なきごえ",
@@ -80,24 +90,14 @@
         "くすぐる",
         "グラススライダー"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 100,
+    "HiddenAbility": "マイペース",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中1",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "あめうけざら",
-        "マイペース"
-    ],
-    "Weight": 55.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "みず",
-        "くさ"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 70
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 48,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 7.0,
+    "AllAbilities": [
+        "しぜんかいふく",
+        "おみとおし",
+        "しゅうかく"
+    ],
     "BaseSpeed": 38,
+    "Types": [
+        "ゴースト",
+        "くさ"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "しぜんかいふく",
         "おみとおし"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "しゅうかく",
     "Learnset": [
         "たいあたり",
         "おどろかす",
@@ -64,24 +74,14 @@
         "はいよるいちげき",
         "ポルターガイスト"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 60,
+    "HiddenAbility": "しゅうかく",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 43,
     "EggGroups": [
         "植物",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しぜんかいふく",
-        "おみとおし",
-        "しゅうかく"
-    ],
-    "Weight": 7.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ゴースト",
-        "くさ"
-    ]
+    "BaseDef": 48,
+    "BaseAtk": 70
 }

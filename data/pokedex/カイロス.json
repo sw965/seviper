@@ -1,12 +1,21 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 55.0,
+    "AllAbilities": [
+        "かいりきバサミ",
+        "かたやぶり",
+        "じしんかじょう"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "むし"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "かいりきバサミ",
         "かたやぶり"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "じしんかじょう",
     "Learnset": [
         "はさむ",
         "かたくなる",
@@ -64,22 +73,13 @@
         "じたばた",
         "フェイント"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 70,
+    "HiddenAbility": "じしんかじょう",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かいりきバサミ",
-        "かたやぶり",
-        "じしんかじょう"
-    ],
-    "Weight": 55.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "むし"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 125
 }

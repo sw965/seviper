@@ -1,11 +1,19 @@
 {
-    "BaseDef": 120,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 195.0,
+    "AllAbilities": [
+        "ちょすい"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "ほのお",
+        "みず"
+    ],
+    "BaseSpAtk": 130,
     "NormalAbilities": [
         "ちょすい"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ほのおのうず",
         "みずでっぽう",
@@ -69,21 +77,13 @@
         "ボディプレス",
         "ねっさのだいち"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 1.7,
+    "Category": "幻のポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ちょすい"
-    ],
-    "Weight": 195.0,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 130,
-    "Types": [
-        "ほのお",
-        "みず"
-    ]
+    "BaseDef": 120,
+    "BaseAtk": 110
 }

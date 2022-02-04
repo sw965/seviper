@@ -1,11 +1,20 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 42.0,
+    "AllAbilities": [
+        "りんぷん",
+        "こおりのりんぷん"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "こおり",
+        "むし"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "りんぷん"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "こおりのりんぷん",
     "Learnset": [
         "こごえるかぜ",
         "こなゆき",
@@ -59,22 +68,13 @@
         "トリプルアクセル",
         "ダブルウイング"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 90,
+    "HiddenAbility": "こおりのりんぷん",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "りんぷん",
-        "こおりのりんぷん"
-    ],
-    "Weight": 42.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "こおり",
-        "むし"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 65
 }

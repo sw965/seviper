@@ -1,11 +1,20 @@
 {
-    "BaseDef": 108,
+    "BaseSpDef": 108,
+    "Gender": "♂♀両方",
+    "Weight": 108.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "すりぬけ"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "ゴースト",
+        "あく"
+    ],
+    "BaseSpAtk": 92,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "すりぬけ",
     "Learnset": [
         "あやしいひかり",
         "ナイトヘッド",
@@ -59,22 +68,13 @@
         "うっぷんばらし",
         "ポルターガイスト"
     ],
-    "BaseAtk": 92,
-    "BaseSpDef": 108,
+    "HiddenAbility": "すりぬけ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "プレッシャー",
-        "すりぬけ"
-    ],
-    "Weight": 108.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 92,
-    "Types": [
-        "ゴースト",
-        "あく"
-    ]
+    "BaseDef": 108,
+    "BaseAtk": 92
 }

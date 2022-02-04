@@ -1,32 +1,32 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 20,
+    "Gender": "♂♀両方",
+    "Weight": 2.9,
+    "AllAbilities": [
+        "りんぷん",
+        "にげあし"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "むし"
+    ],
+    "BaseSpAtk": 20,
     "NormalAbilities": [
         "りんぷん"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "にげあし",
     "Learnset": [
         "たいあたり",
         "いとをはく",
         "むしくい",
         "エレキネット"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 20,
+    "HiddenAbility": "にげあし",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "りんぷん",
-        "にげあし"
-    ],
-    "Weight": 2.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 20,
-    "Types": [
-        "むし"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 30
 }

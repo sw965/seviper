@@ -1,11 +1,20 @@
 {
-    "BaseDef": 77,
+    "BaseSpDef": 87,
+    "Gender": "♂♀両方",
+    "Weight": 23.8,
+    "AllAbilities": [
+        "きゅうばん",
+        "よびみず"
+    ],
     "BaseSpeed": 23,
+    "Types": [
+        "いわ",
+        "くさ"
+    ],
+    "BaseSpAtk": 61,
     "NormalAbilities": [
         "きゅうばん"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "よびみず",
     "Learnset": [
         "おどろかす",
         "まきつく",
@@ -53,22 +62,13 @@
         "くすぐる",
         "メテオビーム"
     ],
-    "BaseAtk": 41,
-    "BaseSpDef": 87,
+    "HiddenAbility": "よびみず",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 66,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "きゅうばん",
-        "よびみず"
-    ],
-    "Weight": 23.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 61,
-    "Types": [
-        "いわ",
-        "くさ"
-    ]
+    "BaseDef": 77,
+    "BaseAtk": 41
 }

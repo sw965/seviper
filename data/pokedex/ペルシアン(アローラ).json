@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 33.0,
+    "AllAbilities": [
+        "ファーコート",
+        "テクニシャン",
+        "びびり"
+    ],
     "BaseSpeed": 115,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "ファーコート",
         "テクニシャン"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "びびり",
     "Learnset": [
         "パワージェム",
         "さきおくり",
@@ -73,22 +82,13 @@
         "しっとのほのお",
         "うっぷんばらし"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 65,
+    "HiddenAbility": "びびり",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ファーコート",
-        "テクニシャン",
-        "びびり"
-    ],
-    "Weight": 33.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 60
 }

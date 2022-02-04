@@ -1,12 +1,22 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 120,
+    "Gender": "♂♀両方",
+    "Weight": 40.8,
+    "AllAbilities": [
+        "むしのしらせ",
+        "おみとおし",
+        "テレパシー"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "むし",
+        "エスパー"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "むしのしらせ",
         "おみとおし"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "リフレクター",
         "ひかりのかべ",
@@ -66,23 +76,13 @@
         "ねばねばネット",
         "ワイドフォース"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 120,
+    "HiddenAbility": "テレパシー",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "虫"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "むしのしらせ",
-        "おみとおし",
-        "テレパシー"
-    ],
-    "Weight": 40.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "むし",
-        "エスパー"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 45
 }

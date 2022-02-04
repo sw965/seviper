@@ -1,11 +1,19 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 5.8,
+    "AllAbilities": [
+        "ようりょくそ",
+        "いやしのこころ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "ようりょくそ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "いやしのこころ",
     "Learnset": [
         "はなふぶき",
         "メガドレイン",
@@ -67,21 +75,13 @@
         "ちからをすいとる",
         "グラススライダー"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 100,
+    "HiddenAbility": "いやしのこころ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ようりょくそ",
-        "いやしのこころ"
-    ],
-    "Weight": 5.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 80
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 139.0,
+    "AllAbilities": [
+        "さめはだ",
+        "ちからずく",
+        "かたやぶり"
+    ],
     "BaseSpeed": 48,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "さめはだ",
         "ちからずく"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "かたやぶり",
     "Learnset": [
         "にらみつける",
         "ひっかく",
@@ -73,23 +82,14 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 90,
+    "HiddenAbility": "かたやぶり",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 77,
     "EggGroups": [
         "ドラゴン",
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "さめはだ",
-        "ちからずく",
-        "かたやぶり"
-    ],
-    "Weight": 139.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 120
 }

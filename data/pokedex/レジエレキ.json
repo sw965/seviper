@@ -1,11 +1,18 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "不明",
+    "Weight": 145.0,
+    "AllAbilities": [
+        "トランジスタ"
+    ],
     "BaseSpeed": 200,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "トランジスタ"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "でんきショック",
         "こうそくスピン",
@@ -50,20 +57,13 @@
         "ワイルドボルト",
         "ライジングボルト"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 1.2,
+    "Category": "準伝説ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "トランジスタ"
-    ],
-    "Weight": 145.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 100
 }

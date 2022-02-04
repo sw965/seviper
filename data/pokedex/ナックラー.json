@@ -1,12 +1,21 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 15.0,
+    "AllAbilities": [
+        "かいりきバサミ",
+        "ありじごく",
+        "ちからずく"
+    ],
     "BaseSpeed": 10,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "かいりきバサミ",
         "ありじごく"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "すなかけ",
         "おどろかす",
@@ -49,23 +58,14 @@
         "であいがしら",
         "ねっさのだいち"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 45,
+    "HiddenAbility": "ちからずく",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "虫",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かいりきバサミ",
-        "ありじごく",
-        "ちからずく"
-    ],
-    "Weight": 15.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 100
 }

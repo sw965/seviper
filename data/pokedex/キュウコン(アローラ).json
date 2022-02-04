@@ -1,11 +1,20 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 19.9,
+    "AllAbilities": [
+        "ゆきがくれ",
+        "ゆきふらし"
+    ],
     "BaseSpeed": 109,
+    "Types": [
+        "こおり",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 81,
     "NormalAbilities": [
         "ゆきがくれ"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "ゆきふらし",
     "Learnset": [
         "マジカルシャイン",
         "ふういん",
@@ -72,22 +81,13 @@
         "フリーズドライ",
         "トリプルアクセル"
     ],
-    "BaseAtk": 67,
-    "BaseSpDef": 100,
+    "HiddenAbility": "ゆきふらし",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 73,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ゆきがくれ",
-        "ゆきふらし"
-    ],
-    "Weight": 19.9,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 81,
-    "Types": [
-        "こおり",
-        "フェアリー"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 67
 }

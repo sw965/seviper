@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 35.5,
+    "AllAbilities": [
+        "せいしんりょく",
+        "さいせいりょく",
+        "すてみ"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "せいしんりょく",
         "さいせいりょく"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "すてみ",
     "Learnset": [
         "きしかいせい",
         "はたく",
@@ -74,23 +83,14 @@
         "フェイント",
         "コーチング"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 60,
+    "HiddenAbility": "すてみ",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "さいせいりょく",
-        "すてみ"
-    ],
-    "Weight": 35.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 125
 }

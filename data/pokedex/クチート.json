@@ -1,12 +1,22 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 11.5,
+    "AllAbilities": [
+        "かいりきバサミ",
+        "いかく",
+        "ちからずく"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "はがね",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "かいりきバサミ",
         "いかく"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "なきごえ",
         "おどろかす",
@@ -81,24 +91,14 @@
         "グロウパンチ",
         "てっていこうせん"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 55,
+    "HiddenAbility": "ちからずく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "かいりきバサミ",
-        "いかく",
-        "ちからずく"
-    ],
-    "Weight": 11.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "はがね",
-        "フェアリー"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 85
 }

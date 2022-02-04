@@ -1,11 +1,18 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 115,
+    "Gender": "不明",
+    "Weight": 110.0,
+    "AllAbilities": [
+        "ふとうのけん"
+    ],
     "BaseSpeed": 138,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ふとうのけん"
     ],
-    "Height": 2.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "せいなるつるぎ",
         "ファストガード",
@@ -61,20 +68,13 @@
         "サイコファング",
         "てっていこうせん"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 115,
+    "HiddenAbility": "なし",
+    "Height": 2.8,
+    "Category": "伝説のポケモン",
     "BaseHP": 92,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふとうのけん"
-    ],
-    "Weight": 110.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 130
 }

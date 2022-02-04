@@ -1,12 +1,21 @@
 {
-    "BaseDef": 48,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 7.5,
+    "AllAbilities": [
+        "メロメロボディ",
+        "マジックガード",
+        "フレンドガード"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "メロメロボディ",
         "マジックガード"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "フレンドガード",
     "Learnset": [
         "チャームボイス",
         "はたく",
@@ -100,22 +109,13 @@
         "ミストバースト",
         "ダブルウイング"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 65,
+    "HiddenAbility": "フレンドガード",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "マジックガード",
-        "フレンドガード"
-    ],
-    "Weight": 7.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 48,
+    "BaseAtk": 45
 }

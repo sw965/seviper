@@ -1,11 +1,19 @@
 {
-    "BaseDef": 15,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 2.0,
+    "AllAbilities": [
+        "せいでんき",
+        "ひらいしん"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "せいでんき"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "ひらいしん",
     "Learnset": [
         "でんきショック",
         "しっぽをふる",
@@ -56,21 +64,13 @@
         "チャームボイス",
         "ボルテッカー"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 35,
+    "HiddenAbility": "ひらいしん",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 20,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいでんき",
-        "ひらいしん"
-    ],
-    "Weight": 2.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 15,
+    "BaseAtk": 40
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 135,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 212.0,
+    "AllAbilities": [
+        "シェルアーマー"
+    ],
     "BaseSpeed": 36,
+    "Types": [
+        "ほのお",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 91,
     "NormalAbilities": [
         "シェルアーマー"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "スモッグ",
@@ -73,22 +81,14 @@
         "ねっさのだいち",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 78,
-    "BaseSpDef": 85,
+    "HiddenAbility": "なし",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シェルアーマー"
-    ],
-    "Weight": 212.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 91,
-    "Types": [
-        "ほのお",
-        "ドラゴン"
-    ]
+    "BaseDef": 135,
+    "BaseAtk": 78
 }

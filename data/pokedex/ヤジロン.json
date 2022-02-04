@@ -1,11 +1,19 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 70,
+    "Gender": "不明",
+    "Weight": 21.5,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "じめん",
+        "エスパー"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かたくなる",
         "どろかけ",
@@ -67,21 +75,13 @@
         "ワイドフォース",
         "ねっさのだいち"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 70,
+    "HiddenAbility": "なし",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 21.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "じめん",
-        "エスパー"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 40
 }

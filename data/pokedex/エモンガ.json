@@ -1,11 +1,20 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 5.0,
+    "AllAbilities": [
+        "せいでんき",
+        "でんきエンジン"
+    ],
     "BaseSpeed": 103,
+    "Types": [
+        "でんき",
+        "ひこう"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "せいでんき"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "でんきエンジン",
     "Learnset": [
         "ほっぺすりすり",
         "しっぽをふる",
@@ -58,22 +67,13 @@
         "ライジングボルト",
         "ダブルウイング"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 60,
+    "HiddenAbility": "でんきエンジン",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいでんき",
-        "でんきエンジン"
-    ],
-    "Weight": 5.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "でんき",
-        "ひこう"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 75
 }

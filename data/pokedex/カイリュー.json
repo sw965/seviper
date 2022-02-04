@@ -1,11 +1,20 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 210.0,
+    "AllAbilities": [
+        "せいしんりょく",
+        "マルチスケイル"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ドラゴン",
+        "ひこう"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "せいしんりょく"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "マルチスケイル",
     "Learnset": [
         "ぼうふう",
         "ほのおのパンチ",
@@ -88,23 +97,14 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 134,
-    "BaseSpDef": 100,
+    "HiddenAbility": "マルチスケイル",
+    "Height": 2.2,
+    "Category": "通常ポケモン",
     "BaseHP": 91,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "マルチスケイル"
-    ],
-    "Weight": 210.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ドラゴン",
-        "ひこう"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 134
 }

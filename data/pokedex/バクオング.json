@@ -1,11 +1,19 @@
 {
-    "BaseDef": 63,
+    "BaseSpDef": 73,
+    "Gender": "♂♀両方",
+    "Weight": 84.0,
+    "AllAbilities": [
+        "ぼうおん",
+        "きもったま"
+    ],
     "BaseSpeed": 68,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 91,
     "NormalAbilities": [
         "ぼうおん"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "かみくだく",
         "こおりのキバ",
@@ -79,22 +87,14 @@
         "チャームボイス",
         "だいちのはどう"
     ],
-    "BaseAtk": 91,
-    "BaseSpDef": 73,
+    "HiddenAbility": "きもったま",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 104,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうおん",
-        "きもったま"
-    ],
-    "Weight": 84.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 91,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 63,
+    "BaseAtk": 91
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 130,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 25.5,
+    "AllAbilities": [
+        "リーフガード",
+        "ようりょくそ"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "リーフガード"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "ようりょくそ",
     "Learnset": [
         "はっぱカッター",
         "たいあたり",
@@ -73,21 +81,13 @@
         "くすぐる",
         "グラススライダー"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 65,
+    "HiddenAbility": "ようりょくそ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "リーフガード",
-        "ようりょくそ"
-    ],
-    "Weight": 25.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 130,
+    "BaseAtk": 110
 }

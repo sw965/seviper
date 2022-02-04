@@ -1,11 +1,19 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 82,
+    "Gender": "♂♀両方",
+    "Weight": 117.0,
+    "AllAbilities": [
+        "ふくつのこころ",
+        "きもったま"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 68,
     "NormalAbilities": [
         "ふくつのこころ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "きもったま",
     "Learnset": [
         "てっぺき",
         "であいがしら",
@@ -63,22 +71,14 @@
         "コーチング",
         "ダブルウイング"
     ],
-    "BaseAtk": 135,
-    "BaseSpDef": 82,
+    "HiddenAbility": "きもったま",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 62,
     "EggGroups": [
         "飛行",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくつのこころ",
-        "きもったま"
-    ],
-    "Weight": 117.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 68,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 135
 }

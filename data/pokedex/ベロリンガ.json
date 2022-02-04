@@ -1,12 +1,21 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 65.5,
+    "AllAbilities": [
+        "マイペース",
+        "どんかん",
+        "ノーてんき"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "マイペース",
         "どんかん"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "ノーてんき",
     "Learnset": [
         "したでなめる",
         "まるくなる",
@@ -78,22 +87,13 @@
         "アイアンローラー",
         "だいちのはどう"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 75,
+    "HiddenAbility": "ノーてんき",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "マイペース",
-        "どんかん",
-        "ノーてんき"
-    ],
-    "Weight": 65.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 55
 }

@@ -1,21 +1,19 @@
-import copy
 import json
 import boa
+import path
 import base_data
-import poketetu_pokedex as pt_pokedex
-import poketetu_learnset as pt_learnset
-
-assert all([base_data.ALL_POKE_NAMES.count(poke_name) == 1 for poke_name in base_data.ALL_POKE_NAMES])
+import poketetu.pokedex as pt_pokedex
+import poketetu.learnset as pt_learnset
 
 def main():
     for poke_name in base_data.ALL_POKE_NAMES:
         print(poke_name)
-        poke_data = pt_pokedex.parse_poke_data(base_data.POKETETU_POKEDEX_PATH + poke_name + ".txt")
-        poketetu_learnset = boa.read_txt(base_data.POKETETU_LEARNSET_PATH + poke_name + ".txt")
-        learnset = pt_learnset.parse_learnset(poketetu_learnset)
+        poke_data = pt_pokedex.parse_poke_data(path.POKETETU_POKEDEX + poke_name + ".txt")
+        poketetu_learnset = boa.read_txt(path.POKETETU_LEARNSET + poke_name + ".txt")
+        learnset = pt_learnset.parse(poketetu_learnset)
         poke_data["Learnset"] = learnset
         json_data = json.dumps(poke_data, ensure_ascii=False, indent=4)
-        boa.write_txt(base_data.POKEDEX_PATH + poke_name + ".json", json_data)
+        boa.write_txt(path.POKEDEX + poke_name + ".json", json_data)
 
 if __name__ == "__main__":
     main()

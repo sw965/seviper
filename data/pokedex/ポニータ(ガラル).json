@@ -1,12 +1,21 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 24.0,
+    "AllAbilities": [
+        "にげあし",
+        "パステルベール",
+        "きけんよち"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "にげあし",
         "パステルベール"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "きけんよち",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -54,22 +63,13 @@
         "あさのひざし",
         "ワイドフォース"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 65,
+    "HiddenAbility": "きけんよち",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "パステルベール",
-        "きけんよち"
-    ],
-    "Weight": 24.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 85
 }

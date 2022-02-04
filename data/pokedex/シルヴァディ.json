@@ -1,11 +1,18 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 95,
+    "Gender": "不明",
+    "Weight": 100.5,
+    "AllAbilities": [
+        "ARシステム"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "ARシステム"
     ],
-    "Height": 2.3,
-    "HiddenAbility": "なし",
     "Learnset": [
         "マルチアタック",
         "ふういん",
@@ -74,20 +81,13 @@
         "くさのちかい",
         "てっていこうせん"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 95,
+    "HiddenAbility": "なし",
+    "Height": 2.3,
+    "Category": "準伝説ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ARシステム"
-    ],
-    "Weight": 100.5,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 95
 }

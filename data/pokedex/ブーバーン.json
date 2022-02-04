@@ -1,11 +1,19 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 68.0,
+    "AllAbilities": [
+        "ほのおのからだ",
+        "やるき"
+    ],
     "BaseSpeed": 83,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "ほのおのからだ"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "やるき",
     "Learnset": [
         "スモッグ",
         "にらみつける",
@@ -71,21 +79,13 @@
         "しっとのほのお",
         "ねっさのだいち"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 95,
+    "HiddenAbility": "やるき",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ほのおのからだ",
-        "やるき"
-    ],
-    "Weight": 68.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 95
 }

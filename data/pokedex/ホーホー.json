@@ -1,12 +1,22 @@
 {
-    "BaseDef": 30,
+    "BaseSpDef": 56,
+    "Gender": "♂♀両方",
+    "Weight": 21.2,
+    "AllAbilities": [
+        "ふみん",
+        "するどいめ",
+        "いろめがね"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ノーマル",
+        "ひこう"
+    ],
+    "BaseSpAtk": 36,
     "NormalAbilities": [
         "ふみん",
         "するどいめ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "いろめがね",
     "Learnset": [
         "なきごえ",
         "つつく",
@@ -60,23 +70,13 @@
         "きりばらい",
         "ダブルウイング"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 56,
+    "HiddenAbility": "いろめがね",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふみん",
-        "するどいめ",
-        "いろめがね"
-    ],
-    "Weight": 21.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 36,
-    "Types": [
-        "ノーマル",
-        "ひこう"
-    ]
+    "BaseDef": 30,
+    "BaseAtk": 30
 }

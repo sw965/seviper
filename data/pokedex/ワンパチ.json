@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 13.5,
+    "AllAbilities": [
+        "たまひろい",
+        "びびり"
+    ],
     "BaseSpeed": 26,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "たまひろい"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "びびり",
     "Learnset": [
         "たいあたり",
         "しっぽをふる",
@@ -46,21 +54,13 @@
         "ニトロチャージ",
         "ライジングボルト"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 50,
+    "HiddenAbility": "びびり",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 59,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "たまひろい",
-        "びびり"
-    ],
-    "Weight": 13.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 45
 }

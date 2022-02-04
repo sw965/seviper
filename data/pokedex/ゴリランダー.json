@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 90.0,
+    "AllAbilities": [
+        "しんりょく",
+        "グラスメイカー"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "グラスメイカー",
     "Learnset": [
         "ドラムアタック",
         "ダブルアタック",
@@ -84,22 +92,14 @@
         "ハードプラント",
         "くさのちかい"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 70,
+    "HiddenAbility": "グラスメイカー",
+    "Height": 2.1,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "陸上",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "グラスメイカー"
-    ],
-    "Weight": 90.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 125
 }

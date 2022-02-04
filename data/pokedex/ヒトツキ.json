@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 37,
+    "Gender": "♂♀両方",
+    "Weight": 2.0,
+    "AllAbilities": [
+        "ノーガード"
+    ],
     "BaseSpeed": 28,
+    "Types": [
+        "はがね",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "ノーガード"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "れんぞくぎり",
@@ -49,21 +57,13 @@
         "ワイドガード",
         "てっていこうせん"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 37,
+    "HiddenAbility": "なし",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ノーガード"
-    ],
-    "Weight": 2.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "はがね",
-        "ゴースト"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 80
 }

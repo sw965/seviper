@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 73,
+    "Gender": "♀のみ",
+    "Weight": 4.8,
+    "AllAbilities": [
+        "いやしのこころ",
+        "きけんよち",
+        "マジックミラー"
+    ],
     "BaseSpeed": 49,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 86,
     "NormalAbilities": [
         "いやしのこころ",
         "きけんよち"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "マジックミラー",
     "Learnset": [
         "ぶんまわす",
         "ねんりき",
@@ -51,22 +60,13 @@
         "アロマミスト",
         "ワイドフォース"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 73,
+    "HiddenAbility": "マジックミラー",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 57,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "いやしのこころ",
-        "きけんよち",
-        "マジックミラー"
-    ],
-    "Weight": 4.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 86,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 40
 }

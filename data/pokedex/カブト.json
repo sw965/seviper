@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 11.5,
+    "AllAbilities": [
+        "すいすい",
+        "カブトアーマー",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "いわ",
+        "みず"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "すいすい",
         "カブトアーマー"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "かたくなる",
         "すいとる",
@@ -62,24 +72,14 @@
         "はたきおとす",
         "メテオビーム"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 45,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 30,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "カブトアーマー",
-        "くだけるよろい"
-    ],
-    "Weight": 11.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "いわ",
-        "みず"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 80
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 45.5,
+    "AllAbilities": [
+        "クリアボディ",
+        "ヘドロえき",
+        "あめうけざら"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "みず",
+        "どく"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "クリアボディ",
         "ヘドロえき"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "どくばり",
         "みずでっぽう",
@@ -63,23 +73,13 @@
         "つぼをつく",
         "アクアリング"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 100,
+    "HiddenAbility": "あめうけざら",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "クリアボディ",
-        "ヘドロえき",
-        "あめうけざら"
-    ],
-    "Weight": 45.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "みず",
-        "どく"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 40
 }

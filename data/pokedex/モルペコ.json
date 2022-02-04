@@ -1,11 +1,19 @@
 {
-    "BaseDef": 58,
+    "BaseSpDef": 58,
+    "Gender": "♂♀両方",
+    "Weight": 3.0,
+    "AllAbilities": [
+        "はらぺこスイッチ"
+    ],
     "BaseSpeed": 97,
+    "Types": [
+        "でんき",
+        "あく"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "はらぺこスイッチ"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "なし",
     "Learnset": [
         "でんきショック",
         "しっぽをふる",
@@ -72,22 +80,14 @@
         "ライジングボルト",
         "うっぷんばらし"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 58,
+    "HiddenAbility": "なし",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 58,
     "EggGroups": [
         "陸上",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はらぺこスイッチ"
-    ],
-    "Weight": 3.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "でんき",
-        "あく"
-    ]
+    "BaseDef": 58,
+    "BaseAtk": 95
 }

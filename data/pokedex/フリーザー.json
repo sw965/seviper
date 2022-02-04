@@ -1,11 +1,20 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 125,
+    "Gender": "不明",
+    "Weight": 55.4,
+    "AllAbilities": [
+        "プレッシャー",
+        "ゆきがくれ"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "こおり",
+        "ひこう"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "ゆきがくれ",
     "Learnset": [
         "かぜおこし",
         "しろいきり",
@@ -49,22 +58,13 @@
         "トリプルアクセル",
         "ダブルウイング"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 125,
+    "HiddenAbility": "ゆきがくれ",
+    "Height": 1.7,
+    "Category": "準伝説ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "ゆきがくれ"
-    ],
-    "Weight": 55.4,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "こおり",
-        "ひこう"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 85
 }

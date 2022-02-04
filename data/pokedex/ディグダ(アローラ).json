@@ -1,12 +1,22 @@
 {
-    "BaseDef": 30,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 1.0,
+    "AllAbilities": [
+        "すながくれ",
+        "カーリーヘアー",
+        "すなのちから"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "じめん",
+        "はがね"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "すながくれ",
         "カーリーヘアー"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "すなのちから",
     "Learnset": [
         "すなかけ",
         "メタルクロー",
@@ -58,23 +68,13 @@
         "ねっさのだいち",
         "てっていこうせん"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 45,
+    "HiddenAbility": "すなのちから",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 10,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すながくれ",
-        "カーリーヘアー",
-        "すなのちから"
-    ],
-    "Weight": 1.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "じめん",
-        "はがね"
-    ]
+    "BaseDef": 30,
+    "BaseAtk": 55
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 82,
+    "BaseSpDef": 82,
+    "Gender": "♂♀両方",
+    "Weight": 107.3,
+    "AllAbilities": [
+        "あくしゅう",
+        "くだけるよろい",
+        "ゆうばく"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "どく"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "あくしゅう",
         "くだけるよろい"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "ゆうばく",
     "Learnset": [
         "はたく",
         "どくガス",
@@ -68,22 +77,13 @@
         "ボディパージ",
         "ふしょくガス"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 82,
+    "HiddenAbility": "ゆうばく",
+    "Height": 1.9,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "あくしゅう",
-        "くだけるよろい",
-        "ゆうばく"
-    ],
-    "Weight": 107.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "どく"
-    ]
+    "BaseDef": 82,
+    "BaseAtk": 95
 }

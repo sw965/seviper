@@ -1,11 +1,20 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 202.0,
+    "AllAbilities": [
+        "すなおこし",
+        "きんちょうかん"
+    ],
     "BaseSpeed": 61,
+    "Types": [
+        "いわ",
+        "あく"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "すなおこし"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "きんちょうかん",
     "Learnset": [
         "かみなりのキバ",
         "こおりのキバ",
@@ -94,22 +103,13 @@
         "げんしのちから",
         "うっぷんばらし"
     ],
-    "BaseAtk": 134,
-    "BaseSpDef": 100,
+    "HiddenAbility": "きんちょうかん",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すなおこし",
-        "きんちょうかん"
-    ],
-    "Weight": 202.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "いわ",
-        "あく"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 134
 }

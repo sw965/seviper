@@ -1,12 +1,21 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 23.3,
+    "AllAbilities": [
+        "よちむ",
+        "シンクロ",
+        "テレパシー"
+    ],
     "BaseSpeed": 24,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 67,
     "NormalAbilities": [
         "よちむ",
         "シンクロ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "まるくなる",
         "アシストパワー",
@@ -57,22 +66,13 @@
         "いやしのねがい",
         "ワイドフォース"
     ],
-    "BaseAtk": 25,
-    "BaseSpDef": 55,
+    "HiddenAbility": "テレパシー",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 76,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "よちむ",
-        "シンクロ",
-        "テレパシー"
-    ],
-    "Weight": 23.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 67,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 25
 }

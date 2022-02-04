@@ -1,12 +1,22 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 28.0,
+    "AllAbilities": [
+        "ようりょくそ",
+        "はやおき",
+        "わるいてぐせ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ",
+        "あく"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "ようりょくそ",
         "はやおき"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "わるいてぐせ",
     "Learnset": [
         "はっぱカッター",
         "エアカッター",
@@ -79,24 +89,14 @@
         "グラススライダー",
         "うっぷんばらし"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 40,
+    "HiddenAbility": "わるいてぐせ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "陸上",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ようりょくそ",
-        "はやおき",
-        "わるいてぐせ"
-    ],
-    "Weight": 28.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "くさ",
-        "あく"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 70
 }

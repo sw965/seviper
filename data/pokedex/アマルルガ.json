@@ -1,11 +1,20 @@
 {
-    "BaseDef": 72,
+    "BaseSpDef": 92,
+    "Gender": "♂♀両方",
+    "Weight": 225.0,
+    "AllAbilities": [
+        "フリーズスキン",
+        "ゆきふらし"
+    ],
     "BaseSpeed": 58,
+    "Types": [
+        "いわ",
+        "こおり"
+    ],
+    "BaseSpAtk": 99,
     "NormalAbilities": [
         "フリーズスキン"
     ],
-    "Height": 2.7,
-    "HiddenAbility": "ゆきふらし",
     "Learnset": [
         "なきごえ",
         "こなゆき",
@@ -69,22 +78,13 @@
         "オーロラベール",
         "メテオビーム"
     ],
-    "BaseAtk": 77,
-    "BaseSpDef": 92,
+    "HiddenAbility": "ゆきふらし",
+    "Height": 2.7,
+    "Category": "通常ポケモン",
     "BaseHP": 123,
     "EggGroups": [
         "怪獣"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "フリーズスキン",
-        "ゆきふらし"
-    ],
-    "Weight": 225.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 99,
-    "Types": [
-        "いわ",
-        "こおり"
-    ]
+    "BaseDef": 72,
+    "BaseAtk": 77
 }

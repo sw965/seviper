@@ -1,12 +1,21 @@
 {
-    "BaseDef": 76,
+    "BaseSpDef": 81,
+    "Gender": "♂のみ",
+    "Weight": 8.5,
+    "AllAbilities": [
+        "するどいめ",
+        "すりぬけ",
+        "いたずらごころ"
+    ],
     "BaseSpeed": 104,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 83,
     "NormalAbilities": [
         "するどいめ",
         "すりぬけ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "いたずらごころ",
     "Learnset": [
         "くろいまなざし",
         "ひっかく",
@@ -69,22 +78,13 @@
         "くすぐる",
         "ワイドフォース"
     ],
-    "BaseAtk": 48,
-    "BaseSpDef": 81,
+    "HiddenAbility": "いたずらごころ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 74,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "するどいめ",
-        "すりぬけ",
-        "いたずらごころ"
-    ],
-    "Weight": 8.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 83,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 76,
+    "BaseAtk": 48
 }

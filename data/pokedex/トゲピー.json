@@ -1,12 +1,21 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 1.5,
+    "AllAbilities": [
+        "はりきり",
+        "てんのめぐみ",
+        "きょううん"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "はりきり",
         "てんのめぐみ"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "きょううん",
     "Learnset": [
         "なきごえ",
         "はたく",
@@ -71,22 +80,13 @@
         "つばめがえし",
         "サイコシフト"
     ],
-    "BaseAtk": 20,
-    "BaseSpDef": 65,
+    "HiddenAbility": "きょううん",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 35,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はりきり",
-        "てんのめぐみ",
-        "きょううん"
-    ],
-    "Weight": 1.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 20
 }

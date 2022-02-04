@@ -1,11 +1,18 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 135,
+    "Gender": "不明",
+    "Weight": 148.0,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "なし",
     "Learnset": [
         "こおりのつぶて",
         "しめつける",
@@ -48,20 +55,13 @@
         "ラスターカノン",
         "トリプルアクセル"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 135,
+    "HiddenAbility": "なし",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 148.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 50
 }

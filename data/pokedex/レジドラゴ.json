@@ -1,11 +1,18 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "不明",
+    "Weight": 200.0,
+    "AllAbilities": [
+        "りゅうのあぎと"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "りゅうのあぎと"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たつまき",
         "はさむ",
@@ -44,20 +51,13 @@
         "スケイルショット",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 2.1,
+    "Category": "準伝説ポケモン",
     "BaseHP": 200,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "りゅうのあぎと"
-    ],
-    "Weight": 200.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 100
 }

@@ -1,29 +1,29 @@
 {
-    "BaseDef": 48,
-    "BaseSpeed": 48,
-    "NormalAbilities": [
-        "じゅうなん"
-    ],
-    "Height": 0.3,
-    "HiddenAbility": "かわりもの",
-    "Learnset": [
-        "へんしん"
-    ],
-    "BaseAtk": 48,
     "BaseSpDef": 48,
-    "BaseHP": 48,
-    "EggGroups": [
-        "メタモン"
-    ],
     "Gender": "不明",
+    "Weight": 4.0,
     "AllAbilities": [
         "じゅうなん",
         "かわりもの"
     ],
-    "Weight": 4.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 48,
+    "BaseSpeed": 48,
     "Types": [
         "ノーマル"
-    ]
+    ],
+    "BaseSpAtk": 48,
+    "NormalAbilities": [
+        "じゅうなん"
+    ],
+    "Learnset": [
+        "へんしん"
+    ],
+    "HiddenAbility": "かわりもの",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
+    "BaseHP": 48,
+    "EggGroups": [
+        "メタモン"
+    ],
+    "BaseDef": 48,
+    "BaseAtk": 48
 }

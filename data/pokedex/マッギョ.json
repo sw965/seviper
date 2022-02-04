@@ -1,12 +1,22 @@
 {
-    "BaseDef": 84,
+    "BaseSpDef": 99,
+    "Gender": "♂♀両方",
+    "Weight": 11.0,
+    "AllAbilities": [
+        "せいでんき",
+        "じゅうなん",
+        "すながくれ"
+    ],
     "BaseSpeed": 32,
+    "Types": [
+        "じめん",
+        "でんき"
+    ],
+    "BaseSpAtk": 81,
     "NormalAbilities": [
         "せいでんき",
         "じゅうなん"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "すながくれ",
     "Learnset": [
         "たいあたり",
         "みずでっぽう",
@@ -63,24 +73,14 @@
         "ミラータイプ",
         "うっぷんばらし"
     ],
-    "BaseAtk": 66,
-    "BaseSpDef": 99,
+    "HiddenAbility": "すながくれ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 109,
     "EggGroups": [
         "水中1",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいでんき",
-        "じゅうなん",
-        "すながくれ"
-    ],
-    "Weight": 11.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 81,
-    "Types": [
-        "じめん",
-        "でんき"
-    ]
+    "BaseDef": 84,
+    "BaseAtk": 66
 }

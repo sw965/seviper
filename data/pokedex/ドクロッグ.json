@@ -1,12 +1,22 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 44.4,
+    "AllAbilities": [
+        "きけんよち",
+        "かんそうはだ",
+        "どくしゅ"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "どく",
+        "かくとう"
+    ],
+    "BaseSpAtk": 86,
     "NormalAbilities": [
         "きけんよち",
         "かんそうはだ"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "どくしゅ",
     "Learnset": [
         "おどろかす",
         "どろかけ",
@@ -86,23 +96,13 @@
         "ふしょくガス",
         "コーチング"
     ],
-    "BaseAtk": 106,
-    "BaseSpDef": 65,
+    "HiddenAbility": "どくしゅ",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 83,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "きけんよち",
-        "かんそうはだ",
-        "どくしゅ"
-    ],
-    "Weight": 44.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 86,
-    "Types": [
-        "どく",
-        "かくとう"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 106
 }

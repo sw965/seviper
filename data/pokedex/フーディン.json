@@ -1,12 +1,21 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 95,
+    "Gender": "♂♀両方",
+    "Weight": 48.0,
+    "AllAbilities": [
+        "シンクロ",
+        "せいしんりょく",
+        "マジックガード"
+    ],
     "BaseSpeed": 120,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 135,
     "NormalAbilities": [
         "シンクロ",
         "せいしんりょく"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "マジックガード",
     "Learnset": [
         "テレポート",
         "スプーンまげ",
@@ -76,22 +85,13 @@
         "ガードシェア",
         "ワイドフォース"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 95,
+    "HiddenAbility": "マジックガード",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "せいしんりょく",
-        "マジックガード"
-    ],
-    "Weight": 48.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 135,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 50
 }

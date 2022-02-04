@@ -1,11 +1,20 @@
 {
-    "BaseDef": 55,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 120.0,
+    "AllAbilities": [
+        "ごりむちゅう",
+        "ダルマモード"
+    ],
     "BaseSpeed": 135,
+    "Types": [
+        "こおり",
+        "ほのお"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "ごりむちゅう"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "ダルマモード",
     "Learnset": [
         "つららおとし",
         "こなゆき",
@@ -74,22 +83,13 @@
         "しっとのほのお",
         "うっぷんばらし"
     ],
-    "BaseAtk": 160,
-    "BaseSpDef": 55,
+    "HiddenAbility": "ダルマモード",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 105,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ごりむちゅう",
-        "ダルマモード"
-    ],
-    "Weight": 120.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "こおり",
-        "ほのお"
-    ]
+    "BaseDef": 55,
+    "BaseAtk": 160
 }

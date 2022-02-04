@@ -1,11 +1,20 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 115,
+    "Gender": "不明",
+    "Weight": 18.6,
+    "AllAbilities": [
+        "サイコメイカー",
+        "テレパシー"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 130,
     "NormalAbilities": [
         "サイコメイカー"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "おどろかす",
         "ねんりき",
@@ -63,22 +72,13 @@
         "じゃれつく",
         "マジカルシャイン"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 115,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.2,
+    "Category": "準伝説ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "サイコメイカー",
-        "テレパシー"
-    ],
-    "Weight": 18.6,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 130,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 85
 }

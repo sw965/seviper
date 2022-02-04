@@ -1,12 +1,22 @@
 {
-    "BaseDef": 120,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 120.0,
+    "AllAbilities": [
+        "ひらいしん",
+        "いしあたま",
+        "すてみ"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "じめん",
+        "いわ"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "ひらいしん",
         "いしあたま"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "すてみ",
     "Learnset": [
         "アームハンマー",
         "しっぽをふる",
@@ -99,24 +109,14 @@
         "メテオビーム",
         "ねっさのだいち"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 45,
+    "HiddenAbility": "すてみ",
+    "Height": 1.9,
+    "Category": "通常ポケモン",
     "BaseHP": 105,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ひらいしん",
-        "いしあたま",
-        "すてみ"
-    ],
-    "Weight": 120.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "じめん",
-        "いわ"
-    ]
+    "BaseDef": 120,
+    "BaseAtk": 130
 }

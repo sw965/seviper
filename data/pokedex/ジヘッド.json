@@ -1,11 +1,19 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 50.0,
+    "AllAbilities": [
+        "はりきり"
+    ],
     "BaseSpeed": 58,
+    "Types": [
+        "あく",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "はりきり"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "ダブルアタック",
         "きあいだめ",
@@ -55,21 +63,13 @@
         "ゲップ",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 70,
+    "HiddenAbility": "なし",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 72,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "はりきり"
-    ],
-    "Weight": 50.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "あく",
-        "ドラゴン"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 85
 }

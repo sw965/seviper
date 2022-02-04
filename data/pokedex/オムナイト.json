@@ -1,12 +1,22 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 7.5,
+    "AllAbilities": [
+        "すいすい",
+        "シェルアーマー",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "いわ",
+        "みず"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "すいすい",
         "シェルアーマー"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "からにこもる",
         "しめつける",
@@ -63,24 +73,14 @@
         "ミラータイプ",
         "メテオビーム"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 55,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 35,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "シェルアーマー",
-        "くだけるよろい"
-    ],
-    "Weight": 7.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "いわ",
-        "みず"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 40
 }

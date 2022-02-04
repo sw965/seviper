@@ -1,12 +1,21 @@
 {
-    "BaseDef": 28,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 3.0,
+    "AllAbilities": [
+        "メロメロボディ",
+        "マジックガード",
+        "フレンドガード"
+    ],
     "BaseSpeed": 15,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "メロメロボディ",
         "マジックガード"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "フレンドガード",
     "Learnset": [
         "はたく",
         "はねる",
@@ -66,22 +75,13 @@
         "くすぐる",
         "いやしのはどう"
     ],
-    "BaseAtk": 25,
-    "BaseSpDef": 55,
+    "HiddenAbility": "フレンドガード",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "マジックガード",
-        "フレンドガード"
-    ],
-    "Weight": 3.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 28,
+    "BaseAtk": 25
 }

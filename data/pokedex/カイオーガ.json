@@ -1,11 +1,18 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 140,
+    "Gender": "不明",
+    "Weight": 352.0,
+    "AllAbilities": [
+        "あめふらし"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 150,
     "NormalAbilities": [
         "あめふらし"
     ],
-    "Height": 4.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "みずのはどう",
         "げんしのちから",
@@ -56,20 +63,13 @@
         "ねっとう",
         "アクアブレイク"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 140,
+    "HiddenAbility": "なし",
+    "Height": 4.5,
+    "Category": "伝説のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "あめふらし"
-    ],
-    "Weight": 352.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 150,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 100
 }

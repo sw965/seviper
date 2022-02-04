@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 55,
+    "Gender": "♂♀両方",
+    "Weight": 15.0,
+    "AllAbilities": [
+        "ものひろい",
+        "おみとおし",
+        "ふみん"
+    ],
     "BaseSpeed": 41,
+    "Types": [
+        "ゴースト",
+        "くさ"
+    ],
+    "BaseSpAtk": 44,
     "NormalAbilities": [
         "ものひろい",
         "おみとおし"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "ふみん",
     "Learnset": [
         "おどろかす",
         "ハロウィン",
@@ -60,23 +70,13 @@
         "はいよるいちげき",
         "ポルターガイスト"
     ],
-    "BaseAtk": 66,
-    "BaseSpDef": 55,
+    "HiddenAbility": "ふみん",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 59,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ものひろい",
-        "おみとおし",
-        "ふみん"
-    ],
-    "Weight": 15.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 44,
-    "Types": [
-        "ゴースト",
-        "くさ"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 66
 }

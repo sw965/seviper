@@ -1,11 +1,20 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 75,
+    "Gender": "♂♀両方",
+    "Weight": 250.0,
+    "AllAbilities": [
+        "みずがため",
+        "すながくれ"
+    ],
     "BaseSpeed": 35,
+    "Types": [
+        "ゴースト",
+        "じめん"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "みずがため"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "すながくれ",
     "Learnset": [
         "かたくなる",
         "すいとる",
@@ -55,22 +64,13 @@
         "ポルターガイスト",
         "ねっさのだいち"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 75,
+    "HiddenAbility": "すながくれ",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "みずがため",
-        "すながくれ"
-    ],
-    "Weight": 250.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ゴースト",
-        "じめん"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 75
 }

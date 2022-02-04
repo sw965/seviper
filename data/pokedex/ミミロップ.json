@@ -1,12 +1,21 @@
 {
-    "BaseDef": 84,
+    "BaseSpDef": 96,
+    "Gender": "♂♀両方",
+    "Weight": 33.3,
+    "AllAbilities": [
+        "メロメロボディ",
+        "ぶきよう",
+        "じゅうなん"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 54,
     "NormalAbilities": [
         "メロメロボディ",
         "ぶきよう"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "じゅうなん",
     "Learnset": [
         "ミラーコート",
         "マジックコート",
@@ -88,23 +97,14 @@
         "ともえなげ",
         "トリプルアクセル"
     ],
-    "BaseAtk": 76,
-    "BaseSpDef": 96,
+    "HiddenAbility": "じゅうなん",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "ぶきよう",
-        "じゅうなん"
-    ],
-    "Weight": 33.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 54,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 84,
+    "BaseAtk": 76
 }

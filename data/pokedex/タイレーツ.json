@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 60,
+    "Gender": "不明",
+    "Weight": 62.0,
+    "AllAbilities": [
+        "カブトアーマー",
+        "まけんき"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "カブトアーマー"
     ],
-    "Height": 3.0,
-    "HiddenAbility": "まけんき",
     "Learnset": [
         "たいあたり",
         "まもる",
@@ -51,22 +59,14 @@
         "じごくづき",
         "コーチング"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 60,
+    "HiddenAbility": "まけんき",
+    "Height": 3.0,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "妖精",
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "カブトアーマー",
-        "まけんき"
-    ],
-    "Weight": 62.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 100
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 130,
+    "Gender": "♂♀両方",
+    "Weight": 0.4,
+    "AllAbilities": [
+        "くだけるよろい",
+        "ほろびのボディ"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ゴースト"
+    ],
+    "BaseSpAtk": 145,
     "NormalAbilities": [
         "くだけるよろい"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "ほろびのボディ",
     "Learnset": [
         "ほろびのうた",
         "たいあたり",
@@ -83,22 +91,14 @@
         "しっとのほのお",
         "ポルターガイスト"
     ],
-    "BaseAtk": 95,
-    "BaseSpDef": 130,
+    "HiddenAbility": "ほろびのボディ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "水中1",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "くだけるよろい",
-        "ほろびのボディ"
-    ],
-    "Weight": 0.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 145,
-    "Types": [
-        "ゴースト"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 95
 }

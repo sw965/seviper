@@ -1,11 +1,20 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 18.6,
+    "AllAbilities": [
+        "ようりょくそ",
+        "ほうし"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "ようりょくそ"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "ほうし",
     "Learnset": [
         "はなふぶき",
         "メガドレイン",
@@ -64,22 +73,13 @@
         "グラススライダー",
         "ふしょくガス"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 90,
+    "HiddenAbility": "ほうし",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ようりょくそ",
-        "ほうし"
-    ],
-    "Weight": 18.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 80
 }

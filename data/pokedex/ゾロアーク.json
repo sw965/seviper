@@ -1,11 +1,18 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 81.1,
+    "AllAbilities": [
+        "イリュージョン"
+    ],
     "BaseSpeed": 105,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 120,
     "NormalAbilities": [
         "イリュージョン"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "なし",
     "Learnset": [
         "つじぎり",
         "とんぼがえり",
@@ -75,20 +82,13 @@
         "しっとのほのお",
         "うっぷんばらし"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 60,
+    "HiddenAbility": "なし",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "イリュージョン"
-    ],
-    "Weight": 81.1,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 120,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 105
 }

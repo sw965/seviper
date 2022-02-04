@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 4.0,
+    "AllAbilities": [
+        "じゅうなん",
+        "テクニシャン"
+    ],
     "BaseSpeed": 32,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "じゅうなん"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "テクニシャン",
     "Learnset": [
         "いわくだき",
         "にらみつける",
@@ -50,22 +58,14 @@
         "グロウパンチ",
         "コーチング"
     ],
-    "BaseAtk": 68,
-    "BaseSpDef": 50,
+    "HiddenAbility": "テクニシャン",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中1",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じゅうなん",
-        "テクニシャン"
-    ],
-    "Weight": 4.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 68
 }

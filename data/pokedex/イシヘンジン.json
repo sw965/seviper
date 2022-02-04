@@ -1,11 +1,18 @@
 {
-    "BaseDef": 135,
+    "BaseSpDef": 20,
+    "Gender": "♂♀両方",
+    "Weight": 520.0,
+    "AllAbilities": [
+        "パワースポット"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 20,
     "NormalAbilities": [
         "パワースポット"
     ],
-    "Height": 2.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "いわおとし",
         "とおせんぼう",
@@ -52,20 +59,13 @@
         "げんしのちから",
         "メテオビーム"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 20,
+    "HiddenAbility": "なし",
+    "Height": 2.5,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "パワースポット"
-    ],
-    "Weight": 520.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 20,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 135,
+    "BaseAtk": 125
 }

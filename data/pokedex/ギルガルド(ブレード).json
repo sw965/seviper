@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 53.0,
+    "AllAbilities": [
+        "バトルスイッチ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "はがね",
+        "ゴースト"
+    ],
+    "BaseSpAtk": 140,
     "NormalAbilities": [
         "バトルスイッチ"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "キングシールド",
         "れんぞくぎり",
@@ -53,21 +61,13 @@
         "ラスターカノン",
         "てっていこうせん"
     ],
-    "BaseAtk": 140,
-    "BaseSpDef": 50,
+    "HiddenAbility": "なし",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "バトルスイッチ"
-    ],
-    "Weight": 53.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 140,
-    "Types": [
-        "はがね",
-        "ゴースト"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 140
 }

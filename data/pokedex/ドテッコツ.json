@@ -1,12 +1,21 @@
 {
-    "BaseDef": 85,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "こんじょう",
+        "ちからずく",
+        "てつのこぶし"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "こんじょう",
         "ちからずく"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "てつのこぶし",
     "Learnset": [
         "はたく",
         "にらみつける",
@@ -65,22 +74,13 @@
         "グロウパンチ",
         "コーチング"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 50,
+    "HiddenAbility": "てつのこぶし",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 85,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "こんじょう",
-        "ちからずく",
-        "てつのこぶし"
-    ],
-    "Weight": 40.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 85,
+    "BaseAtk": 105
 }

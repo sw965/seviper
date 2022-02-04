@@ -1,11 +1,20 @@
 {
-    "BaseDef": 74,
+    "BaseSpDef": 116,
+    "Gender": "♂♀両方",
+    "Weight": 44.0,
+    "AllAbilities": [
+        "げきりゅう",
+        "うるおいボイス"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "みず",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 126,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "うるおいボイス",
     "Learnset": [
         "うたかたのアリア",
         "はたく",
@@ -72,23 +81,14 @@
         "ハイドロカノン",
         "みずのちかい"
     ],
-    "BaseAtk": 74,
-    "BaseSpDef": 116,
+    "HiddenAbility": "うるおいボイス",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "うるおいボイス"
-    ],
-    "Weight": 44.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 126,
-    "Types": [
-        "みず",
-        "フェアリー"
-    ]
+    "BaseDef": 74,
+    "BaseAtk": 74
 }

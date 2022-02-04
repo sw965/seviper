@@ -1,12 +1,21 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 155.0,
+    "AllAbilities": [
+        "いかく",
+        "もらいび",
+        "せいぎのこころ"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "ほのお"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "いかく",
         "もらいび"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "せいぎのこころ",
     "Learnset": [
         "しんそく",
         "かみつく",
@@ -68,22 +77,13 @@
         "ほしがる",
         "ねっさのだいち"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 80,
+    "HiddenAbility": "せいぎのこころ",
+    "Height": 1.9,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いかく",
-        "もらいび",
-        "せいぎのこころ"
-    ],
-    "Weight": 155.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ほのお"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 110
 }

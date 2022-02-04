@@ -1,11 +1,18 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 115,
+    "Gender": "不明",
+    "Weight": 210.0,
+    "AllAbilities": [
+        "ふくつのたて"
+    ],
     "BaseSpeed": 138,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "ふくつのたて"
     ],
-    "Height": 2.9,
-    "HiddenAbility": "なし",
     "Learnset": [
         "メタルバースト",
         "ワイドガード",
@@ -64,20 +71,13 @@
         "コーチング",
         "てっていこうせん"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 115,
+    "HiddenAbility": "なし",
+    "Height": 2.9,
+    "Category": "伝説のポケモン",
     "BaseHP": 92,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふくつのたて"
-    ],
-    "Weight": 210.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 130
 }

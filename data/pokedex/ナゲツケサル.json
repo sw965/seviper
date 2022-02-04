@@ -1,11 +1,19 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 82.8,
+    "AllAbilities": [
+        "レシーバー",
+        "まけんき"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "レシーバー"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "まけんき",
     "Learnset": [
         "たいあたり",
         "にらみつける",
@@ -73,21 +81,13 @@
         "ファストガード",
         "コーチング"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 60,
+    "HiddenAbility": "まけんき",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "レシーバー",
-        "まけんき"
-    ],
-    "Weight": 82.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 120
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 6.5,
+    "AllAbilities": [
+        "にげあし",
+        "てきおうりょく",
+        "きけんよち"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 45,
     "NormalAbilities": [
         "にげあし",
         "てきおうりょく"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "きけんよち",
     "Learnset": [
         "てだすけ",
         "なきごえ",
@@ -56,22 +65,13 @@
         "あくび",
         "くすぐる"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 65,
+    "HiddenAbility": "きけんよち",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "てきおうりょく",
-        "きけんよち"
-    ],
-    "Weight": 6.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 45,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 55
 }

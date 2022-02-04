@@ -1,11 +1,18 @@
 {
-    "BaseDef": 110,
+    "BaseSpDef": 110,
+    "Gender": "不明",
+    "Weight": 420.0,
+    "AllAbilities": [
+        "スロースタート"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "スロースタート"
     ],
-    "Height": 3.7,
-    "HiddenAbility": "なし",
     "Learnset": [
         "あやしいひかり",
         "はたく",
@@ -62,20 +69,13 @@
         "10まんばりき",
         "だいちのはどう"
     ],
-    "BaseAtk": 160,
-    "BaseSpDef": 110,
+    "HiddenAbility": "なし",
+    "Height": 3.7,
+    "Category": "準伝説ポケモン",
     "BaseHP": 110,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "スロースタート"
-    ],
-    "Weight": 420.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 110,
+    "BaseAtk": 160
 }

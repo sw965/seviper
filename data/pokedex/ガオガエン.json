@@ -1,11 +1,20 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 83.0,
+    "AllAbilities": [
+        "もうか",
+        "いかく"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ほのお",
+        "あく"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "いかく",
     "Learnset": [
         "DDラリアット",
         "ビルドアップ",
@@ -87,22 +96,13 @@
         "ブラストバーン",
         "ほのおのちかい"
     ],
-    "BaseAtk": 115,
-    "BaseSpDef": 90,
+    "HiddenAbility": "いかく",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "いかく"
-    ],
-    "Weight": 83.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "ほのお",
-        "あく"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 115
 }

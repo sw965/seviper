@@ -1,12 +1,22 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 70.5,
+    "AllAbilities": [
+        "クイックドロウ",
+        "マイペース",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "どく",
+        "エスパー"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "クイックドロウ",
         "マイペース"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "シェルアームズ",
         "からにこもる",
@@ -100,24 +110,14 @@
         "ゲップ",
         "ワイドフォース"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 70,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "クイックドロウ",
-        "マイペース",
-        "さいせいりょく"
-    ],
-    "Weight": 70.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "どく",
-        "エスパー"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 100
 }

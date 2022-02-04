@@ -1,12 +1,21 @@
 {
-    "BaseDef": 53,
+    "BaseSpDef": 113,
+    "Gender": "♂♀両方",
+    "Weight": 17.5,
+    "AllAbilities": [
+        "そうしょく",
+        "うるおいボディ",
+        "ぬめぬめ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 83,
     "NormalAbilities": [
         "そうしょく",
         "うるおいボディ"
     ],
-    "Height": 0.8,
-    "HiddenAbility": "ぬめぬめ",
     "Learnset": [
         "アシッドボム",
         "たいあたり",
@@ -44,22 +53,13 @@
         "はいよるいちげき",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 113,
+    "HiddenAbility": "ぬめぬめ",
+    "Height": 0.8,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "そうしょく",
-        "うるおいボディ",
-        "ぬめぬめ"
-    ],
-    "Weight": 17.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 83,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 53,
+    "BaseAtk": 75
 }

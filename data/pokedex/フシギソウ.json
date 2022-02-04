@@ -1,11 +1,20 @@
 {
-    "BaseDef": 63,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 13.0,
+    "AllAbilities": [
+        "しんりょく",
+        "ようりょくそ"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 80,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "ようりょくそ",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -61,23 +70,14 @@
         "グラススライダー",
         "くさのちかい"
     ],
-    "BaseAtk": 62,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ようりょくそ",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "怪獣",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "ようりょくそ"
-    ],
-    "Weight": 13.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 80,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 63,
+    "BaseAtk": 62
 }

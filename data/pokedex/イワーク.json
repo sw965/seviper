@@ -1,12 +1,22 @@
 {
-    "BaseDef": 160,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 210.0,
+    "AllAbilities": [
+        "いしあたま",
+        "がんじょう",
+        "くだけるよろい"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "いわ",
+        "じめん"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "いしあたま",
         "がんじょう"
     ],
-    "Height": 8.8,
-    "HiddenAbility": "くだけるよろい",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -68,23 +78,13 @@
         "メテオビーム",
         "ねっさのだいち"
     ],
-    "BaseAtk": 45,
-    "BaseSpDef": 45,
+    "HiddenAbility": "くだけるよろい",
+    "Height": 8.8,
+    "Category": "通常ポケモン",
     "BaseHP": 35,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いしあたま",
-        "がんじょう",
-        "くだけるよろい"
-    ],
-    "Weight": 210.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "いわ",
-        "じめん"
-    ]
+    "BaseDef": 160,
+    "BaseAtk": 45
 }

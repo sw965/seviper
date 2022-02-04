@@ -1,11 +1,19 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 7.6,
+    "AllAbilities": [
+        "げきりゅう",
+        "しめりけ"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "しめりけ",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -63,22 +71,14 @@
         "ワイドガード",
         "みずのちかい"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 50,
+    "HiddenAbility": "しめりけ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "しめりけ"
-    ],
-    "Weight": 7.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 70
 }

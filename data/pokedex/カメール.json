@@ -1,11 +1,19 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 22.5,
+    "AllAbilities": [
+        "げきりゅう",
+        "あめうけざら"
+    ],
     "BaseSpeed": 58,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "げきりゅう"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "あめうけざら",
     "Learnset": [
         "たいあたり",
         "しっぽをふる",
@@ -70,22 +78,14 @@
         "クイックターン",
         "みずのちかい"
     ],
-    "BaseAtk": 63,
-    "BaseSpDef": 80,
+    "HiddenAbility": "あめうけざら",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 59,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "げきりゅう",
-        "あめうけざら"
-    ],
-    "Weight": 22.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 63
 }

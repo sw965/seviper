@@ -1,11 +1,18 @@
 {
-    "BaseDef": 71,
+    "BaseSpDef": 71,
+    "Gender": "不明",
+    "Weight": 100.0,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 83,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 173,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 3.8,
-    "HiddenAbility": "なし",
     "Learnset": [
         "まきつく",
         "でんきショック",
@@ -51,20 +58,13 @@
         "マジカルシャイン",
         "ライジングボルト"
     ],
-    "BaseAtk": 89,
-    "BaseSpDef": 71,
+    "HiddenAbility": "なし",
+    "Height": 3.8,
+    "Category": "準伝説ポケモン",
     "BaseHP": 83,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 100.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 173,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 71,
+    "BaseAtk": 89
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 30,
+    "Gender": "♂♀両方",
+    "Weight": 42.1,
+    "AllAbilities": [
+        "いしあたま",
+        "ちからずく"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "いしあたま"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "ちからずく",
     "Learnset": [
         "ひのこ",
         "にらみつける",
@@ -49,21 +57,13 @@
         "ドラゴンダイブ",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 30,
+    "HiddenAbility": "ちからずく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "いしあたま",
-        "ちからずく"
-    ],
-    "Weight": 42.1,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 75
 }

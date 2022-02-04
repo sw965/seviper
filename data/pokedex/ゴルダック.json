@@ -1,12 +1,21 @@
 {
-    "BaseDef": 78,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 76.6,
+    "AllAbilities": [
+        "しめりけ",
+        "ノーてんき",
+        "すいすい"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "しめりけ",
         "ノーてんき"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "ひっかく",
         "しっぽをふる",
@@ -77,23 +86,14 @@
         "クリアスモッグ",
         "クイックターン"
     ],
-    "BaseAtk": 82,
-    "BaseSpDef": 80,
+    "HiddenAbility": "すいすい",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しめりけ",
-        "ノーてんき",
-        "すいすい"
-    ],
-    "Weight": 76.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 78,
+    "BaseAtk": 82
 }

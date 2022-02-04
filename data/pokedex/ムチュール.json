@@ -1,12 +1,22 @@
 {
-    "BaseDef": 15,
+    "BaseSpDef": 65,
+    "Gender": "♀のみ",
+    "Weight": 6.0,
+    "AllAbilities": [
+        "どんかん",
+        "よちむ",
+        "うるおいボディ"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "こおり",
+        "エスパー"
+    ],
+    "BaseSpAtk": 85,
     "NormalAbilities": [
         "どんかん",
         "よちむ"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "うるおいボディ",
     "Learnset": [
         "はたく",
         "したでなめる",
@@ -66,23 +76,13 @@
         "なりきり",
         "ねがいごと"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 65,
+    "HiddenAbility": "うるおいボディ",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "どんかん",
-        "よちむ",
-        "うるおいボディ"
-    ],
-    "Weight": 6.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 85,
-    "Types": [
-        "こおり",
-        "エスパー"
-    ]
+    "BaseDef": 15,
+    "BaseAtk": 30
 }

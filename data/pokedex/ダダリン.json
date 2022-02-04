@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 90,
+    "Gender": "不明",
+    "Weight": 210.0,
+    "AllAbilities": [
+        "はがねつかい"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "ゴースト",
+        "くさ"
+    ],
+    "BaseSpAtk": 86,
     "NormalAbilities": [
         "はがねつかい"
     ],
-    "Height": 3.9,
-    "HiddenAbility": "なし",
     "Learnset": [
         "すいとる",
         "こうそくスピン",
@@ -67,21 +75,13 @@
         "グラススライダー",
         "ポルターガイスト"
     ],
-    "BaseAtk": 131,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 3.9,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "はがねつかい"
-    ],
-    "Weight": 210.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 86,
-    "Types": [
-        "ゴースト",
-        "くさ"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 131
 }

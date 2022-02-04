@@ -1,11 +1,20 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 80,
+    "Gender": "不明",
+    "Weight": 202.5,
+    "AllAbilities": [
+        "クリアボディ",
+        "ライトメタル"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "はがね",
+        "エスパー"
+    ],
+    "BaseSpAtk": 55,
     "NormalAbilities": [
         "クリアボディ"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "ライトメタル",
     "Learnset": [
         "ねんりき",
         "メタルクロー",
@@ -61,22 +70,13 @@
         "メテオビーム",
         "てっていこうせん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 80,
+    "HiddenAbility": "ライトメタル",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "クリアボディ",
-        "ライトメタル"
-    ],
-    "Weight": 202.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 55,
-    "Types": [
-        "はがね",
-        "エスパー"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 75
 }

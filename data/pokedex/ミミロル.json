@@ -1,12 +1,21 @@
 {
-    "BaseDef": 44,
+    "BaseSpDef": 56,
+    "Gender": "♂♀両方",
+    "Weight": 5.5,
+    "AllAbilities": [
+        "にげあし",
+        "ぶきよう",
+        "じゅうなん"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 44,
     "NormalAbilities": [
         "にげあし",
         "ぶきよう"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "じゅうなん",
     "Learnset": [
         "はねる",
         "はたく",
@@ -74,23 +83,14 @@
         "ともえなげ",
         "トリプルアクセル"
     ],
-    "BaseAtk": 66,
-    "BaseSpDef": 56,
+    "HiddenAbility": "じゅうなん",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "にげあし",
-        "ぶきよう",
-        "じゅうなん"
-    ],
-    "Weight": 5.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 44,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 44,
+    "BaseAtk": 66
 }

@@ -1,12 +1,21 @@
 {
-    "BaseDef": 5,
+    "BaseSpDef": 65,
+    "Gender": "♀のみ",
+    "Weight": 24.4,
+    "AllAbilities": [
+        "しぜんかいふく",
+        "てんのめぐみ",
+        "フレンドガード"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 15,
     "NormalAbilities": [
         "しぜんかいふく",
         "てんのめぐみ"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "フレンドガード",
     "Learnset": [
         "はたく",
         "ちいさくなる",
@@ -52,22 +61,13 @@
         "アロマセラピー",
         "じゅうりょく"
     ],
-    "BaseAtk": 5,
-    "BaseSpDef": 65,
+    "HiddenAbility": "フレンドガード",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "しぜんかいふく",
-        "てんのめぐみ",
-        "フレンドガード"
-    ],
-    "Weight": 24.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 15,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 5,
+    "BaseAtk": 5
 }

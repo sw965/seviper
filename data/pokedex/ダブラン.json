@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 8.0,
+    "AllAbilities": [
+        "ぼうじん",
+        "マジックガード",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "エスパー"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "ぼうじん",
         "マジックガード"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "まもる",
         "ねんりき",
@@ -59,22 +68,13 @@
         "ワイドフォース",
         "アイアンローラー"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 60,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうじん",
-        "マジックガード",
-        "さいせいりょく"
-    ],
-    "Weight": 8.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "エスパー"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 40
 }

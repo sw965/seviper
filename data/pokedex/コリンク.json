@@ -1,12 +1,21 @@
 {
-    "BaseDef": 34,
+    "BaseSpDef": 34,
+    "Gender": "♂♀両方",
+    "Weight": 9.5,
+    "AllAbilities": [
+        "とうそうしん",
+        "いかく",
+        "こんじょう"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "とうそうしん",
         "いかく"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "こんじょう",
     "Learnset": [
         "たいあたり",
         "にらみつける",
@@ -57,22 +66,13 @@
         "つぶらなひとみ",
         "ライジングボルト"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 34,
+    "HiddenAbility": "こんじょう",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "とうそうしん",
-        "いかく",
-        "こんじょう"
-    ],
-    "Weight": 9.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 34,
+    "BaseAtk": 65
 }

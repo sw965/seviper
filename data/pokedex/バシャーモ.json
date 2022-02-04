@@ -1,11 +1,20 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 52.0,
+    "AllAbilities": [
+        "もうか",
+        "かそく"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "ほのお",
+        "かくとう"
+    ],
+    "BaseSpAtk": 110,
     "NormalAbilities": [
         "もうか"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "かそく",
     "Learnset": [
         "ほのおのパンチ",
         "ひっかく",
@@ -88,22 +97,13 @@
         "ブラストバーン",
         "ほのおのちかい"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 70,
+    "HiddenAbility": "かそく",
+    "Height": 1.9,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "もうか",
-        "かそく"
-    ],
-    "Weight": 52.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 110,
-    "Types": [
-        "ほのお",
-        "かくとう"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 120
 }

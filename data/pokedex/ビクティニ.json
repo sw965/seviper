@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 100,
+    "Gender": "不明",
+    "Weight": 4.0,
+    "AllAbilities": [
+        "しょうりのほし"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "エスパー",
+        "ほのお"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "しょうりのほし"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "きあいだめ",
         "ねんりき",
@@ -80,21 +88,13 @@
         "ワイドフォース",
         "ねっさのだいち"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 100,
+    "HiddenAbility": "なし",
+    "Height": 0.4,
+    "Category": "幻のポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "しょうりのほし"
-    ],
-    "Weight": 4.0,
-    "Category": "幻のポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "エスパー",
-        "ほのお"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 100
 }

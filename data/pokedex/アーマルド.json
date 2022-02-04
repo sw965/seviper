@@ -1,11 +1,20 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 80,
+    "Gender": "♂♀両方",
+    "Weight": 68.2,
+    "AllAbilities": [
+        "カブトアーマー",
+        "すいすい"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "いわ",
+        "むし"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "カブトアーマー"
     ],
-    "Height": 1.5,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "かたくなる",
         "みずでっぽう",
@@ -64,22 +73,13 @@
         "アクアジェット",
         "メテオビーム"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 80,
+    "HiddenAbility": "すいすい",
+    "Height": 1.5,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "カブトアーマー",
-        "すいすい"
-    ],
-    "Weight": 68.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "いわ",
-        "むし"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 125
 }

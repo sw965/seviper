@@ -1,12 +1,22 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 110,
+    "Gender": "♂♀両方",
+    "Weight": 79.5,
+    "AllAbilities": [
+        "どんかん",
+        "マイペース",
+        "さいせいりょく"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "みず",
+        "エスパー"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "どんかん",
         "マイペース"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "さいせいりょく",
     "Learnset": [
         "パワージェム",
         "のろい",
@@ -95,24 +105,14 @@
         "ゲップ",
         "ワイドフォース"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 110,
+    "HiddenAbility": "さいせいりょく",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "どんかん",
-        "マイペース",
-        "さいせいりょく"
-    ],
-    "Weight": 79.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "みず",
-        "エスパー"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 75
 }

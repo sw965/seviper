@@ -1,11 +1,19 @@
 {
-    "BaseDef": 150,
+    "BaseSpDef": 150,
+    "Gender": "不明",
+    "Weight": 205.0,
+    "AllAbilities": [
+        "クリアボディ",
+        "ライトメタル"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "はがね"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "クリアボディ"
     ],
-    "Height": 1.9,
-    "HiddenAbility": "ライトメタル",
     "Learnset": [
         "メタルクロー",
         "チャージビーム",
@@ -61,21 +69,13 @@
         "メテオビーム",
         "てっていこうせん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 150,
+    "HiddenAbility": "ライトメタル",
+    "Height": 1.9,
+    "Category": "準伝説ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "クリアボディ",
-        "ライトメタル"
-    ],
-    "Weight": 205.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "はがね"
-    ]
+    "BaseDef": 150,
+    "BaseAtk": 75
 }

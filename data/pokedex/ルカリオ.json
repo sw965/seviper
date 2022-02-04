@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 54.0,
+    "AllAbilities": [
+        "ふくつのこころ",
+        "せいしんりょく",
+        "せいぎのこころ"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "かくとう",
+        "はがね"
+    ],
+    "BaseSpAtk": 115,
     "NormalAbilities": [
         "ふくつのこころ",
         "せいしんりょく"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "せいぎのこころ",
     "Learnset": [
         "はどうだん",
         "でんこうせっか",
@@ -96,24 +106,14 @@
         "コーチング",
         "てっていこうせん"
     ],
-    "BaseAtk": 110,
-    "BaseSpDef": 70,
+    "HiddenAbility": "せいぎのこころ",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "陸上",
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふくつのこころ",
-        "せいしんりょく",
-        "せいぎのこころ"
-    ],
-    "Weight": 54.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 115,
-    "Types": [
-        "かくとう",
-        "はがね"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 110
 }

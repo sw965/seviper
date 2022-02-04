@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 87.6,
+    "AllAbilities": [
+        "あついしぼう",
+        "アイスボディ",
+        "どんかん"
+    ],
     "BaseSpeed": 45,
+    "Types": [
+        "こおり",
+        "みず"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "あついしぼう",
         "アイスボディ"
     ],
-    "Height": 1.1,
-    "HiddenAbility": "どんかん",
     "Learnset": [
         "いばる",
         "なきごえ",
@@ -54,24 +64,14 @@
         "アクアリング",
         "アイアンローラー"
     ],
-    "BaseAtk": 60,
-    "BaseSpDef": 70,
+    "HiddenAbility": "どんかん",
+    "Height": 1.1,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "水中1",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "あついしぼう",
-        "アイスボディ",
-        "どんかん"
-    ],
-    "Weight": 87.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "こおり",
-        "みず"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 60
 }

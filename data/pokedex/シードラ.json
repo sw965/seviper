@@ -1,12 +1,21 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 45,
+    "Gender": "♂♀両方",
+    "Weight": 25.0,
+    "AllAbilities": [
+        "どくのトゲ",
+        "スナイパー",
+        "しめりけ"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "どくのトゲ",
         "スナイパー"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "しめりけ",
     "Learnset": [
         "みずでっぽう",
         "えんまく",
@@ -58,23 +67,14 @@
         "スケイルショット",
         "クイックターン"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 45,
+    "HiddenAbility": "しめりけ",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "どくのトゲ",
-        "スナイパー",
-        "しめりけ"
-    ],
-    "Weight": 25.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 65
 }

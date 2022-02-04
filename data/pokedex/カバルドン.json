@@ -1,11 +1,19 @@
 {
-    "BaseDef": 118,
+    "BaseSpDef": 72,
+    "Gender": "♂♀両方",
+    "Weight": 300.0,
+    "AllAbilities": [
+        "すなおこし",
+        "すなのちから"
+    ],
     "BaseSpeed": 47,
+    "Types": [
+        "じめん"
+    ],
+    "BaseSpAtk": 68,
     "NormalAbilities": [
         "すなおこし"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "すなのちから",
     "Learnset": [
         "こおりのキバ",
         "ほのおのキバ",
@@ -62,21 +70,13 @@
         "のみこむ",
         "ねっさのだいち"
     ],
-    "BaseAtk": 112,
-    "BaseSpDef": 72,
+    "HiddenAbility": "すなのちから",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 108,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すなおこし",
-        "すなのちから"
-    ],
-    "Weight": 300.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 68,
-    "Types": [
-        "じめん"
-    ]
+    "BaseDef": 118,
+    "BaseAtk": 112
 }

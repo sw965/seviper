@@ -1,12 +1,21 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 65,
+    "Gender": "♂♀両方",
+    "Weight": 38.0,
+    "AllAbilities": [
+        "がんじょう",
+        "いしあたま",
+        "びびり"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "がんじょう",
         "いしあたま"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "びびり",
     "Learnset": [
         "たたきつける",
         "ウッドハンマー",
@@ -70,22 +79,13 @@
         "ロックカット",
         "メテオビーム"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 65,
+    "HiddenAbility": "びびり",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "いしあたま",
-        "びびり"
-    ],
-    "Weight": 38.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 100
 }

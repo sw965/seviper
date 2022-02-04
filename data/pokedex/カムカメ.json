@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 38,
+    "Gender": "♂♀両方",
+    "Weight": 8.5,
+    "AllAbilities": [
+        "がんじょうあご",
+        "シェルアーマー",
+        "すいすい"
+    ],
     "BaseSpeed": 44,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 38,
     "NormalAbilities": [
         "がんじょうあご",
         "シェルアーマー"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "すいすい",
     "Learnset": [
         "たいあたり",
         "みずでっぽう",
@@ -41,23 +50,14 @@
         "スケイルショット",
         "はいよるいちげき"
     ],
-    "BaseAtk": 64,
-    "BaseSpDef": 38,
+    "HiddenAbility": "すいすい",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "怪獣",
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょうあご",
-        "シェルアーマー",
-        "すいすい"
-    ],
-    "Weight": 8.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 38,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 64
 }

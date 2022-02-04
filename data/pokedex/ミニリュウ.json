@@ -1,11 +1,19 @@
 {
-    "BaseDef": 45,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 3.3,
+    "AllAbilities": [
+        "だっぴ",
+        "ふしぎなうろこ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "だっぴ"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "ふしぎなうろこ",
     "Learnset": [
         "まきつく",
         "にらみつける",
@@ -61,22 +69,14 @@
         "スケイルショット",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 64,
-    "BaseSpDef": 50,
+    "HiddenAbility": "ふしぎなうろこ",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 41,
     "EggGroups": [
         "水中1",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "だっぴ",
-        "ふしぎなうろこ"
-    ],
-    "Weight": 3.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "ドラゴン"
-    ]
+    "BaseDef": 45,
+    "BaseAtk": 64
 }

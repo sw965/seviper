@@ -1,12 +1,21 @@
 {
-    "BaseDef": 41,
+    "BaseSpDef": 41,
+    "Gender": "♂♀両方",
+    "Weight": 17.5,
+    "AllAbilities": [
+        "ものひろい",
+        "くいしんぼう",
+        "はやあし"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "ものひろい",
         "くいしんぼう"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "はやあし",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -61,22 +70,13 @@
         "くすぐる",
         "シンプルビーム"
     ],
-    "BaseAtk": 30,
-    "BaseSpDef": 41,
+    "HiddenAbility": "はやあし",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 38,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ものひろい",
-        "くいしんぼう",
-        "はやあし"
-    ],
-    "Weight": 17.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 41,
+    "BaseAtk": 30
 }

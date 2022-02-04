@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 16.8,
+    "AllAbilities": [
+        "せいしんりょく",
+        "アイスボディ",
+        "ムラっけ"
+    ],
     "BaseSpeed": 50,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "せいしんりょく",
         "アイスボディ"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "ムラっけ",
     "Learnset": [
         "こなゆき",
         "おどろかす",
@@ -47,23 +56,14 @@
         "すりかえ",
         "つららおとし"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 50,
+    "HiddenAbility": "ムラっけ",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "妖精",
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "せいしんりょく",
-        "アイスボディ",
-        "ムラっけ"
-    ],
-    "Weight": 16.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 50
 }

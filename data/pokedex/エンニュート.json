@@ -1,11 +1,20 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♀のみ",
+    "Weight": 22.2,
+    "AllAbilities": [
+        "ふしょく",
+        "どんかん"
+    ],
     "BaseSpeed": 117,
+    "Types": [
+        "どく",
+        "ほのお"
+    ],
+    "BaseSpAtk": 111,
     "NormalAbilities": [
         "ふしょく"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "どんかん",
     "Learnset": [
         "ほのおのムチ",
         "かなしばり",
@@ -72,23 +81,14 @@
         "はいよるいちげき",
         "ふしょくガス"
     ],
-    "BaseAtk": 64,
-    "BaseSpDef": 60,
+    "HiddenAbility": "どんかん",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "ふしょく",
-        "どんかん"
-    ],
-    "Weight": 22.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 111,
-    "Types": [
-        "どく",
-        "ほのお"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 64
 }

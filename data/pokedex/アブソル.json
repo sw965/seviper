@@ -1,12 +1,21 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 47.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "きょううん",
+        "せいぎのこころ"
+    ],
     "BaseSpeed": 75,
+    "Types": [
+        "あく"
+    ],
+    "BaseSpAtk": 75,
     "NormalAbilities": [
         "プレッシャー",
         "きょううん"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "せいぎのこころ",
     "Learnset": [
         "にらみつける",
         "でんこうせっか",
@@ -82,22 +91,13 @@
         "マジックコート",
         "フェイント"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 60,
+    "HiddenAbility": "せいぎのこころ",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 65,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "プレッシャー",
-        "きょううん",
-        "せいぎのこころ"
-    ],
-    "Weight": 47.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 75,
-    "Types": [
-        "あく"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 130
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 140,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 108.0,
+    "AllAbilities": [
+        "ききかいひ"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "むし",
+        "みず"
+    ],
+    "BaseSpAtk": 60,
     "NormalAbilities": [
         "ききかいひ"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "なし",
     "Learnset": [
         "であいがしら",
         "むしのていこう",
@@ -78,22 +86,14 @@
         "ワイドガード",
         "はいよるいちげき"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 90,
+    "HiddenAbility": "なし",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "虫",
         "水中3"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ききかいひ"
-    ],
-    "Weight": 108.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 60,
-    "Types": [
-        "むし",
-        "みず"
-    ]
+    "BaseDef": 140,
+    "BaseAtk": 125
 }

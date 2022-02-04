@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♀のみ",
+    "Weight": 6.6,
+    "AllAbilities": [
+        "ようりょくそ",
+        "マイペース",
+        "リーフガード"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "ようりょくそ",
         "マイペース"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "リーフガード",
     "Learnset": [
         "すいとる",
         "せいちょう",
@@ -46,22 +55,13 @@
         "なやみのタネ",
         "グラススライダー"
     ],
-    "BaseAtk": 35,
-    "BaseSpDef": 50,
+    "HiddenAbility": "リーフガード",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 45,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "ようりょくそ",
-        "マイペース",
-        "リーフガード"
-    ],
-    "Weight": 6.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 35
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 23,
+    "BaseSpDef": 23,
+    "Gender": "♂♀両方",
+    "Weight": 16.3,
+    "AllAbilities": [
+        "ぼうおん",
+        "びびり"
+    ],
     "BaseSpeed": 28,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 51,
     "NormalAbilities": [
         "ぼうおん"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "びびり",
     "Learnset": [
         "はたく",
         "おどろかす",
@@ -55,22 +63,14 @@
         "ともえなげ",
         "チャームボイス"
     ],
-    "BaseAtk": 51,
-    "BaseSpDef": 23,
+    "HiddenAbility": "びびり",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 64,
     "EggGroups": [
         "怪獣",
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうおん",
-        "びびり"
-    ],
-    "Weight": 16.3,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 51,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 23,
+    "BaseAtk": 51
 }

@@ -1,12 +1,22 @@
 {
-    "BaseDef": 35,
+    "BaseSpDef": 35,
+    "Gender": "♂♀両方",
+    "Weight": 11.0,
+    "AllAbilities": [
+        "びびり",
+        "せいでんき",
+        "ぶきよう"
+    ],
     "BaseSpeed": 40,
+    "Types": [
+        "でんき",
+        "どく"
+    ],
+    "BaseSpAtk": 54,
     "NormalAbilities": [
         "びびり",
         "せいでんき"
     ],
-    "Height": 0.4,
-    "HiddenAbility": "ぶきよう",
     "Learnset": [
         "ゲップ",
         "なみだめ",
@@ -28,23 +38,13 @@
         "きんぞくおん",
         "グロウパンチ"
     ],
-    "BaseAtk": 38,
-    "BaseSpDef": 35,
+    "HiddenAbility": "ぶきよう",
+    "Height": 0.4,
+    "Category": "通常ポケモン",
     "BaseHP": 40,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "びびり",
-        "せいでんき",
-        "ぶきよう"
-    ],
-    "Weight": 11.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 54,
-    "Types": [
-        "でんき",
-        "どく"
-    ]
+    "BaseDef": 35,
+    "BaseAtk": 38
 }

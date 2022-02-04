@@ -1,12 +1,22 @@
 {
-    "BaseDef": 90,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 47.0,
+    "AllAbilities": [
+        "ぼうだん",
+        "ぼうおん",
+        "ぼうじん"
+    ],
     "BaseSpeed": 65,
+    "Types": [
+        "ドラゴン",
+        "かくとう"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "ぼうだん",
         "ぼうおん"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "ぼうじん",
     "Learnset": [
         "ボディパージ",
         "たいあたり",
@@ -64,23 +74,13 @@
         "コーチング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 70,
+    "HiddenAbility": "ぼうじん",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 55,
     "EggGroups": [
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ぼうだん",
-        "ぼうおん",
-        "ぼうじん"
-    ],
-    "Weight": 47.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "ドラゴン",
-        "かくとう"
-    ]
+    "BaseDef": 90,
+    "BaseAtk": 75
 }

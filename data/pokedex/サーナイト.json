@@ -1,12 +1,22 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 115,
+    "Gender": "♂♀両方",
+    "Weight": 48.4,
+    "AllAbilities": [
+        "シンクロ",
+        "トレース",
+        "テレパシー"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 125,
     "NormalAbilities": [
         "シンクロ",
         "トレース"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "マジカルシャイン",
         "ムーンフォース",
@@ -92,24 +102,14 @@
         "ミストバースト",
         "トリプルアクセル"
     ],
-    "BaseAtk": 65,
-    "BaseSpDef": 115,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 68,
     "EggGroups": [
         "人型",
         "不定形"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "シンクロ",
-        "トレース",
-        "テレパシー"
-    ],
-    "Weight": 48.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 125,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 65
 }

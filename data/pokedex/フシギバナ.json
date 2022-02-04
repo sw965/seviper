@@ -1,11 +1,20 @@
 {
-    "BaseDef": 83,
+    "BaseSpDef": 100,
+    "Gender": "♂♀両方",
+    "Weight": 100.0,
+    "AllAbilities": [
+        "しんりょく",
+        "ようりょくそ"
+    ],
     "BaseSpeed": 80,
+    "Types": [
+        "くさ",
+        "どく"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 2.0,
-    "HiddenAbility": "ようりょくそ",
     "Learnset": [
         "はなふぶき",
         "たいあたり",
@@ -71,23 +80,14 @@
         "ハードプラント",
         "くさのちかい"
     ],
-    "BaseAtk": 82,
-    "BaseSpDef": 100,
+    "HiddenAbility": "ようりょくそ",
+    "Height": 2.0,
+    "Category": "通常ポケモン",
     "BaseHP": 80,
     "EggGroups": [
         "怪獣",
         "植物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "ようりょくそ"
-    ],
-    "Weight": 100.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "くさ",
-        "どく"
-    ]
+    "BaseDef": 83,
+    "BaseAtk": 82
 }

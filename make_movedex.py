@@ -1,15 +1,16 @@
 import os
 import json
 import boa
+import path
 import base_data
-import poketetu_movedex as pt_movedex
+import poketetu.movedex as pt_movedex
 
 class AttackNum:
     def __init__(self, min_, max_):
         self.min = min_
         self.max = max_
 
-MIN_AND_MAX_ATTACK_NUM = {
+ATTACK_NUMS = {
     "ギアソーサー":AttackNum(2, 2),
     "スイープビンタ":AttackNum(2, 5),
     "すいりゅうれんだ":AttackNum(3, 3),
@@ -35,16 +36,16 @@ MIN_AND_MAX_ATTACK_NUM = {
 }
 
 def main():
-    for japanese_syllabary_folder_name in os.listdir(base_data.POKETETU_MOVEDEX_PATH):
-        folder_path = base_data.POKETETU_MOVEDEX_PATH + japanese_syllabary_folder_name + "/"
+    for japanese_syllabary_folder_name in os.listdir(path.POKETETU_MOVEDEX):
+        folder_path = path.POKETETU_MOVEDEX + japanese_syllabary_folder_name + "/"
         for file_name in os.listdir(folder_path):
             move_name = file_name[:-4]
             print(move_name)
             full_path = folder_path + file_name
             move_data = pt_movedex.parse_move_data(full_path)
 
-            if move_name in MIN_AND_MAX_ATTACK_NUM:
-                attack_num = MIN_AND_MAX_ATTACK_NUM[move_name]
+            if move_name in ATTACK_NUMS:
+                attack_num = ATTACK_NUMS[move_name]
                 move_data["MinAttackNum"] = attack_num.min
                 move_data["MaxAttackNum"] = attack_num.max
             else:
@@ -52,7 +53,7 @@ def main():
                 move_data["MaxAttackNum"] = 1
 
             json_move_data = json.dumps(move_data, ensure_ascii=False, indent=4)
-            boa.write_txt(base_data.MOVEDEX_PATH + move_name + ".json", json_move_data)
+            boa.write_txt(path.MOVEDEX + move_name + ".json", json_move_data)
 
 if __name__ == "__main__":
     main()

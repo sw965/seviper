@@ -1,12 +1,21 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 102.0,
+    "AllAbilities": [
+        "がんじょう",
+        "くだけるよろい",
+        "すなのちから"
+    ],
     "BaseSpeed": 20,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "がんじょう",
         "くだけるよろい"
     ],
-    "Height": 0.9,
-    "HiddenAbility": "すなのちから",
     "Learnset": [
         "パワージェム",
         "たいあたり",
@@ -47,22 +56,13 @@
         "ボディパージ",
         "メテオビーム"
     ],
-    "BaseAtk": 105,
-    "BaseSpDef": 40,
+    "HiddenAbility": "すなのちから",
+    "Height": 0.9,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょう",
-        "くだけるよろい",
-        "すなのちから"
-    ],
-    "Weight": 102.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 105
 }

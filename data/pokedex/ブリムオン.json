@@ -1,12 +1,22 @@
 {
-    "BaseDef": 95,
+    "BaseSpDef": 103,
+    "Gender": "♀のみ",
+    "Weight": 5.1,
+    "AllAbilities": [
+        "いやしのこころ",
+        "きけんよち",
+        "マジックミラー"
+    ],
     "BaseSpeed": 29,
+    "Types": [
+        "エスパー",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 136,
     "NormalAbilities": [
         "いやしのこころ",
         "きけんよち"
     ],
-    "Height": 2.1,
-    "HiddenAbility": "マジックミラー",
     "Learnset": [
         "サイコカッター",
         "ぶんまわす",
@@ -66,23 +76,13 @@
         "ワイドフォース",
         "ミストバースト"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 103,
+    "HiddenAbility": "マジックミラー",
+    "Height": 2.1,
+    "Category": "通常ポケモン",
     "BaseHP": 57,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "いやしのこころ",
-        "きけんよち",
-        "マジックミラー"
-    ],
-    "Weight": 5.1,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 136,
-    "Types": [
-        "エスパー",
-        "フェアリー"
-    ]
+    "BaseDef": 95,
+    "BaseAtk": 90
 }

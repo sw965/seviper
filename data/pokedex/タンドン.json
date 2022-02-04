@@ -1,12 +1,21 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 50,
+    "Gender": "♂♀両方",
+    "Weight": 12.0,
+    "AllAbilities": [
+        "じょうききかん",
+        "たいねつ",
+        "もらいび"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "いわ"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "じょうききかん",
         "たいねつ"
     ],
-    "Height": 0.3,
-    "HiddenAbility": "もらいび",
     "Learnset": [
         "たいあたり",
         "えんまく",
@@ -45,22 +54,13 @@
         "とおせんぼう",
         "メテオビーム"
     ],
-    "BaseAtk": 40,
-    "BaseSpDef": 50,
+    "HiddenAbility": "もらいび",
+    "Height": 0.3,
+    "Category": "通常ポケモン",
     "BaseHP": 30,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "じょうききかん",
-        "たいねつ",
-        "もらいび"
-    ],
-    "Weight": 12.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "いわ"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 40
 }

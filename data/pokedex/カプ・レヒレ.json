@@ -1,11 +1,20 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 130,
+    "Gender": "不明",
+    "Weight": 21.2,
+    "AllAbilities": [
+        "ミストメイカー",
+        "テレパシー"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "みず",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "ミストメイカー"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "みずでっぽう",
         "チャームボイス",
@@ -63,22 +72,13 @@
         "じゃれつく",
         "マジカルシャイン"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 130,
+    "HiddenAbility": "テレパシー",
+    "Height": 1.3,
+    "Category": "準伝説ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ミストメイカー",
-        "テレパシー"
-    ],
-    "Weight": 21.2,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "みず",
-        "フェアリー"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 75
 }

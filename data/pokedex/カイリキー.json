@@ -1,12 +1,21 @@
 {
-    "BaseDef": 80,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 130.0,
+    "AllAbilities": [
+        "こんじょう",
+        "ノーガード",
+        "ふくつのこころ"
+    ],
     "BaseSpeed": 55,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "こんじょう",
         "ノーガード"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "ふくつのこころ",
     "Learnset": [
         "けたぐり",
         "にらみつける",
@@ -81,22 +90,13 @@
         "ファストガード",
         "コーチング"
     ],
-    "BaseAtk": 130,
-    "BaseSpDef": 85,
+    "HiddenAbility": "ふくつのこころ",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 90,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "こんじょう",
-        "ノーガード",
-        "ふくつのこころ"
-    ],
-    "Weight": 130.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 80,
+    "BaseAtk": 130
 }

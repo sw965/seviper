@@ -1,12 +1,21 @@
 {
-    "BaseDef": 98,
+    "BaseSpDef": 98,
+    "Gender": "♀のみ",
+    "Weight": 21.4,
+    "AllAbilities": [
+        "リーフガード",
+        "じょおうのいげん",
+        "スイートベール"
+    ],
     "BaseSpeed": 72,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "リーフガード",
         "じょおうのいげん"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "スイートベール",
     "Learnset": [
         "トロピカルキック",
         "はねる",
@@ -66,22 +75,13 @@
         "グラススライダー",
         "トリプルアクセル"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 98,
+    "HiddenAbility": "スイートベール",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 72,
     "EggGroups": [
         "植物"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "リーフガード",
-        "じょおうのいげん",
-        "スイートベール"
-    ],
-    "Weight": 21.4,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 98,
+    "BaseAtk": 120
 }

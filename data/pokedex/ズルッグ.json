@@ -1,12 +1,22 @@
 {
-    "BaseDef": 70,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 11.8,
+    "AllAbilities": [
+        "だっぴ",
+        "じしんかじょう",
+        "いかく"
+    ],
     "BaseSpeed": 48,
+    "Types": [
+        "あく",
+        "かくとう"
+    ],
+    "BaseSpAtk": 35,
     "NormalAbilities": [
         "だっぴ",
         "じしんかじょう"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "いかく",
     "Learnset": [
         "にらみつける",
         "けたぐり",
@@ -76,24 +86,14 @@
         "うっぷんばらし",
         "コーチング"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 70,
+    "HiddenAbility": "いかく",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "陸上",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "だっぴ",
-        "じしんかじょう",
-        "いかく"
-    ],
-    "Weight": 11.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 35,
-    "Types": [
-        "あく",
-        "かくとう"
-    ]
+    "BaseDef": 70,
+    "BaseAtk": 75
 }

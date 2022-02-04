@@ -1,11 +1,19 @@
 {
-    "BaseDef": 107,
+    "BaseSpDef": 89,
+    "Gender": "不明",
+    "Weight": 230.0,
+    "AllAbilities": [
+        "メタルプロテクト"
+    ],
     "BaseSpeed": 97,
+    "Types": [
+        "エスパー",
+        "はがね"
+    ],
+    "BaseSpAtk": 113,
     "NormalAbilities": [
         "メタルプロテクト"
     ],
-    "Height": 3.4,
-    "HiddenAbility": "なし",
     "Learnset": [
         "メテオドライブ",
         "コスモパワー",
@@ -77,21 +85,13 @@
         "てっていこうせん",
         "はねる"
     ],
-    "BaseAtk": 137,
-    "BaseSpDef": 89,
+    "HiddenAbility": "なし",
+    "Height": 3.4,
+    "Category": "伝説のポケモン",
     "BaseHP": 137,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "メタルプロテクト"
-    ],
-    "Weight": 230.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 113,
-    "Types": [
-        "エスパー",
-        "はがね"
-    ]
+    "BaseDef": 107,
+    "BaseAtk": 137
 }

@@ -1,11 +1,19 @@
 {
-    "BaseDef": 65,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 52.2,
+    "AllAbilities": [
+        "しんりょく",
+        "かるわざ"
+    ],
     "BaseSpeed": 120,
+    "Types": [
+        "くさ"
+    ],
+    "BaseSpAtk": 105,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 1.7,
-    "HiddenAbility": "かるわざ",
     "Learnset": [
         "ダブルチョップ",
         "はたく",
@@ -90,22 +98,14 @@
         "ハードプラント",
         "くさのちかい"
     ],
-    "BaseAtk": 85,
-    "BaseSpDef": 85,
+    "HiddenAbility": "かるわざ",
+    "Height": 1.7,
+    "Category": "通常ポケモン",
     "BaseHP": 70,
     "EggGroups": [
         "怪獣",
         "ドラゴン"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "かるわざ"
-    ],
-    "Weight": 52.2,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 105,
-    "Types": [
-        "くさ"
-    ]
+    "BaseDef": 65,
+    "BaseAtk": 85
 }

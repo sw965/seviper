@@ -1,12 +1,21 @@
 {
-    "BaseDef": 105,
+    "BaseSpDef": 70,
+    "Gender": "♀のみ",
+    "Weight": 75.5,
+    "AllAbilities": [
+        "あついしぼう",
+        "きもったま",
+        "そうしょく"
+    ],
     "BaseSpeed": 100,
+    "Types": [
+        "ノーマル"
+    ],
+    "BaseSpAtk": 40,
     "NormalAbilities": [
         "あついしぼう",
         "きもったま"
     ],
-    "Height": 1.2,
-    "HiddenAbility": "そうしょく",
     "Learnset": [
         "たいあたり",
         "なきごえ",
@@ -78,22 +87,13 @@
         "ゲップ",
         "アイアンローラー"
     ],
-    "BaseAtk": 80,
-    "BaseSpDef": 70,
+    "HiddenAbility": "そうしょく",
+    "Height": 1.2,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♀のみ",
-    "AllAbilities": [
-        "あついしぼう",
-        "きもったま",
-        "そうしょく"
-    ],
-    "Weight": 75.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 40,
-    "Types": [
-        "ノーマル"
-    ]
+    "BaseDef": 105,
+    "BaseAtk": 80
 }

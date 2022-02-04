@@ -1,12 +1,22 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 0.5,
+    "AllAbilities": [
+        "みつあつめ",
+        "りんぷん",
+        "スイートベール"
+    ],
     "BaseSpeed": 124,
+    "Types": [
+        "むし",
+        "フェアリー"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "みつあつめ",
         "りんぷん"
     ],
-    "Height": 0.2,
-    "HiddenAbility": "スイートベール",
     "Learnset": [
         "かふんだんご",
         "すいとる",
@@ -63,24 +73,14 @@
         "ねばねばネット",
         "ダブルウイング"
     ],
-    "BaseAtk": 55,
-    "BaseSpDef": 70,
+    "HiddenAbility": "スイートベール",
+    "Height": 0.2,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "虫",
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "みつあつめ",
-        "りんぷん",
-        "スイートベール"
-    ],
-    "Weight": 0.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "むし",
-        "フェアリー"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 55
 }

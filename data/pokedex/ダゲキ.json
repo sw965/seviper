@@ -1,12 +1,21 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 75,
+    "Gender": "♂のみ",
+    "Weight": 51.0,
+    "AllAbilities": [
+        "がんじょう",
+        "せいしんりょく",
+        "かたやぶり"
+    ],
     "BaseSpeed": 85,
+    "Types": [
+        "かくとう"
+    ],
+    "BaseSpAtk": 30,
     "NormalAbilities": [
         "がんじょう",
         "せいしんりょく"
     ],
-    "Height": 1.4,
-    "HiddenAbility": "かたやぶり",
     "Learnset": [
         "いわくだき",
         "にらみつける",
@@ -59,22 +68,13 @@
         "じごくづき",
         "コーチング"
     ],
-    "BaseAtk": 125,
-    "BaseSpDef": 75,
+    "HiddenAbility": "かたやぶり",
+    "Height": 1.4,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂のみ",
-    "AllAbilities": [
-        "がんじょう",
-        "せいしんりょく",
-        "かたやぶり"
-    ],
-    "Weight": 51.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 30,
-    "Types": [
-        "かくとう"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 125
 }

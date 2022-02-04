@@ -1,12 +1,21 @@
 {
-    "BaseDef": 115,
+    "BaseSpDef": 85,
+    "Gender": "不明",
+    "Weight": 81.0,
+    "AllAbilities": [
+        "プラス",
+        "マイナス",
+        "クリアボディ"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "はがね"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "プラス",
         "マイナス"
     ],
-    "Height": 0.6,
-    "HiddenAbility": "クリアボディ",
     "Learnset": [
         "じばそうさ",
         "はさむ",
@@ -51,22 +60,13 @@
         "ライジングボルト",
         "てっていこうせん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 85,
+    "HiddenAbility": "クリアボディ",
+    "Height": 0.6,
+    "Category": "通常ポケモン",
     "BaseHP": 60,
     "EggGroups": [
         "鉱物"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プラス",
-        "マイナス",
-        "クリアボディ"
-    ],
-    "Weight": 81.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "はがね"
-    ]
+    "BaseDef": 115,
+    "BaseAtk": 100
 }

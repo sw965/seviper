@@ -1,12 +1,21 @@
 {
-    "BaseDef": 40,
+    "BaseSpDef": 40,
+    "Gender": "♂♀両方",
+    "Weight": 4.5,
+    "AllAbilities": [
+        "すいすい",
+        "うるおいボディ",
+        "ちょすい"
+    ],
     "BaseSpeed": 64,
+    "Types": [
+        "みず"
+    ],
+    "BaseSpAtk": 50,
     "NormalAbilities": [
         "すいすい",
         "うるおいボディ"
     ],
-    "Height": 0.5,
-    "HiddenAbility": "ちょすい",
     "Learnset": [
         "なきごえ",
         "エコーボイス",
@@ -46,22 +55,13 @@
         "どろかけ",
         "みずのはどう"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 40,
+    "HiddenAbility": "ちょすい",
+    "Height": 0.5,
+    "Category": "通常ポケモン",
     "BaseHP": 50,
     "EggGroups": [
         "水中1"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "すいすい",
-        "うるおいボディ",
-        "ちょすい"
-    ],
-    "Weight": 4.5,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 50,
-    "Types": [
-        "みず"
-    ]
+    "BaseDef": 40,
+    "BaseAtk": 50
 }

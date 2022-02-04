@@ -1,11 +1,19 @@
 {
-    "BaseDef": 100,
+    "BaseSpDef": 100,
+    "Gender": "不明",
+    "Weight": 650.0,
+    "AllAbilities": [
+        "ふゆう"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ゴースト",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 120,
     "NormalAbilities": [
         "ふゆう"
     ],
-    "Height": 6.9,
-    "HiddenAbility": "なし",
     "Learnset": [
         "かげうち",
         "きりばらい",
@@ -64,21 +72,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 120,
-    "BaseSpDef": 100,
+    "HiddenAbility": "なし",
+    "Height": 6.9,
+    "Category": "伝説のポケモン",
     "BaseHP": 150,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ふゆう"
-    ],
-    "Weight": 650.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 120,
-    "Types": [
-        "ゴースト",
-        "ドラゴン"
-    ]
+    "BaseDef": 100,
+    "BaseAtk": 120
 }

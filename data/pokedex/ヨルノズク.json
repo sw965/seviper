@@ -1,12 +1,22 @@
 {
-    "BaseDef": 50,
+    "BaseSpDef": 96,
+    "Gender": "♂♀両方",
+    "Weight": 40.8,
+    "AllAbilities": [
+        "ふみん",
+        "するどいめ",
+        "いろめがね"
+    ],
     "BaseSpeed": 70,
+    "Types": [
+        "ノーマル",
+        "ひこう"
+    ],
+    "BaseSpAtk": 86,
     "NormalAbilities": [
         "ふみん",
         "するどいめ"
     ],
-    "Height": 1.6,
-    "HiddenAbility": "いろめがね",
     "Learnset": [
         "ゴッドバード",
         "たいあたり",
@@ -64,23 +74,13 @@
         "きりばらい",
         "ダブルウイング"
     ],
-    "BaseAtk": 50,
-    "BaseSpDef": 96,
+    "HiddenAbility": "いろめがね",
+    "Height": 1.6,
+    "Category": "通常ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "ふみん",
-        "するどいめ",
-        "いろめがね"
-    ],
-    "Weight": 40.8,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 86,
-    "Types": [
-        "ノーマル",
-        "ひこう"
-    ]
+    "BaseDef": 50,
+    "BaseAtk": 50
 }

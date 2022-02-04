@@ -1,11 +1,19 @@
 {
-    "BaseDef": 60,
+    "BaseSpDef": 60,
+    "Gender": "♂♀両方",
+    "Weight": 34.0,
+    "AllAbilities": [
+        "がんじょうあご",
+        "かちき"
+    ],
     "BaseSpeed": 121,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 90,
     "NormalAbilities": [
         "がんじょうあご"
     ],
-    "Height": 1.0,
-    "HiddenAbility": "かちき",
     "Learnset": [
         "そうでん",
         "たいあたり",
@@ -56,21 +64,13 @@
         "ニトロチャージ",
         "ライジングボルト"
     ],
-    "BaseAtk": 90,
-    "BaseSpDef": 60,
+    "HiddenAbility": "かちき",
+    "Height": 1.0,
+    "Category": "通常ポケモン",
     "BaseHP": 69,
     "EggGroups": [
         "陸上"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "がんじょうあご",
-        "かちき"
-    ],
-    "Weight": 34.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 90,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 60,
+    "BaseAtk": 90
 }

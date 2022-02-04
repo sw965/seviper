@@ -1,11 +1,20 @@
 {
-    "BaseDef": 75,
+    "BaseSpDef": 70,
+    "Gender": "♂♀両方",
+    "Weight": 16.0,
+    "AllAbilities": [
+        "しんりょく",
+        "えんかく"
+    ],
     "BaseSpeed": 52,
+    "Types": [
+        "くさ",
+        "ひこう"
+    ],
+    "BaseSpAtk": 70,
     "NormalAbilities": [
         "しんりょく"
     ],
-    "Height": 0.7,
-    "HiddenAbility": "えんかく",
     "Learnset": [
         "たいあたり",
         "このは",
@@ -53,22 +62,13 @@
         "ダブルウイング",
         "くさのちかい"
     ],
-    "BaseAtk": 75,
-    "BaseSpDef": 70,
+    "HiddenAbility": "えんかく",
+    "Height": 0.7,
+    "Category": "通常ポケモン",
     "BaseHP": 78,
     "EggGroups": [
         "飛行"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "しんりょく",
-        "えんかく"
-    ],
-    "Weight": 16.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 70,
-    "Types": [
-        "くさ",
-        "ひこう"
-    ]
+    "BaseDef": 75,
+    "BaseAtk": 75
 }

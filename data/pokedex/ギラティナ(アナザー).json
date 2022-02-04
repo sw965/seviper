@@ -1,11 +1,20 @@
 {
-    "BaseDef": 120,
+    "BaseSpDef": 120,
+    "Gender": "不明",
+    "Weight": 750.0,
+    "AllAbilities": [
+        "プレッシャー",
+        "テレパシー"
+    ],
     "BaseSpeed": 90,
+    "Types": [
+        "ゴースト",
+        "ドラゴン"
+    ],
+    "BaseSpAtk": 100,
     "NormalAbilities": [
         "プレッシャー"
     ],
-    "Height": 4.5,
-    "HiddenAbility": "テレパシー",
     "Learnset": [
         "かげうち",
         "きりばらい",
@@ -64,22 +73,13 @@
         "ダブルウイング",
         "りゅうせいぐん"
     ],
-    "BaseAtk": 100,
-    "BaseSpDef": 120,
+    "HiddenAbility": "テレパシー",
+    "Height": 4.5,
+    "Category": "伝説のポケモン",
     "BaseHP": 150,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "プレッシャー",
-        "テレパシー"
-    ],
-    "Weight": 750.0,
-    "Category": "伝説のポケモン",
-    "BaseSpAtk": 100,
-    "Types": [
-        "ゴースト",
-        "ドラゴン"
-    ]
+    "BaseDef": 120,
+    "BaseAtk": 100
 }

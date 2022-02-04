@@ -1,11 +1,19 @@
 {
-    "BaseDef": 211,
+    "BaseSpDef": 101,
+    "Gender": "不明",
+    "Weight": 820.0,
+    "AllAbilities": [
+        "ビーストブースト"
+    ],
     "BaseSpeed": 13,
+    "Types": [
+        "いわ",
+        "はがね"
+    ],
+    "BaseSpAtk": 53,
     "NormalAbilities": [
         "ビーストブースト"
     ],
-    "Height": 5.5,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "かたくなる",
@@ -60,21 +68,13 @@
         "メテオビーム",
         "てっていこうせん"
     ],
-    "BaseAtk": 131,
-    "BaseSpDef": 101,
+    "HiddenAbility": "なし",
+    "Height": 5.5,
+    "Category": "準伝説ポケモン",
     "BaseHP": 61,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "ビーストブースト"
-    ],
-    "Weight": 820.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 53,
-    "Types": [
-        "いわ",
-        "はがね"
-    ]
+    "BaseDef": 211,
+    "BaseAtk": 131
 }

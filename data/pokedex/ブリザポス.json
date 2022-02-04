@@ -1,11 +1,18 @@
 {
-    "BaseDef": 130,
+    "BaseSpDef": 110,
+    "Gender": "不明",
+    "Weight": 800.0,
+    "AllAbilities": [
+        "しろのいななき"
+    ],
     "BaseSpeed": 30,
+    "Types": [
+        "こおり"
+    ],
+    "BaseSpAtk": 65,
     "NormalAbilities": [
         "しろのいななき"
     ],
-    "Height": 2.2,
-    "HiddenAbility": "なし",
     "Learnset": [
         "たいあたり",
         "しっぽをふる",
@@ -57,20 +64,13 @@
         "ボディプレス",
         "うっぷんばらし"
     ],
-    "BaseAtk": 145,
-    "BaseSpDef": 110,
+    "HiddenAbility": "なし",
+    "Height": 2.2,
+    "Category": "準伝説ポケモン",
     "BaseHP": 100,
     "EggGroups": [
         "タマゴ未発見"
     ],
-    "Gender": "不明",
-    "AllAbilities": [
-        "しろのいななき"
-    ],
-    "Weight": 800.0,
-    "Category": "準伝説ポケモン",
-    "BaseSpAtk": 65,
-    "Types": [
-        "こおり"
-    ]
+    "BaseDef": 130,
+    "BaseAtk": 145
 }

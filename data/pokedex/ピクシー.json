@@ -1,12 +1,21 @@
 {
-    "BaseDef": 73,
+    "BaseSpDef": 90,
+    "Gender": "♂♀両方",
+    "Weight": 40.0,
+    "AllAbilities": [
+        "メロメロボディ",
+        "マジックガード",
+        "てんねん"
+    ],
     "BaseSpeed": 60,
+    "Types": [
+        "フェアリー"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "メロメロボディ",
         "マジックガード"
     ],
-    "Height": 1.3,
-    "HiddenAbility": "てんねん",
     "Learnset": [
         "うたう",
         "ちいさくなる",
@@ -103,22 +112,13 @@
         "ミストバースト",
         "ダブルウイング"
     ],
-    "BaseAtk": 70,
-    "BaseSpDef": 90,
+    "HiddenAbility": "てんねん",
+    "Height": 1.3,
+    "Category": "通常ポケモン",
     "BaseHP": 95,
     "EggGroups": [
         "妖精"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "メロメロボディ",
-        "マジックガード",
-        "てんねん"
-    ],
-    "Weight": 40.0,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "フェアリー"
-    ]
+    "BaseDef": 73,
+    "BaseAtk": 70
 }

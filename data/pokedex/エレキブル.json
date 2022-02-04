@@ -1,11 +1,19 @@
 {
-    "BaseDef": 67,
+    "BaseSpDef": 85,
+    "Gender": "♂♀両方",
+    "Weight": 138.6,
+    "AllAbilities": [
+        "でんきエンジン",
+        "やるき"
+    ],
     "BaseSpeed": 95,
+    "Types": [
+        "でんき"
+    ],
+    "BaseSpAtk": 95,
     "NormalAbilities": [
         "でんきエンジン"
     ],
-    "Height": 1.8,
-    "HiddenAbility": "やるき",
     "Learnset": [
         "でんこうせっか",
         "にらみつける",
@@ -69,21 +77,13 @@
         "フェイント",
         "ライジングボルト"
     ],
-    "BaseAtk": 123,
-    "BaseSpDef": 85,
+    "HiddenAbility": "やるき",
+    "Height": 1.8,
+    "Category": "通常ポケモン",
     "BaseHP": 75,
     "EggGroups": [
         "人型"
     ],
-    "Gender": "♂♀両方",
-    "AllAbilities": [
-        "でんきエンジン",
-        "やるき"
-    ],
-    "Weight": 138.6,
-    "Category": "通常ポケモン",
-    "BaseSpAtk": 95,
-    "Types": [
-        "でんき"
-    ]
+    "BaseDef": 67,
+    "BaseAtk": 123
 }
