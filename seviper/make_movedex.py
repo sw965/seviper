@@ -1,9 +1,9 @@
 import os
 import json
 import boa
-import path
-import base_data
-import poketetu.movedex as pt_movedex
+import seviper.path as path
+import seviper.base_data as base_data
+import seviper.poketetu.movedex as pt_movedex
 
 class AttackNum:
     def __init__(self, min_, max_):

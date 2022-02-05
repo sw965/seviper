@@ -1,9 +1,9 @@
 import json
 import boa
-import path
-import base_data
-import poketetu.pokedex as pt_pokedex
-import poketetu.learnset as pt_learnset
+import seviper.path as path
+import seviper.base_data as base_data
+import seviper.poketetu.pokedex as pt_pokedex
+import seviper.poketetu.learnset as pt_learnset
 
 def main():
     for poke_name in base_data.ALL_POKE_NAMES:

@@ -1,6 +1,6 @@
 import os
 import boa
-import path
+import seviper.path as path
 
 ALL_POKE_NAMES = boa.readlines_txt(path.ALL_POKE_NAMES, True)
 assert all([ALL_POKE_NAMES.count(poke_name) == 1 for poke_name in ALL_POKE_NAMES])

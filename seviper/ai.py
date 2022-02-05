@@ -1,7 +1,7 @@
 import copy
 import itertools
 import numpy as np
-import parts
+import seviper.parts as parts
 
 POKE_NAME_FEATURES = ["なし"] + parts.RATE_POKE_NAMES
 BASE_STATE_FEATURES = [state + 1 for state in range(parts.MAX_BASE_STATE)]

@@ -1,5 +1,5 @@
 import copy
-import parts
+import seviper.parts as parts
 
 class Pokemon:
     def __init__(self, name, nature, ability, gender, item, move_names, point_ups, individual, effort):
