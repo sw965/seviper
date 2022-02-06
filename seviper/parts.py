@@ -114,7 +114,6 @@ ALL_NATURES = [id_to_nature(i) for i in range(len(NATUREDEX))]
 ALL_NATURES_LENGTH = len(ALL_NATURES)
 
 TYPEDEX = boa.load_json(path.TYPEDEX)
-
 NORMAL = "ノーマル"
 FIRE = "ほのお"
 WATER = "みず"
@@ -232,7 +231,7 @@ class Effort:
         return all(d)
 
     def sum(self):
-        return self.hp + self.atk + self.defe + self.sp_atk, self.sp_def + self.speed
+        return self.hp + self.atk + self.defe + self.sp_atk + self.sp_def + self.speed
 
     def is_valid_sum(self):
         return 0 <= self.sum() <= Effort.MAX_SUM
@@ -261,10 +260,10 @@ MIN_MOVESET_NUM = 1
 MAX_MOVESET_NUM = 4
 
 def hp_state_calc(base_hp, individual_value, effort_value):
-    return ( (base_hp * 2) + individual_value + (effort_value / 4) ) * (DEFAULT_LEVEL / 100) + DEFAULT_LEVEL + 10
+    return ((base_hp*2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + DEFAULT_LEVEL + 10
 
 def state_calc(base_hp, individual_value, effort_value):
-    return ( (base_state * 2) + individual_value + (effort_value / 4) ) * (DEFAULT_LEVEL / 100) + 5
+    return int( (base_state * 2) + individual_value + (effort_value / 4) ) * DEFAULT_LEVEL // 100 + 5
 
 NORMAL_POISON = "どく"
 BAD_POISON = "もうどく"

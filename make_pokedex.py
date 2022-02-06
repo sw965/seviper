@@ -1,11 +1,9 @@
 import json
 import boa
 import seviper.path as path
-import seviper.base_data as base_data
-import seviper.poketetu.pokedex as pt_pokedex
-import seviper.poketetu.learnset as pt_learnset
 
 def main():
+    assert False, "呼び出さないで"
     for poke_name in base_data.ALL_POKE_NAMES:
         print(poke_name)
         poke_data = pt_pokedex.parse_poke_data(path.POKETETU_POKEDEX + poke_name + ".txt")

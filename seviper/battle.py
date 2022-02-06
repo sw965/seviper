@@ -1,14 +1,17 @@
+import random
 import copy
 import seviper.parts as parts
+import seviper.damagetools as damagetools
+import seviper.turn_end as turn_end
 
 class Pokemon:
     def __init__(self, name, nature, ability, gender, item, move_names, point_ups, individual, effort):
-        assert name in base_data.ALL_POKE_NAMES, "ポケモン名が不適"
-        assert nature in base_data.NATUREDEX, "性格が不適"
-        poke_data = base_data.POKEDEX[name]
-        assert ability in poke_data.AllAbilities, "特性が不適"
-        assert gender in parts.valid_genders(poke_data.Gender), "性別が不適"
-        assert item in base_data.ALL_ITEMS, "アイテムが不適"
+        assert name in parts.ALL_POKE_NAMES, "ポケモン名が不適"
+        assert nature in parts.NATUREDEX, "性格が不適"
+        poke_data = parts.POKEDEX[name]
+        assert ability in poke_data.all_abilities, "特性が不適"
+        assert gender in parts.valid_genders(poke_data.gender), "性別が不適"
+        assert item in parts.ALL_ITEMS, "アイテムが不適"
         assert all([move_name in poke_data.learnset for move_name in move_names]), "覚えさせる技が不適"
         assert all([parts.is_valid_point_up(point_up) for point_up in point_ups]), "ポイントアップのリストの中に不適な値が含まれている"
         assert len(move_names) == len(point_ups), "覚えさせる技の数とポイントアップのリストの長さが一致していない"
@@ -34,8 +37,8 @@ class Pokemon:
         self.ability = ability
         self.gender = gender
         self.item = item
-        self.moveset = {move_name:PowerPoint(base_data.MOVEDEX[move_name].base_pp, point_ups[i]) \
-                        for i in enumerate(move_names)}
+        self.moveset = {move_name:parts.PowerPoint(parts.MOVEDEX[move_name].base_pp, point_ups[i]) \
+                        for i, move_name in enumerate(move_names)}
         self.types = poke_data.types
 
         hp = parts.hp_state_calc(poke_data.base_hp, individual.hp, effort.hp)
@@ -109,8 +112,11 @@ class Pokemon:
     def is_faint(self):
         return self.current_hp <= 0
 
-    def is_faint_damage(damage):
+    def is_faint_damage(self, damage):
         return damage >= self.current_hp
+
+    def current_damage(self):
+        return self.max_hp - self.current_hp
 
 MIN_TEAM_NUM = 3
 MAX_TEAM_NUM = 6
@@ -129,24 +135,25 @@ def new_fighters(team, indices):
 def is_hit(percent):
     return random.randint(0, 100) < percent
 
-class SelfPointOfViewBattle:
+
+class SelfPointOfView:
     def __init__(self, self_fighters, opponent_fighters):
         self.self_fighters = self_fighters
         self.opponent_fighters = opponent_fighters
 
     def reverse(self):
         self = copy.deepcopy(self)
-        return SelfPointOfViewBattle(self.opponent_fighters, self.self_fighters)
+        return SelfPointOfView(self.opponent_fighters, self.self_fighters)
 
-    def to_battle(self):
+    def to_manager(self):
         self = copy.deepcopy(self)
-        return Battle(self.self_fighters, self.opponent_fighters)
+        return Manager(self.self_fighters, self.opponent_fighters)
 
     def real_accuracy(self, move_name):
         if move_name == "どくどく" and parts.POISON in self_fighters[0].types:
             return 100
         else:
-            move_data = base_data.MOVEDEX[move_name]
+            move_data = parts.MOVEDEX[move_name]
             return move_data.accuracy
 
     def toxic(self):
@@ -168,7 +175,16 @@ class SelfPointOfViewBattle:
         return self
 
     def is_critical(self, move_name):
-        return random.randint(0, 24) == 0
+        rank = parts.MOVEDEX[move_name].critical_rank
+        if rank == 0:
+            end = 24
+        elif rank == 1:
+            end = 8
+        elif rank == 2:
+            end = 2
+        else:
+            end = 1
+        return random.randint(0, end) == 0
 
     def damage(self, damage_v):
         damage_v = min([self.self_fighters[0].current_hp, damage_v])
@@ -177,21 +193,21 @@ class SelfPointOfViewBattle:
         return self
 
     def heal(self, heal_v):
-        heal_v = min([self.self_fighters[0].faint_damage(), heal_v])
+        heal_v = min([self.self_fighters[0].current_damage(), heal_v])
         self = copy.deepcopy(self)
         self.self_fighters[0].current_hp += heal_v
         return self
 
     def move_use(self, move_name):
         lead_poke_name = self.self_fighters[0].name
-        assert not self_fighters[0].is_faint(), lead_poke_name + " は " + "技を繰り出そうとしたが、瀕死状態"
+        assert not self.self_fighters[0].is_faint(), lead_poke_name + " は " + " は 技を繰り出そうとしたが、瀕死状態"
 
         self = copy.deepcopy(self)
         if move_name == parts.STRUGGLE:
             self.self_fighters[0].current_hp = 0
             return self
 
-        move_data = base_data.MOVEDEX[move_name]
+        move_data = parts.MOVEDEX[move_name]
 
         assert move_name in self.self_fighters[0].moveset, \
             lead_poke_name + " は " + move_name + " を繰り出そうとしたが、覚えていない"
@@ -205,7 +221,7 @@ class SelfPointOfViewBattle:
             if move_data.target != "自分":
                 return self
 
-        real_accuracy = self.real_accuracy()
+        real_accuracy = self.real_accuracy(move_name)
         if real_accuracy != -1:
             if not is_hit(real_accuracy):
                 return self
@@ -221,11 +237,11 @@ class SelfPointOfViewBattle:
         attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num + 1)
 
         for i in range(attack_num):
-            is_critical = self.is_critical()
-            final_damage = damagetools.final_damage(move_name, is_critical)
-            opovb = self.reverse()
-            opovb = opovb.damage(final_damage)
-            self = opovb.reverse()
+            is_critical = self.is_critical(move_name)
+            final_damage = damagetools.final_damage(self, move_name, is_critical)
+            opov = self.reverse()
+            opov = opov.damage(final_damage)
+            self = opov.reverse()
             if self.self_fighters[0].is_faint() or self.opponent_fighters[0].is_faint():
                 break
         return self
@@ -255,119 +271,41 @@ class SelfPointOfViewBattle:
         return self
 
     def action(self, command):
-        if command in ALL_POKE_NAMES:
+        if command in parts.ALL_POKE_NAMES:
             return self.switch(command)
-        elif command in ALL_MOVE_NAMES:
+        elif command in parts.ALL_MOVE_NAMES:
             return self.move_use(command)
         assert False, "アクションコマンドが不適"
 
 
-class Winner:
-    def __init__(self, is_p1, is_p2):
-        self.is_p1 = is_p1
-        self.is_p2 = is_p2
-
-    def __eq__(self, winner):
-        return (self.is_p1 == winner.is_p1) and (self.is_p2 == winner.is_p2)
-
-    def __ne__(self, winner):
-        return not self.__eq__(winner)
-
-WINNER_P1 = Winner(True, False)
-WINNER_P2 = Winner(False, True)
-DRAW = Winner(False, False)
-
-
-def real_speed_winner(spovb):
-    p1_real_speed = real_speed(spovb)
-    p2_real_speed = real_speed(spovb)
-
-    if p1_real_speed > p2_real_speed:
-        return WINNER_P1
-    elif p1_real_speed < p2_real_speed:
-        return WINNER_P2
-    else:
-        return DRAW
-
-def priority_winner(spovb, p1_action_command, p2_action_command):
-    def priority_rank(action_command):
-        if action_command in ALL_MOVE_NAMES:
-            return MOVEDEX[action_command].priority_rank
-        elif action_command in ALL_POKE_NAMES:
-            return 999
-        assert False, "アクションコマンドが不適"
-
-    p1_priority_rank = priority_rank(p1_action_command)
-    p2_priority_rank = priority_rank(p2_action_command)
-
-    if p1_priority_rank > p2_priority_rank:
-        return WINNER_P1
-    elif p1_priority_rank < p2_priority_rank:
-        return WINNER_P2
-    else:
-        return DRAW
-
-def action_speed_winner(spovb, p1_action_command, p2_action_command):
-    real_speed_winner_v = real_speed_winner(spovb)
-    if real_speed_winner != DRAW:
-        return real_speed_winner_v
-
-    priority_winner_v = priority_winner(spovb, p1_action_command, p2_action_command)
-    if priority_winner_v != DRAW:
-        return priority_winner_v
-
-    return random.choice([WINNER_P1, WINNER_P2])
-
-#https://wiki.xn--rckteqa2e.com/wiki/%E3%81%99%E3%81%B0%E3%82%84%E3%81%95
-
-INIT_SPEED_BONUS = 4096
-
-def speed_bonus(spovb):
-    result = INIT_SPEED_BONUS
-    if spovb.self_fighters[0].item == "こだわりスカーフ":
-        result = five_or_more_rounding(float(result) * 6144.0 / 4096.0)
-    return result
-
-def real_speed(spovb):
-    speed = spovb.self_fighters[0].speed
-    rank_bonus = RANK_BONUS[spovb.self_fighters[0].speed_rank]
-    speed_bonus_v = speed_bonus(spovb)
-    paralysis_bonus = PARALYSIS_BONUS[spovb.self_fighters[0].status_ailment == PARALYSIS]
-
-    result = int(float(speed) * float(rank_bonus))
-    result = five_over_rounding(float(result) * float(speed_bonus_v) / 4096.0)
-    return result
-
-PARALYSIS_BONUS = {True:2048.0 / 4096.0, False:1.0}
-
-
-class Battle:
+class Manager:
     def __init__(self, p1_fighters, p2_fighters):
         self.p1_fighters = p1_fighters
         self.p2_fighters = p2_fighters
 
     def reverse(self):
         self = copy.deepcopy(self)
-        return Battle(self.p2_fighters, self.p1_fighters)
+        return Manager(self.p2_fighters, self.p1_fighters)
 
-    def to_p1_point_of_view_battle(self):
+    def to_p1_point_of_view(self):
         self = copy.deepcopy(self)
-        return SelfPointOfViewBattle(self.p1_fighters, self.p2_fighters)
+        return SelfPointOfView(self.p1_fighters, self.p2_fighters)
 
-    def to_p2_point_of_view_battle(self):
+    def to_p2_point_of_view(self):
         self = copy.deepcopy(self)
-        return SelfPointOfViewBattle(self.p2_fighters, self.p1_fighters)
+        return SelfPointOfView(self.p2_fighters, self.p1_fighters)
 
     def p1_action(self, command):
-        p1_point_of_view_battle = self.to_p1_point_of_view_battle()
-        p1_point_of_view_battle = p1_point_of_view_battle.action(command)
-        self = p1_point_of_view_battle.to_battle()
+        p1_point_of_view = self.to_p1_point_of_view()
+        p1_point_of_view = p1_point_of_view.action(command)
+        self = p1_point_of_view.to_manager()
         return self
 
     def p2_action(self, command):
-        p2_point_of_view_battle = self.to_p2_point_of_view_battle()
-        p2_point_of_view_battle = p2_point_of_view_battle.action(command)
-        self = p2_point_of_view_battle.to_battle()
+        p2_point_of_view = self.to_p2_point_of_view()
+        p2_point_of_view = p2_point_of_view.action(command)
+        p1_point_of_view = p2_point_of_view.reverse()
+        self = p1_point_of_view.to_manager()
         return self
 
     def is_p1_only_switch_after_faint_phase(self):
@@ -380,33 +318,31 @@ class Battle:
         return self.p1_fighters[0].is_faint() == self.p2_fighters[0].is_faint()
 
     def turn_end(self):
-        def p1_first(spovb, turn_end_f):
-            p1_point_of_view_battle = spovb.to_p1_point_of_view_battle()
-            p1_point_of_view_battle = turn_end_f(p1_point_of_view_battle)
-            p2_point_of_view_battle = p1_point_of_view_battle.reverse()
-            p2_point_of_view_battle = turn_end_f(p2_point_of_view_battle)
-            p1_point_of_view_battle = p2_point_of_view_battle.reverse()
-            return p1_point_of_view_battle.to_battle()
+        def p1_first(spov, turn_end_f):
+            p1_point_of_view = spov.to_p1_point_of_view()
+            p1_point_of_view = turn_end_f(p1_point_of_view)
+            p2_point_of_view = p1_point_of_view.reverse()
+            p2_point_of_view = turn_end_f(p2_point_of_view)
+            p1_point_of_view = p2_point_of_view.reverse()
+            return p1_point_of_view.to_manager()
 
-        def p2_first(spovb, turn_end_f):
-            p2_point_of_view_battle = spovb.to_p2_point_of_view_battle()
-            p2_point_of_view_battle = turn_end_f(p2_point_of_view_battle)
-            p1_point_of_view_battle = p2_point_of_view_battle.reverse()
-            p1_point_of_view_battle = turn_end_f(p1_point_of_view_battle)
-            return p1_point_of_view_battle.to_battle()
+        def p2_first(spov, turn_end_f):
+            p2_point_of_view = spov.to_p2_point_of_view()
+            p2_point_of_view = turn_end_f(p2_point_of_view)
+            p1_point_of_view = p2_point_of_view.reverse()
+            p1_point_of_view = turn_end_f(p1_point_of_view)
+            return p1_point_of_view.to_manager()
 
         def run(self, turn_end_fs):
-            real_speed_winner_v = self.real_speed_winner()
+            real_speed_winner_v = real_speed_winner(self)
             for turn_end_f in turn_end_fs:
                 if real_speed_winner_v == WINNER_P1:
                     self = p1_first(self, turn_end_f)
                 elif real_speed_winner_v == WINNER_P2:
                     self = p2_first(self, turn_end_f)
                 else:
-                    if is_hit(50):
-                        self = p1_first(self, turn_end_f)
-                    else:
-                        self = p2_first(self, turn_end_f)
+                    f = random.choice([p1_first, p2_first])
+                    self = f(self, turn_end_f)
             return self
 
         self = run(self, [turn_end.leftovers, turn_end.black_sludge])
@@ -419,11 +355,11 @@ class Battle:
         is_p2_only_switch_after_faint_phase = self.is_p2_only_switch_after_faint_phase()
 
         if is_p1_only_switch_after_faint_phase:
-            assert len(action_commands) == 1, "p1のみアクションが可能な状態で、2つのコマンドが渡された"
+            assert len(action_commands) > 1, "p1のみアクションが可能な状態で、2つ以上のコマンドが渡された"
         elif is_p2_only_switch_after_faint_phase:
-            assert len(action_commands) == 1, "p2のみアクションが可能な状態で、2つのコマンドが渡された"
+            assert len(action_commands) > 1, "p2のみアクションが可能な状態で、2つ以上のコマンドが渡された"
         else:
-            assert len(action_commands) == 2, "p1とp2の両方がアクション可能な状態で、1つのコマンドしか渡されなかった"
+            assert len(action_commands) == 2, "p1とp2の両方がアクション可能な状態で、長さが2じゃないコマンドリストが渡された"
 
         if is_p1_only_switch_after_faint_phase:
             return self.p1_action(action_commands[0])
@@ -434,11 +370,11 @@ class Battle:
             self = self.p2_action(action_commands[1])
             return self
 
-        action_speed_winner_v = self.action_speed_winner(action_co)
+        action_speed_winner_v = action_speed_winner(self, action_commands[0], action_commands[1])
         if action_speed_winner_v == WINNER_P1:
             is_p1_actions = [True, False]
         else:
-            is_p2_actions = [False, True]
+            is_p1_actions = [False, True]
 
         for is_p1_action in is_p1_actions:
             if is_p1_action:
@@ -469,10 +405,106 @@ class Battle:
                 break
         return self
 
-if __name__ == "__main__":
-    for i in range(parts.RATE_POKE_NAMES_LENGTH):
-        row, column = PokemonFeatureValue2D.INDICES_2D[i]
-        print(i, row, column)
 
-    #pokemon_feature_value_2d.set_name("サンダー")
-    #print(pokemon_feature_value_2d.name)
+class Winner:
+    def __init__(self, is_p1, is_p2):
+        self.is_p1 = is_p1
+        self.is_p2 = is_p2
+
+    def __eq__(self, winner):
+        return (self.is_p1 == winner.is_p1) and (self.is_p2 == winner.is_p2)
+
+    def __ne__(self, winner):
+        return not self.__eq__(winner)
+
+WINNER_P1 = Winner(True, False)
+WINNER_P2 = Winner(False, True)
+DRAW = Winner(False, False)
+
+def real_speed_winner(manager):
+    p1_point_of_view = manager.to_p1_point_of_view()
+    p2_point_of_view = manager.to_p2_point_of_view()
+
+    p1_real_speed = real_speed(p1_point_of_view)
+    p2_real_speed = real_speed(p2_point_of_view)
+
+    if p1_real_speed > p2_real_speed:
+        return WINNER_P1
+    elif p1_real_speed < p2_real_speed:
+        return WINNER_P2
+    else:
+        return DRAW
+
+def priority_winner(manager, p1_action_command, p2_action_command):
+    def priority_rank(action_command):
+        if action_command in ALL_MOVE_NAMES:
+            return MOVEDEX[action_command].priority_rank
+        elif action_command in ALL_POKE_NAMES:
+            return 999
+        assert False, "アクションコマンドが不適"
+
+    p1_priority_rank = priority_rank(p1_action_command)
+    p2_priority_rank = priority_rank(p2_action_command)
+
+    if p1_priority_rank > p2_priority_rank:
+        return WINNER_P1
+    elif p1_priority_rank < p2_priority_rank:
+        return WINNER_P2
+    else:
+        return DRAW
+
+def action_speed_winner(manager, p1_action_command, p2_action_command):
+    real_speed_winner_v = real_speed_winner(manager)
+    if real_speed_winner_v != DRAW:
+        return real_speed_winner_v
+
+    priority_winner_v = priority_winner(manager, p1_action_command, p2_action_command)
+    if priority_winner_v != DRAW:
+        return priority_winner_v
+
+    return random.choice([WINNER_P1, WINNER_P2])
+
+#https://wiki.xn--rckteqa2e.com/wiki/%E3%81%99%E3%81%B0%E3%82%84%E3%81%95
+INIT_SPEED_BONUS = 4096
+
+def speed_bonus(spov):
+    result = INIT_SPEED_BONUS
+    if spov.self_fighters[0].item == "こだわりスカーフ":
+        result = five_or_more_rounding(float(result) * 6144.0 / 4096.0)
+    return result
+
+def real_speed(spov):
+    speed = spov.self_fighters[0].speed
+    rank_bonus = damagetools.RANK_BONUS[spov.self_fighters[0].speed_rank]
+    speed_bonus_v = speed_bonus(spov)
+    paralysis_bonus = PARALYSIS_BONUS[spov.self_fighters[0].status_ailment == parts.PARALYSIS]
+
+    result = int(float(speed) * float(rank_bonus))
+    result = damagetools.five_over_rounding(float(result) * float(speed_bonus_v) / 4096.0)
+    return result
+
+PARALYSIS_BONUS = {True:2048.0 / 4096.0, False:1.0}
+
+def new_venusaur():
+    result = Pokemon("フシギバナ", "おだやか", "しんりょく", "♀", "くろいヘドロ",
+                     ["ギガドレイン", "ヘドロばくだん", "やどりぎのタネ", "まもる"], [3, 3, 3, 3],
+                     parts.Individual(31, 31, 31, 31, 31, 31), parts.Effort(252, 0, 0, 0, 252, 4))
+    return result
+
+def new_charizard():
+    result = Pokemon("リザードン", "おくびょう", "もうか", "♂", "いのちのたま",
+                     ["かえんほうしゃ", "エアスラッシュ", "りゅうのはどう", "オーバーヒート"], [3, 3, 3, 3],
+                      parts.Individual(31, 31, 31, 31, 31, 31), parts.Effort(4, 0, 0, 252, 0, 252))
+    return result
+
+def new_blastoise():
+    result = Pokemon("カメックス", "ひかえめ", "げきりゅう", "♂", "オボンのみ",
+                     ["からをやぶる", "なみのり", "れいとうビーム", "あくのはどう"], [3, 3, 3, 3],
+                     parts.Individual(31, 31, 31, 31, 31, 31), parts.Effort(4, 0, 0, 252, 0, 252))
+    return result
+
+TEMPLATE_POKEMONS = {
+    "フシギバナ":new_venusaur(),
+    "リザードン":new_charizard(),
+    "カメックス":new_blastoise()
+}

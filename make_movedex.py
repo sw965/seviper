@@ -2,8 +2,6 @@ import os
 import json
 import boa
 import seviper.path as path
-import seviper.base_data as base_data
-import seviper.poketetu.movedex as pt_movedex
 
 class AttackNum:
     def __init__(self, min_, max_):
@@ -36,6 +34,7 @@ ATTACK_NUMS = {
 }
 
 def main():
+    assert False, "呼び出さないで"
     for japanese_syllabary_folder_name in os.listdir(path.POKETETU_MOVEDEX):
         folder_path = path.POKETETU_MOVEDEX + japanese_syllabary_folder_name + "/"
         for file_name in os.listdir(folder_path):

@@ -1,59 +1,61 @@
-def leftovers(spovb):
-    if spovb.self_fighters[0].item != "たべのこし":
-        return spovb
+import seviper.parts as parts
 
-    if spovb.self_fighters[0].is_faint():
-        return spovb
+def leftovers(spov):
+    if spov.self_fighters[0].item != "たべのこし":
+        return spov
 
-    if spovb.self_fighters[0].is_full_hp():
-        return spovb
+    if spov.self_fighters[0].is_faint():
+        return spov
 
-    heal = int(float(spovb.self_fighters[0].max_hp) * 1.0 / 16.0)
-    spovb = spovb.heal(heal)
-    return spovb
+    if spov.self_fighters[0].is_full_hp():
+        return spov
 
-def black_sludge(spovb):
-    if spovb.self_fighters[0].item != "くろいヘドロ":
-        return spovb
+    heal = int(float(spov.self_fighters[0].max_hp) * 1.0 / 16.0)
+    spov = spov.heal(heal)
+    return spov
 
-    if spovb.self_fighters[0].is_faint():
-        return spovb
+def black_sludge(spov):
+    if spov.self_fighters[0].item != "くろいヘドロ":
+        return spov
 
-    if parts.POISON in spovb.self_fighters[0].types:
-        heal = int(float(spovb.self_fighters[0].max_hp) * 1.0 / 16.0)
-        spovb = spovb.Heal(heal)
+    if spov.self_fighters[0].is_faint():
+        return spov
+
+    if parts.POISON in spov.self_fighters[0].types:
+        heal = int(float(spov.self_fighters[0].max_hp) * 1.0 / 16.0)
+        spov = spov.heal(heal)
     else:
-        damage = int(float(spovb.self_fighters[0].max_hp) * 1.0 / 8.0)
-        spovb = spovb.damage(damage)
-    return spovb
+        damage = int(float(spov.self_fighters[0].max_hp) * 1.0 / 8.0)
+        spov = spov.damage(damage)
+    return spov
 
-def leech_seed(spovb):
-    if spovb.self_fighters[0].is_faint():
-        return spovb
+def leech_seed(spov):
+    if spov.self_fighters[0].is_faint():
+        return spov
 
-    if spovb.opponent_fighters[0].is_faint():
-        return spovb
+    if spov.opponent_fighters[0].is_faint():
+        return spov
 
-    if not spovb.opponent_fighters[0].is_leech_seed:
-        return spovb
+    if not spov.opponent_fighters[0].is_leech_seed:
+        return spov
 
-    damage = int(float(spovb.opponent_fighters[0].max_hp) * 1.0 / 8.0)
+    damage = int(float(spov.opponent_fighters[0].max_hp) * 1.0 / 8.0)
     heal = damage
 
-    opovb = spovb.reverse()
-    opovb = opovb.damage(damage)
-    spovb = opovb.reverse()
-    spovb = spovb.heal(heal)
-    return spovb
+    opov = spov.reverse()
+    opov = opov.damage(damage)
+    spov = opov.reverse()
+    spov = spov.heal(heal)
+    return spov
 
-def bad_poison(spovb):
-    if spovb.self_fighters[0].status_ailment != BAD_POISON:
-        return spovb
+def bad_poison(spov):
+    if spov.self_fighters[0].status_ailment != parts.BAD_POISON:
+        return spov
 
-    if spovb.self_fighters[0].bad_poison_elapsed_turn < 16:
-        spovb.self_fighters[0].bad_poison_elapsed_turn += 1
+    if spov.self_fighters[0].bad_poison_elapsed_turn < 16:
+        spov.self_fighters[0].bad_poison_elapsed_turn += 1
 
-    damage = int(float(spovb.self_fighters[0].max_hp) * float(spovb.self_fighters[0].bad_poison_elapsed_turn) / 16.0)
+    damage = int(float(spov.self_fighters[0].max_hp) * float(spov.self_fighters[0].bad_poison_elapsed_turn) / 16.0)
     if damage < 1:
         damage = 1
-    return spovb.damage(damage)
+    return spov.damage(damage)
