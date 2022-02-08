@@ -88,11 +88,9 @@ PHYSICS = "物理"
 SPECIAL = "特殊"
 STATUS = "変化"
 
-MAX_MOVE_POWER = 0
-for move_name in ALL_MOVE_NAMES:
-    move_data = MOVEDEX[move_name]
-    MAX_MOVE_POWER = max([move_data.power, MAX_MOVE_POWER])
-
+MAX_MOVE_POWER = max([MOVEDEX[move_name].power for move_name in ALL_MOVE_NAMES])
+MIN_ATTACK_NUM = min([MOVEDEX[move_name].min_attack_num for move_name in ALL_MOVE_NAMES])
+MAX_ATTACK_NUM = max([MOVEDEX[move_name].max_attack_num for move_name in ALL_MOVE_NAMES])
 
 class NatureData:
     def __init__(self, json_data):
@@ -247,7 +245,7 @@ def is_valid_point_up(point_up):
 
 class PowerPoint:
     def __init__(self, base_pp, point_up):
-        v = (5.0 + point_up) / 5.0
+        v = (5.0 + float(point_up)) / 5.0
         max_v = int(base_pp * v)
         self.max = max_v
         self.current = max_v
@@ -260,10 +258,11 @@ MIN_MOVESET_NUM = 1
 MAX_MOVESET_NUM = 4
 
 def hp_state_calc(base_hp, individual_value, effort_value):
-    return ((base_hp*2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + DEFAULT_LEVEL + 10
+    return ((base_hp * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + DEFAULT_LEVEL + 10
 
-def state_calc(base_hp, individual_value, effort_value):
-    return int( (base_state * 2) + individual_value + (effort_value / 4) ) * DEFAULT_LEVEL // 100 + 5
+def state_calc(base_state, individual_value, effort_value, nature_bonus):
+    result = ( (base_state * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + 5
+    return int(float(result) * nature_bonus)
 
 NORMAL_POISON = "どく"
 BAD_POISON = "もうどく"
@@ -271,3 +270,33 @@ SLEEP = "ねむり"
 BURN = "やけど"
 PARALYSIS = "まひ"
 FREEZE = "こおり"
+
+#https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
+TWO_ATTACK_PERCENT = [100, 100]
+THREE_ATTACK_PERCENT = [100, 100, 100]
+MIN_TWO_MAX_FIVE_ATTACK_PERCENT = [100, 100, 35, 35, 15, 15]
+
+ATTACK_NUM_PERCENT = {
+    "すいりゅうれんだ":THREE_ATTACK_PERCENT,
+    "ダブルウイング":TWO_ATTACK_PERCENT,
+    "ホネブーメラン":TWO_ATTACK_PERCENT,
+    "ギアソーサー":TWO_ATTACK_PERCENT,
+    "みだれづき":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "トリプルアクセル":None,
+    "ドラゴンアロー":TWO_ATTACK_PERCENT,
+    "つっぱり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "ボーンラッシュ":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "みずしゅりけん":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "にどげり":TWO_ATTACK_PERCENT,
+    "ダブルチョップ":TWO_ATTACK_PERCENT,
+    "スイープビンタ":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "ミサイルばり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "ダブルアタック":TWO_ATTACK_PERCENT,
+    "トリプルキック":None,
+    "タネマシンガン":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "ダブルパンツァー":TWO_ATTACK_PERCENT,
+    "つららばり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "みだれひっかき":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "ロックブラスト":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
+    "スケイルショット":MIN_TWO_MAX_FIVE_ATTACK_PERCENT
+}

@@ -32,6 +32,8 @@ class Pokemon:
         assert parts.is_valid_effort_value(effort.speed), "素早さ努力値が不適"
         assert effort.is_valid_sum(), "努力値の合計値が不正"
 
+        nature_data = parts.NATUREDEX[nature]
+
         self.name = name
         self.nature = nature
         self.ability = ability
@@ -44,11 +46,11 @@ class Pokemon:
         hp = parts.hp_state_calc(poke_data.base_hp, individual.hp, effort.hp)
         self.max_hp = hp
         self.current_hp = hp
-        self.atk = parts.state_calc(poke_data.base_atk, individual.atk, effort.atk)
-        self.defe = parts.state_calc(poke_data.base_def, individual.defe, effort.defe)
-        self.sp_atk = parts.state_calc(poke_data.base_sp_atk, individual.sp_atk, effort.sp_atk)
-        self.sp_def = parts.state_calc(poke_data.base_sp_def, individual.sp_def, effort.sp_def)
-        self.speed = parts.state_calc(poke_data.base_speed, individual.speed, effort.speed)
+        self.atk = parts.state_calc(poke_data.base_atk, individual.atk, effort.atk, nature_data.atk_bonus)
+        self.defe = parts.state_calc(poke_data.base_def, individual.defe, effort.defe, nature_data.def_bonus)
+        self.sp_atk = parts.state_calc(poke_data.base_sp_atk, individual.sp_atk, effort.sp_atk, nature_data.sp_atk_bonus)
+        self.sp_def = parts.state_calc(poke_data.base_sp_def, individual.sp_def, effort.sp_def, nature_data.sp_def_bonus)
+        self.speed = parts.state_calc(poke_data.base_speed, individual.speed, effort.speed, nature_data.speed_bonus)
 
         self.atk_rank = 0
         self.def_rank = 0
@@ -132,8 +134,15 @@ def new_fighters(team, indices):
     assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
     return [team[indices] for index in indices]
 
+def real_rank_fluctuation(current_rank, v):
+    if v > 0:
+        return min([MAX_RANK - current_rank, v])
+    elif v < 0:
+        return max([MIN_RANK - current_rank, v])
+    assert False
+
 def is_hit(percent):
-    return random.randint(0, 100) < percent
+    return random.randint(0, 99) < percent
 
 
 class SelfPointOfView:
@@ -156,24 +165,6 @@ class SelfPointOfView:
             move_data = parts.MOVEDEX[move_name]
             return move_data.accuracy
 
-    def toxic(self):
-        if self.opponent_fighters[0].status_ailment != "":
-            return self
-
-        if (POISON in self.opponent_fighters[0].types) or (STEEL in self.opponent_fighters[0].types):
-            return self
-
-        self = copy.deepcopy(self)
-        self.opponent_fighters[0].status_ailment = BAD_POISON
-        return self
-
-    def leech_seed(self):
-        if parts.GRASS in self.opponent_fighters[0].types:
-            return self
-
-        self.opponent_fighters[0].is_leech_seed = True
-        return self
-
     def is_critical(self, move_name):
         rank = parts.MOVEDEX[move_name].critical_rank
         if rank == 0:
@@ -184,7 +175,7 @@ class SelfPointOfView:
             end = 2
         else:
             end = 1
-        return random.randint(0, end) == 0
+        return random.randint(0, end - 1) == 0
 
     def damage(self, damage_v):
         damage_v = min([self.self_fighters[0].current_hp, damage_v])
@@ -199,14 +190,15 @@ class SelfPointOfView:
         return self
 
     def move_use(self, move_name):
-        lead_poke_name = self.self_fighters[0].name
-        assert not self.self_fighters[0].is_faint(), lead_poke_name + " は " + " は 技を繰り出そうとしたが、瀕死状態"
+        if self_fighters[0].is_faint():
+            return self
 
         self = copy.deepcopy(self)
         if move_name == parts.STRUGGLE:
             self.self_fighters[0].current_hp = 0
             return self
 
+        lead_poke_name = self.self_fighters[0].name
         move_data = parts.MOVEDEX[move_name]
 
         assert move_name in self.self_fighters[0].moveset, \
@@ -221,20 +213,49 @@ class SelfPointOfView:
             if move_data.target != "自分":
                 return self
 
-        real_accuracy = self.real_accuracy(move_name)
-        if real_accuracy != -1:
-            if not is_hit(real_accuracy):
-                return self
+        if move_name not in ["トリプルキック", "トリプルアクセル"]:
+            real_accuracy = self.real_accuracy(move_name)
+            if real_accuracy != -1:
+                if not is_hit(real_accuracy):
+                    return self
 
         if move_data.category == parts.STATUS:
             if move_name == "どくどく":
-                return self.toxic()
+                return Move.toxic(self)
             elif move_name == "やどりぎのタネ":
-                return self.leech_seed()
+                return Move.leech_seed(self)
+            elif move_name in parts.HALF_HEAL_MOVE_NAMES:
+                return Move.half_heal(self)
+            elif move_name == "つるぎのまい":
+                return Move.swords_dance(self)
+            elif move_name == "からをやぶる":
+                return Move.shell_smash(self)
+            elif move_name == "りゅうのまい":
+                return Move.dragon_dance(self)
             else:
                 return self
 
-        attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num + 1)
+        if move_name in parts.ATTACK_NUM_PERCENT:
+            if move_name in ["トリプルキック", "トリプルアクセル"]:
+                real_accuracy = self.real_accuracy(move_name)
+                attack_num = 0
+                for _ in range(3):
+                    if not is_hit(real_accuracy):
+                        break
+                    attack_num += 1
+            elif self.self_fighters[0].ability == "スキルリンク":
+                attack_num = len(parts.ATTACK_NUM_PERCENT[move_name])
+            else:
+                attack_num = 0
+                for percent in parts.ATTACK_NUM_PERCENT[move_name]:
+                    if not is_hit(percent):
+                        break
+                    attack_num += 1
+        else:
+            attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
+
+        if attack_num == 0:
+            return self
 
         for i in range(attack_num):
             is_critical = self.is_critical(move_name)
@@ -244,6 +265,12 @@ class SelfPointOfView:
             self = opov.reverse()
             if self.self_fighters[0].is_faint() or self.opponent_fighters[0].is_faint():
                 break
+
+        if self.self_fighters[0].item == "いのちのたま":
+            life_orb_damage = int(float(self.self_fighters[0].max_hp) * 1.0 / 10.0)
+            if life_orb_damage < 1:
+                life_orb_damage = 1
+            self = self.damage(life_orb_damage)
         return self
 
     def switch(self, poke_name):
@@ -317,6 +344,7 @@ class Manager:
     def is_p1_and_p2_phase(self):
         return self.p1_fighters[0].is_faint() == self.p2_fighters[0].is_faint()
 
+    #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
     def turn_end(self):
         def p1_first(spov, turn_end_f):
             p1_point_of_view = spov.to_p1_point_of_view()
@@ -371,6 +399,7 @@ class Manager:
             return self
 
         action_speed_winner_v = action_speed_winner(self, action_commands[0], action_commands[1])
+
         if action_speed_winner_v == WINNER_P1:
             is_p1_actions = [True, False]
         else:
@@ -381,7 +410,6 @@ class Manager:
                 self = self.p1_action(action_commands[0])
             else:
                 self = self.p2_action(action_commands[1])
-
         return self.turn_end()
 
     def is_game_end(self):
@@ -508,3 +536,49 @@ TEMPLATE_POKEMONS = {
     "リザードン":new_charizard(),
     "カメックス":new_blastoise()
 }
+
+class Move:
+    def half_heal(spov):
+        spov = copy.deepcopy(spov)
+        heal = int(float(spov.self_fighters[0].max_hp) * 1.0 / 2.0)
+        return spov.heal(heal)
+
+    def swords_dance(spov):
+        spov = copy.deepcopy(spov)
+        spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 2)
+        return spov
+
+    def shell_smash(spov):
+        spov = copy.deepcopy(spov)
+        spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 2)
+        spov.self_fighters[0].sp_atk_rank += real_rank_fluctuation(spov.self_fighters[0].sp_atk_rank, 2)
+        spov.self_fighters[0].speed_rank += real_rank_fluctuation(spov.self_fighters[0].speed_rank, 2)
+        spov.self_fighters[0].def_rank += real_rank_fluctuation(spov.self_fighters[0].def_rank, -1)
+        spov.self_fighters[0].sp_def_rank += real_rank_fluctuation(spov.self_fighters[0].sp_def_rank, -1)
+        return spov
+
+    def dragon_dance(spov):
+        spov = copy.deepcopy(spov)
+        spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 1)
+        spov.self_fighters[0].speed_rank += real_rank_fluctuation(spov.self_fighters[0].speed_rank, 1)
+        return spov
+
+    def toxic(spov):
+        spov = copy.deepcopy(spov)
+        if spov.opponent_fighters[0].status_ailment != "":
+            return spov
+
+        if (POISON in self.opponent_fighters[0].types) or (STEEL in self.opponent_fighters[0].types):
+            return self
+
+        spov = copy.deepcopy(spov)
+        spov.opponent_fighters[0].status_ailment = BAD_POISON
+        return spov
+
+    def leech_seed(spov):
+        spov = copy.deepcopy(spov)
+        if parts.GRASS in spov.opponent_fighters[0].types:
+            return spov
+
+        spov.opponent_fighters[0].is_leech_seed = True
+        return spov
