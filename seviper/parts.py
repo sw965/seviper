@@ -49,12 +49,15 @@ for poke_name in ALL_POKE_NAMES:
         if ability not in ALL_ABILITIES:
             ALL_ABILITIES.append(ability)
 
+MAX_BASE_HP = 0
+for poke_name in ALL_POKE_NAMES:
+    poke_data = POKEDEX[poke_name]
+    MAX_BASE_STATE = max([poke_data.base_hp, MAX_BASE_HP])
+
 MAX_BASE_STATE = 0
 for poke_name in ALL_POKE_NAMES:
     poke_data = POKEDEX[poke_name]
-    base_states = [poke_data.base_hp, poke_data.base_atk, poke_data.base_def,
-                   poke_data.base_sp_atk, poke_data.base_sp_def, poke_data.base_speed]
-    for base_state in base_states:
+    for base_state in [poke_data.atk, poke_data.defe, poke_data.sp_atk, poke_data.sp_atk, poke_data.speed]:
         MAX_BASE_STATE = max([base_state, MAX_BASE_STATE])
 
 class MoveData:
@@ -245,14 +248,21 @@ def is_valid_point_up(point_up):
 
 class PowerPoint:
     def __init__(self, base_pp, point_up):
-        v = (5.0 + float(point_up)) / 5.0
-        max_v = int(base_pp * v)
+        max_v = PowerPoint.calc(base_pp, point_up)
         self.max = max_v
         self.current = max_v
 
     def __eq__(self, power_point):
         return self.max_v == power_point.max_v and self.current == power_point.current
 
+    @classmethod
+    def calc(base_pp, point_up):
+        result = (5.0 + float(point_up)) / 5.0
+        return int(base_pp * result)
+
+
+MAX_BASE_PP = max([move_data.base_pp for move_data in MOVEDEX.values()])
+MAX_POWER_POINT = PowerPoint.calc(MAX_BASE_PP, MAX_POINT_UP)
 
 MIN_MOVESET_NUM = 1
 MAX_MOVESET_NUM = 4
@@ -263,6 +273,9 @@ def hp_state_calc(base_hp, individual_value, effort_value):
 def state_calc(base_state, individual_value, effort_value, nature_bonus):
     result = ( (base_state * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + 5
     return int(float(result) * nature_bonus)
+
+MAX_HP = max([hp_state_calc(max_base, 31, 252) for max_base in MAX_BASE_HP])
+MAX_STATE = [max([state_calc(max_base, 31, 31, 1.1)]) for max_base in MAX_BASE_STATE]
 
 NORMAL_POISON = "どく"
 BAD_POISON = "もうどく"

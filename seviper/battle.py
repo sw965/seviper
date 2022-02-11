@@ -120,6 +120,9 @@ class Pokemon:
     def current_damage(self):
         return self.max_hp - self.current_hp
 
+    def moveset_order_keys(self):
+        return [move_name for move_name in parts.ALL_MOVE_NAMES if move_name in self.moveset]
+
 MIN_TEAM_NUM = 3
 MAX_TEAM_NUM = 6
 
@@ -258,11 +261,14 @@ class SelfPointOfView:
             return self
 
         for i in range(attack_num):
+            final_damage_random_bonus = random.choice(damagetools.FINAL_DAMAGE_RANDOM_BONUSES)
             is_critical = self.is_critical(move_name)
-            final_damage = damagetools.final_damage(self, move_name, is_critical)
+            final_damage = damagetools.final_damage(self, move_name, final_damage_random_bonus, is_critical)
+
             opov = self.reverse()
             opov = opov.damage(final_damage)
             self = opov.reverse()
+
             if self.self_fighters[0].is_faint() or self.opponent_fighters[0].is_faint():
                 break
 
@@ -433,6 +439,26 @@ class Manager:
                 break
         return self
 
+    def damage_probability_distribution(self):
+        fighter_indices = [[0, 1, 2], [1, 0, 2], [2, 0, 1]]
+        p1_fighters_permutation = [[self.p1_fighters[index] for index in indices] \
+                                   for indices in fighter_indices_permutation]
+
+        p2_fighters_permutation = [[self.p2_fighters[index] for index in indices] \
+                                   for indices in fighter_indices_permutation]
+
+        p1_result = [[] for _ in range(FIGHTERS_NUM)]
+
+        for p1f_i p1_fighters in enumerate(p1_fighters_permutation):
+            for p2_f, p2_fighters in enumerate(p2_fighters_permutation):
+                spov = SelfPointOfView(p1_fighters, p2_fighters)
+                p1_result[p1f_i].append({move_name:damagetools.final_damage_probability_distribution(spov, move_name) if MOVEDEX[move_name].Category != STATUS else 0 \
+                                         for move_name in p1_fighters[0].moveset_order_keys()})
+
+                for move_name in p1_fighters[0].moveset_order_keys():
+                    final_damage_probability_distribution = damagetools.final_damage_probability_distribution(spov, move_name)
+
+        damagetools.final_damage(self, )
 
 class Winner:
     def __init__(self, is_p1, is_p2):

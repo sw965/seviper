@@ -158,7 +158,7 @@ FINAL_DAMAGE_RANDOM_BONUSES = [
     0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.0
 ]
 
-def final_damage(spov, move_name, is_critical):
+def final_damage(spov, move_name, final_damage_random_bonus, is_critical):
     move_data = parts.MOVEDEX[move_name]
     opov = spov.reverse()
 
@@ -175,8 +175,18 @@ def final_damage(spov, move_name, is_critical):
     result = int(float(result) * float(final_power_v) * float(final_attack_v) / float(final_defense_v))
     result = result // 50 + 2
     result = five_over_rounding(float(result) * critical_bonus)
-    result = int(float(result) * random.choice(FINAL_DAMAGE_RANDOM_BONUSES))
+    result = int(float(result) * final_damage_random_bonus)
     result = five_over_rounding(float(result) * stab)
     result = int(float(result) * effectiveness_bonus_v)
     result = five_over_rounding(float(result) * float(damage_bonus_v) / 4096.0)
     return result
+
+def final_damage_probability_distribution(spov, move_name):
+	result = {}
+	for final_damage_random_bonus in FINAL_DAMAGE_RANDOM_BONUSES:
+		for is_critical in [False, True]:
+			final_damage_v = final_damage(spov, move_name, final_damage_random_bonus, is_critical)
+			if final_damage_v not in result:
+				result[final_damage_v] = 0
+			result[final_damage_v] += 1
+	return result
