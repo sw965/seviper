@@ -123,8 +123,8 @@ class Pokemon:
     def moveset_order_keys(self):
         return [move_name for move_name in parts.ALL_MOVE_NAMES if move_name in self.moveset]
 
-MIN_TEAM_NUM = 3
-MAX_TEAM_NUM = 6
+MIN_TEAM_LENGTH = 3
+MAX_TEAM_LENGTH = 6
 
 def team_validation(team):
     assert MIN_TEAM_NUM <= len(team) <= MAX_TEAM_NUM, "チームの数が不適"
@@ -137,7 +137,7 @@ def new_fighters(team, indices):
     assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
     return [team[indices] for index in indices]
 
-def real_rank_fluctuation(current_rank, v):
+def rank_fluctuation(current_rank, v):
     if v > 0:
         return min([MAX_RANK - current_rank, v])
     elif v < 0:
@@ -154,11 +154,9 @@ class SelfPointOfView:
         self.opponent_fighters = opponent_fighters
 
     def reverse(self):
-        self = copy.deepcopy(self)
         return SelfPointOfView(self.opponent_fighters, self.self_fighters)
 
     def to_manager(self):
-        self = copy.deepcopy(self)
         return Manager(self.self_fighters, self.opponent_fighters)
 
     def real_accuracy(self, move_name):
@@ -168,17 +166,20 @@ class SelfPointOfView:
             move_data = parts.MOVEDEX[move_name]
             return move_data.accuracy
 
-    def is_critical(self, move_name):
+    def critical_n(self, move_name):
         rank = parts.MOVEDEX[move_name].critical_rank
         if rank == 0:
-            end = 24
+            return 24
         elif rank == 1:
-            end = 8
+            return 8
         elif rank == 2:
-            end = 2
+            return 2
         else:
-            end = 1
-        return random.randint(0, end - 1) == 0
+            return 1
+
+    def is_critical(self, move_name):
+        n = self.critical_n(move_name)
+        return random.randint(0, n - 1) == 0
 
     def damage(self, damage_v):
         damage_v = min([self.self_fighters[0].current_hp, damage_v])
@@ -193,7 +194,7 @@ class SelfPointOfView:
         return self
 
     def move_use(self, move_name):
-        if self_fighters[0].is_faint():
+        if self.self_fighters[0].is_faint():
             return self
 
         self = copy.deepcopy(self)
@@ -223,20 +224,10 @@ class SelfPointOfView:
                     return self
 
         if move_data.category == parts.STATUS:
-            if move_name == "どくどく":
-                return Move.toxic(self)
-            elif move_name == "やどりぎのタネ":
-                return Move.leech_seed(self)
-            elif move_name in parts.HALF_HEAL_MOVE_NAMES:
-                return Move.half_heal(self)
-            elif move_name == "つるぎのまい":
-                return Move.swords_dance(self)
-            elif move_name == "からをやぶる":
-                return Move.shell_smash(self)
-            elif move_name == "りゅうのまい":
-                return Move.dragon_dance(self)
+            if move_name in parts.HALF_HEAL_MOVE_NAMES:
+                return StatusMove.half_heal(self)
             else:
-                return self
+                return STATUS_MOVES[move_name](self)
 
         if move_name in parts.ATTACK_NUM_PERCENT:
             if move_name in ["トリプルキック", "トリプルアクセル"]:
@@ -274,8 +265,7 @@ class SelfPointOfView:
 
         if self.self_fighters[0].item == "いのちのたま":
             life_orb_damage = int(float(self.self_fighters[0].max_hp) * 1.0 / 10.0)
-            if life_orb_damage < 1:
-                life_orb_damage = 1
+            life_orb_damage = max([life_orb_damage, 1])
             self = self.damage(life_orb_damage)
         return self
 
@@ -317,15 +307,12 @@ class Manager:
         self.p2_fighters = p2_fighters
 
     def reverse(self):
-        self = copy.deepcopy(self)
         return Manager(self.p2_fighters, self.p1_fighters)
 
     def to_p1_point_of_view(self):
-        self = copy.deepcopy(self)
         return SelfPointOfView(self.p1_fighters, self.p2_fighters)
 
     def to_p2_point_of_view(self):
-        self = copy.deepcopy(self)
         return SelfPointOfView(self.p2_fighters, self.p1_fighters)
 
     def p1_action(self, command):
@@ -441,24 +428,31 @@ class Manager:
 
     def damage_probability_distribution(self):
         fighter_indices = [[0, 1, 2], [1, 0, 2], [2, 0, 1]]
-        p1_fighters_permutation = [[self.p1_fighters[index] for index in indices] \
-                                   for indices in fighter_indices_permutation]
+        p1_fighterses = [[self.p1_fighters[index] for index in indices] \
+                          for indices in fighter_indices]
 
-        p2_fighters_permutation = [[self.p2_fighters[index] for index in indices] \
-                                   for indices in fighter_indices_permutation]
+        p2_fighterses = [[self.p2_fighters[index] for index in indices] \
+                          for indices in fighter_indices]
 
-        p1_result = [[] for _ in range(FIGHTERS_NUM)]
+        def get_result(fighterses1, fighterses2):
+            result = []
+            for i, fighters1 in enumerate(fighterses1):
+                result.append([])
+                for fighters2 in fighterses2:
+                    tmp = {}
+                    for move_name in fighters1[0].moveset_order_keys():
+                        if parts.MOVEDEX[move_name].category == parts.STATUS:
+                            damage_probability_distribution = {0:1.0}
+                        else:
+                            spov = SelfPointOfView(fighters1, fighters2)
+                            damage_probability_distribution = damagetools.damage_probability_distribution(spov, move_name)
+                        tmp[move_name] = damage_probability_distribution
+                    result[i].append(tmp)
+            return result
 
-        for p1f_i p1_fighters in enumerate(p1_fighters_permutation):
-            for p2_f, p2_fighters in enumerate(p2_fighters_permutation):
-                spov = SelfPointOfView(p1_fighters, p2_fighters)
-                p1_result[p1f_i].append({move_name:damagetools.final_damage_probability_distribution(spov, move_name) if MOVEDEX[move_name].Category != STATUS else 0 \
-                                         for move_name in p1_fighters[0].moveset_order_keys()})
-
-                for move_name in p1_fighters[0].moveset_order_keys():
-                    final_damage_probability_distribution = damagetools.final_damage_probability_distribution(spov, move_name)
-
-        damagetools.final_damage(self, )
+        p1_result = get_result(p1_fighterses, p2_fighterses)
+        p2_result = get_result(p2_fighterses, p1_fighterses)
+        return p1_result, p2_result
 
 class Winner:
     def __init__(self, is_p1, is_p2):
@@ -539,6 +533,7 @@ def real_speed(spov):
 
 PARALYSIS_BONUS = {True:2048.0 / 4096.0, False:1.0}
 
+
 def new_venusaur():
     result = Pokemon("フシギバナ", "おだやか", "しんりょく", "♀", "くろいヘドロ",
                      ["ギガドレイン", "ヘドロばくだん", "やどりぎのタネ", "まもる"], [3, 3, 3, 3],
@@ -563,17 +558,21 @@ TEMPLATE_POKEMONS = {
     "カメックス":new_blastoise()
 }
 
-class Move:
+
+class StatusMove:
+    @staticmethod
     def half_heal(spov):
         spov = copy.deepcopy(spov)
         heal = int(float(spov.self_fighters[0].max_hp) * 1.0 / 2.0)
         return spov.heal(heal)
 
+    @staticmethod
     def swords_dance(spov):
         spov = copy.deepcopy(spov)
         spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 2)
         return spov
 
+    @staticmethod
     def shell_smash(spov):
         spov = copy.deepcopy(spov)
         spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 2)
@@ -583,12 +582,14 @@ class Move:
         spov.self_fighters[0].sp_def_rank += real_rank_fluctuation(spov.self_fighters[0].sp_def_rank, -1)
         return spov
 
+    @staticmethod
     def dragon_dance(spov):
         spov = copy.deepcopy(spov)
         spov.self_fighters[0].atk_rank += real_rank_fluctuation(spov.self_fighters[0].atk_rank, 1)
         spov.self_fighters[0].speed_rank += real_rank_fluctuation(spov.self_fighters[0].speed_rank, 1)
         return spov
 
+    @staticmethod
     def toxic(spov):
         spov = copy.deepcopy(spov)
         if spov.opponent_fighters[0].status_ailment != "":
@@ -601,6 +602,7 @@ class Move:
         spov.opponent_fighters[0].status_ailment = BAD_POISON
         return spov
 
+    @staticmethod
     def leech_seed(spov):
         spov = copy.deepcopy(spov)
         if parts.GRASS in spov.opponent_fighters[0].types:
@@ -608,3 +610,11 @@ class Move:
 
         spov.opponent_fighters[0].is_leech_seed = True
         return spov
+
+STATUS_MOVES = {
+    "つるぎのまい":StatusMove.swords_dance,
+    "からをやぶる":StatusMove.shell_smash,
+    "りゅうのまい":StatusMove.dragon_dance,
+    "どくどく":StatusMove.toxic,
+    "やどりぎのタネ":StatusMove.leech_seed,
+}

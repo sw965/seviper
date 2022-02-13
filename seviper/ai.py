@@ -4,20 +4,22 @@ import numpy as np
 import seviper.parts as parts
 import seviper.battle as battle
 
-BUILD_POKE_NAME_FEATURES = ["なし"] + parts.RATE_POKE_NAMES
-BATTLE_POKE_NAME_FEATURES = parts.RATE_POKE_NAMES
+class Features:
+    BUILD_POKE_NAME = ["なし"] + parts.RATE_POKE_NAMES
+    BATTLE_POKE_NAME = parts.RATE_POKE_NAMES
 
-BASE_HP_FEATURES = [state + 1 for state in range(parts.MAX_BASE_HP)]
-BASE_STATE_FEATURES = [state + 1 for state in range(parts.MAX_BASE_STATE)]
-HP_FEATURES = [i + 1 for i in range(parts.MAX_HP)]
-STATE_FEATURES = [i + 1 for i in range(parts.MAX_STATE)]
+    BASE_HP = [state + 1 for state in range(parts.MAX_BASE_HP)]
+    BASE_STATE = [state + 1 for state in range(parts.MAX_BASE_STATE)]
+    HP = [i + 1 for i in range(parts.MAX_HP)]
+    STATE = [i + 1 for i in range(parts.MAX_STATE)]
 
-MOVE_NAME_FEATURES = ["なし"] + parts.ALL_MOVE_NAMES
-MOVE_POWER_FEATURES = [power + 1 for power in range(parts.MAX_MOVE_POWER)]
-MOVE_ACCURACY_FEATURES = [i + 1 for i in range(100)]
-POWER_POINT_FEATURES = [i + 1 for i in range(parts.MAX_POWER_POINT)]
+    MOVE_NAME = ["なし"] + parts.ALL_MOVE_NAMES
+    MOVE_POWER = [power + 1 for power in range(parts.MAX_MOVE_POWER)]
+    MOVE_ACCURACY = [i + 1 for i in range(100)]
+    POWER_POINT = [i + 1 for i in range(parts.MAX_POWER_POINT)]
 
-ITEM_FEATURES = ["なし"] + parts.ALL_ITEMS
+    ITEM = ["なし"] + parts.ALL_ITEMS
+
 
 class Image2D:
     SIZE = Image2D.size()
@@ -26,10 +28,10 @@ class Image2D:
     INDICES = [(h, w) for h in range(HEIGHT) for w in range(WIDTH)]
 
     @classmethod
-    def new():
-        return [[0 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
+    def new(cls):
+        return [[0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
-    @classmethod
+    @staticmethod
     def size():
         height = 0
         width = 0
@@ -45,25 +47,14 @@ class Image2D:
         return (height, width)
 
     @classmethod
-    def print(image_2d):
-        v = [[self.v[h][w] for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
+    def print(cls, image_2d):
+        v = [[self.v[h][w] for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
         for ele in v:
             print(ele)
 
     @classmethod
-    def logical_disjunction(image_2d1, image_2d2):
-        return [[image_2d1[h][w] | image_2d2[h][w] for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
-
-
-def input_ranges(features_length, is_inclusion_mode):
-    count = (i for i in range(len(Image2D.INDICES)))
-    result = [[Image2D.INDICES[next(count)] for j in range(len(Image2D.INDICES) // features_length)] \
-               for i in range(features_length)]
-
-    if is_inclusion_mode:
-        return list(itertools.accumulate(result))
-    else:
-        return result
+    def logical_disjunction(cls, image_2d1, image_2d2):
+        return [[image_2d1[h][w] | image_2d2[h][w] for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
 
 class FeatureValueTable:
@@ -96,9 +87,15 @@ class FeatureValueTable:
     INDIVIDUAL_VALUE = FeatureValueTable.new(parts.ALL_INDIVIDUAL_VALUES, True)
     EFFORT_VALUE = FeatureValueTable.new(parts.ALL_EFFORT_VALUES, True)
 
-    @classmethod
+    @staticmethod
     def new(features, is_inclusion_mode):
-        input_ranges = input_ranges(len(features), is_inclusion_mode)
+        counter = (i for i in range(len(Image2D.INDICES)))
+        input_ranges = [[Image2D.INDICES[next(counter)] for j in range(len(Image2D.INDICES) // features_length)] \
+                         for i in range(features_length)]
+
+        if is_inclusion_mode:
+            input_ranges = list(itertools.accumulate(result))
+
         result = {}
         for feature in features:
             index = features.index(feature)
@@ -110,21 +107,21 @@ class FeatureValueTable:
         result[feature] = image_2d
         return result
 
-    @classmethod
+    @staticmethod
     def new_half_heal():
         result = {}
         result[True] = [[1 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
         result[False] = Image2D.new()
         return result
 
-    @classmethod
+    @staticmethod
     def new_one_hit_ko():
         result = {}
         result[True] = [[1 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
         result[False] = Image2D.new()
         return result
 
-    @classmethod
+    @staticmethod
     def logical_disjunction(feature_values, keys):
         result = feature_values[keys[0]]
         for key in keys[1:]:
@@ -555,7 +552,7 @@ class ImageBattlePokemon:
         half_heal_depths = [ibp.MOVE1_HALF_HEAL_DEPTH, ibp.MOVE2_HALF_HEAL_DEPTH, ibp.MOVE3_HALF_HEAL_DEPTH, ibp.MOVE4_HALF_HEAL_DEPTH]
         max_power_point_depths = [ibp.MAX_POWER_POINT1_DEPTH, ibp.MAX_POWER_POINT2_DEPTH, ibp.MAX_POWER_POINT3_DEPTH, ibp.MAX_POWER_POINT4_DEPTH]
         current_power_point_depths = [ibp.CURRENT_POWER_POINT1_DEPTH, ibp.CURRENT_POWER_POINT2_DEPTH, ibp.CURRENT_POWER_POINT3_DEPTH, ibp.CURRENT_POWER_POINT4_DEPTH]
-        order_move_names = pokemon.moveset_order_keys()
+        self.order_move_names = pokemon.moveset_order_keys()
         self.data[ibp.MOVE_NAME_DEPTH] = fvt.logical_disjunction(fvt.LEARNSET, order_move_names)
 
         for i, move_name in enumerate(order_move_names):
@@ -579,15 +576,38 @@ class ImageBattlePokemon:
 
 class ImageFighters:
     def __init__(self, fighters):
-        self.images = [ImageBattlePokemon() for _ in range(battle.FIGHTERS_NUM)]
+        self.images = [ImageBattlePokemon(pokemon) for pokemon in fighters]
 
     def get(self):
         return sum([image.data for image in self.images])
 
 
 class ImageBattle:
-    def __init__(self, p1_fighters, p2_fighters):
+    depth_counter = (i for i in range())
+
+    def __init__(self, battle):
         self.p1_fighter_images = ImageFighters(p1_fighters)
         self.p2_fighter_images = ImageFighters(p2_fighters)
+        battle_manager = battle.Manager(p1_fighters, p2_fighters)
 
-    def damage_probability_distribution():
+        p1_attack_damage_probability_distribution, p2_attack_damage_probability_distribution = \
+            battle_manager.damage_probability_distribution()
+
+        self.damage_probability_distribution_images = []
+
+        def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
+            for i in range(battle.FIGHTERS_NUM):
+                for j in range(battle.FIGHTERS_NUM):
+                    for move_name in fighter_images[i].order_move_names:
+                        for damage, p in damage_probability_distribution[i][j][move_name]:
+                            damage = min([damage, parts.MAX_HP])
+                            tmp = Image2D.new()
+                            for h, w in Image2D.INDICES[:damage]:
+                                tmp[h][w] = p
+                            self.damage_probability_distribution_images.append(tmp)
+
+        append_damage_probability_distribution_images(p1_attack_damage_probability_distribution, p1_fighter_images)
+        append_damage_probability_distribution_images(p2_attack_damage_probability_distribution, p2_fighter_images)
+
+    def get(self):
+        return self.p1_fighter_images.get() + self.p2_fighter_images.get() + self.damage_probability_distribution_images

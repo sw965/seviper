@@ -47,10 +47,7 @@ def final_power(spov, move_name):
         "ダメージ計算関連のメソッドは、物理技か変化技の技名でなければならない"
 
     result = five_over_rounding(float(move_data.power) * float(INIT_POWER_BONUS) / 4096.0)
-    if result < 1:
-        return 1
-    else:
-        return result
+	return max([result, 1])
 
 def physics_attack_bonus(spov):
     result = INIT_PHYSICS_ATTACK_BONUS
@@ -85,11 +82,7 @@ def final_attack(spov, move_name, is_critical):
 
     result = int(float(attack_state) * float(rank_bonus))
     result = five_over_rounding(float(result) * float(attack_bonus) / 4096.0)
-
-    if result < 1:
-        return 1
-    else:
-        return result
+	return max([result, 1])
 
 INIT_PHYSICS_DEFENSE_BONUS = 4096
 INIT_SPECIAL_DEFENSE_BONUS = 4096
@@ -126,11 +119,7 @@ def final_defense(spov, move_name, is_critical):
 
     result = int(float(defense_state) * float(rank_bonus))
     result = five_over_rounding(float(result) * float(defense_bonus) / 4096.0)
-
-    if result < 1:
-        return 1
-    else:
-        return result
+	return max([result, 1])
 
 def same_type_attack_bonus(pokemon, move_name):
     move_type = parts.MOVEDEX[move_name].type
@@ -158,6 +147,8 @@ FINAL_DAMAGE_RANDOM_BONUSES = [
     0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.0
 ]
 
+FINAL_DAMAGE_RANDOM_BONUSES_LENGTH = len(FINAL_DAMAGE_RANDOM_BONUSES)
+
 def final_damage(spov, move_name, final_damage_random_bonus, is_critical):
     move_data = parts.MOVEDEX[move_name]
     opov = spov.reverse()
@@ -181,12 +172,24 @@ def final_damage(spov, move_name, final_damage_random_bonus, is_critical):
     result = five_over_rounding(float(result) * float(damage_bonus_v) / 4096.0)
     return result
 
-def final_damage_probability_distribution(spov, move_name):
-	result = {}
-	for final_damage_random_bonus in FINAL_DAMAGE_RANDOM_BONUSES:
-		for is_critical in [False, True]:
+def damage_probability_distribution(spov, move_name):
+	critical_n = spov.critical_n(move_name)
+	critical_p = 1.0 / float(critical_n)
+	no_critical_p = 1.0 - critical_p
+	bool_to_critical_p = {True:critical_p, False:no_critical_p}
+	accuracy_p = spov.real_accuracy(move_name) / 100.0
+	final_damage_random_bonus_p = 1.0 / float(FINAL_DAMAGE_RANDOM_BONUSES_LENGTH)
+
+	result = {0:1.0 - accuracy_p}
+
+	for is_critical in [False, True]:
+		for final_damage_random_bonus in FINAL_DAMAGE_RANDOM_BONUSES:
 			final_damage_v = final_damage(spov, move_name, final_damage_random_bonus, is_critical)
+			p = accuracy_p * final_damage_random_bonus_p * bool_to_critical_p[is_critical]
+
 			if final_damage_v not in result:
-				result[final_damage_v] = 0
-			result[final_damage_v] += 1
+				result[final_damage_v] = p
+			else:
+				#確率の加法定理
+			    result[final_damage_v] += p
 	return result

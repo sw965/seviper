@@ -57,8 +57,9 @@ for poke_name in ALL_POKE_NAMES:
 MAX_BASE_STATE = 0
 for poke_name in ALL_POKE_NAMES:
     poke_data = POKEDEX[poke_name]
-    for base_state in [poke_data.atk, poke_data.defe, poke_data.sp_atk, poke_data.sp_atk, poke_data.speed]:
+    for base_state in [poke_data.base_atk, poke_data.base_def, poke_data.base_sp_atk, poke_data.base_sp_def, poke_data.base_speed]:
         MAX_BASE_STATE = max([base_state, MAX_BASE_STATE])
+
 
 class MoveData:
     def __init__(self, json_data):
@@ -255,7 +256,7 @@ class PowerPoint:
     def __eq__(self, power_point):
         return self.max_v == power_point.max_v and self.current == power_point.current
 
-    @classmethod
+    @staticmethod
     def calc(base_pp, point_up):
         result = (5.0 + float(point_up)) / 5.0
         return int(base_pp * result)
@@ -274,8 +275,8 @@ def state_calc(base_state, individual_value, effort_value, nature_bonus):
     result = ( (base_state * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + 5
     return int(float(result) * nature_bonus)
 
-MAX_HP = max([hp_state_calc(max_base, 31, 252) for max_base in MAX_BASE_HP])
-MAX_STATE = [max([state_calc(max_base, 31, 31, 1.1)]) for max_base in MAX_BASE_STATE]
+MAX_HP = hp_state_calc(MAX_BASE_HP, 31, 252)
+MAX_STATE = state_calc(MAX_BASE_STATE, 31, 31, 1.1)
 
 NORMAL_POISON = "どく"
 BAD_POISON = "もうどく"

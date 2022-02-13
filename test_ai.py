@@ -1,5 +1,16 @@
 import seviper.parts as parts
+import seviper.battle as battle
+import seviper.ai as ai
 
-for move_name, move_data in parts.MOVEDEX.items():
-    if move_data.min_attack_num > 1:
-        print(move_name, move_data.min_attack_num, move_data.max_attack_num)
+
+p1_fighters = [battle.TEMPLATE_POKEMONS["フシギバナ"],
+               battle.TEMPLATE_POKEMONS["リザードン"],
+               battle.TEMPLATE_POKEMONS["カメックス"]]
+
+p2_fighters = [battle.TEMPLATE_POKEMONS["カメックス"],
+               battle.TEMPLATE_POKEMONS["リザードン"],
+               battle.TEMPLATE_POKEMONS["フシギバナ"]]
+
+
+battle_manager = battle.Manager(p1_fighters, p2_fighters)
+ai.ImageBattle()
