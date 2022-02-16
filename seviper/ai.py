@@ -2,6 +2,7 @@ import copy
 import itertools
 import numpy as np
 import seviper.parts as parts
+import seviper.damagetools as damagetools
 import seviper.battle as battle
 
 class Features:
@@ -19,17 +20,37 @@ class Features:
     POWER_POINT = [i + 1 for i in range(parts.MAX_POWER_POINT)]
 
     ITEM = ["なし"] + parts.ALL_ITEMS
+    STATUS_AILMENT = [""] + parts.ALL_STATUS_AILMENT
 
+def image_2d_size():
+    height = 0
+    width = 0
+
+    while True:
+        height += 1
+        if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+            break
+
+        width += 1
+        if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+            break
+    return (height, width)
+
+IMAGE_2D_SIZE = image_2d_size()
 
 class Image2D:
-    SIZE = Image2D.size()
-    HEIGHT = BINARY_IMAGE_2D_SIZE[0]
-    WIDTH = BINARY_IMAGE_2D_SIZE[1]
-    INDICES = [(h, w) for h in range(HEIGHT) for w in range(WIDTH)]
+    HEIGHT = IMAGE_2D_SIZE[0]
+    WIDTH = IMAGE_2D_SIZE[1]
+    INDICES = (lambda height, width:[(h, w) for h in range(height) for w in range(width)])(HEIGHT, WIDTH)
 
     @classmethod
     def new(cls):
-        return [[0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
+        return [[0.0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
+
+    @classmethod
+    def new_rank(cls, rank):
+        rank_bonus = damagetools.RANK_BONUS[rank]
+        return [[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
     @staticmethod
     def size():
@@ -54,72 +75,72 @@ class Image2D:
 
     @classmethod
     def logical_disjunction(cls, image_2d1, image_2d2):
-        return [[image_2d1[h][w] | image_2d2[h][w] for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
+        return [[1.0 if (image_2d1[h][w] + image_2d2[h][w]) > 0.0 else 0.0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
-
-class FeatureValueTable:
-    BUILD_POKE_NAME = FeatureValueTable.new(BUILD_POKE_NAME_FEATURES, False)
-    BATTLE_POKE_NAME = FeatureValueTable.new(BATTLE_POKE_NAME_FEATURES, False)
-    TYPE = FeatureValueTable.new(parts.ALL_TYPES, False)
-
-    MOVE_NAME = FeatureValueTable.new(MOVE_NAME_FEATURES, False)
-    LEARNSET = FeatureValueTable.new(parts.ALL_MOVE_NAMES, False)
-
-    BASE_HP = FeatureValueTable.new(BASE_HP_FEATURES, True)
-    BASE_STATE = FeatureValueTable.new(BASE_STATE_FEATURES, True)
-
-    HP = FeatureValueTable.new(HP_FEATURES, True)
-    STATE = FeatureValueTable.new(STATE_FEATURES, True)
-
-    NATURE = FeatureValueTable.new(parts.ALL_NATURES, False)
-    ABILITY = FeatureValueTable.new(parts.ALL_ABILITIES, False)
-    GENDER = FeatureValueTable.new(parts.ALL_GENDERS, False)
-    ITEM = FeatureValueTable.new(parts.ALL_ITEMS, False)
-
-    MOVE_POWER = FeatureValueTable.new(MOVE_POWER_FEATURES, True)
-    MOVE_ACCURACY = FeatureValueTable.new(MOVE_ACCURACY_FEATURES, True)
-    HALF_HEAL = FeatureValueTable.new_half_heal()
-    ONE_HIT_KO = FeatureValueTable.new_one_hit_ko()
-
-    POINT_UP = FeatureValueTable.new(parts.ALL_POINT_UPS, True)
-    POWER_POINT = FeatureValueTable.new(POWER_POINT_FEATURES, True)
-
-    INDIVIDUAL_VALUE = FeatureValueTable.new(parts.ALL_INDIVIDUAL_VALUES, True)
-    EFFORT_VALUE = FeatureValueTable.new(parts.ALL_EFFORT_VALUES, True)
-
-    @staticmethod
-    def new(features, is_inclusion_mode):
+def new_feature_value_table(features, is_inclusion_mode):
         counter = (i for i in range(len(Image2D.INDICES)))
+        features_length = len(features)
         input_ranges = [[Image2D.INDICES[next(counter)] for j in range(len(Image2D.INDICES) // features_length)] \
                          for i in range(features_length)]
 
         if is_inclusion_mode:
-            input_ranges = list(itertools.accumulate(result))
+            input_ranges = list(itertools.accumulate(input_ranges))
 
         result = {}
         for feature in features:
             index = features.index(feature)
             v = Image2D.new()
             for h, w in input_ranges[index]:
-                v[h][w] = 1
-
-        image_2d = Image2D(v)
-        result[feature] = image_2d
+                v[h][w] = 1.0
+            result[feature] = v
         return result
 
-    @staticmethod
-    def new_half_heal():
-        result = {}
-        result[True] = [[1 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
-        result[False] = Image2D.new()
-        return result
 
-    @staticmethod
-    def new_one_hit_ko():
-        result = {}
-        result[True] = [[1 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
-        result[False] = Image2D.new()
-        return result
+def new_half_heal_table():
+    result = {}
+    result[True] = [[1.0 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
+    result[False] = Image2D.new()
+    return result
+
+
+def new_one_hit_ko_table():
+    result = {}
+    result[True] = [[1.0 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
+    result[False] = Image2D.new()
+    return result
+
+
+class FeatureValueTable:
+    BUILD_POKE_NAME = new_feature_value_table(Features.BUILD_POKE_NAME, False)
+    BATTLE_POKE_NAME = new_feature_value_table(Features.BATTLE_POKE_NAME, False)
+    TYPE = new_feature_value_table(parts.ALL_TYPES, False)
+
+    MOVE_NAME = new_feature_value_table(Features.MOVE_NAME, False)
+    LEARNSET = new_feature_value_table(parts.ALL_MOVE_NAMES, False)
+
+    BASE_HP = new_feature_value_table(Features.BASE_HP, True)
+    BASE_STATE = new_feature_value_table(Features.BASE_STATE, True)
+
+    HP = new_feature_value_table(Features.HP, True)
+    STATE = new_feature_value_table(Features.STATE, True)
+
+    NATURE = new_feature_value_table(parts.ALL_NATURES, False)
+    ABILITY = new_feature_value_table(parts.ALL_ABILITIES, False)
+    GENDER = new_feature_value_table(parts.ALL_GENDERS, False)
+    ITEM = new_feature_value_table(parts.ALL_ITEMS, False)
+
+    MOVE_POWER = new_feature_value_table(Features.MOVE_POWER, True)
+    MOVE_ACCURACY = new_feature_value_table(Features.MOVE_ACCURACY, True)
+    HALF_HEAL = new_half_heal_table()
+    ONE_HIT_KO = new_one_hit_ko_table()
+
+    POINT_UP = new_feature_value_table(parts.ALL_POINT_UPS, True)
+    POWER_POINT = new_feature_value_table(Features.POWER_POINT, True)
+
+    INDIVIDUAL_VALUE = new_feature_value_table(parts.ALL_INDIVIDUAL_VALUES, True)
+    EFFORT_VALUE = new_feature_value_table(parts.ALL_EFFORT_VALUES, True)
+
+    STATUS_AILMENT = new_feature_value_table(Features.STATUS_AILMENT, False)
 
     @staticmethod
     def logical_disjunction(feature_values, keys):
@@ -131,7 +152,7 @@ class FeatureValueTable:
 
 class PokemonBuilder:
     DEPTH = 57
-    depth_counter = (i for i in range(BINARY_IMAGE_TEAM_POKEMON_DEPTH))
+    depth_counter = (i for i in range(DEPTH))
 
     POKE_NAME_DEPTH = next(depth_counter)
     POKE_TYPES_DEPTH = next(depth_counter)
@@ -196,7 +217,7 @@ class PokemonBuilder:
     EFFORT_SPEED_DEPTH = next(depth_counter)
 
     TABLES = [
-        FeatureValueTable.POKE_NAME,
+        FeatureValueTable.BUILD_POKE_NAME,
         FeatureValueTable.TYPE,
         FeatureValueTable.LEARNSET,
         FeatureValueTable.BASE_HP,
@@ -503,7 +524,7 @@ class TeamBuilder:
 
 
 class ImageBattlePokemon:
-    DEPTH = 26
+    DEPTH = 32
     depth_counter = (i for i in range(DEPTH))
 
     POKE_NAME_DEPTH = next(depth_counter)
@@ -520,14 +541,14 @@ class ImageBattlePokemon:
     MOVE3_HALF_HEAL_DEPTH = next(depth_counter)
     MOVE4_HALF_HEAL_DEPTH = next(depth_counter)
 
-    MAX_POWER_POINT1_DEPTH = next(depth)
-    CURRENT_POWER_POINT1_DEPTH = next(depth)
-    MAX_POWER_POINT2_DEPTH = next(depth)
-    CURRENT_POWER_POINT2_DEPTH = next(depth)
-    MAX_POWER_POINT3_DEPTH = next(depth)
-    CURRENT_POWER_POINT3_DEPTH = next(depth)
-    MAX_POWER_POINT4_DEPTH = next(depth)
-    CURRENT_POWER_POINT4_DEPTH = next(depth)
+    MAX_POWER_POINT1_DEPTH = next(depth_counter)
+    CURRENT_POWER_POINT1_DEPTH = next(depth_counter)
+    MAX_POWER_POINT2_DEPTH = next(depth_counter)
+    CURRENT_POWER_POINT2_DEPTH = next(depth_counter)
+    MAX_POWER_POINT3_DEPTH = next(depth_counter)
+    CURRENT_POWER_POINT3_DEPTH = next(depth_counter)
+    MAX_POWER_POINT4_DEPTH = next(depth_counter)
+    CURRENT_POWER_POINT4_DEPTH = next(depth_counter)
 
     MAX_HP_DEPTH = next(depth_counter)
     CURRENT_HP_DEPTH = next(depth_counter)
@@ -537,13 +558,21 @@ class ImageBattlePokemon:
     SP_DEF_DEPTH = next(depth_counter)
     SPEED_DEPTH = next(depth_counter)
 
+    ATK_RANK_DEPTH = next(depth_counter)
+    DEF_RANK_DEPTH = next(depth_counter)
+    SP_ATK_RANK_DEPTH = next(depth_counter)
+    SP_DEF_RANK_DEPTH = next(depth_counter)
+    SPEED_RANK_DEPTH = next(depth_counter)
+
+    STATUS_AILMENT_DEPTH = next(depth_counter)
+
     def __init__(self, pokemon):
         ibp = ImageBattlePokemon
         fvt = FeatureValueTable
         self.data = [Image2D.new() for _ in range(ImageBattlePokemon.DEPTH)]
-        poke_data = POKEDEX[pokemon.name]
+        poke_data = parts.POKEDEX[pokemon.name]
 
-        self.data[ibp.POKE_NAME_DEPTH] = fvt.POKE_NAME[pokemon.name]
+        self.data[ibp.POKE_NAME_DEPTH] = fvt.BATTLE_POKE_NAME[pokemon.name]
         self.data[ibp.POKE_TYPE_DEPTH] = fvt.logical_disjunction(fvt.TYPE, pokemon.types)
         self.data[ibp.NATURE_DEPTH] = fvt.NATURE[pokemon.nature]
         self.data[ibp.ABILITY_DEPTH] = fvt.ABILITY[pokemon.ability]
@@ -553,12 +582,13 @@ class ImageBattlePokemon:
         max_power_point_depths = [ibp.MAX_POWER_POINT1_DEPTH, ibp.MAX_POWER_POINT2_DEPTH, ibp.MAX_POWER_POINT3_DEPTH, ibp.MAX_POWER_POINT4_DEPTH]
         current_power_point_depths = [ibp.CURRENT_POWER_POINT1_DEPTH, ibp.CURRENT_POWER_POINT2_DEPTH, ibp.CURRENT_POWER_POINT3_DEPTH, ibp.CURRENT_POWER_POINT4_DEPTH]
         self.order_move_names = pokemon.moveset_order_keys()
-        self.data[ibp.MOVE_NAME_DEPTH] = fvt.logical_disjunction(fvt.LEARNSET, order_move_names)
+        self.data[ibp.MOVE_NAME_DEPTH] = fvt.logical_disjunction(fvt.LEARNSET, self.order_move_names)
 
-        for i, move_name in enumerate(order_move_names):
+        for i, move_name in enumerate(self.order_move_names):
             half_heal_depth = half_heal_depths[i]
             max_power_point_depth = max_power_point_depths[i]
             current_power_point_depth = current_power_point_depths[i]
+            power_point = pokemon.moveset[move_name]
 
             self.data[half_heal_depth] = fvt.HALF_HEAL[move_name in parts.HALF_HEAL_MOVE_NAMES]
             self.data[max_power_point_depth] = fvt.POWER_POINT[power_point.max]
@@ -573,41 +603,48 @@ class ImageBattlePokemon:
         self.data[ibp.SP_DEF_DEPTH] = fvt.STATE[pokemon.sp_def]
         self.data[ibp.SPEED_DEPTH] = fvt.STATE[pokemon.speed]
 
+        self.data[ibp.ATK_RANK_DEPTH] = Image2D.new_rank(pokemon.atk_rank)
+        self.data[ibp.DEF_RANK_DEPTH] = Image2D.new_rank(pokemon.def_rank)
+        self.data[ibp.SP_ATK_RANK_DEPTH] = Image2D.new_rank(pokemon.sp_atk_rank)
+        self.data[ibp.SP_DEF_RANK_DEPTH] = Image2D.new_rank(pokemon.sp_def_rank)
+        self.data[ibp.SPEED_RANK_DEPTH] = Image2D.new_rank(pokemon.speed_rank)
+
+        self.data[ibp.STATUS_AILMENT_DEPTH] = fvt.STATUS_AILMENT[pokemon.status_ailment]
+
 
 class ImageFighters:
     def __init__(self, fighters):
         self.images = [ImageBattlePokemon(pokemon) for pokemon in fighters]
 
     def get(self):
-        return sum([image.data for image in self.images])
+        return sum([image.data for image in self.images], [])
+
+    def __getitem__(self, index):
+        return self.images[index]
 
 
 class ImageBattle:
-    depth_counter = (i for i in range())
-
-    def __init__(self, battle):
-        self.p1_fighter_images = ImageFighters(p1_fighters)
-        self.p2_fighter_images = ImageFighters(p2_fighters)
-        battle_manager = battle.Manager(p1_fighters, p2_fighters)
+    def __init__(self, battle_manager):
+        self.p1_fighter_images = ImageFighters(battle_manager.p1_fighters)
+        self.p2_fighter_images = ImageFighters(battle_manager.p2_fighters)
 
         p1_attack_damage_probability_distribution, p2_attack_damage_probability_distribution = \
             battle_manager.damage_probability_distribution()
-
         self.damage_probability_distribution_images = []
 
         def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
             for i in range(battle.FIGHTERS_NUM):
                 for j in range(battle.FIGHTERS_NUM):
                     for move_name in fighter_images[i].order_move_names:
-                        for damage, p in damage_probability_distribution[i][j][move_name]:
+                        tmp = Image2D.new()
+                        for damage, p in damage_probability_distribution[i][j][move_name].items():
                             damage = min([damage, parts.MAX_HP])
-                            tmp = Image2D.new()
-                            for h, w in Image2D.INDICES[:damage]:
-                                tmp[h][w] = p
-                            self.damage_probability_distribution_images.append(tmp)
+                            h, w = Image2D.INDICES[damage]
+                            tmp[h][w] += p
+                        self.damage_probability_distribution_images.append(tmp)
 
-        append_damage_probability_distribution_images(p1_attack_damage_probability_distribution, p1_fighter_images)
-        append_damage_probability_distribution_images(p2_attack_damage_probability_distribution, p2_fighter_images)
+        append_damage_probability_distribution_images(p1_attack_damage_probability_distribution, self.p1_fighter_images)
+        append_damage_probability_distribution_images(p2_attack_damage_probability_distribution, self.p2_fighter_images)
 
     def get(self):
         return self.p1_fighter_images.get() + self.p2_fighter_images.get() + self.damage_probability_distribution_images

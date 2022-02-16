@@ -3,16 +3,38 @@ import boa
 import seviper.path as path
 
 ALL_POKE_NAMES = boa.readlines_txt(path.ALL_POKE_NAMES, True)
-assert all([ALL_POKE_NAMES.count(poke_name) == 1 for poke_name in ALL_POKE_NAMES])
-ALL_MOVE_NAMES = [file_name[:-4] for folder_name in os.listdir(path.POKETETU_MOVEDEX) \
-                  for file_name in os.listdir(path.POKETETU_MOVEDEX + folder_name)]
-HALF_HEAL_MOVE_NAMES = boa.readlines_txt(path.HALF_HEAL_MOVE_NAMES, True)
-
-assert all([move_name in ALL_MOVE_NAMES for move_name in HALF_HEAL_MOVE_NAMES])
-ONE_HIT_KO_MOVE_NAMES = boa.readlines_txt(path.ONE_HIT_KO_MOVE_NAMES, True)
-assert all([move_name in ALL_MOVE_NAMES for move_name in ONE_HIT_KO_MOVE_NAMES])
+assert len(set(ALL_POKE_NAMES)) == len(ALL_POKE_NAMES)
 
 STRUGGLE = "わるあがき"
+
+ALL_MOVE_NAMES = [file_name[:-4] for folder_name in os.listdir(path.POKETETU_MOVEDEX) \
+                  for file_name in os.listdir(path.POKETETU_MOVEDEX + folder_name)]
+assert len(set(ALL_MOVE_NAMES)) == len(ALL_MOVE_NAMES)
+
+HALF_HEAL_MOVE_NAMES = boa.readlines_txt(path.HALF_HEAL_MOVE_NAMES, True)
+assert len(set(HALF_HEAL_MOVE_NAMES)) == len(HALF_HEAL_MOVE_NAMES)
+assert set(HALF_HEAL_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
+
+ONE_HIT_KO_MOVE_NAMES = boa.readlines_txt(path.ONE_HIT_KO_MOVE_NAMES, True)
+assert len(set(ONE_HIT_KO_MOVE_NAMES)) == len(ONE_HIT_KO_MOVE_NAMES)
+assert set(ONE_HIT_KO_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
+
+def valid_genders(gender_data):
+    if gender_data == "♂♀両方":
+        return [MALE, FEMALE]
+    elif gender_data == "♂のみ":
+        return [MALE]
+    elif gender_data == "♀のみ":
+        return [FEMALE]
+    else:
+        return [UNKNOWN]
+
+MALE = "♂"
+FEMALE = "♀"
+UNKNOWN = "不明"
+
+ALL_GENDERS = [MALE, FEMALE, UNKNOWN]
+
 
 class PokeData:
     def __init__(self, json_data):
@@ -35,30 +57,30 @@ class PokeData:
         self.category = json_data["Category"]
         self.learnset = json_data["Learnset"]
 
+def is_rate_battle_ok(poke_data):
+    return poke_data.category != "伝説のポケモン" and poke_data.category != "幻のポケモン"
+
+
 POKEDEX = {poke_name:PokeData(boa.load_json(path.POKEDEX + poke_name + ".json")) for poke_name in ALL_POKE_NAMES}
-RATE_POKE_NAMES = [
-    poke_name for poke_name in ALL_POKE_NAMES \
-    if POKEDEX[poke_name].category != "幻のポケモン" and POKEDEX[poke_name].category != "伝説のポケモン" \
-]
+
+RATE_POKE_NAMES = [poke_name for poke_name in ALL_POKE_NAMES if is_rate_battle_ok(POKEDEX[poke_name])]
 RATE_POKE_NAMES_LENGTH = len(RATE_POKE_NAMES)
 
 ALL_ABILITIES = []
 for poke_name in ALL_POKE_NAMES:
-    poke_data = POKEDEX[poke_name]
-    for ability in poke_data.all_abilities:
+    for ability in POKEDEX[poke_name].all_abilities:
         if ability not in ALL_ABILITIES:
             ALL_ABILITIES.append(ability)
 
 MAX_BASE_HP = 0
-for poke_name in ALL_POKE_NAMES:
-    poke_data = POKEDEX[poke_name]
-    MAX_BASE_STATE = max([poke_data.base_hp, MAX_BASE_HP])
+for poke_data in POKEDEX.values():
+    MAX_BASE_HP = max([poke_data.base_hp, MAX_BASE_HP])
+
 
 MAX_BASE_STATE = 0
-for poke_name in ALL_POKE_NAMES:
-    poke_data = POKEDEX[poke_name]
-    for base_state in [poke_data.base_atk, poke_data.base_def, poke_data.base_sp_atk, poke_data.base_sp_def, poke_data.base_speed]:
-        MAX_BASE_STATE = max([base_state, MAX_BASE_STATE])
+for poke_data in POKEDEX.values():
+    MAX_BASE_STATE = max([poke_data.base_atk, poke_data.base_def, poke_data.base_sp_atk,
+                          poke_data.base_sp_def, poke_data.base_speed, MAX_BASE_STATE])
 
 
 class MoveData:
@@ -85,8 +107,8 @@ class MoveData:
         self.min_attack_num = json_data["MinAttackNum"]
         self.max_attack_num = json_data["MaxAttackNum"]
 
-MOVEDEX = {move_name:MoveData(boa.load_json(path.MOVEDEX + move_name + ".json")) \
-           for move_name in ALL_MOVE_NAMES}
+
+MOVEDEX = {move_name:MoveData(boa.load_json(path.MOVEDEX + move_name + ".json")) for move_name in ALL_MOVE_NAMES}
 
 PHYSICS = "物理"
 SPECIAL = "特殊"
@@ -116,6 +138,7 @@ ALL_NATURES = [id_to_nature(i) for i in range(len(NATUREDEX))]
 ALL_NATURES_LENGTH = len(ALL_NATURES)
 
 TYPEDEX = boa.load_json(path.TYPEDEX)
+
 NORMAL = "ノーマル"
 FIRE = "ほのお"
 WATER = "みず"
@@ -156,23 +179,11 @@ ALL_TYPES = [
     FAIRY
 ]
 
+assert len(ALL_TYPES) == 18
+assert len(set(ALL_TYPES)) == len(ALL_TYPES)
+assert set(TYPEDEX.keys()) == set(ALL_TYPES)
+
 DEFAULT_LEVEL = 50
-
-MALE = "♂"
-FEMALE = "♀"
-UNKNOWN = "不明"
-
-ALL_GENDERS = [MALE, FEMALE, UNKNOWN]
-
-def valid_genders(gender_data):
-    if gender_data == "♂♀両方":
-        return [MALE, FEMALE]
-    elif gender_data == "♂のみ":
-        return [MALE]
-    elif gender_data == "♀のみ":
-        return [FEMALE]
-    else:
-        return [UNKNOWN]
 
 ALL_ITEMS = boa.readlines_txt(path.ALL_ITEMS, True)
 
@@ -182,7 +193,6 @@ MAX_INDIVIDUAL_VALUE = max(ALL_INDIVIDUAL_VALUES)
 
 def is_valid_individual_value(individual_value):
     return MIN_INDIVIDUAL_VALUE <= individual_value <= MAX_INDIVIDUAL_VALUE
-
 
 class Individual:
     def __init__(self, hp, atk, defe, sp_atk, sp_def, speed):
@@ -284,6 +294,10 @@ SLEEP = "ねむり"
 BURN = "やけど"
 PARALYSIS = "まひ"
 FREEZE = "こおり"
+
+ALL_STATUS_AILMENT = [
+    NORMAL_POISON, BAD_POISON, SLEEP, BURN, PARALYSIS, FREEZE
+]
 
 #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
 TWO_ATTACK_PERCENT = [100, 100]

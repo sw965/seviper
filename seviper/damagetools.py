@@ -47,7 +47,7 @@ def final_power(spov, move_name):
         "ダメージ計算関連のメソッドは、物理技か変化技の技名でなければならない"
 
     result = five_over_rounding(float(move_data.power) * float(INIT_POWER_BONUS) / 4096.0)
-	return max([result, 1])
+    return max([result, 1])
 
 def physics_attack_bonus(spov):
     result = INIT_PHYSICS_ATTACK_BONUS
@@ -82,7 +82,7 @@ def final_attack(spov, move_name, is_critical):
 
     result = int(float(attack_state) * float(rank_bonus))
     result = five_over_rounding(float(result) * float(attack_bonus) / 4096.0)
-	return max([result, 1])
+    return max([result, 1])
 
 INIT_PHYSICS_DEFENSE_BONUS = 4096
 INIT_SPECIAL_DEFENSE_BONUS = 4096
@@ -119,7 +119,7 @@ def final_defense(spov, move_name, is_critical):
 
     result = int(float(defense_state) * float(rank_bonus))
     result = five_over_rounding(float(result) * float(defense_bonus) / 4096.0)
-	return max([result, 1])
+    return max([result, 1])
 
 def same_type_attack_bonus(pokemon, move_name):
     move_type = parts.MOVEDEX[move_name].type
