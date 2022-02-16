@@ -14,4 +14,5 @@ def main():
         boa.write_txt(path.POKEDEX + poke_name + ".json", json_data)
 
 if __name__ == "__main__":
-    main()
+    #main()
+    boa.dump_pickle([0, 1, 2, 3, 4, 5], "C:/Go/gopath/seviper/seviper/test_data.pkl")
