@@ -1,6 +1,4 @@
 import setuptools
-import seviper.path as path
-
 
 setuptools.setup(
     name="seviper",

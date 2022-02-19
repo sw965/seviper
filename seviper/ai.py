@@ -1,26 +1,24 @@
 import copy
 import itertools
 import numpy as np
-import seviper.parts as parts
-import seviper.damagetools as damagetools
-import seviper.battle as battle
+import seviper.src as seviper
 
 class Features:
-    BUILD_POKE_NAME = ["なし"] + parts.RATE_POKE_NAMES
-    BATTLE_POKE_NAME = parts.RATE_POKE_NAMES
+    BUILD_POKE_NAME = ["なし"] + seviper.RATE_POKE_NAMES
+    BATTLE_POKE_NAME = seviper.RATE_POKE_NAMES
 
-    BASE_HP = [state + 1 for state in range(parts.MAX_BASE_HP)]
-    BASE_STATE = [state + 1 for state in range(parts.MAX_BASE_STATE)]
-    HP = [i + 1 for i in range(parts.MAX_HP)]
-    STATE = [i + 1 for i in range(parts.MAX_STATE)]
+    BASE_HP = [state + 1 for state in range(seviper.MAX_BASE_HP)]
+    BASE_STATE = [state + 1 for state in range(seviper.MAX_BASE_STATE)]
+    HP = [i + 1 for i in range(seviper.MAX_HP)]
+    STATE = [i + 1 for i in range(seviper.MAX_STATE)]
 
-    MOVE_NAME = ["なし"] + parts.ALL_MOVE_NAMES
-    MOVE_POWER = [power + 1 for power in range(parts.MAX_MOVE_POWER)]
+    MOVE_NAME = ["なし"] + seviper.ALL_MOVE_NAMES
+    MOVE_POWER = [power + 1 for power in range(seviper.MAX_MOVE_POWER)]
     MOVE_ACCURACY = [i + 1 for i in range(100)]
-    POWER_POINT = [i + 1 for i in range(parts.MAX_POWER_POINT)]
+    POWER_POINT = [i + 1 for i in range(seviper.MAX_POWER_POINT)]
 
-    ITEM = ["なし"] + parts.ALL_ITEMS
-    STATUS_AILMENT = [""] + parts.ALL_STATUS_AILMENT
+    ITEM = ["なし"] + seviper.ALL_ITEMS
+    STATUS_AILMENT = [""] + seviper.ALL_STATUS_AILMENT
 
 def image_2d_size():
     height = 0
@@ -28,11 +26,11 @@ def image_2d_size():
 
     while True:
         height += 1
-        if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
             break
 
         width += 1
-        if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
             break
     return (height, width)
 
@@ -44,12 +42,16 @@ class Image2D:
     INDICES = (lambda height, width:[(h, w) for h in range(height) for w in range(width)])(HEIGHT, WIDTH)
 
     @classmethod
-    def new(cls):
+    def new_zeros(cls):
         return [[0.0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
     @classmethod
+    def new_ones(cls):
+        return [[1.0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
+
+    @classmethod
     def new_rank(cls, rank):
-        rank_bonus = damagetools.RANK_BONUS[rank]
+        rank_bonus = seviper.RANK_BONUS[rank]
         return [[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)]
 
     @staticmethod
@@ -59,11 +61,11 @@ class Image2D:
 
         while True:
             height += 1
-            if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+            if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
                 break
 
             width += 1
-            if parts.RATE_POKE_NAMES_LENGTH <= (height * width):
+            if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
                 break
         return (height, width)
 
@@ -89,7 +91,7 @@ def new_feature_value_table(features, is_inclusion_mode):
         result = {}
         for feature in features:
             index = features.index(feature)
-            v = Image2D.new()
+            v = Image2D.new_zeros()
             for h, w in input_ranges[index]:
                 v[h][w] = 1.0
             result[feature] = v
@@ -98,25 +100,25 @@ def new_feature_value_table(features, is_inclusion_mode):
 
 def new_half_heal_table():
     result = {}
-    result[True] = [[1.0 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
-    result[False] = Image2D.new()
+    result[True] = Image2D.new_ones()
+    result[False] = Image2D.new_zeros()
     return result
 
 
 def new_one_hit_ko_table():
     result = {}
-    result[True] = [[1.0 for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)]
-    result[False] = Image2D.new()
+    result[True] = Image2D.new_ones()
+    result[False] = Image2D.new_zeros()
     return result
 
 
 class FeatureValueTable:
     BUILD_POKE_NAME = new_feature_value_table(Features.BUILD_POKE_NAME, False)
     BATTLE_POKE_NAME = new_feature_value_table(Features.BATTLE_POKE_NAME, False)
-    TYPE = new_feature_value_table(parts.ALL_TYPES, False)
+    TYPE = new_feature_value_table(seviper.ALL_TYPES, False)
 
     MOVE_NAME = new_feature_value_table(Features.MOVE_NAME, False)
-    LEARNSET = new_feature_value_table(parts.ALL_MOVE_NAMES, False)
+    LEARNSET = new_feature_value_table(seviper.ALL_MOVE_NAMES, False)
 
     BASE_HP = new_feature_value_table(Features.BASE_HP, True)
     BASE_STATE = new_feature_value_table(Features.BASE_STATE, True)
@@ -124,23 +126,21 @@ class FeatureValueTable:
     HP = new_feature_value_table(Features.HP, True)
     STATE = new_feature_value_table(Features.STATE, True)
 
-    NATURE = new_feature_value_table(parts.ALL_NATURES, False)
-    ABILITY = new_feature_value_table(parts.ALL_ABILITIES, False)
-    GENDER = new_feature_value_table(parts.ALL_GENDERS, False)
-    ITEM = new_feature_value_table(parts.ALL_ITEMS, False)
+    NATURE = new_feature_value_table(seviper.ALL_NATURES, False)
+    ABILITY = new_feature_value_table(seviper.ALL_ABILITIES, False)
+    GENDER = new_feature_value_table(seviper.ALL_GENDERS, False)
+    ITEM = new_feature_value_table(seviper.ALL_ITEMS, False)
 
     MOVE_POWER = new_feature_value_table(Features.MOVE_POWER, True)
     MOVE_ACCURACY = new_feature_value_table(Features.MOVE_ACCURACY, True)
     HALF_HEAL = new_half_heal_table()
     ONE_HIT_KO = new_one_hit_ko_table()
 
-    POINT_UP = new_feature_value_table(parts.ALL_POINT_UPS, True)
+    POINT_UP = new_feature_value_table(seviper.ALL_POINT_UPS, True)
     POWER_POINT = new_feature_value_table(Features.POWER_POINT, True)
 
-    INDIVIDUAL_VALUE = new_feature_value_table(parts.ALL_INDIVIDUAL_VALUES, True)
-    EFFORT_VALUE = new_feature_value_table(parts.ALL_EFFORT_VALUES, True)
-
-    STATUS_AILMENT = new_feature_value_table(Features.STATUS_AILMENT, False)
+    INDIVIDUAL_VALUE = new_feature_value_table(seviper.ALL_INDIVIDUAL_VALUES, True)
+    EFFORT_VALUE = new_feature_value_table(seviper.ALL_EFFORT_VALUES, True)
 
     @staticmethod
     def logical_disjunction(feature_values, keys):
@@ -293,8 +293,8 @@ class PokemonBuilder:
         self.item = None
         self.move_names = [None, None, None, None]
         self.point_ups = [None, None, None, None]
-        self.individual = parts.Individual(None, None, None, None, None, None)
-        self.effort = parts.Effort(None, None, None, None, None, None)
+        self.individual = seviper.Individual(None, None, None, None, None, None)
+        self.effort = seviper.Effort(None, None, None, None, None, None)
 
     def set_features(self, features, depth):
         table = PokemonBuilder.TABLES[depth]
@@ -342,7 +342,7 @@ class PokemonBuilder:
         assert self.poke_name is not None, "技名を入力する時は、ポケモン名を入力してからでなければならない"
         depth_i = [MOVE1_NAME_DEPTH, MOVE2_NAME_DEPTH, MOVE3_NAME_DEPTH, MOVE4_NAME_DEPTH].index(depth)
         assert self.move_names[depth_i] is None
-        assert self.move_names.count(None) == battle.MAX_MOVESET_NUM - (depth_i - 1)
+        assert self.move_names.count(None) == seviper.MAX_MOVESET_NUM - (depth_i - 1)
 
         move_type_depth = [MOVE1_TYPE_DEPTH, MOVE2_TYPE_DEPTH, MOVE3_TYPE_DEPTH, MOVE4_TYPE_DEPTH][depth_i]
         move_power_depth = [MOVE1_POWER_DEPTH, MOVE2_POWER_DEPTH, MOVE3_POWER_DEPTH, MOVE4_POWER_DEPTH][depth_i]
@@ -370,8 +370,8 @@ class PokemonBuilder:
         if accuracy != 0:
             self.set_features([accuracy], accuracy_depth)
 
-        self.set_features([move_name in parts.HALF_HEAL_MOVE_NAMES], half_heal_depth)
-        self.set_features([move_name in parts.ONE_HIT_KO_MOVE_NAMES], one_hit_ko_depth)
+        self.set_features([move_name in seviper.HALF_HEAL_MOVE_NAMES], half_heal_depth)
+        self.set_features([move_name in seviper.ONE_HIT_KO_MOVE_NAMES], one_hit_ko_depth)
 
     def set_move1_name(self, move_name):
         assert move_name in POKEDEX[self.poke_name].learnset
@@ -394,7 +394,7 @@ class PokemonBuilder:
         self.move_names[3] = move_name
 
     def set_point_up(self, point_up, depth):
-        assert parts.is_valid_point_up(point_up)
+        assert seviper.is_valid_point_up(point_up)
         self.set_features([point_up], depth)
 
     def set_point_up1(self, point_up):
@@ -456,7 +456,7 @@ class PokemonBuilder:
         self.individual.speed = individual_v
 
     def set_effort_v(self, effort_v, depth):
-        assert effort_v in parts.ALL_EFFORT_VALUES
+        assert effort_v in seviper.ALL_EFFORT_VALUES
 
         if self.effort.hp is None:
             hp = 0
@@ -502,7 +502,7 @@ class PokemonBuilder:
 
 class TeamBuilder:
     def __init__(self):
-        self.builders = [PokemonBuilder() for _ in range(battle.MAX_TEAM_NUM)]
+        self.builders = [PokemonBuilder() for _ in range(seviper.MAX_TEAM_NUM)]
 
     def get(self):
         return sum([builder.data for builder in self.builders], [])
@@ -524,7 +524,7 @@ class TeamBuilder:
 
 
 class ImageBattlePokemon:
-    DEPTH = 32
+    DEPTH = 37
     depth_counter = (i for i in range(DEPTH))
 
     POKE_NAME_DEPTH = next(depth_counter)
@@ -564,13 +564,18 @@ class ImageBattlePokemon:
     SP_DEF_RANK_DEPTH = next(depth_counter)
     SPEED_RANK_DEPTH = next(depth_counter)
 
-    STATUS_AILMENT_DEPTH = next(depth_counter)
+    NORMAL_POISON_DEPTH = next(depth_counter)
+    BAD_POISON_DEPTH = next(depth_counter)
+    SLEEP_DEPTH = next(depth_counter)
+    BURN_DEPTH = next(depth_counter)
+    PARALYSIS_DEPTH = next(depth_counter)
+    FREEZE_DEPTH = next(depth_counter)
 
     def __init__(self, pokemon):
         ibp = ImageBattlePokemon
         fvt = FeatureValueTable
-        self.data = [Image2D.new() for _ in range(ImageBattlePokemon.DEPTH)]
-        poke_data = parts.POKEDEX[pokemon.name]
+        self.data = [Image2D.new_zeros() for _ in range(ImageBattlePokemon.DEPTH)]
+        poke_data = seviper.POKEDEX[pokemon.name]
 
         self.data[ibp.POKE_NAME_DEPTH] = fvt.BATTLE_POKE_NAME[pokemon.name]
         self.data[ibp.POKE_TYPE_DEPTH] = fvt.logical_disjunction(fvt.TYPE, pokemon.types)
@@ -581,16 +586,16 @@ class ImageBattlePokemon:
         half_heal_depths = [ibp.MOVE1_HALF_HEAL_DEPTH, ibp.MOVE2_HALF_HEAL_DEPTH, ibp.MOVE3_HALF_HEAL_DEPTH, ibp.MOVE4_HALF_HEAL_DEPTH]
         max_power_point_depths = [ibp.MAX_POWER_POINT1_DEPTH, ibp.MAX_POWER_POINT2_DEPTH, ibp.MAX_POWER_POINT3_DEPTH, ibp.MAX_POWER_POINT4_DEPTH]
         current_power_point_depths = [ibp.CURRENT_POWER_POINT1_DEPTH, ibp.CURRENT_POWER_POINT2_DEPTH, ibp.CURRENT_POWER_POINT3_DEPTH, ibp.CURRENT_POWER_POINT4_DEPTH]
-        self.order_move_names = pokemon.moveset_order_keys()
-        self.data[ibp.MOVE_NAME_DEPTH] = fvt.logical_disjunction(fvt.LEARNSET, self.order_move_names)
+        self.sorted_move_names = seviper.get_sorted_move_names(pokemon.moveset.keys())
+        self.data[ibp.MOVE_NAME_DEPTH] = fvt.logical_disjunction(fvt.LEARNSET, self.sorted_move_names)
 
-        for i, move_name in enumerate(self.order_move_names):
+        for i, move_name in enumerate(self.sorted_move_names):
             half_heal_depth = half_heal_depths[i]
             max_power_point_depth = max_power_point_depths[i]
             current_power_point_depth = current_power_point_depths[i]
             power_point = pokemon.moveset[move_name]
 
-            self.data[half_heal_depth] = fvt.HALF_HEAL[move_name in parts.HALF_HEAL_MOVE_NAMES]
+            self.data[half_heal_depth] = fvt.HALF_HEAL[move_name in seviper.HALF_HEAL_MOVE_NAMES]
             self.data[max_power_point_depth] = fvt.POWER_POINT[power_point.max]
             self.data[current_power_point_depth] = fvt.POWER_POINT[power_point.current]
 
@@ -609,7 +614,18 @@ class ImageBattlePokemon:
         self.data[ibp.SP_DEF_RANK_DEPTH] = Image2D.new_rank(pokemon.sp_def_rank)
         self.data[ibp.SPEED_RANK_DEPTH] = Image2D.new_rank(pokemon.speed_rank)
 
-        self.data[ibp.STATUS_AILMENT_DEPTH] = fvt.STATUS_AILMENT[pokemon.status_ailment]
+        status_ailment_depths = {
+            seviper.NORMAL_POISON:ibp.NORMAL_POISON_DEPTH,
+            seviper.BAD_POISON:ibp.BAD_POISON_DEPTH,
+            seviper.SLEEP:ibp.SLEEP_DEPTH,
+            seviper.BURN:ibp.BURN_DEPTH,
+            seviper.PARALYSIS:ibp.PARALYSIS_DEPTH,
+            seviper.FREEZE:ibp.FREEZE_DEPTH
+        }
+
+        if pokemon.status_ailment != "":
+            depth = status_ailment_depths[pokemon.status_ailment]
+            self.data[depth] = Image2D.new_ones()
 
 
 class ImageFighters:
@@ -624,21 +640,21 @@ class ImageFighters:
 
 
 class ImageBattle:
-    def __init__(self, battle_manager):
-        self.p1_fighter_images = ImageFighters(battle_manager.p1_fighters)
-        self.p2_fighter_images = ImageFighters(battle_manager.p2_fighters)
+    def __init__(self, seviper_manager):
+        self.p1_fighter_images = ImageFighters(seviper_manager.p1_fighters)
+        self.p2_fighter_images = ImageFighters(seviper_manager.p2_fighters)
 
         p1_attack_damage_probability_distribution, p2_attack_damage_probability_distribution = \
-            battle_manager.damage_probability_distribution()
+            seviper_manager.damage_probability_distribution()
         self.damage_probability_distribution_images = []
 
         def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
-            for i in range(battle.FIGHTERS_NUM):
-                for j in range(battle.FIGHTERS_NUM):
-                    for move_name in fighter_images[i].order_move_names:
-                        tmp = Image2D.new()
+            for i in range(seviper.FIGHTERS_NUM):
+                for j in range(seviper.FIGHTERS_NUM):
+                    for move_name in fighter_images[i].sorted_move_names:
+                        tmp = Image2D.new_zeros()
                         for damage, p in damage_probability_distribution[i][j][move_name].items():
-                            damage = min([damage, parts.MAX_HP])
+                            damage = min([damage, seviper.MAX_HP])
                             h, w = Image2D.INDICES[damage]
                             tmp[h][w] += p
                         self.damage_probability_distribution_images.append(tmp)
