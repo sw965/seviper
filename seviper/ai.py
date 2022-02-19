@@ -394,7 +394,7 @@ class PokemonBuilder:
         self.move_names[3] = move_name
 
     def set_point_up(self, point_up, depth):
-        assert seviper.is_valid_point_up(point_up)
+        assert seviper.MIN_POINT_UP <= point_up <= seviper.MAX_POINT_UP
         self.set_features([point_up], depth)
 
     def set_point_up1(self, point_up):
@@ -502,7 +502,7 @@ class PokemonBuilder:
 
 class TeamBuilder:
     def __init__(self):
-        self.builders = [PokemonBuilder() for _ in range(seviper.MAX_TEAM_NUM)]
+        self.builders = [PokemonBuilder() for _ in range(seviper.MAX_TEAM_LENGTH)]
 
     def get(self):
         return sum([builder.data for builder in self.builders], [])
@@ -649,8 +649,8 @@ class ImageBattle:
         self.damage_probability_distribution_images = []
 
         def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
-            for i in range(seviper.FIGHTERS_NUM):
-                for j in range(seviper.FIGHTERS_NUM):
+            for i in range(seviper.FIGHTERS_LENGTH):
+                for j in range(seviper.FIGHTERS_LENGTH):
                     for move_name in fighter_images[i].sorted_move_names:
                         tmp = Image2D.new_zeros()
                         for damage, p in damage_probability_distribution[i][j][move_name].items():

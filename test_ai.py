@@ -16,6 +16,7 @@ image_battle = seviper.ai.ImageBattle(battle_manager)
 
 array = np.array(image_battle.get())
 print(array.shape)
+print(seviper.ai.Image2D.WIDTH)
 
 for base_hp in seviper.ai.Features.BASE_HP:
     print(ai.FeatureValueTable.BASE_HP[base_hp])

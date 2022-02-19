@@ -345,7 +345,7 @@ def assert_validation_team(team):
     items = [pokemon.item for pokemon in team]
     assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
 
-FIGHTERS_NUM = 3
+FIGHTERS_LENGTH = 3
 
 def new_fighters(team, indices):
     assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
