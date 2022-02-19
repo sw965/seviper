@@ -1,9 +1,9 @@
 import unittest
-import seviper.battle as battle
+import seviper
 
 class Pokemon(unittest.TestCase):
     def test_template_venusaur(self):
-        venusaur = battle.TEMPLATE_POKEMONS["フシギバナ"]
+        venusaur = seviper.TEMPLATE_POKEMONS["フシギバナ"]
         self.assertEqual(venusaur.max_hp, 187)
         self.assertEqual(venusaur.atk, 91)
         self.assertEqual(venusaur.defe, 103)
@@ -14,7 +14,7 @@ class Pokemon(unittest.TestCase):
         self.assertEqual(venusaur.moveset["ギガドレイン"].max, 16)
 
     def test_template_charizard(self):
-        charizard = battle.TEMPLATE_POKEMONS["リザードン"]
+        charizard = seviper.TEMPLATE_POKEMONS["リザードン"]
         self.assertEqual(charizard.speed, 167)
         self.assertEqual(charizard.max_hp, 154)
         self.assertEqual(charizard.atk, 93)
@@ -24,7 +24,7 @@ class Pokemon(unittest.TestCase):
         self.assertEqual(charizard.moveset["オーバーヒート"].max, 8)
 
     def test_template_blastoise(self):
-        blastoise = battle.TEMPLATE_POKEMONS["カメックス"]
+        blastoise = seviper.TEMPLATE_POKEMONS["カメックス"]
         self.assertEqual(blastoise.max_hp, 155)
         self.assertEqual(blastoise.atk, 92)
         self.assertEqual(blastoise.defe, 120)
@@ -35,17 +35,17 @@ class Pokemon(unittest.TestCase):
 
 class Manager(unittest.TestCase):
     def test_damage(self):
-        p1_fighters = [battle.TEMPLATE_POKEMONS["フシギバナ"],
-                       battle.TEMPLATE_POKEMONS["リザードン"],
-                       battle.TEMPLATE_POKEMONS["カメックス"]]
-        p2_fighters = [battle.TEMPLATE_POKEMONS["カメックス"],
-                       battle.TEMPLATE_POKEMONS["リザードン"],
-                       battle.TEMPLATE_POKEMONS["フシギバナ"]]
+        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
+                       seviper.TEMPLATE_POKEMONS["リザードン"],
+                       seviper.TEMPLATE_POKEMONS["カメックス"]]
+        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"],
+                       seviper.TEMPLATE_POKEMONS["リザードン"],
+                       seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
         test_num = 1920
 
         def test1():
-            battle_manager = battle.Manager(p1_fighters, p2_fighters)
+            battle_manager = seviper.Manager(p1_fighters, p2_fighters)
             results = [battle_manager.push(["ギガドレイン", "なみのり"]) for _ in range(test_num)]
 
             p1_expected_damages = [23, 24, 25, 26, 27, 34, 35, 36, 37, 38, 39, 40, 41]
@@ -78,14 +78,14 @@ class Manager(unittest.TestCase):
         test1()
 
     def test_final_damage_probability_distribution(self):
-        p1_fighters = [battle.TEMPLATE_POKEMONS["フシギバナ"],
-                       battle.TEMPLATE_POKEMONS["リザードン"],
-                       battle.TEMPLATE_POKEMONS["カメックス"]]
-        p2_fighters = [battle.TEMPLATE_POKEMONS["カメックス"],
-                       battle.TEMPLATE_POKEMONS["リザードン"],
-                       battle.TEMPLATE_POKEMONS["フシギバナ"]]
+        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
+                       seviper.TEMPLATE_POKEMONS["リザードン"],
+                       seviper.TEMPLATE_POKEMONS["カメックス"]]
+        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"],
+                       seviper.TEMPLATE_POKEMONS["リザードン"],
+                       seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
-        battle_manager = battle.Manager(p1_fighters, p2_fighters)
+        battle_manager = seviper.Manager(p1_fighters, p2_fighters)
         p1_result, p2_result = battle_manager.damage_probability_distribution()
 
         def helper(result, damages, p1_fighter_i, p2_fighter_i, move_name):
