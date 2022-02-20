@@ -1,5 +1,6 @@
 import copy
 import random
+import pprint
 import seviper.base_data as base_data
 
 ALL_POKE_NAMES = base_data.ALL_POKE_NAMES
@@ -229,8 +230,8 @@ class PowerPoint:
 MAX_BASE_PP = max([move_data.base_pp for move_data in MOVEDEX.values()])
 MAX_POWER_POINT = PowerPoint.calc(MAX_BASE_PP, MAX_POINT_UP)
 
-MIN_MOVESET_NUM = 1
-MAX_MOVESET_NUM = 4
+MIN_MOVESET_LENGTH = 1
+MAX_MOVESET_LENGTH = 4
 
 def calc_hp_state(base_hp, individual_value, effort_value):
     return ((base_hp * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + DEFAULT_LEVEL + 10
@@ -263,7 +264,7 @@ class Pokemon:
         assert gender in get_valid_genders(poke_data.gender), "性別が不適"
         assert item in ALL_ITEMS, "アイテムが不適"
 
-        assert MIN_MOVESET_NUM <= len(move_names) <= MAX_MOVESET_NUM, "覚えさせる技の数が不適"
+        assert MIN_MOVESET_LENGTH <= len(move_names) <= MAX_MOVESET_LENGTH, "覚えさせる技の数が不適"
         assert len(move_names) == len(point_ups), "覚えさせる技の数とポイントアップリストの数が一致していない"
 
         for move_name in move_names:
@@ -341,7 +342,7 @@ MIN_TEAM_LENGTH = 3
 MAX_TEAM_LENGTH = 6
 
 def assert_validation_team(team):
-    assert MIN_TEAM_NUM <= len(team) <= MAX_TEAM_NUM, "チームの数が不適"
+    assert MIN_TEAM_LENGTH <= len(team) <= MAX_TEAM_LENGTH, "チームの数が不適"
     items = [pokemon.item for pokemon in team]
     assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
 
@@ -1089,3 +1090,617 @@ STATUS_MOVES = {
     "どくどく":StatusMove.toxic,
     "やどりぎのタネ":StatusMove.leech_seed,
 }
+
+BUILD_POKE_NAME_FEATURES = ["なし"] + seviper.RATE_POKE_NAMES
+BATTLE_POKE_NAME_FEATURES = seviper.RATE_POKE_NAMES
+
+BASE_HP_FEATURES = [state + 1 for state in range(seviper.MAX_BASE_HP)]
+BASE_STATE_FEATURES = [state + 1 for state in range(seviper.MAX_BASE_STATE)]
+HP_FEATURES = [i + 1 for i in range(seviper.MAX_HP)]
+STATE_FEATURES = [i + 1 for i in range(seviper.MAX_STATE)]
+
+MOVE_NAME_FEATURES = ["なし"] + seviper.ALL_MOVE_NAMES
+MOVE_POWER_FEATURES = [power + 1 for power in range(seviper.MAX_MOVE_POWER)]
+MOVE_ACCURACY_FEATURES = [i + 1 for i in range(100)]
+POWER_POINT_FEATURES = [i + 1 for i in range(seviper.MAX_POWER_POINT)]
+
+ITEM_FEATURES = ["なし"] + seviper.ALL_ITEMS
+STATUS_AILMENT_FEATURES = [""] + seviper.ALL_STATUS_AILMENT
+
+def get_image_2d_size():
+    height = 0
+    width = 0
+
+    while True:
+        height += 1
+        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
+            break
+
+        width += 1
+        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
+            break
+    return (height, width)
+
+IMAGE_2D_SIZE = image_2d_size()
+
+class Image2D(list):
+    HEIGHT = IMAGE_2D_SIZE[0]
+    WIDTH = IMAGE_2D_SIZE[1]
+    INDICES = (lambda height, width:[(h, w) for h in range(height) for w in range(width)])(HEIGHT, WIDTH)
+
+    @classmethod
+    def new_zeros(cls):
+        return Image2D([[0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+
+    @classmethod
+    def new_ones(cls):
+        return Image2D([[1 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+
+    @classmethod
+    def new_rank_bonus(cls, rank):
+        rank_bonus = seviper.RANK_BONUS[rank]
+        return Image2D([[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+
+    def logical_disjunction(self, image_2d):
+        return Image2D([[1.0 if (self[h][w] + image_2d2[h][w]) > 0.0 else 0.0 \
+                         for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)])
+
+def make_feature_table(features, is_inclusion_mode):
+    counter = (i for i in range(len(Image2D.INDICES)))
+    features_length = len(features)
+    input_ranges = [[Image2D.INDICES[next(counter)] for j in range(len(Image2D.INDICES) // features_length)] \
+                     for i in range(features_length)]
+
+    if is_inclusion_mode:
+        input_ranges = list(itertools.accumulate(input_ranges))
+
+    result = {}
+    for feature in features:
+        index = features.index(feature)
+        zeros = Image2D.new_zeros()
+        for h, w in input_ranges[index]:
+            zeros[h][w] = 1.0
+        result[feature] = v
+    return result
+
+def make_half_heal_table():
+    result = {}
+    result[True] = Image2D.new_ones()
+    result[False] = Image2D.new_zeros()
+    return result
+
+def make_one_hit_ko_table():
+    result = {}
+    result[True] = Image2D.new_ones()
+    result[False] = Image2D.new_zeros()
+    return result
+
+BUILD_POKE_NAME_FEATURE_TABLE = make_feature_table(BUILD_POKE_NAME_FEATURES, False)
+BATTLE_POKE_NAME_FEATURE_TABLE = make_feature_table(BATTLE_POKE_NAME_FEATURES, False)
+TYPE_FEATURE_TABLE = make_feature_table(ALL_TYPES, False)
+
+MOVE_NAME_FEATURE_TABLE = make_feature_table(MOVE_NAME_FEATURES, False)
+LEARNSET_FEATURE_TABLE = make_feature_table(ALL_MOVE_NAMES, False)
+
+BASE_HP_FEATURE_TABLE = make_feature_table(BASE_HP_FEATURES, True)
+BASE_STATE_FEATURE_TABLE = make_feature_table(BASE_STATE_FEATURES, True)
+
+HP_FEATURE_TABLE = make_feature_table(HP_FEATURES, True)
+STATE_FEATURE_TABLE = make_feature_table(STATE_FEATURES, True)
+
+NATURE_FEATURE_TABLE = make_feature_table(ALL_NATURES, False)
+ABILITY_FEATURE_TABLE = make_feature_table(ALL_ABILITIES, False)
+GENDER_FEATURE_TABLE = make_feature_table(ALL_GENDERS, False)
+ITEM_FEATURE_TABLE = make_feature_table(ALL_ITEMS, False)
+
+MOVE_POWER_FEATURE_TABLE = make_feature_table(MOVE_POWER_FEATURES, True)
+MOVE_ACCURACY_FEATURE_TABLE = make_feature_table(MOVE_ACCURACY_FEATURES, True)
+HALF_HEAL_FEATURE_TABLE = make_half_heal_table()
+ONE_HIT_KO_FEATURE_TABLE = make_one_hit_ko_table()
+
+POINT_UP_FEATURE_TABLE = make_feature_table(ALL_POINT_UPS, True)
+POWER_POINT_FEATURE_TABLE = make_feature_table(POWER_POINT_FEATURES, True)
+
+INDIVIDUAL_FEATURE_TABLE = make_feature_table(ALL_INDIVIDUAL_VALUES, True)
+EFFORT_FEATURE_TABLE = make_feature_table(ALL_EFFORT_VALUES, True)
+
+def feature_table_logical_disjunction(feature_table, keys):
+    result = feature_table[keys[0]]
+    for key in keys[1:]:
+        result = result.logical_disjunction(feature_values[key])
+    return result
+
+class PokemonBuilder:
+    SIZE = 57
+    index_counter = (i for i in range(SIZE))
+
+    POKE_NAME_INDEX = next(index_counter)
+    POKE_TYPES_INDEX = next(index_counter)
+    LEARNSET_INDEX = next(index_counter)
+    BASE_HP_INDEX = next(index_counter)
+    BASE_ATK_INDEX = next(index_counter)
+    BASAE_DEF_INDEX = next(index_counter)
+    BASE_SP_ATK_INDEX = next(index_counter)
+    BASE_SP_DEF_INDEX = next(index_counter)
+    BASE_SPEED_INDEX = next(index_counter)
+
+    NATURE_INDEX = next(index_counter)
+    ABILITY_INDEX = next(index_counter)
+    GENDER_INDEX = next(index_counter)
+    ITEM_INDEX = next(index_counter)
+
+    MOVE1_NAME_INDEX = next(index_counter)
+    MOVE1_TYPE_INDEX = next(index_counter)
+    MOVE1_POWER_INDEX = next(index_counter)
+    MOVE1_ACCURACY_INDEX = next(index_counter)
+    MOVE1_HALF_HEAL_INDEX = next(index_counter)
+    MOVE1_ONE_HIT_KO_INDEX = next(index_counter)
+
+    MOVE2_NAME_INDEX = next(index_counter)
+    MOVE2_TYPE_INDEX = next(index_counter)
+    MOVE2_POWER_INDEX = next(index_counter)
+    MOVE2_ACCURACY_INDEX = next(index_counter)
+    MOVE2_HALF_HEAL_INDEX = next(index_counter)
+    MOVE2_ONE_HIT_KO_INDEX = next(index_counter)
+
+    MOVE3_NAME_INDEX = next(index_counter)
+    MOVE3_TYPE_INDEX = next(index_counter)
+    MOVE3_POWER_INDEX = next(index_counter)
+    MOVE3_ACCURACY_INDEX = next(index_counter)
+    MOVE3_HALF_HEAL_INDEX = next(index_counter)
+    MOVE3_ONE_HIT_KO_INDEX = next(index_counter)
+
+    MOVE4_NAME_INDEX = next(index_counter)
+    MOVE4_TYPE_INDEX = next(index_counter)
+    MOVE4_POWER_INDEX = next(index_counter)
+    MOVE4_ACCURACY_INDEX = next(index_counter)
+    MOVE4_HALF_HEAL_INDEX = next(index_counter)
+    MOVE4_ONE_HIT_KO_INDEX = next(index_counter)
+
+    POINT_UP1_INDEX = next(index_counter)
+    POINT_UP2_INDEX = next(index_counter)
+    POINT_UP3_INDEX = next(index_counter)
+    POINT_UP4_INDEX = next(index_counter)
+
+    INDIVIDUAL_HP_INDEX = next(index_counter)
+    INDIVIDUAL_ATK_INDEX = next(index_counter)
+    INDIVIDUAL_DEF_INDEX = next(index_counter)
+    INDIVIDUAL_SP_ATK_INDEX = next(index_counter)
+    INDIVIDUAL_SP_DEF_INDEX = next(index_counter)
+    INDIVIDUAL_SPEED_INDEX = next(index_counter)
+
+    EFFORT_HP_INDEX = next(index_counter)
+    EFFORT_ATK_INDEX = next(index_counter)
+    EFFORT_DEF_INDEX = next(index_counter)
+    EFFORT_SP_ATK_INDEX = next(index_counter)
+    EFFORT_SP_DEF_INDEX = next(index_counter)
+    EFFORT_SPEED_INDEX = next(index_counter)
+
+    FEATURE_TABLES = [
+        BUILD_POKE_NAME_FEATURE_TABLE,
+        TYPE_FEATURE_TABLE,
+        LEARNSET_FEATURE_TABLE,
+        BASE_HP_FEATURE_TABLE,
+        BASE_STATE_FEATURE_TABLE,
+        BASE_STATE_FEATURE_TABLE,
+        BASE_STATE_FEATURE_TABLE,
+        BASE_STATE_FEATURE_TABLE,
+        BASE_STATE_FEATURE_TABLE,
+
+        NATURE_FEATURE_TABLE,
+        ABILITY_FEATURE_TABLE,
+        GENDER_FEATURE_TABLE,
+        ITEM_FEATURE_TABLE,
+
+        MOVE_NAME_FEATURE_TABLE,
+        TYPE_FEATURE_TABLE,
+        MOVE_POWER_FEATURE_TABLE,
+        MOVE_ACCURACY_FEATURE_TABLE,
+        HALF_HEAL_FEATURE_TABLE,
+        ONE_HIT_KO_FEATURE_TABLE,
+
+        MOVE_NAME_FEATURE_TABLE,
+        TYPE_FEATURE_TABLE,
+        MOVE_POWER_FEATURE_TABLE,
+        MOVE_ACCURACY_FEATURE_TABLE,
+        HALF_HEAL_FEATURE_TABLE,
+        ONE_HIT_KO_FEATURE_TABLE,
+
+        MOVE_NAME_FEATURE_TABLE,
+        TYPE_FEATURE_TABLE,
+        MOVE_POWER_FEATURE_TABLE,
+        MOVE_ACCURACY_FEATURE_TABLE,
+        HALF_HEAL_FEATURE_TABLE,
+        ONE_HIT_KO_FEATURE_TABLE,
+
+        MOVE_NAME_FEATURE_TABLE,
+        TYPE_FEATURE_TABLE,
+        MOVE_POWER_FEATURE_TABLE,
+        MOVE_ACCURACY_FEATURE_TABLE,
+        HALF_HEAL_FEATURE_TABLE,
+        ONE_HIT_KO_FEATURE_TABLE,
+
+        POINT_UP_FEATURE_TABLE,
+        POINT_UP_FEATURE_TABLE,
+        POINT_UP_FEATURE_TABLE,
+        POINT_UP_FEATURE_TABLE,
+
+        INDIVIDUAL_FEATURE_TABLE,
+        INDIVIDUAL_FEATURE_TABLE,
+        INDIVIDUAL_FEATURE_TABLE,
+        INDIVIDUAL_FEATURE_TABLE,
+        INDIVIDUAL_FEATURE_TABLE,
+        INDIVIDUAL_FEATURE_TABLE,
+
+        EFFORT_FEATURE_TABLE,
+        EFFORT_FEATURE_TABLE,
+        EFFORT_FEATURE_TABLE,
+        EFFORT_FEATURE_TABLE,
+        EFFORT_FEATURE_TABLE,
+        EFFORT_FEATURE_TABLE,
+    ]
+
+    assert len(FEATURE_TABLES) == (EFFORT_SPEED_INDEX + 1)
+
+    def __init__(self):
+        self.data = [Image2D.new_zeros() for _ in range(PokemonBuilder.SIZE)]
+        self.poke_name = None
+        self.nature = None
+        self.ability = None
+        self.gender = None
+        self.item = None
+        self.move_names = [None, None, None, None]
+        self.point_ups = [None, None, None, None]
+        self.individual = seviper.Individual(None, None, None, None, None, None)
+        self.effort = seviper.Effort(None, None, None, None, None, None)
+
+    def set_features(self, features, index):
+        table = PokemonBuilder.TABLES[index]
+        self.data[index] = feature_table_logical_disjunction(table, features)
+
+    def set_poke_name(self, poke_name):
+        assert self.poke_name is None, "ポケモン名は既に入力済み"
+        self.set_features([poke_name], PokemonBuilder.POKE_NAME_INDEX)
+        poke_data = POKEDEX[poke_name]
+        self.set_features(poke_data.types, PokemonBuilder.POKE_TYPE_INDEX)
+        self.set_features(poke_data.learnset, PokemonBuilder.LEARNSET_INDEX)
+        self.set_features([poke_data.base_hp], PokemonBuilder.BASE_HP_INDEX)
+        self.set_features([poke_data.base_atk], PokemonBuilder.BASE_ATK_INDEX)
+        self.set_features([poke_data.base_def], PokemonBuilder.BASE_DEF_INDEX)
+        self.set_features([poke_data.base_sp_atk], PokemonBuilder.BASE_SP_ATK_INDEX)
+        self.set_features([poke_data.base_sp_def], PokemonBuilder.BASE_SP_DEF_INDEX)
+        self.set_features([poke_data.base_speed], PokemonBuilder.BASE_SPEED_INDEX)
+        self.poke_name = poke_name
+
+    def set_nature(self, nature):
+        assert self.nature is None, "性格は既に入力済み"
+        self.set_features([nature], PokemonBuilder.NATURE_INDEX)
+        self.nature = nature
+
+    def set_ability(self, ability):
+        assert self.poke_name is not None, "特性を入力する時は、ポケモン名を入力してからでなければならない"
+        assert self.ability is None, "特性は既に入力済み"
+        assert ability in POKEDEX[self.name].all_abilities, "特性: " + ability + "と ポケモン名: " + poke_name + "の組み合わせは不適"
+        self.set_features([ability], PokemonBuilder.ABILITY_INDEX)
+        self.ability = ability
+
+    def set_gender(self, gender):
+        assert self.poke_name is not None, "性別を入力する時は、ポケモン名を入力してからでなければならない"
+        assert self.gender is None, "性別は既に入力済み"
+        assert gender in valid_genders(poke_name, gender)
+        self.set_features([gender], PokemonBuilder.GENDER_INDEX)
+        self.gender = gender
+
+    def set_item(self, item):
+        assert self.item is None, "アイテムは既に入力済み"
+        self.set_feature([item], PokemonBuilder.ITEM_INDEX)
+        self.item = item
+
+    def set_move_name(self, move_name, index):
+        assert self.poke_name is not None, "技名を入力する時は、ポケモン名を入力してからでなければならない"
+        index_i = [MOVE1_NAME_INDEX, MOVE2_NAME_INDEX, MOVE3_NAME_INDEX, MOVE4_NAME_INDEX].index(index)
+        assert self.move_names[index_i] is None
+        assert self.move_names.count(None) == (MAX_MOVESET_LENGTH - index_i)
+
+        move_type_index = [MOVE1_TYPE_INDEX, MOVE2_TYPE_INDEX, MOVE3_TYPE_INDEX, MOVE4_TYPE_INDEX][index_i]
+        move_power_index = [MOVE1_POWER_INDEX, MOVE2_POWER_INDEX, MOVE3_POWER_INDEX, MOVE4_POWER_INDEX][index_i]
+        accuracy_index = [MOVE1_ACCURACY_INDEX, MOVE2_ACCURACY_INDEX, MOVE3_ACCURACY_INDEX, MOVE4_ACCURACY_INDEX][index_i]
+        half_heal_index = [MOVE1_HALF_HEAL, MOVE2_HALF_HEAL, MOVE3_HALF_HEAL, MOVE4_HALF_HEAL][index_i]
+        one_hit_ko_index = [MOVE1_ONE_HIT_KO, MOVE2_ONE_HIT_KO, MOVE3_ONE_HIT_KO, MOVE4_ONE_HIT_KO][index_i]
+
+        poke_data = POKEDEX[poke_name]
+        move_data = MOVEDEX[move_name]
+
+        self.set_features([move_name], index)
+        self.set_features([move_data.type], move_type_index)
+
+        if move_data.power > 0:
+            if move_data.type in poke_data.types:
+                power = int(power * 1.5)
+            else:
+                power = move_data.power
+            self.set_features([power], move_power_index)
+
+        accuracy = move_data.accuracy
+        if accuracy == -1:
+            accuracy = 100
+
+        if accuracy != 0:
+            self.set_features([accuracy], accuracy_index)
+
+        self.set_features([move_name in seviper.HALF_HEAL_MOVE_NAMES], half_heal_index)
+        self.set_features([move_name in seviper.ONE_HIT_KO_MOVE_NAMES], one_hit_ko_index)
+
+    def set_move1_name(self, move_name):
+        assert move_name in POKEDEX[self.poke_name].learnset
+        self.set_move_name(move_name, PokemonBuilder.MOVE1_NAME_INDEX)
+        self.move_names[0] = move_name
+
+    def set_move2_name(self, move_name):
+        assert move_name in ["なし"] + POKEDEX[self.poke_name].learnset
+        self.set_move_name(move_name, PokemonBuilder.MOVE2_NAME_INDEX)
+        self.move_names[1] = move_name
+
+    def set_move3_name(self, move_name):
+        assert move_name in ["なし"] + POKEDEX[self.poke_name].learnset
+        self.set_move_name(move_name, PokemonBuilder.MOVE3_NAME_INDEX)
+        self.move_names[2] = move_name
+
+    def set_move4_name(self, move_name):
+        assert move_name in ["なし"] + POKEDEX[self.poke_name].learnset
+        self.set_move_name(move_name, PokemonBuilder.MOVE4_NAME_INDEX)
+        self.move_names[3] = move_name
+
+    def set_point_up(self, point_up, index):
+        assert seviper.MIN_POINT_UP <= point_up <= seviper.MAX_POINT_UP
+        self.set_features([point_up], index)
+
+    def set_point_up1(self, point_up):
+        assert self.move_names[0] is not None
+        assert self.point_ups[0] is None
+        self.set_point_up(point_up, PokemonBuilder.POINT_UP1_INDEX)
+        self.point_ups[0] = point_up
+
+    def set_point_up2(self, point_up):
+        assert self.move_names[1] is not None
+        assert self.point_ups[1] is None
+        self.set_point_up(point_up, PokemonBuilder.POINT_UP2_INDEX)
+        self.point_ups[1] = point_up
+
+    def set_point_up3(self, point_up):
+        assert self.move_names[2] is not None
+        assert self.point_ups[2] is None
+        self.set_point_up(point_up, PokemonBuilder.POINT_UP3_INDEX)
+        self.point_ups[2] = point_up
+
+    def set_point_up4(self, point_up):
+        assert self.move_names[3] is not None
+        assert self.point_ups[3] is None
+        self.set_point_up(point_up, PokemonBuilder.POINT_UP4_INDEX)
+        self.point_ups[3] = point_up
+
+    def set_individual_v(self, individual_v, index, state_type):
+        assert individual_v in ALL_INDIVIDUAL_VALUES
+        self.set_features([individual_v], index)
+
+    def set_individual_hp(self, individual_v):
+        assert self.individual.hp is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_HP_INDEX)
+        self.individual.hp = individual_v
+
+    def set_individual_atk(self, individual_v):
+        assert self.individual.atk is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_ATK_INDEX)
+        self.individual.atk = individual_v
+
+    def set_individual_def(self, individual_v):
+        assert self.individual.defe is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_DEF_INDEX)
+        self.individual.defe = individual_v
+
+    def set_individual_sp_atk(self, individual_v):
+        assert self.individual.sp_atk is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_SP_ATK_INDEX)
+        self.individual.sp_atk = individual_v
+
+    def set_individual_sp_def(self, individual_v):
+        assert self.individual.sp_def is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_SP_DEF_INDEX)
+        self.individual.sp_def = individual_v
+
+    def set_individual_speed(self, individual_v):
+        assert self.individual.speed is None
+        self.set_individual_v(individual_v, PokemonBuilder.INDIVIDUAL_SPEED_INDEX)
+        self.individual.speed = individual_v
+
+    def set_effort_v(self, effort_v, index):
+        assert effort_v in seviper.ALL_EFFORT_VALUES
+
+        if self.effort.hp is None:
+            hp = 0
+        if self.effort.atk is None:
+            atk = 0
+        if self.effort.defe is None:
+            defe = 0
+        if self.effort.sp_atk is None:
+            sp_atk = 0
+        if self.effort.sp_def is None:
+            sp_def = 0
+        if self.effort.speed is None:
+            speed = 0
+
+        sum_v = hp + atk + defe + sp_atk + sp_def + speed
+        assert (effort_v + sum_v) <= Effort.MAX_SUM, "努力値の合計値が" + Effort.MAX_SUM + "を超えた"
+        self.set_features([effort_v], index)
+
+    def set_effort_hp(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_HP_INDEX)
+        self.effort.hp = effort_v
+
+    def set_effort_atk(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_ATK_INDEX)
+        self.effort.atk = effort_v
+
+    def set_effort_def(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_DEF_INDEX)
+        self.effort.defe = effort_v
+
+    def set_effort_sp_atk(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_SP_ATK_INDEX)
+        self.effort.sp_atk = effort_v
+
+    def set_effort_sp_def(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_SP_DEF_INDEX)
+        self.effort.sp_def = effort
+
+    def set_effort_speed(self, effort_v):
+        self.set_effort_v(effort_v, PokemonBuilder.EFFORT_SPEED_INDEX)
+        self.effort.speed = effort_v
+
+class TeamBuilder(list):
+    def __init__(self):
+        super().__init__([PokemonBuilder() for _ in range(MAX_TEAM_LENGTH)])
+
+    def get(self):
+        return sum([pokemon_builder.data for pokemon_builder in self], [])
+
+    def set_poke_name(self, poke_name, index):
+        if index in [0, 1, 2]:
+            assert poke_name != "なし"
+
+        poke_names = [pokemon_builder.poke_name for pokemon_builder in self]
+        assert poke_name not in poke_names, poke_name + " は既にチームに存在する(同じ名前のポケモンを入れようとした)"
+
+        self[index].set_poke_name(poke_name)
+
+    def set_item(self, item, index):
+        items = [pokemon_builder.item for pokemon_builder in self]
+        if item != "なし":
+            assert item not in items, item + " は別のポケモンが既に持っている"
+        self[index].set_item(item)
+
+def battle_pokemon_to_image(pokemon):
+    size = 37
+    index_counter = (i for i in range(size))
+    poke_name_index = next(index_counter)
+    poke_type_index = next(index_counter)
+    nature_index = next(index_counter)
+    ability_index = next(index_counter)
+    gender_index = next(index_counter)
+    item_index = next(index_counter)
+
+    move_name_index = next(index_counter)
+    half_heal_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+    one_hit_ko_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+    max_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+    current_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+
+    max_hp_index = next(index_counter)
+    current_hp_index = next(index_counter)
+    atk_index = next(index_counter)
+    def_index = next(index_counter)
+    sp_atk_index = next(index_counter)
+    sp_def_index = next(index_counter)
+    speed_index = next(index_counter)
+
+    atk_rank_index = next(index_counter)
+    def_rank_index = next(index_counter)
+    sp_atk_rank_index = next(index_counter)
+    sp_def_rank_index = next(index_counter)
+    speed_rank_index = next(index_counter)
+    accuracy_rank_index = next(index_counter)
+    evasion_rank_index = next(index_counter)
+
+    status_ailment_indices = {
+        NORMAL_POISON:next(index_counter),
+        BAD_POISON:next(index_counter),
+        SLEEP:next(index_counter),
+        BURN:next(index_counter),
+        PARALYSIS:next(index_counter),
+        FREEZE:next(index_counter),
+    }
+
+    bad_poison_elapsed_turn_index = next(index_counter)
+    choice_move_name_index = next(index_counter)
+    is_roots_index = next(index_counter)
+    is_leech_seed_index = next(index_counter)
+
+    result = [Image2D.new_zeros() for _ in range(SIZE)]
+    poke_data = POKEDEX[pokemon.name]
+
+    result[poke_name_index] = BATTLE_POKE_NAME_FEATURE_TABLE[pokemon.name]
+    result[poke_type_index] = feature_table_logical_disjunction(TYPE_FEATURE_TABLE, pokemon.types)
+    result[nature_index] = NATURE_FEATURE_TABLE[pokemon.nature]
+    result[ability_index] = ABILITY_FEATURE_TABLE[pokemon.ability]
+    result[item_index] = ITEM_FEATURE_TABLE[pokemon.item]
+
+    for i, move_name in enumerate(get_sorted_move_names(pokemon.moveset.keys())):
+        power_point = pokemon.moveset[move_name]
+        result[half_heal_indices[i]] = HALF_HEAL_FEATURE_TABLE[move_name in HALF_HEAL_MOVE_NAMES]
+        result[max_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.max]
+        result[current_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.current]
+
+    result[max_hp_index] = HP_FEATURE_TABLE[pokemon.max_hp]
+    if pokemon.current_hp != 0:
+        result[current_hp_index] = HP_FEATURE_TABLE[pokemon.current_hp]
+
+    result[atk_index] = STATE_FEATURE_TABLE[pokemon.atk]
+    result[def_index] = STATE_FEATURE_TABLE[pokemon.defe]
+    result[sp_atk_index] = STATE_FEATURE_TABLE[pokemon.sp_atk]
+    result[sp_def_index] = STATE_FEATURE_TABLE[pokemon.sp_def]
+    result[speed_index] = STATE_FEATURE_TABLE[pokemon.speed]
+
+    result[atk_rank_index] = Image2D.new_rank_bonus(pokemon.atk_rank)
+    result[def_rank_index] = Image2D.new_rank_bonus(pokemon.def_rank)
+    result[sp_atk_rank_index] = Image2D.new_rank_bonus(pokemon.sp_atk_rank)
+    result[sp_def_rank_index] = Image2D.new_rank_bonus(pokemon.sp_def_rank)
+    result[speed_rank_index] = Image2D.new_rank_bonus(pokemon.speed_rank)
+
+    if pokemon.status_ailment != "":
+        status_ailment_index = status_ailment_indices[pokemon.status_ailment]
+        result[status_ailment_index] = Image2D.new_ones()
+
+    if pokemon.is_leech_seed:
+        result[is_leech_seed_index] = Image2D.new_ones()
+
+    if pokemon.is_roots:
+        result[is_roots_index] = Image2D.new_ones()
+
+    return result
+
+class ImageFighters:
+    def __init__(self, fighters):
+        self.images = [ImageBattlePokemon(pokemon) for pokemon in fighters]
+
+    def get(self):
+        return sum([image.data for image in self.images], [])
+
+    def __getitem__(self, index):
+        return self.images[index]
+
+
+class ImageBattle:
+    def __init__(self, seviper_manager):
+        self.p1_fighter_images = ImageFighters(seviper_manager.p1_fighters)
+        self.p2_fighter_images = ImageFighters(seviper_manager.p2_fighters)
+
+        p1_attack_damage_probability_distribution, p2_attack_damage_probability_distribution = \
+            seviper_manager.damage_probability_distribution()
+        self.damage_probability_distribution_images = []
+
+        def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
+            for i in range(seviper.FIGHTERS_LENGTH):
+                for j in range(seviper.FIGHTERS_LENGTH):
+                    for move_name in fighter_images[i].sorted_move_names:
+                        tmp = Image2D.new_zeros()
+                        for damage, p in damage_probability_distribution[i][j][move_name].items():
+                            damage = min([damage, seviper.MAX_HP])
+                            h, w = Image2D.INDICES[damage]
+                            tmp[h][w] += p
+                        self.damage_probability_distribution_images.append(tmp)
+
+        append_damage_probability_distribution_images(p1_attack_damage_probability_distribution, self.p1_fighter_images)
+        append_damage_probability_distribution_images(p2_attack_damage_probability_distribution, self.p2_fighter_images)
+
+    def get(self):
+        return self.p1_fighter_images.get() + self.p2_fighter_images.get() + self.damage_probability_distribution_images
