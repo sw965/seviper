@@ -1476,8 +1476,8 @@ class PokemonBuilder:
         self.item = None
         self.move_names = [None, None, None, None]
         self.point_ups = [None, None, None, None]
-        self.individual = Individual(None, None, None, None, None, None)
-        self.effort = Effort(None, None, None, None, None, None)
+        self.individual = Individual({"hp":None, "atk":None, "defe":None, "sp_atk":None, "sp_def":None, "speed":None})
+        self.effort = Effort({"hp":None, "atk":None, "defe":None, "sp_atk":None, "sp_def":None, "speed":None})
 
     def set_features(self, features, index):
         table = PokemonBuilder.TABLES[index]
