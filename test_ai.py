@@ -1,6 +1,6 @@
-import seviper.src as seviper
-import seviper.ai
+import seviper
 import numpy as np
+import pprint
 
 p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
                seviper.TEMPLATE_POKEMONS["リザードン"],
@@ -11,12 +11,13 @@ p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"],
                seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
 
-battle_manager = seviper.BattleManager(p1_fighters, p2_fighters)
-image_battle = seviper.ai.ImageBattle(battle_manager)
-
-array = np.array(image_battle.get())
-print(array.shape)
-print(seviper.ai.Image2D.WIDTH)
-
-for base_hp in seviper.ai.Features.BASE_HP:
-    print(ai.FeatureValueTable.BASE_HP[base_hp])
+battle = seviper.Battle(seviper.Fighters(p1_fighters), seviper.Fighters(p2_fighters))
+battle_image = battle.to_image()
+for i, image_2d in enumerate(battle_image):
+    print(str(i) + "番目!")
+    pprint.pprint(image_2d)
+    print("------")
+    print("------")
+    print("------")
+    print("------")
+    print("------")

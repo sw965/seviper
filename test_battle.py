@@ -45,8 +45,8 @@ class Manager(unittest.TestCase):
         test_num = 1920
 
         def test1():
-            battle_manager = seviper.Manager(p1_fighters, p2_fighters)
-            results = [battle_manager.push(["ギガドレイン", "なみのり"]) for _ in range(test_num)]
+            battle = seviper.Battle(p1_fighters, p2_fighters)
+            results = [battle.push(["ギガドレイン", "なみのり"]) for _ in range(test_num)]
 
             p1_expected_damages = [23, 24, 25, 26, 27, 34, 35, 36, 37, 38, 39, 40, 41]
             #くろいヘドロの回復量 = 11
@@ -56,15 +56,15 @@ class Manager(unittest.TestCase):
             p1_expected_current_hps = [187 - damage for damage in p1_expected_damages]
             p2_expected_current_hps = [155 - damage for damage in p2_expected_damages]
 
-            self.assertTrue(all([battle_manager.p1_fighters[0].current_hp in p1_expected_current_hps \
-                                 for battle_manager in results]))
-            self.assertTrue(all([battle_manager.p2_fighters[0].current_hp in p2_expected_current_hps \
-                                 for battle_manager in results]))
+            self.assertTrue(all([battle.p1_fighters[0].current_hp in p1_expected_current_hps \
+                                 for battle in results]))
+            self.assertTrue(all([battle.p2_fighters[0].current_hp in p2_expected_current_hps \
+                                 for battle in results]))
 
-            p1_min_current_hp_result = min([battle_manager.p1_fighters[0].current_hp for battle_manager in results])
-            p1_max_current_hp_result = max([battle_manager.p1_fighters[0].current_hp for battle_manager in results])
-            p2_min_current_hp_result = min([battle_manager.p2_fighters[0].current_hp for battle_manager in results])
-            p2_max_current_hp_result = max([battle_manager.p2_fighters[0].current_hp for battle_manager in results])
+            p1_min_current_hp_result = min([battle.p1_fighters[0].current_hp for battle in results])
+            p1_max_current_hp_result = max([battle.p1_fighters[0].current_hp for battle in results])
+            p2_min_current_hp_result = min([battle.p2_fighters[0].current_hp for battle in results])
+            p2_max_current_hp_result = max([battle.p2_fighters[0].current_hp for battle in results])
 
             self.assertEqual(p1_min_current_hp_result, 157)
             self.assertEqual(p1_max_current_hp_result, 175)
@@ -85,8 +85,8 @@ class Manager(unittest.TestCase):
                        seviper.TEMPLATE_POKEMONS["リザードン"],
                        seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
-        battle_manager = seviper.Manager(p1_fighters, p2_fighters)
-        p1_result, p2_result = battle_manager.damage_probability_distribution()
+        battle = seviper.Battle(p1_fighters, p2_fighters)
+        p1_result, p2_result = battle.damage_probability_distribution()
 
         def helper(result, damages, p1_fighter_i, p2_fighter_i, move_name):
             damage_keys = list(result[p1_fighter_i][p2_fighter_i][move_name].keys())

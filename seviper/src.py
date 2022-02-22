@@ -1,6 +1,6 @@
 import copy
 import random
-import pprint
+import itertools
 import seviper.base_data as base_data
 
 ALL_POKE_NAMES = base_data.ALL_POKE_NAMES
@@ -338,19 +338,120 @@ class Pokemon:
     def current_damage(self):
         return self.max_hp - self.current_hp
 
-MIN_TEAM_LENGTH = 3
-MAX_TEAM_LENGTH = 6
+    def to_image(self):
+        size = 47
+        index_counter = (i for i in range(size))
+        poke_name_index = next(index_counter)
+        poke_type_index = next(index_counter)
+        nature_index = next(index_counter)
+        ability_index = next(index_counter)
+        gender_index = next(index_counter)
+        item_index = next(index_counter)
 
-def assert_validation_team(team):
-    assert MIN_TEAM_LENGTH <= len(team) <= MAX_TEAM_LENGTH, "チームの数が不適"
-    items = [pokemon.item for pokemon in team]
-    assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
+        move_name_index = next(index_counter)
+        half_heal_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+        one_hit_ko_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+        max_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
+        current_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
 
-FIGHTERS_LENGTH = 3
+        max_hp_index = next(index_counter)
+        current_hp_index = next(index_counter)
+        atk_index = next(index_counter)
+        def_index = next(index_counter)
+        sp_atk_index = next(index_counter)
+        sp_def_index = next(index_counter)
+        speed_index = next(index_counter)
 
-def new_fighters(team, indices):
-    assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
-    return [team[indices] for index in indices]
+        atk_rank_index = next(index_counter)
+        def_rank_index = next(index_counter)
+        sp_atk_rank_index = next(index_counter)
+        sp_def_rank_index = next(index_counter)
+        speed_rank_index = next(index_counter)
+        accuracy_rank_index = next(index_counter)
+        evasion_rank_index = next(index_counter)
+
+        status_ailment_indices = {
+            NORMAL_POISON:next(index_counter),
+            BAD_POISON:next(index_counter),
+            SLEEP:next(index_counter),
+            BURN:next(index_counter),
+            PARALYSIS:next(index_counter),
+            FREEZE:next(index_counter),
+        }
+
+        bad_poison_elapsed_turn_index = next(index_counter)
+        choice_move_name_index = next(index_counter)
+        is_roots_index = next(index_counter)
+        is_leech_seed_index = next(index_counter)
+
+        result = [Image2D.new_zeros() for _ in range(size)]
+        poke_data = POKEDEX[self.name]
+
+        result[poke_name_index] = BATTLE_POKE_NAME_FEATURE_TABLE[self.name]
+        result[poke_type_index] = feature_table_logical_disjunction(TYPE_FEATURE_TABLE, self.types)
+        result[nature_index] = NATURE_FEATURE_TABLE[self.nature]
+        result[ability_index] = ABILITY_FEATURE_TABLE[self.ability]
+        result[item_index] = ITEM_FEATURE_TABLE[self.item]
+
+        for i, move_name in enumerate(get_sorted_move_names(self.moveset.keys())):
+            power_point = self.moveset[move_name]
+            result[half_heal_indices[i]] = HALF_HEAL_FEATURE_TABLE[move_name in HALF_HEAL_MOVE_NAMES]
+            result[max_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.max]
+            result[current_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.current]
+
+        result[max_hp_index] = HP_FEATURE_TABLE[self.max_hp]
+        if self.current_hp != 0:
+            result[current_hp_index] = HP_FEATURE_TABLE[self.current_hp]
+
+        result[atk_index] = STATE_FEATURE_TABLE[self.atk]
+        result[def_index] = STATE_FEATURE_TABLE[self.defe]
+        result[sp_atk_index] = STATE_FEATURE_TABLE[self.sp_atk]
+        result[sp_def_index] = STATE_FEATURE_TABLE[self.sp_def]
+        result[speed_index] = STATE_FEATURE_TABLE[self.speed]
+
+        result[atk_rank_index] = Image2D.new_rank_bonus(self.atk_rank)
+        result[def_rank_index] = Image2D.new_rank_bonus(self.def_rank)
+        result[sp_atk_rank_index] = Image2D.new_rank_bonus(self.sp_atk_rank)
+        result[sp_def_rank_index] = Image2D.new_rank_bonus(self.sp_def_rank)
+        result[speed_rank_index] = Image2D.new_rank_bonus(self.speed_rank)
+
+        if self.status_ailment != "":
+            status_ailment_index = status_ailment_indices[self.status_ailment]
+            result[status_ailment_index] = Image2D.new_ones()
+
+        if self.is_leech_seed:
+            result[is_leech_seed_index] = Image2D.new_ones()
+
+        if self.is_roots:
+            result[is_roots_index] = Image2D.new_ones()
+
+        return result
+
+class Team(list):
+    MIN_LENGTH = 3
+    MAX_LENGTH = 6
+
+    def __init__(self, pokemons):
+        assert Team.MIN_LENGTH <= len(team) <= Team.MAX_LENGTH, "チームの数が不適"
+        super().__init__(pokemons)
+
+    def assert_item_validation():
+        items = [pokemon.item for pokemon in team]
+        assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
+
+class Fighters(list):
+    LENGTH = 3
+
+    @staticmethod
+    def select(team, indices):
+        assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
+        return Fighters([team[indices] for index in indices])
+
+    def is_all_faint(self):
+        return all([pokemon.is_faint() for pokemon in self])
+
+    def to_image(fighters):
+        return sum([pokemon.to_image() for pokemon in fighters], [])
 
 #https://wiki.xn--rckteqa2e.com/wiki/%E3%83%A9%E3%83%B3%E3%82%AF%E8%A3%9C%E6%AD%A3
 RANK_BONUS = {
@@ -563,8 +664,8 @@ class SelfPointOfViewBattle:
     def reverse(self):
         return SelfPointOfViewBattle(self.opponent_fighters, self.self_fighters)
 
-    def to_battle_manager(self):
-        return BattleManager(self.self_fighters, self.opponent_fighters)
+    def to_battle(self):
+        return Battle(self.self_fighters, self.opponent_fighters)
 
     def real_accuracy(self, move_name):
         if move_name == "どくどく" and POISON in self_fighters[0].types:
@@ -707,31 +808,31 @@ class SelfPointOfViewBattle:
             return self.move_use(command)
         assert False, "アクションコマンドが不適"
 
-class BattleManager:
+class Battle:
     def __init__(self, p1_fighters, p2_fighters):
         self.p1_fighters = p1_fighters
         self.p2_fighters = p2_fighters
 
     def reverse(self):
-        return BattleManager(self.p2_fighters, self.p1_fighters)
+        return Battle(self.p2_fighters, self.p1_fighters)
 
-    def to_p1_point_of_view(self):
+    def to_p1_point_of_view_battle(self):
         return SelfPointOfViewBattle(self.p1_fighters, self.p2_fighters)
 
-    def to_p2_point_of_view(self):
+    def to_p2_point_of_view_battle(self):
         return SelfPointOfViewBattle(self.p2_fighters, self.p1_fighters)
 
     def p1_action(self, command):
-        p1_point_of_view = self.to_p1_point_of_view()
-        p1_point_of_view = p1_point_of_view.action(command)
-        self = p1_point_of_view.to_battle_manager()
+        p1_point_of_view_battle = self.to_p1_point_of_view_battle()
+        p1_point_of_view_battle = p1_point_of_view_battle.action(command)
+        self = p1_point_of_view_battle.to_battle()
         return self
 
     def p2_action(self, command):
-        p2_point_of_view = self.to_p2_point_of_view()
-        p2_point_of_view = p2_point_of_view.action(command)
-        p1_point_of_view = p2_point_of_view.reverse()
-        self = p1_point_of_view.to_battle_manager()
+        p2_point_of_view_battle = self.to_p2_point_of_view_battle()
+        p2_point_of_view_battle = p2_point_of_view_battle.action(command)
+        p1_point_of_view_battle = p2_point_of_view_battle.reverse()
+        self = p1_point_of_view_battle.to_battle()
         return self
 
     def is_p1_only_switch_after_faint_phase(self):
@@ -746,19 +847,19 @@ class BattleManager:
     #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
     def turn_end(self):
         def p1_first(spovb, turn_end_f):
-            p1_point_of_view = spovb.to_p1_point_of_view()
-            p1_point_of_view = turn_end_f(p1_point_of_view)
-            p2_point_of_view = p1_point_of_view.reverse()
-            p2_point_of_view = turn_end_f(p2_point_of_view)
-            p1_point_of_view = p2_point_of_view.reverse()
-            return p1_point_of_view.to_battle_manager()
+            p1_point_of_view_battle = spovb.to_p1_point_of_view_battle()
+            p1_point_of_view_battle = turn_end_f(p1_point_of_view_battle)
+            p2_point_of_view_battle = p1_point_of_view_battle.reverse()
+            p2_point_of_view_battle = turn_end_f(p2_point_of_view_battle)
+            p1_point_of_view_battle = p2_point_of_view_battle.reverse()
+            return p1_point_of_view_battle.to_battle()
 
         def p2_first(spovb, turn_end_f):
-            p2_point_of_view = spovb.to_p2_point_of_view()
-            p2_point_of_view = turn_end_f(p2_point_of_view)
-            p1_point_of_view = p2_point_of_view.reverse()
-            p1_point_of_view = turn_end_f(p1_point_of_view)
-            return p1_point_of_view.to_battle_manager()
+            p2_point_of_view_battle = spovb.to_p2_point_of_view_battle()
+            p2_point_of_view_battle = turn_end_f(p2_point_of_view_battle)
+            p1_point_of_view_battle = p2_point_of_view_battle.reverse()
+            p1_point_of_view_battle = turn_end_f(p1_point_of_view_battle)
+            return p1_point_of_view_battle.to_battle()
 
         def run(self, turn_end_fs):
             real_speed_winner = new_real_speed_winner(self)
@@ -812,8 +913,8 @@ class BattleManager:
         return self.turn_end()
 
     def is_game_end(self):
-        is_p1_all_faint = all([pokemon.is_faint() for pokemon in self.p1_fighters])
-        is_p2_all_faint = all([pokemon.is_faint() for pokemon in self.p2_fighters])
+        is_p1_all_faint = self.p1_fighters.is_all_faint()
+        is_p2_all_faint = self.p2_fighters.is_all_faint()
         return is_p1_all_faint or is_p2_all_faint
 
     def one_game(self, trainer1, trainer2):
@@ -859,6 +960,30 @@ class BattleManager:
         p1_result = get_result(p1_fighterses, p2_fighterses)
         p2_result = get_result(p2_fighterses, p1_fighterses)
         return p1_result, p2_result
+
+    def to_image(self):
+        p1_fighters_image = self.p1_fighters.to_image()
+        p2_fighters_image = self.p2_fighters.to_image()
+
+        p1_damage_probability_distribution, p2_damage_probability_distribution = \
+            self.damage_probability_distribution()
+
+        def get_damage_probability_distribution_image(damage_probability_distribution, fighters):
+            result = []
+            for i in range(Fighters.LENGTH):
+                for j in range(Fighters.LENGTH):
+                    for move_name in get_sorted_move_names(fighters[i].moveset.keys()):
+                        tmp = Image2D.new_zeros()
+                        for damage, p in damage_probability_distribution[i][j][move_name].items():
+                            damage = min([damage, MAX_HP])
+                            h, w = Image2D.INDICES[damage]
+                            tmp[h][w] += p
+                        result.append(tmp)
+            return result
+
+        p1_adpdi = get_damage_probability_distribution_image(p1_damage_probability_distribution, self.p1_fighters)
+        p2_adpdi = get_damage_probability_distribution_image(p2_damage_probability_distribution, self.p2_fighters)
+        return p1_fighters_image + p2_fighters_image + p1_adpdi + p2_adpdi
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
@@ -941,12 +1066,12 @@ WINNER_P1 = Winner(True, False)
 WINNER_P2 = Winner(False, True)
 DRAW = Winner(False, False)
 
-def new_real_speed_winner(battle_manager):
-    p1_point_of_view = battle_manager.to_p1_point_of_view()
-    p2_point_of_view = battle_manager.to_p2_point_of_view()
+def new_real_speed_winner(battle):
+    p1_point_of_view_battle = battle.to_p1_point_of_view_battle()
+    p2_point_of_view_battle = battle.to_p2_point_of_view_battle()
 
-    p1_real_speed = get_real_speed(p1_point_of_view)
-    p2_real_speed = get_real_speed(p2_point_of_view)
+    p1_real_speed = get_real_speed(p1_point_of_view_battle)
+    p2_real_speed = get_real_speed(p2_point_of_view_battle)
 
     if p1_real_speed > p2_real_speed:
         return WINNER_P1
@@ -955,7 +1080,7 @@ def new_real_speed_winner(battle_manager):
     else:
         return DRAW
 
-def new_priority_winner(battle_manager, p1_action_command, p2_action_command):
+def new_priority_winner(battle, p1_action_command, p2_action_command):
     def priority_rank(action_command):
         if action_command in ALL_MOVE_NAMES:
             return MOVEDEX[action_command].priority_rank
@@ -973,12 +1098,12 @@ def new_priority_winner(battle_manager, p1_action_command, p2_action_command):
     else:
         return DRAW
 
-def new_action_speed_winner(battle_manager, p1_action_command, p2_action_command):
-    real_speed_winner = new_real_speed_winner(battle_manager)
+def new_action_speed_winner(battle, p1_action_command, p2_action_command):
+    real_speed_winner = new_real_speed_winner(battle)
     if real_speed_winner != DRAW:
         return real_speed_winner
 
-    priority_winner = new_priority_winner(battle_manager, p1_action_command, p2_action_command)
+    priority_winner = new_priority_winner(battle, p1_action_command, p2_action_command)
     if priority_winner != DRAW:
         return priority_winner
 
@@ -1091,21 +1216,21 @@ STATUS_MOVES = {
     "やどりぎのタネ":StatusMove.leech_seed,
 }
 
-BUILD_POKE_NAME_FEATURES = ["なし"] + seviper.RATE_POKE_NAMES
-BATTLE_POKE_NAME_FEATURES = seviper.RATE_POKE_NAMES
+BUILD_POKE_NAME_FEATURES = ["なし"] + RATE_POKE_NAMES
+BATTLE_POKE_NAME_FEATURES = RATE_POKE_NAMES
 
-BASE_HP_FEATURES = [state + 1 for state in range(seviper.MAX_BASE_HP)]
-BASE_STATE_FEATURES = [state + 1 for state in range(seviper.MAX_BASE_STATE)]
-HP_FEATURES = [i + 1 for i in range(seviper.MAX_HP)]
-STATE_FEATURES = [i + 1 for i in range(seviper.MAX_STATE)]
+BASE_HP_FEATURES = [state + 1 for state in range(MAX_BASE_HP)]
+BASE_STATE_FEATURES = [state + 1 for state in range(MAX_BASE_STATE)]
+HP_FEATURES = [i + 1 for i in range(MAX_HP)]
+STATE_FEATURES = [i + 1 for i in range(MAX_STATE)]
 
-MOVE_NAME_FEATURES = ["なし"] + seviper.ALL_MOVE_NAMES
-MOVE_POWER_FEATURES = [power + 1 for power in range(seviper.MAX_MOVE_POWER)]
+MOVE_NAME_FEATURES = ["なし"] + ALL_MOVE_NAMES
+MOVE_POWER_FEATURES = [power + 1 for power in range(MAX_MOVE_POWER)]
 MOVE_ACCURACY_FEATURES = [i + 1 for i in range(100)]
-POWER_POINT_FEATURES = [i + 1 for i in range(seviper.MAX_POWER_POINT)]
+POWER_POINT_FEATURES = [i + 1 for i in range(MAX_POWER_POINT)]
 
-ITEM_FEATURES = ["なし"] + seviper.ALL_ITEMS
-STATUS_AILMENT_FEATURES = [""] + seviper.ALL_STATUS_AILMENT
+ITEM_FEATURES = ["なし"] + ALL_ITEMS
+STATUS_AILMENT_FEATURES = [""] + ALL_STATUS_AILMENT
 
 def get_image_2d_size():
     height = 0
@@ -1113,15 +1238,15 @@ def get_image_2d_size():
 
     while True:
         height += 1
-        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
+        if RATE_POKE_NAMES_LENGTH <= (height * width):
             break
 
         width += 1
-        if seviper.RATE_POKE_NAMES_LENGTH <= (height * width):
+        if RATE_POKE_NAMES_LENGTH <= (height * width):
             break
     return (height, width)
 
-IMAGE_2D_SIZE = image_2d_size()
+IMAGE_2D_SIZE = get_image_2d_size()
 
 class Image2D(list):
     HEIGHT = IMAGE_2D_SIZE[0]
@@ -1138,11 +1263,11 @@ class Image2D(list):
 
     @classmethod
     def new_rank_bonus(cls, rank):
-        rank_bonus = seviper.RANK_BONUS[rank]
+        rank_bonus = RANK_BONUS[rank]
         return Image2D([[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
 
     def logical_disjunction(self, image_2d):
-        return Image2D([[1.0 if (self[h][w] + image_2d2[h][w]) > 0.0 else 0.0 \
+        return Image2D([[1.0 if (self[h][w] + image_2d[h][w]) > 0.0 else 0.0 \
                          for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)])
 
 def make_feature_table(features, is_inclusion_mode):
@@ -1160,7 +1285,7 @@ def make_feature_table(features, is_inclusion_mode):
         zeros = Image2D.new_zeros()
         for h, w in input_ranges[index]:
             zeros[h][w] = 1.0
-        result[feature] = v
+        result[feature] = zeros
     return result
 
 def make_half_heal_table():
@@ -1207,7 +1332,7 @@ EFFORT_FEATURE_TABLE = make_feature_table(ALL_EFFORT_VALUES, True)
 def feature_table_logical_disjunction(feature_table, keys):
     result = feature_table[keys[0]]
     for key in keys[1:]:
-        result = result.logical_disjunction(feature_values[key])
+        result = result.logical_disjunction(feature_table[key])
     return result
 
 class PokemonBuilder:
@@ -1351,8 +1476,8 @@ class PokemonBuilder:
         self.item = None
         self.move_names = [None, None, None, None]
         self.point_ups = [None, None, None, None]
-        self.individual = seviper.Individual(None, None, None, None, None, None)
-        self.effort = seviper.Effort(None, None, None, None, None, None)
+        self.individual = Individual(None, None, None, None, None, None)
+        self.effort = Effort(None, None, None, None, None, None)
 
     def set_features(self, features, index):
         table = PokemonBuilder.TABLES[index]
@@ -1428,8 +1553,8 @@ class PokemonBuilder:
         if accuracy != 0:
             self.set_features([accuracy], accuracy_index)
 
-        self.set_features([move_name in seviper.HALF_HEAL_MOVE_NAMES], half_heal_index)
-        self.set_features([move_name in seviper.ONE_HIT_KO_MOVE_NAMES], one_hit_ko_index)
+        self.set_features([move_name in HALF_HEAL_MOVE_NAMES], half_heal_index)
+        self.set_features([move_name in ONE_HIT_KO_MOVE_NAMES], one_hit_ko_index)
 
     def set_move1_name(self, move_name):
         assert move_name in POKEDEX[self.poke_name].learnset
@@ -1452,7 +1577,7 @@ class PokemonBuilder:
         self.move_names[3] = move_name
 
     def set_point_up(self, point_up, index):
-        assert seviper.MIN_POINT_UP <= point_up <= seviper.MAX_POINT_UP
+        assert MIN_POINT_UP <= point_up <= MAX_POINT_UP
         self.set_features([point_up], index)
 
     def set_point_up1(self, point_up):
@@ -1514,7 +1639,7 @@ class PokemonBuilder:
         self.individual.speed = individual_v
 
     def set_effort_v(self, effort_v, index):
-        assert effort_v in seviper.ALL_EFFORT_VALUES
+        assert effort_v in ALL_EFFORT_VALUES
 
         if self.effort.hp is None:
             hp = 0
@@ -1559,7 +1684,7 @@ class PokemonBuilder:
 
 class TeamBuilder(list):
     def __init__(self):
-        super().__init__([PokemonBuilder() for _ in range(MAX_TEAM_LENGTH)])
+        super().__init__([PokemonBuilder() for _ in range(Team.MAX_LENGTH)])
 
     def get(self):
         return sum([pokemon_builder.data for pokemon_builder in self], [])
@@ -1578,129 +1703,3 @@ class TeamBuilder(list):
         if item != "なし":
             assert item not in items, item + " は別のポケモンが既に持っている"
         self[index].set_item(item)
-
-def battle_pokemon_to_image(pokemon):
-    size = 37
-    index_counter = (i for i in range(size))
-    poke_name_index = next(index_counter)
-    poke_type_index = next(index_counter)
-    nature_index = next(index_counter)
-    ability_index = next(index_counter)
-    gender_index = next(index_counter)
-    item_index = next(index_counter)
-
-    move_name_index = next(index_counter)
-    half_heal_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
-    one_hit_ko_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
-    max_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
-    current_power_point_indices = [next(index_counter) for _ in range(MAX_MOVESET_LENGTH)]
-
-    max_hp_index = next(index_counter)
-    current_hp_index = next(index_counter)
-    atk_index = next(index_counter)
-    def_index = next(index_counter)
-    sp_atk_index = next(index_counter)
-    sp_def_index = next(index_counter)
-    speed_index = next(index_counter)
-
-    atk_rank_index = next(index_counter)
-    def_rank_index = next(index_counter)
-    sp_atk_rank_index = next(index_counter)
-    sp_def_rank_index = next(index_counter)
-    speed_rank_index = next(index_counter)
-    accuracy_rank_index = next(index_counter)
-    evasion_rank_index = next(index_counter)
-
-    status_ailment_indices = {
-        NORMAL_POISON:next(index_counter),
-        BAD_POISON:next(index_counter),
-        SLEEP:next(index_counter),
-        BURN:next(index_counter),
-        PARALYSIS:next(index_counter),
-        FREEZE:next(index_counter),
-    }
-
-    bad_poison_elapsed_turn_index = next(index_counter)
-    choice_move_name_index = next(index_counter)
-    is_roots_index = next(index_counter)
-    is_leech_seed_index = next(index_counter)
-
-    result = [Image2D.new_zeros() for _ in range(SIZE)]
-    poke_data = POKEDEX[pokemon.name]
-
-    result[poke_name_index] = BATTLE_POKE_NAME_FEATURE_TABLE[pokemon.name]
-    result[poke_type_index] = feature_table_logical_disjunction(TYPE_FEATURE_TABLE, pokemon.types)
-    result[nature_index] = NATURE_FEATURE_TABLE[pokemon.nature]
-    result[ability_index] = ABILITY_FEATURE_TABLE[pokemon.ability]
-    result[item_index] = ITEM_FEATURE_TABLE[pokemon.item]
-
-    for i, move_name in enumerate(get_sorted_move_names(pokemon.moveset.keys())):
-        power_point = pokemon.moveset[move_name]
-        result[half_heal_indices[i]] = HALF_HEAL_FEATURE_TABLE[move_name in HALF_HEAL_MOVE_NAMES]
-        result[max_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.max]
-        result[current_power_point_indices[i]] = POWER_POINT_FEATURE_TABLE[power_point.current]
-
-    result[max_hp_index] = HP_FEATURE_TABLE[pokemon.max_hp]
-    if pokemon.current_hp != 0:
-        result[current_hp_index] = HP_FEATURE_TABLE[pokemon.current_hp]
-
-    result[atk_index] = STATE_FEATURE_TABLE[pokemon.atk]
-    result[def_index] = STATE_FEATURE_TABLE[pokemon.defe]
-    result[sp_atk_index] = STATE_FEATURE_TABLE[pokemon.sp_atk]
-    result[sp_def_index] = STATE_FEATURE_TABLE[pokemon.sp_def]
-    result[speed_index] = STATE_FEATURE_TABLE[pokemon.speed]
-
-    result[atk_rank_index] = Image2D.new_rank_bonus(pokemon.atk_rank)
-    result[def_rank_index] = Image2D.new_rank_bonus(pokemon.def_rank)
-    result[sp_atk_rank_index] = Image2D.new_rank_bonus(pokemon.sp_atk_rank)
-    result[sp_def_rank_index] = Image2D.new_rank_bonus(pokemon.sp_def_rank)
-    result[speed_rank_index] = Image2D.new_rank_bonus(pokemon.speed_rank)
-
-    if pokemon.status_ailment != "":
-        status_ailment_index = status_ailment_indices[pokemon.status_ailment]
-        result[status_ailment_index] = Image2D.new_ones()
-
-    if pokemon.is_leech_seed:
-        result[is_leech_seed_index] = Image2D.new_ones()
-
-    if pokemon.is_roots:
-        result[is_roots_index] = Image2D.new_ones()
-
-    return result
-
-class ImageFighters:
-    def __init__(self, fighters):
-        self.images = [ImageBattlePokemon(pokemon) for pokemon in fighters]
-
-    def get(self):
-        return sum([image.data for image in self.images], [])
-
-    def __getitem__(self, index):
-        return self.images[index]
-
-
-class ImageBattle:
-    def __init__(self, seviper_manager):
-        self.p1_fighter_images = ImageFighters(seviper_manager.p1_fighters)
-        self.p2_fighter_images = ImageFighters(seviper_manager.p2_fighters)
-
-        p1_attack_damage_probability_distribution, p2_attack_damage_probability_distribution = \
-            seviper_manager.damage_probability_distribution()
-        self.damage_probability_distribution_images = []
-
-        def append_damage_probability_distribution_images(damage_probability_distribution, fighter_images):
-            for i in range(seviper.FIGHTERS_LENGTH):
-                for j in range(seviper.FIGHTERS_LENGTH):
-                    for move_name in fighter_images[i].sorted_move_names:
-                        tmp = Image2D.new_zeros()
-                        for damage, p in damage_probability_distribution[i][j][move_name].items():
-                            damage = min([damage, seviper.MAX_HP])
-                            h, w = Image2D.INDICES[damage]
-                            tmp[h][w] += p
-                        self.damage_probability_distribution_images.append(tmp)
-
-        append_damage_probability_distribution_images(p1_attack_damage_probability_distribution, self.p1_fighter_images)
-        append_damage_probability_distribution_images(p2_attack_damage_probability_distribution, self.p2_fighter_images)
-
-    def get(self):
-        return self.p1_fighter_images.get() + self.p2_fighter_images.get() + self.damage_probability_distribution_images
