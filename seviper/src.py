@@ -7,6 +7,9 @@ ALL_POKE_NAMES = base_data.ALL_POKE_NAMES
 ALL_MOVE_NAMES = base_data.ALL_MOVE_NAMES
 HALF_HEAL_MOVE_NAMES = base_data.HALF_HEAL_MOVE_NAMES
 ONE_HIT_KO_MOVE_NAMES = base_data.ONE_HIT_KO_MOVE_NAMES
+TWO_ATTACK_MOVE_NAMES = base_data.TWO_ATTACK_MOVE_NAMES
+MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES = base_data.MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES
+MAX_THREE_ATTACK_MOVE_NAMES = base_data.MAX_THREE_ATTACK_MOVE_NAMES
 ALL_NATURES = base_data.ALL_NATURES
 ALL_ITEMS = base_data.ALL_ITEMS
 ALL_TYPES = base_data.ALL_TYPES
@@ -95,34 +98,7 @@ def get_sorted_move_names(move_names):
     return [ALL_MOVE_NAMES[index] for index in indices]
 
 #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
-TWO_ATTACK_PERCENT = [100, 100]
-THREE_ATTACK_PERCENT = [100, 100, 100]
-MIN_TWO_MAX_FIVE_ATTACK_PERCENT = [100, 100, 35, 35, 15, 15]
-
-ATTACK_NUM_PERCENT = {
-    "すいりゅうれんだ":THREE_ATTACK_PERCENT,
-    "ダブルウイング":TWO_ATTACK_PERCENT,
-    "ホネブーメラン":TWO_ATTACK_PERCENT,
-    "ギアソーサー":TWO_ATTACK_PERCENT,
-    "みだれづき":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "トリプルアクセル":None,
-    "ドラゴンアロー":TWO_ATTACK_PERCENT,
-    "つっぱり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "ボーンラッシュ":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "みずしゅりけん":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "にどげり":TWO_ATTACK_PERCENT,
-    "ダブルチョップ":TWO_ATTACK_PERCENT,
-    "スイープビンタ":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "ミサイルばり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "ダブルアタック":TWO_ATTACK_PERCENT,
-    "トリプルキック":None,
-    "タネマシンガン":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "ダブルパンツァー":TWO_ATTACK_PERCENT,
-    "つららばり":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "みだれひっかき":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "ロックブラスト":MIN_TWO_MAX_FIVE_ATTACK_PERCENT,
-    "スケイルショット":MIN_TWO_MAX_FIVE_ATTACK_PERCENT
-}
+MIN_TWO_MAX_FIVE_ATTACK_PERCENTS = [100, 100, 35, 35, 15, 15]
 
 class NatureData:
     def __init__(self, dict_data):
@@ -384,7 +360,7 @@ class Pokemon:
         is_roots_index = next(index_counter)
         is_leech_seed_index = next(index_counter)
 
-        result = [Image2D.new_zeros() for _ in range(size)]
+        result = [FeatureImage2D.new_zeros() for _ in range(size)]
         poke_data = POKEDEX[self.name]
 
         result[poke_name_index] = BATTLE_POKE_NAME_FEATURE_TABLE[self.name]
@@ -409,21 +385,21 @@ class Pokemon:
         result[sp_def_index] = STATE_FEATURE_TABLE[self.sp_def]
         result[speed_index] = STATE_FEATURE_TABLE[self.speed]
 
-        result[atk_rank_index] = Image2D.new_rank_bonus(self.atk_rank)
-        result[def_rank_index] = Image2D.new_rank_bonus(self.def_rank)
-        result[sp_atk_rank_index] = Image2D.new_rank_bonus(self.sp_atk_rank)
-        result[sp_def_rank_index] = Image2D.new_rank_bonus(self.sp_def_rank)
-        result[speed_rank_index] = Image2D.new_rank_bonus(self.speed_rank)
+        result[atk_rank_index] = FeatureImage2D.new_rank_bonus(self.atk_rank)
+        result[def_rank_index] = FeatureImage2D.new_rank_bonus(self.def_rank)
+        result[sp_atk_rank_index] = FeatureImage2D.new_rank_bonus(self.sp_atk_rank)
+        result[sp_def_rank_index] = FeatureImage2D.new_rank_bonus(self.sp_def_rank)
+        result[speed_rank_index] = FeatureImage2D.new_rank_bonus(self.speed_rank)
 
         if self.status_ailment != "":
             status_ailment_index = status_ailment_indices[self.status_ailment]
-            result[status_ailment_index] = Image2D.new_ones()
+            result[status_ailment_index] = FeatureImage2D.new_ones()
 
         if self.is_leech_seed:
-            result[is_leech_seed_index] = Image2D.new_ones()
+            result[is_leech_seed_index] = FeatureImage2D.new_ones()
 
         if self.is_roots:
-            result[is_roots_index] = Image2D.new_ones()
+            result[is_roots_index] = FeatureImage2D.new_ones()
 
         return result
 
@@ -701,6 +677,29 @@ class SelfPointOfViewBattle:
         self.self_fighters[0].current_hp += heal_v
         return self
 
+    #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
+    def attack_num(self, move_name):
+        if move_name in MAX_THREE_ATTACK_MOVE_NAMES:
+            real_accuracy = self.real_accuracy(move_name)
+            attack_num = 0
+            for _ in range(3):
+                if not is_hit(real_accuracy):
+                    break
+                attack_num += 1
+        elif move_name in MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES:
+            if self.self_fighters[0].ability == "スキルリンク":
+                attack_num = 5
+            else:
+                attack_num = 0
+                for percent in MIN_TWO_MAX_FIVE_ATTACK_PERCENTS[move_name]:
+                    if not is_hit(percent):
+                        break
+                    attack_num += 1
+        else:
+            attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
+
+        return attack_num
+
     def move_use(self, move_name):
         if self.self_fighters[0].is_faint():
             return self
@@ -725,7 +724,7 @@ class SelfPointOfViewBattle:
             if move_data.target != "自分":
                 return self
 
-        if move_name not in ["トリプルキック", "トリプルアクセル"]:
+        if move_name not in MAX_THREE_ATTACK_MOVE_NAMES:
             real_accuracy = self.real_accuracy(move_name)
             if real_accuracy != -1:
                 if not is_hit(real_accuracy):
@@ -737,25 +736,7 @@ class SelfPointOfViewBattle:
             else:
                 return STATUS_MOVES[move_name](self)
 
-        if move_name in ATTACK_NUM_PERCENT:
-            if move_name in ["トリプルキック", "トリプルアクセル"]:
-                real_accuracy = self.real_accuracy(move_name)
-                attack_num = 0
-                for _ in range(3):
-                    if not is_hit(real_accuracy):
-                        break
-                    attack_num += 1
-            elif self.self_fighters[0].ability == "スキルリンク":
-                attack_num = len(ATTACK_NUM_PERCENT[move_name])
-            else:
-                attack_num = 0
-                for percent in ATTACK_NUM_PERCENT[move_name]:
-                    if not is_hit(percent):
-                        break
-                    attack_num += 1
-        else:
-            attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
-
+        attack_num = self.attack_num(move_name)
         if attack_num == 0:
             return self
 
@@ -973,10 +954,10 @@ class Battle:
             for i in range(Fighters.LENGTH):
                 for j in range(Fighters.LENGTH):
                     for move_name in get_sorted_move_names(fighters[i].moveset.keys()):
-                        tmp = Image2D.new_zeros()
+                        tmp = FeatureImage2D.new_zeros()
                         for damage, p in damage_probability_distribution[i][j][move_name].items():
                             damage = min([damage, MAX_HP])
-                            h, w = Image2D.INDICES[damage]
+                            h, w = FeatureImage2D.INDICES[damage]
                             tmp[h][w] += p
                         result.append(tmp)
             return result
@@ -1232,7 +1213,7 @@ POWER_POINT_FEATURES = [i + 1 for i in range(MAX_POWER_POINT)]
 ITEM_FEATURES = ["なし"] + ALL_ITEMS
 STATUS_AILMENT_FEATURES = [""] + ALL_STATUS_AILMENT
 
-def get_image_2d_size():
+def get_feature_image_2d_size():
     height = 0
     width = 0
 
@@ -1246,34 +1227,34 @@ def get_image_2d_size():
             break
     return (height, width)
 
-IMAGE_2D_SIZE = get_image_2d_size()
+FEATURE_IMAGE_2D_SIZE = get_feature_image_2d_size()
 
-class Image2D(list):
+class FeatureImage2D(list):
     HEIGHT = IMAGE_2D_SIZE[0]
     WIDTH = IMAGE_2D_SIZE[1]
     INDICES = (lambda height, width:[(h, w) for h in range(height) for w in range(width)])(HEIGHT, WIDTH)
 
     @classmethod
     def new_zeros(cls):
-        return Image2D([[0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+        return FeatureImage2D([[0 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
 
     @classmethod
     def new_ones(cls):
-        return Image2D([[1 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+        return FeatureImage2D([[1 for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
 
     @classmethod
     def new_rank_bonus(cls, rank):
         rank_bonus = RANK_BONUS[rank]
-        return Image2D([[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
+        return FeatureImage2D([[rank_bonus for w in range(cls.WIDTH)] for h in range(cls.HEIGHT)])
 
     def logical_disjunction(self, image_2d):
-        return Image2D([[1.0 if (self[h][w] + image_2d[h][w]) > 0.0 else 0.0 \
-                         for w in range(Image2D.WIDTH)] for h in range(Image2D.HEIGHT)])
+        return FeatureImage2D([[1.0 if (self[h][w] + image_2d[h][w]) > 0.0 else 0.0 \
+                         for w in range(FeatureImage2D.WIDTH)] for h in range(FeatureImage2D.HEIGHT)])
 
 def make_feature_table(features, is_inclusion_mode):
-    counter = (i for i in range(len(Image2D.INDICES)))
+    counter = (i for i in range(len(FeatureImage2D.INDICES)))
     features_length = len(features)
-    input_ranges = [[Image2D.INDICES[next(counter)] for j in range(len(Image2D.INDICES) // features_length)] \
+    input_ranges = [[FeatureImage2D.INDICES[next(counter)] for j in range(len(FeatureImage2D.INDICES) // features_length)] \
                      for i in range(features_length)]
 
     if is_inclusion_mode:
@@ -1282,7 +1263,7 @@ def make_feature_table(features, is_inclusion_mode):
     result = {}
     for feature in features:
         index = features.index(feature)
-        zeros = Image2D.new_zeros()
+        zeros = FeatureImage2D.new_zeros()
         for h, w in input_ranges[index]:
             zeros[h][w] = 1.0
         result[feature] = zeros
@@ -1290,14 +1271,14 @@ def make_feature_table(features, is_inclusion_mode):
 
 def make_half_heal_table():
     result = {}
-    result[True] = Image2D.new_ones()
-    result[False] = Image2D.new_zeros()
+    result[True] = FeatureImage2D.new_ones()
+    result[False] = FeatureImage2D.new_zeros()
     return result
 
 def make_one_hit_ko_table():
     result = {}
-    result[True] = Image2D.new_ones()
-    result[False] = Image2D.new_zeros()
+    result[True] = FeatureImage2D.new_ones()
+    result[False] = FeatureImage2D.new_zeros()
     return result
 
 BUILD_POKE_NAME_FEATURE_TABLE = make_feature_table(BUILD_POKE_NAME_FEATURES, False)
@@ -1336,7 +1317,7 @@ def feature_table_logical_disjunction(feature_table, keys):
     return result
 
 class PokemonBuilder:
-    SIZE = 57
+    SIZE = 53
     index_counter = (i for i in range(SIZE))
 
     POKE_NAME_INDEX = next(index_counter)
@@ -1467,8 +1448,14 @@ class PokemonBuilder:
 
     assert len(FEATURE_TABLES) == (EFFORT_SPEED_INDEX + 1)
 
+    try:
+        next(index_counter)
+        assert False
+    except StopIteration:
+        pass
+
     def __init__(self):
-        self.data = [Image2D.new_zeros() for _ in range(PokemonBuilder.SIZE)]
+        self.image = [FeatureImage2D.new_zeros() for _ in range(PokemonBuilder.SIZE)]
         self.poke_name = None
         self.nature = None
         self.ability = None
@@ -1481,7 +1468,7 @@ class PokemonBuilder:
 
     def set_features(self, features, index):
         table = PokemonBuilder.TABLES[index]
-        self.data[index] = feature_table_logical_disjunction(table, features)
+        self.image[index] = feature_table_logical_disjunction(table, features)
 
     def set_poke_name(self, poke_name):
         assert self.poke_name is None, "ポケモン名は既に入力済み"
@@ -1686,8 +1673,8 @@ class TeamBuilder(list):
     def __init__(self):
         super().__init__([PokemonBuilder() for _ in range(Team.MAX_LENGTH)])
 
-    def get(self):
-        return sum([pokemon_builder.data for pokemon_builder in self], [])
+    def get_image(self):
+        return sum([pokemon_builder.image for pokemon_builder in self], [])
 
     def set_poke_name(self, poke_name, index):
         if index in [0, 1, 2]:

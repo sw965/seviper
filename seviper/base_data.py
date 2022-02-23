@@ -1389,6 +1389,22 @@ HALF_HEAL_MOVE_NAMES = [
  'ミルクのみ']
 
 ONE_HIT_KO_MOVE_NAMES = ['ハサミギロチン', 'つのドリル', 'じわれ', 'ぜったいれいど']
+TWO_ATTACK_MOVE_NAMES = ['ダブルウイング', 'ホネブーメラン', 'ギアソーサー', 'ドラゴンアロー', 'にどげり', 'ダブルアタック', 'ダブルパンツァー']
+MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES = [
+ 'みだれづき',
+ 'つっぱり',
+ 'ボーンラッシュ',
+ 'みずしゅりけん',
+ 'スイープビンタ',
+ 'ミサイルばり',
+ 'タネマシンガン',
+ 'つららばり',
+ 'みだれひっかき',
+ 'ロックブラスト',
+ 'スケイルショット']
+
+MAX_THREE_ATTACK_MOVE_NAMES = ['トリプルキック', 'トリプルアクセル']
+
 
 ALL_NATURES = [
  'さみしがり',
@@ -64483,6 +64499,9 @@ TYPEDEX = {
 
 assert set(HALF_HEAL_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(ONE_HIT_KO_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
+assert set(TWO_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
+assert set(MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
+assert set(MAX_THREE_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(POKEDEX.keys()) == set(ALL_POKE_NAMES)
 assert set(MOVEDEX.keys()) == set(ALL_MOVE_NAMES)
 assert set(NATUREDEX.keys()) == set(ALL_NATURES)
