@@ -696,6 +696,7 @@ class SelfPointOfViewBattle:
                         break
                     attack_num += 1
         else:
+            move_data = MOVEDEX[move_name]
             attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
 
         return attack_num
@@ -1230,8 +1231,8 @@ def get_feature_image_2d_size():
 FEATURE_IMAGE_2D_SIZE = get_feature_image_2d_size()
 
 class FeatureImage2D(list):
-    HEIGHT = IMAGE_2D_SIZE[0]
-    WIDTH = IMAGE_2D_SIZE[1]
+    HEIGHT = FEATURE_IMAGE_2D_SIZE[0]
+    WIDTH = FEATURE_IMAGE_2D_SIZE[1]
     INDICES = (lambda height, width:[(h, w) for h in range(height) for w in range(width)])(HEIGHT, WIDTH)
 
     @classmethod
