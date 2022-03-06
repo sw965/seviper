@@ -10,9 +10,7 @@ p2_fighters = seviper.Fighters([seviper.TEMPLATE_POKEMONS["カメックス"],
                seviper.TEMPLATE_POKEMONS["リザードン"],
                seviper.TEMPLATE_POKEMONS["フシギバナ"]])
 
-print(p1_fighters[0].to_feature_array().shape)
-print(p1_fighters.to_feature_array())
-print(38 * 37)
-
+print(p1_fighters.legal_action_commands())
 battle = seviper.Battle(p1_fighters, p2_fighters)
-print(len(battle.damage_probability_distribution()))
+print(battle.all_damage_probability_distribution())
+battle.to_feature_list()

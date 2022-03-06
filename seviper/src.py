@@ -324,6 +324,9 @@ class Pokemon:
     def current_damage(self):
         return self.max_hp - self.current_hp
 
+    def padding_sorted_move_names(self):
+        return self.sorted_move_names + ["なし" for _ in range(MAX_MOVESET_LENGTH - len(self.sorted_move_names))]
+
     def nature_feature_list(self):
         nature_data = NATUREDEX[self.nature]
         nature_feature = [nature_data.atk_bonus, nature_data.def_bonus,
@@ -341,7 +344,7 @@ class Pokemon:
         gender_feature[ALL_GENDERS.index(self.gender)] = 1
         return gender_feature
 
-    def to_feature_array(self):
+    def to_feature_list(self):
         poke_name_start = 0
         poke_name_end = RATE_POKE_NAMES_LENGTH
 
@@ -518,7 +521,7 @@ class Pokemon:
         if self.is_leech_seed:
             input_with_validation(is_leech_seed_start, is_leech_seed_end, 0, 1)
 
-        return np.array(result)
+        return result
 
 class Team(list):
     MIN_LENGTH = 3
@@ -543,11 +546,26 @@ class Fighters(list):
     def is_all_faint(self):
         return all([pokemon.is_faint() for pokemon in self])
 
-    def to_feature_array(self):
-        first = self[0].to_feature_array()
-        second = self[1].to_feature_array()
-        third = self[2].to_feature_array()
-        return first, second, third
+    def to_feature_list(self):
+        return [pokemon.to_feature_list() for pokemon in self]
+
+    def legal_action_commands(self):
+        legal_back_poke_name_action_commands = [pokemon.name for pokemon in self[1:] if not pokemon.is_faint()]
+
+        if self[0].is_faint():
+            return legal_back_poke_name_action_commands
+
+        if self[0].choice_move_name != "":
+            legal_move_name_action_commands = [self[0].choice_move_name]
+        else:
+            legal_move_name_action_commands = self[0].sorted_move_names
+
+        legal_move_name_action_commands = [move_name for move_name in legal_move_name_action_commands \
+                                           if self[0].moveset[move_name].current > 0]
+
+        if len(legal_move_name_action_commands) == 0:
+            legal_move_name_action_commands = [STRUGGLE]
+        return legal_move_name_action_commands + legal_back_poke_name_action_commands
 
 #https://wiki.xn--rckteqa2e.com/wiki/%E3%83%A9%E3%83%B3%E3%82%AF%E8%A3%9C%E6%AD%A3
 RANK_BONUS = {
@@ -1035,11 +1053,10 @@ class Battle:
                 break
         return self
 
-    def damage_probability_distribution(self):
+    def all_damage_probability_distribution(self):
         fighter_indices = [[0, 1, 2], [1, 0, 2], [2, 0, 1]]
         p1_fighterses = [[self.p1_fighters[index] for index in indices] \
                           for indices in fighter_indices]
-
         p2_fighterses = [[self.p2_fighters[index] for index in indices] \
                           for indices in fighter_indices]
 
@@ -1049,9 +1066,9 @@ class Battle:
                 result.append([])
                 for fighters2 in fighterses2:
                     tmp = {}
-                    for move_name in get_sorted_move_names(fighters1[0].moveset.keys()):
+                    for move_name in fighters1[0].sorted_move_names:
                         if MOVEDEX[move_name].category == STATUS:
-                            damage_probability_distribution = {0:1.0}
+                            damage_probability_distribution = {None:None}
                         else:
                             spovb = SelfPointOfViewBattle(fighters1, fighters2)
                             damage_probability_distribution = get_damage_probability_distribution(spovb, move_name)
@@ -1061,25 +1078,50 @@ class Battle:
 
         p1_result = get_result(p1_fighterses, p2_fighterses)
         p2_result = get_result(p2_fighterses, p1_fighterses)
-        return p1_result, p2_result
+        return {"p1_attack":p1_result, "p2_attack":p2_result}
 
-    def to_feature_array(self):
-        p10, p11, p12 = self.p1_fighters.to_feature_array()
-        p20, p21, p22 = self.p2_fighters.to_feature_array()
-        dpd = self.damage_probability_distribution()
+    def to_feature_list(self):
+        dpd = self.all_damage_probability_distribution()
 
-        for player_i in range(len(damage_probability_distribution):
-            for fighters_i in range(FIGHTERS_LENGTH):
-                if player_i == 0:
-                    fighters = self.p1_fighters
-                else:
-                    fighters = self.p2_fighters
+        def get(attack_fighters, defense_fighters, key):
+            result = []
+            for attack_i, attack_fighter in enumerate(attack_fighters):
+                for defense_i, defense_fighter in enumerate(defense_fighters):
+                    for move_name in attack_fighter.sorted_move_names:
+                        data = dpd[key][attack_i][defense_i][move_name]
+                        if move_name == "なし":
+                            max_hp_expected_percent = -1.0
+                            current_hp_expected_percent = -1.0
+                            status_move_feature_v = -1.0
+                        if None in data:
+                            max_hp_expected_percent = 0.0
+                            current_hp_expected_percent = 0.0
+                            status_move_feature_v = 1.0
+                        else:
+                            expected_value = sum(damage * percent for damage, percent in dpd[key][attack_i][defense_i][move_name].items())
+                            max_hp_expected_percent = expected_value / float(defense_fighter.max_hp)
+                            current_hp_expected_percent = expected_value / float(defense_fighter.current_hp)
+                            status_move_feature_v = 0.0
 
-                for move_name in fighters[fighters_i].sorted_move_names:
-                    for damage, percent in dpd[player_i][fighters_i][move_name]:
-                        damage = min([damage, MAX_HP])
-                        result[damage] = percent
-        return result
+                        result.append(max_hp_expected_percent)
+                        result.append(current_hp_expected_percent)
+                        result.append(status_move_feature_v)
+            return result
+
+        p1_dpd_feature_list = get(self.p1_fighters, self.p2_fighters, "p1_attack")
+        p2_dpd_feature_list = get(self.p2_fighters, self.p1_fighters, "p2_attack")
+
+        p1_feature_list = self.p1_fighters.to_feature_list()
+        p2_feature_list = self.p2_fighters.to_feature_list()
+        
+        p1_feature_list[0] += p1_dpd_feature_list[0:36]
+        p1_feature_list[1] += p1_dpd_feature_list[36:36*2]
+        p1_feature_list[2] += p1_dpd_feature_list[36*2:36*3]
+
+        p2_feature_list[0] += p2_dpd_feature_list[0:36]
+        p2_feature_list[1] += p2_dpd_feature_list[36:36*2]
+        p2_feature_list[2] += p2_dpd_feature_list[36*2:36*3]
+        return p1_feature_list + p2_feature_list
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
