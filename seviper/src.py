@@ -95,6 +95,9 @@ STATUS = "変化"
 
 STRUGGLE = "わるあがき"
 
+MIN_PRIORITY_RANK = min([move_data.priority_rank for move_data in MOVEDEX.values()])
+MAX_PRIORITY_RANK = max([move_data.priority_rank for move_data in MOVEDEX.values()])
+
 def get_sorted_move_names(move_names):
     indices = sorted([ALL_MOVE_NAMES.index(move_name) for move_name in move_names])
     return [ALL_MOVE_NAMES[index] for index in indices]
@@ -346,181 +349,111 @@ class Pokemon:
 
     def to_feature_list(self):
         poke_name_start = 0
-        poke_name_end = RATE_POKE_NAMES_LENGTH
 
-        nature_atk_bonus_start = poke_name_end
-        nature_atk_bonus_end = nature_atk_bonus_start + 1
+        nature_atk_bonus_start = RATE_POKE_NAMES_LENGTH
+        nature_def_bonus_start = nature_atk_bonus_start + 1
+        nature_sp_atk_bonus_start = nature_def_bonus_start + 1
+        nature_sp_def_bonus_start = nature_sp_atk_bonus_start + 1
+        nature_sp_def_bonus_start = nature_sp_def_bonus_start + 1
+        nature_speed_bonus_start = nature_sp_def_bonus_start + 1
 
-        nature_def_bonus_start = nature_atk_bonus_end
-        nature_def_bonus_end = nature_def_bonus_start + 1
+        ability_start = nature_speed_bonus_start + 1
+        gender_start = ability_start + 3
+        item_start = gender_start + ALL_GENDERS_LENGTH
+        move_name_start = item_start + ITEM_FEATURES_LENGTH
+        priority_start = move_name_start + (MAX_PRIORITY_RANK - MIN_PRIORITY_RANK)
 
-        nature_sp_atk_bonus_start = nature_def_bonus_end
-        nature_sp_atk_bonus_end = nature_sp_atk_bonus_start + 1
+        max_power_point1_start = priority_start + ALL_MOVE_NAMES_LENGTH
+        max_power_point2_start = max_power_point1_start + 1
+        max_power_point3_start = max_power_point2_start + 1
+        max_power_point4_start = max_power_point3_start + 1
 
-        nature_sp_def_bonus_start = nature_sp_atk_bonus_end
-        nature_sp_def_bonus_end = nature_sp_def_bonus_start + 1
+        current_power_point1_start = max_power_point4_start + 1
+        current_power_point2_start = current_power_point1_start + 1
+        current_power_point3_start = current_power_point2_start + 1
+        current_power_point4_start = current_power_point3_start + 1
 
-        nature_speed_bonus_start = nature_sp_def_bonus_end
-        nature_speed_bonus_end = nature_speed_bonus_start + 1
+        max_hp_start = current_power_point4_start + 1
+        current_hp_start = max_hp_start + 1
+        atk_start = current_hp_start + 1
+        defe_start = atk_start + 1
+        sp_atk_start = defe_start + 1
+        sp_def_start = sp_atk_start + 1
+        speed_start = sp_def_start + 1
 
-        ability_start = nature_speed_bonus_end
-        ability_end = ability_start + 3
+        atk_rank_start = speed_start + 1
+        def_rank_start = atk_rank_start + 1
+        sp_atk_rank_start = def_rank_start + 1
+        sp_def_rank_start = sp_atk_rank_start + 1
+        speed_rank_start = sp_def_rank_start + 1
+        accuracy_rank_start = speed_rank_start + 1
+        evasion_rank_start = accuracy_rank_start + 1
 
-        gender_start = ability_end
-        gender_end = gender_start + ALL_GENDERS_LENGTH
+        status_ailment_start = evasion_rank_start + 1
+        bad_poison_elapsed_turn_start = status_ailment_start + STATUS_AILMENT_FEATURES_LENGTH
 
-        item_start = gender_end
-        item_end = item_start + ITEM_FEATURES_LENGTH
+        choice_move_name_start = bad_poison_elapsed_turn_start + 1
+        is_roots_start = choice_move_name_start + MAX_MOVESET_LENGTH
+        is_leech_seed_start = is_roots_start + 1
 
-        move_name_start = item_end
-        move_name_end = move_name_start + ALL_MOVE_NAMES_LENGTH
+        result = [0 for _ in range(is_leech_seed_start + 1)]
 
-        max_power_point1_start = move_name_end
-        max_power_point1_end = max_power_point1_start + 1
-
-        max_power_point2_start = max_power_point1_end
-        max_power_point2_end = max_power_point2_start + 1
-
-        max_power_point3_start = max_power_point2_end
-        max_power_point3_end = max_power_point3_start + 1
-
-        max_power_point4_start = max_power_point3_end
-        max_power_point4_end = max_power_point4_start + 1
-
-        current_power_point1_start = max_power_point4_end
-        current_power_point1_end = current_power_point1_start + 1
-
-        current_power_point2_start = current_power_point1_end
-        current_power_point2_end = current_power_point2_start + 1
-
-        current_power_point3_start = current_power_point2_end
-        current_power_point3_end = current_power_point3_start + 1
-
-        current_power_point4_start = current_power_point3_end
-        current_power_point4_end = current_power_point4_start + 1
-
-        max_hp_start = current_power_point4_end
-        max_hp_end = max_hp_start + 1
-
-        current_hp_start = max_hp_end
-        current_hp_end = current_hp_start + 1
-
-        atk_start = current_hp_end
-        atk_end = atk_start + 1
-
-        defe_start = atk_end
-        defe_end = defe_start + 1
-
-        sp_atk_start = defe_end
-        sp_atk_end = sp_atk_start + 1
-
-        sp_def_start = sp_atk_end
-        sp_def_end = sp_def_start + 1
-
-        speed_start = sp_def_end
-        speed_end = speed_start + 1
-
-        atk_rank_start = speed_end
-        atk_rank_end = atk_rank_start + 1
-
-        def_rank_start = atk_rank_end
-        def_rank_end = def_rank_start + 1
-
-        sp_atk_rank_start = def_rank_end
-        sp_atk_rank_end = sp_atk_rank_start + 1
-
-        sp_def_rank_start = sp_atk_rank_end
-        sp_def_rank_end = sp_def_rank_start + 1
-
-        speed_rank_start = sp_def_rank_end
-        speed_rank_end = speed_rank_start + 1
-
-        accuracy_rank_start = speed_rank_end
-        accuracy_rank_end = accuracy_rank_start + 1
-
-        evasion_rank_start = accuracy_rank_end
-        evasion_rank_end = evasion_rank_start + 1
-
-        status_ailment_start = evasion_rank_end
-        status_ailment_end = status_ailment_start + STATUS_AILMENT_FEATURES_LENGTH
-
-        bad_poison_elapsed_turn_start = status_ailment_end
-        bad_poison_elapsed_turn_end = bad_poison_elapsed_turn_start + 1
-
-        choice_move_name_start = bad_poison_elapsed_turn_end
-        choice_move_name_end = choice_move_name_start + MAX_MOVESET_LENGTH
-
-        is_roots_start = choice_move_name_end
-        is_roots_end = is_roots_start + 1
-
-        is_leech_seed_start = is_roots_end
-        is_leech_seed_end = is_leech_seed_start + 1
-
-        result = [0 for _ in range(is_leech_seed_end)]
-
-        def input_with_validation(start, end, i, v):
-            assert result[start:end][i] == 0
-            result[start:end][i] = v
+        def input_with_validation(start, i, v):
+            index = start + i
+            assert result[index] == 0
+            result[index] = v
 
         poke_data = POKEDEX[self.name]
         nature_data = NATUREDEX[self.nature]
 
-        input_with_validation(poke_name_start, poke_name_end, RATE_POKE_NAMES.index(self.name), 1)
-        input_with_validation(nature_atk_bonus_start, nature_atk_bonus_end, 0, nature_data.atk_bonus)
-        input_with_validation(nature_def_bonus_start, nature_def_bonus_end, 0, nature_data.def_bonus)
-        input_with_validation(nature_sp_atk_bonus_start, nature_sp_atk_bonus_end, 0, nature_data.sp_atk_bonus)
-        input_with_validation(nature_sp_def_bonus_start, nature_sp_def_bonus_end, 0, nature_data.sp_def_bonus)
-        input_with_validation(nature_speed_bonus_start, nature_speed_bonus_end, 0, nature_data.speed_bonus)
-        input_with_validation(ability_start, ability_end, poke_data.all_abilities.index(self.ability), 1)
-        input_with_validation(gender_start, gender_end, ALL_GENDERS.index(self.gender), 1)
-        input_with_validation(item_start, item_end, ITEM_FEATURES.index(self.item), 1)
+        input_with_validation(poke_name_start, RATE_POKE_NAMES.index(self.name), 1)
+        input_with_validation(nature_atk_bonus_start, 0, nature_data.atk_bonus)
+        input_with_validation(nature_def_bonus_start, 0, nature_data.def_bonus)
+        input_with_validation(nature_sp_atk_bonus_start, 0, nature_data.sp_atk_bonus)
+        input_with_validation(nature_sp_def_bonus_start, 0, nature_data.sp_def_bonus)
+        input_with_validation(nature_speed_bonus_start, 0, nature_data.speed_bonus)
+        input_with_validation(ability_start, poke_data.all_abilities.index(self.ability), 1)
+        input_with_validation(gender_start, ALL_GENDERS.index(self.gender), 1)
+        input_with_validation(item_start, ITEM_FEATURES.index(self.item), 1)
 
         max_power_point_starts = [max_power_point1_start, max_power_point2_start, max_power_point3_start, max_power_point4_start]
-        max_power_point_ends = [max_power_point1_end, max_power_point2_end, max_power_point3_end, max_power_point4_end]
         current_power_point_starts = [current_power_point1_start, current_power_point2_start,
                                       current_power_point3_start, current_power_point4_start]
-        current_power_point_ends = [current_power_point1_end, current_power_point2_end,
-                                    current_power_point3_end, current_power_point4_end]
 
         for i, move_name in enumerate(self.sorted_move_names):
             max_power_point = float(self.moveset[move_name].max)
-            input_with_validation(move_name_start, move_name_end, ALL_MOVE_NAMES.index(move_name), 1)
-            input_with_validation(max_power_point_starts[i], max_power_point_ends[i], 0,
-                                  self.moveset[move_name].max / 10.0)
-            input_with_validation(current_power_point_starts[i], current_power_point_ends[i], 0,
-                                  float(self.moveset[move_name].current) / max_power_point)
+            input_with_validation(move_name_start, ALL_MOVE_NAMES.index(move_name), 1.0)
+            input_with_validation(priority_start, 0, float(MOVEDEX[move_name].priority_rank))
+            input_with_validation(max_power_point_starts[i], 0, self.moveset[move_name].max / 10.0)
+            input_with_validation(current_power_point_starts[i], 0, float(self.moveset[move_name].current) / max_power_point)
 
-        input_with_validation(max_hp_start, max_hp_end, 0, float(self.max_hp) / 100.0)
-        input_with_validation(current_hp_start, current_hp_end, 0, float(self.current_hp) / float(self.max_hp))
-        input_with_validation(atk_start, atk_end, 0, float(self.atk) / 100.0)
-        input_with_validation(defe_start, defe_end, 0, float(self.defe) / 100.0)
-        input_with_validation(sp_atk_start, sp_atk_end, 0, float(self.sp_atk) / 100.0)
-        input_with_validation(sp_def_start, sp_def_end, 0, float(self.sp_def) / 100.0)
-        input_with_validation(speed_start, speed_end, 0, float(self.speed) / 100.0)
+        input_with_validation(max_hp_start, 0, float(self.max_hp) / 100.0)
+        input_with_validation(current_hp_start, 0, float(self.current_hp) / float(self.max_hp))
+        input_with_validation(atk_start, 0, float(self.atk) / 100.0)
+        input_with_validation(defe_start, 0, float(self.defe) / 100.0)
+        input_with_validation(sp_atk_start, 0, float(self.sp_atk) / 100.0)
+        input_with_validation(sp_def_start, 0, float(self.sp_def) / 100.0)
+        input_with_validation(speed_start, 0, float(self.speed) / 100.0)
 
-        input_with_validation(atk_rank_start, atk_rank_end, 0, float(self.atk_rank))
-        input_with_validation(def_rank_start, def_rank_end, 0, float(self.def_rank))
-        input_with_validation(sp_atk_rank_start, sp_atk_rank_end, 0, float(self.sp_atk_rank))
-        input_with_validation(sp_def_rank_start, sp_def_rank_end, 0, float(self.sp_def_rank))
-        input_with_validation(speed_rank_start, speed_rank_end, 0, float(self.speed_rank))
-        input_with_validation(accuracy_rank_start, accuracy_rank_end, 0, float(self.accuracy_rank))
-        input_with_validation(evasion_rank_start, evasion_rank_end, 0, float(self.evasion_rank))
+        input_with_validation(atk_rank_start, 0, float(self.atk_rank))
+        input_with_validation(def_rank_start, 0, float(self.def_rank))
+        input_with_validation(sp_atk_rank_start, 0, float(self.sp_atk_rank))
+        input_with_validation(sp_def_rank_start, 0, float(self.sp_def_rank))
+        input_with_validation(speed_rank_start, 0, float(self.speed_rank))
+        input_with_validation(accuracy_rank_start, 0, float(self.accuracy_rank))
+        input_with_validation(evasion_rank_start, 0, float(self.evasion_rank))
 
-        input_with_validation(status_ailment_start, status_ailment_end,
-                              STATUS_AILMENT_FEATURES.index(self.status_ailment), 1)
-        input_with_validation(bad_poison_elapsed_turn_start, bad_poison_elapsed_turn_end, 0,
-                              float(self.bad_poison_elapsed_turn) / 16.0)
+        input_with_validation(status_ailment_start, STATUS_AILMENT_FEATURES.index(self.status_ailment), 1)
+        input_with_validation(bad_poison_elapsed_turn_start, 0, float(self.bad_poison_elapsed_turn) / 16.0)
 
         if self.choice_move_name != "":
-            input_with_validation(choice_move_name_start, choice_move_name_end,
-                                  self.sorted_move_names.index(choice_move_name), 1)
+            input_with_validation(choice_move_name_start, self.sorted_move_names.index(choice_move_name), 1)
 
         if self.is_roots:
-            input_with_validation(is_roots_start, is_roots_end, 0, 1)
+            input_with_validation(is_roots_start, 0, 1)
 
         if self.is_leech_seed:
-            input_with_validation(is_leech_seed_start, is_leech_seed_end, 0, 1)
-
+            input_with_validation(is_leech_seed_start, 0, 1)
         return result
 
 class Team(list):
@@ -546,9 +479,6 @@ class Fighters(list):
     def is_all_faint(self):
         return all([pokemon.is_faint() for pokemon in self])
 
-    def to_feature_list(self):
-        return [pokemon.to_feature_list() for pokemon in self]
-
     def legal_action_commands(self):
         legal_back_poke_name_action_commands = [pokemon.name for pokemon in self[1:] if not pokemon.is_faint()]
 
@@ -566,6 +496,12 @@ class Fighters(list):
         if len(legal_move_name_action_commands) == 0:
             legal_move_name_action_commands = [STRUGGLE]
         return legal_move_name_action_commands + legal_back_poke_name_action_commands
+
+    def to_feature_list(self):
+        return [pokemon.to_feature_list() for pokemon in self]
+
+MIN_RANK = -6
+MAX_RANK = 6
 
 #https://wiki.xn--rckteqa2e.com/wiki/%E3%83%A9%E3%83%B3%E3%82%AF%E8%A3%9C%E6%AD%A3
 RANK_BONUS = {
@@ -782,7 +718,7 @@ class SelfPointOfViewBattle:
         return Battle(self.self_fighters, self.opponent_fighters)
 
     def real_accuracy(self, move_name):
-        if move_name == "どくどく" and POISON in self_fighters[0].types:
+        if move_name == "どくどく" and POISON in self.self_fighters[0].types:
             return 100
         else:
             move_data = MOVEDEX[move_name]
@@ -903,13 +839,13 @@ class SelfPointOfViewBattle:
 
         assert index != 0, poke_name + "に交代しようとしたが、既に場に出ている"
         assert index in [1, 2], poke_name + "に交代しようとしたが、存在していない"
-        assert self.self_fighters[index].is_faint(), poke_name + "に交代しようとしたが、瀕死状態"
+        assert not self.self_fighters[index].is_faint(), poke_name + "に交代しようとしたが、瀕死状態"
 
         self = copy.deepcopy(self)
         self.self_fighters[0].bad_poison_elapsed_turn = 0
         self.self_fighters[0].is_leech_seed = False
 
-        tmp_self_fighters = self.self_fighters
+        tmp_self_fighters = copy.deepcopy(self.self_fighters)
 
         if index == 1:
             self.self_fighters[0] = tmp_self_fighters[1]
@@ -922,10 +858,10 @@ class SelfPointOfViewBattle:
         return self
 
     def action(self, command):
-        if command in ALL_POKE_NAMES:
-            return self.switch(command)
-        elif command in ALL_MOVE_NAMES:
+        if command in ALL_MOVE_NAMES:
             return self.move_use(command)
+        elif command in ALL_POKE_NAMES:
+            return self.switch(command)
         assert False, "アクションコマンドが不適"
 
 class Battle:
@@ -961,7 +897,11 @@ class Battle:
     def is_p2_only_switch_after_faint_phase(self):
         return not self.p1_fighters[0].is_faint() and self.p2_fighters[0].is_faint()
 
+    def is_p1_and_p2_switch_after_faint_phase(self):
+        return self.p1_fighters[0].is_faint() and self.p2_fighters[0].is_faint()
+
     def is_p1_and_p2_phase(self):
+        #両者の先頭のポケモンが瀕死状態もしくは両者の先頭のポケモンがが瀕死ではない状態ならば
         return self.p1_fighters[0].is_faint() == self.p2_fighters[0].is_faint()
 
     #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
@@ -1003,22 +943,23 @@ class Battle:
         is_p2_only_switch_after_faint_phase = self.is_p2_only_switch_after_faint_phase()
 
         if is_p1_only_switch_after_faint_phase:
-            assert len(action_commands) > 1, "p1のみアクションが可能な状態で、2つ以上のコマンドが渡された"
+            assert len(action_commands) == 1 and ("p1" in action_commands), "プレイヤー1のみが行動可能な状態で、不適なコマンドが渡された"
         elif is_p2_only_switch_after_faint_phase:
-            assert len(action_commands) > 1, "p2のみアクションが可能な状態で、2つ以上のコマンドが渡された"
+            assert len(action_commands) == 1 and ("p2" in action_commands), "プレイヤー2のみが行動可能な状態で、不適なコマンドが渡された"
         else:
-            assert len(action_commands) == 2, "p1とp2の両方がアクション可能な状態で、長さが2じゃないコマンドリストが渡された"
+            assert len(action_commands) == 2 and ("p1" in action_commands) and ("p2" in action_commands), \
+                "両プレイヤーが行動可能な状態で、不適なコマンドが渡された"
 
         if is_p1_only_switch_after_faint_phase:
-            return self.p1_action(action_commands[0])
+            return self.p1_action(action_commands["p1"])
         elif is_p2_only_switch_after_faint_phase:
-            return self.p2_action(action_commands[0])
-        elif self.is_p1_and_p2_phase() and self.p1_fighters[0].is_faint():
-            self = self.p1_action(action_commands[0])
-            self = self.p2_action(action_commands[1])
+            return self.p2_action(action_commands["p2"])
+        elif self.is_p1_and_p2_switch_after_faint_phase():
+            self = self.p1_action(action_commands["p1"])
+            self = self.p2_action(action_commands["p2"])
             return self
 
-        action_speed_winner = Winner.new_action_speed(self, action_commands[0], action_commands[1])
+        action_speed_winner = Winner.new_action_speed(self, action_commands["p1"], action_commands["p2"])
 
         if action_speed_winner == WINNER_P1:
             is_p1_actions = [True, False]
@@ -1027,9 +968,9 @@ class Battle:
 
         for is_p1_action in is_p1_actions:
             if is_p1_action:
-                self = self.p1_action(action_commands[0])
+                self = self.p1_action(action_commands["p1"])
             else:
-                self = self.p2_action(action_commands[1])
+                self = self.p2_action(action_commands["p2"])
         return self.turn_end()
 
     def is_game_end(self):
@@ -1037,18 +978,19 @@ class Battle:
         is_p2_all_faint = self.p2_fighters.is_all_faint()
         return is_p1_all_faint or is_p2_all_faint
 
-    def one_game(self, trainer1, trainer2):
+    def one_game(self, p1_trainer, p2_trainer):
         while True:
+            r_self = self.reverse()
             if self.is_p1_and_p2_phase():
-                p1_action_command = trainer1(self)
-                p2_action_command = trainer2(self)
-                action_commands = [p1_action_command, p2_action_command]
+                p1_action_command = p1_trainer(self)
+                p2_action_command = p2_trainer(r_self)
+                action_commands = {"p1":p1_action_command, "p2":p2_action_command}
             elif self.is_p1_only_switch_after_faint_phase():
-                action_commands = [trainer1(self)]
+                action_commands = {"p1":p1_trainer(self)}
             else:
-                action_commands = [trainer2(self)]
+                action_commands = {"p2":p2_trainer(r_self)}
 
-            self = self.run(action_commands)
+            self = self.push(action_commands)
             if self.is_game_end():
                 break
         return self
@@ -1113,15 +1055,38 @@ class Battle:
 
         p1_feature_list = self.p1_fighters.to_feature_list()
         p2_feature_list = self.p2_fighters.to_feature_list()
-        
-        p1_feature_list[0] += p1_dpd_feature_list[0:36]
-        p1_feature_list[1] += p1_dpd_feature_list[36:36*2]
-        p1_feature_list[2] += p1_dpd_feature_list[36*2:36*3]
 
-        p2_feature_list[0] += p2_dpd_feature_list[0:36]
-        p2_feature_list[1] += p2_dpd_feature_list[36:36*2]
-        p2_feature_list[2] += p2_dpd_feature_list[36*2:36*3]
+        fighters_indices = [[0, 1, 2], [1, 0, 2], [2, 0, 1]]
+        battles = [Battle([self.p1_fighters[index] for index in p1_indices],
+                          [self.p2_fighters[index] for index in p2_indices]) \
+                           for p1_indices in fighters_indices for p2_indices in fighters_indices]
+
+        real_speed_winners = [Winner.new_real_speed(battle) for battle in battles]
+        p1_real_speed_winner_feature_list = sum([real_speed_winner.to_binary_list() for real_speed_winner in real_speed_winners], [])
+        p2_real_speed_winner_feature_list = sum([real_speed_winner.reverse().to_binary_list() for real_speed_winner in real_speed_winners], [])
+
+        rsw_i = len(real_speed_winners) // Fighters.LENGTH
+        dpb_i = len(p1_dpd_feature_list) // Fighters.LENGTH
+
+        p1_feature_list[0] += (p1_dpd_feature_list[0:dpb_i] + p1_real_speed_winner_feature_list[0:rsw_i])
+        p1_feature_list[1] += (p1_dpd_feature_list[dpb_i:dpb_i*2] + p1_real_speed_winner_feature_list[rsw_i:rsw_i*2])
+        p1_feature_list[2] += (p1_dpd_feature_list[dpb_i*2:dpb_i*3] + p1_real_speed_winner_feature_list[rsw_i*2:rsw_i*3])
+
+        p2_feature_list[0] += (p2_dpd_feature_list[0:dpb_i] + p2_real_speed_winner_feature_list[0:rsw_i])
+        p2_feature_list[1] += (p2_dpd_feature_list[dpb_i:dpb_i*2] + p2_real_speed_winner_feature_list[rsw_i:rsw_i*2])
+        p2_feature_list[2] += (p2_dpd_feature_list[dpb_i*2:dpb_i*3] + p2_real_speed_winner_feature_list[rsw_i*2:rsw_i*3])
         return p1_feature_list + p2_feature_list
+
+    def to_feature_array_3d(self):
+        feature_list = self.to_feature_list()
+        padding_size = 8
+        feature_list[0] += [0 for _ in range(padding_size)]
+        feature_list[1] += [0 for _ in range(padding_size)]
+        feature_list[2] += [0 for _ in range(padding_size)]
+        feature_list[3] += [0 for _ in range(padding_size)]
+        feature_list[4] += [0 for _ in range(padding_size)]
+        feature_list[5] += [0 for _ in range(padding_size)]
+        return np.array(feature_list).reshape(38, 38, 6)
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
@@ -1200,6 +1165,22 @@ class Winner:
     def __ne__(self, winner):
         return not self.__eq__(winner)
 
+    def reverse(self):
+        if self == WINNER_P1:
+            return WINNER_P2
+        elif self == WINNER_P2:
+            return WINNER_P1
+        else:
+            return DRAW
+
+    def to_binary_list(self):
+        if self == WINNER_P1:
+            return [1, 0, 0]
+        elif self == WINNER_P2:
+            return [0, 1, 0]
+        else:
+            return [0, 0, 1]
+
     @staticmethod
     def new_real_speed(battle):
         p1_point_of_view_battle = battle.to_p1_point_of_view_battle()
@@ -1240,7 +1221,7 @@ class Winner:
         if real_speed_winner != DRAW:
             return real_speed_winner
 
-        priority_winner = Winner.new_priority(battle, p1_action_command, p2_action_command)
+        priority_winner = Winner.new_action_priority(battle, p1_action_command, p2_action_command)
         if priority_winner != DRAW:
             return priority_winner
 
@@ -1272,7 +1253,7 @@ def get_real_speed(spovb):
 
 def new_venusaur():
     result = Pokemon("フシギバナ", "おだやか", "しんりょく", "♀", "くろいヘドロ",
-                     ["ギガドレイン", "ヘドロばくだん", "やどりぎのタネ", "まもる"], [3, 3, 3, 3],
+                     ["ギガドレイン", "ヘドロばくだん", "やどりぎのタネ", "どくどく"], [3, 3, 3, 3],
                      ALL_MAX_INDIVIDUAL,
                      Effort({"hp":252, "atk":0, "defe":0, "sp_atk":0, "sp_def":252, "speed":4}))
     return result
@@ -1333,8 +1314,8 @@ class StatusMove:
         if spovb.opponent_fighters[0].status_ailment != "":
             return spovb
 
-        if (POISON in self.opponent_fighters[0].types) or (STEEL in self.opponent_fighters[0].types):
-            return self
+        if (POISON in spovb.opponent_fighters[0].types) or (STEEL in spovb.opponent_fighters[0].types):
+            return spovb
 
         spovb = copy.deepcopy(spovb)
         spovb.opponent_fighters[0].status_ailment = BAD_POISON

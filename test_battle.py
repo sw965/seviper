@@ -46,7 +46,7 @@ class Manager(unittest.TestCase):
 
         def test1():
             battle = seviper.Battle(p1_fighters, p2_fighters)
-            results = [battle.push(["ギガドレイン", "なみのり"]) for _ in range(test_num)]
+            results = [battle.push({"p1":"ギガドレイン", "p2":"なみのり"}) for _ in range(test_num)]
 
             p1_expected_damages = [23, 24, 25, 26, 27, 34, 35, 36, 37, 38, 39, 40, 41]
             #くろいヘドロの回復量 = 11
@@ -86,7 +86,9 @@ class Manager(unittest.TestCase):
                        seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
         battle = seviper.Battle(p1_fighters, p2_fighters)
-        p1_result, p2_result = battle.damage_probability_distribution()
+        all_dpd = battle.all_damage_probability_distribution()
+        p1_attack_dpd = all_dpd["p1_attack"]
+        p2_attack_dpd = all_dpd["p2_attack"]
 
         def helper(result, damages, p1_fighter_i, p2_fighter_i, move_name):
             damage_keys = list(result[p1_fighter_i][p2_fighter_i][move_name].keys())
@@ -96,46 +98,46 @@ class Manager(unittest.TestCase):
 
         """p1のフシギバナからp2のカメックスへのダメージ確率分布"""
         damages = [0, 84, 86, 90, 92, 96, 98, 122, 126, 128, 132, 134, 138, 140, 144, 146]
-        helper(p1_result, damages, 0, 0, "ギガドレイン")
+        helper(p1_attack_dpd, damages, 0, 0, "ギガドレイン")
 
         damages = [0, 51, 52, 54, 55, 57, 58, 60, 76, 78, 79, 81, 82, 84, 85, 87, 88, 90]
-        helper(p1_result, damages, 0, 0, "ヘドロばくだん")
+        helper(p1_attack_dpd, damages, 0, 0, "ヘドロばくだん")
 
-        damages = [0]
-        helper(p1_result, damages, 0, 0, "やどりぎのタネ")
+        damages = [None]
+        helper(p1_attack_dpd, damages, 0, 0, "やどりぎのタネ")
 
-        damages = [0]
-        helper(p1_result, damages, 0, 0, "まもる")
+        damages = [None]
+        helper(p1_attack_dpd, damages, 0, 0, "どくどく")
 
         """p1のフシギバナからp2のリザードンへのダメージ確率分布"""
         damages = [0, 58, 60, 61, 63, 64, 66, 67, 69, 70, 88, 90, 91, 93, 94, 96, 97, 99, 100, 102, 103, 105]
-        helper(p1_result, damages, 0, 1, "ヘドロばくだん")
+        helper(p1_attack_dpd, damages, 0, 1, "ヘドロばくだん")
 
         damages = [0, 12, 13, 14, 18, 19, 20, 21]
-        helper(p1_result, damages, 0, 1, "ギガドレイン")
+        helper(p1_attack_dpd, damages, 0, 1, "ギガドレイン")
 
         """p1のフシギバナからp2のフシギバナへのダメージ確率分布"""
         damages = [0, 37, 39, 40, 42, 43, 45, 57, 58, 60, 61, 63, 64, 66, 67]
-        helper(p1_result, damages, 0, 2, "ヘドロばくだん")
+        helper(p1_attack_dpd, damages, 0, 2, "ヘドロばくだん")
 
         damages = [0, 7, 8, 9, 11, 12, 13]
-        helper(p1_result, damages, 0, 2, "ギガドレイン")
+        helper(p1_attack_dpd, damages, 0, 2, "ギガドレイン")
 
         """p1のリザードンからp2のフシギバナへのダメージ確率分布"""
         damages = [0, 133, 135, 140, 143, 148, 151, 156, 198, 203, 205, 211, 213, 218, 221, 226, 229, 234]
-        helper(p1_result, damages, 1, 2, "かえんほうしゃ")
+        helper(p1_attack_dpd, damages, 1, 2, "かえんほうしゃ")
 
         """p1のリザードンからp2のカメックスへのダメージ確率分布"""
         damages = [0, 55, 56, 57, 58, 60, 61, 62, 64, 65, 82, 83, 84, 86, 87, 88, 90, 91, 92, 94, 95, 96, 97]
-        helper(p1_result, damages, 1, 0, "りゅうのはどう")
+        helper(p1_attack_dpd, damages, 1, 0, "りゅうのはどう")
 
         """p2のカメックスからp1のカメックスへのダメージ確率分布"""
         damages = [0, 37, 38, 39, 40, 41, 42, 43, 44, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66]
-        helper(p2_result, damages, 0, 2, "あくのはどう")
+        helper(p2_attack_dpd, damages, 0, 2, "あくのはどう")
 
         """p2のリザードンからp1のリザードンへのダメージ確率分布"""
         damages = [0, 86, 87, 90, 91, 94, 95, 97, 99, 101, 129, 130, 133, 134, 136, 138, 140, 142, 144, 146, 148, 149, 152]
-        helper(p2_result, damages, 1, 1, "エアスラッシュ")
+        helper(p2_attack_dpd, damages, 1, 1, "エアスラッシュ")
 
 if __name__ == "__main__":
     unittest.main()
