@@ -4,6 +4,162 @@ import tkinter.font as tk_font
 import pytkgif
 import boa
 
+class SelfPointOfViewBattle:
+    @staticmethod
+    def damage(spovb, damage_v):
+        damage_v = min([self.self_fighters[0].current_hp, damage_v])
+        result = []
+        for i in range(damage_v):
+            spovb = copy.deepcopy(spovb)
+            self.self_fighters[0].current_hp -= i
+            result.append(spovb)
+        return result
+
+    @staticmethod
+    def move_use():
+        ...
+
+    @staticmethod
+    def switch():
+        ...
+
+    def damage(self, damage_v):
+        damage_v = min([self.self_fighters[0].current_hp, damage_v])
+        self = copy.deepcopy(self)
+        self.self_fighters[0].current_hp -= damage_v
+        return self
+
+    def heal(self, heal_v):
+        heal_v = min([self.self_fighters[0].current_damage(), heal_v])
+        self = copy.deepcopy(self)
+        self.self_fighters[0].current_hp += heal_v
+        return self
+
+    #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
+    def attack_num(self, move_name):
+        if move_name in MAX_THREE_ATTACK_MOVE_NAMES:
+            real_accuracy = self.real_accuracy(move_name)
+            attack_num = 0
+            for _ in range(3):
+                if not is_hit(real_accuracy):
+                    break
+                attack_num += 1
+        elif move_name in MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES:
+            if self.self_fighters[0].ability == "スキルリンク":
+                attack_num = 5
+            else:
+                attack_num = 0
+                for percent in MIN_TWO_MAX_FIVE_ATTACK_PERCENTS[move_name]:
+                    if not is_hit(percent):
+                        break
+                    attack_num += 1
+        else:
+            move_data = MOVEDEX[move_name]
+            attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
+
+        return attack_num
+
+    def move_use(self, move_name):
+        if self.self_fighters[0].is_faint():
+            return self
+
+        self = copy.deepcopy(self)
+        if move_name == STRUGGLE:
+            self.self_fighters[0].current_hp = 0
+            return self
+
+        lead_poke_name = self.self_fighters[0].name
+        move_data = MOVEDEX[move_name]
+
+        assert move_name in self.self_fighters[0].moveset, \
+            lead_poke_name + " は " + move_name + " を繰り出そうとしたが、覚えていない"
+
+        assert self.self_fighters[0].moveset[move_name].current > 0, \
+            lead_poke_name + " は " + move_name + " を繰り出そうとしたが、PPがない"
+
+        #self.self_fighters[0].moveset[move_name].current -= 1
+
+        if self.opponent_fighters[0].is_faint():
+            if move_data.target != "自分":
+                return self
+
+        if move_name not in MAX_THREE_ATTACK_MOVE_NAMES:
+            real_accuracy = self.real_accuracy(move_name)
+            if real_accuracy != -1:
+                if not is_hit(real_accuracy):
+                    return self
+
+        if move_data.category == STATUS:
+            if move_name in HALF_HEAL_MOVE_NAMES:
+                return StatusMove.half_heal(self)
+            else:
+                return STATUS_MOVES[move_name](self)
+
+        attack_num = self.attack_num(move_name)
+        if attack_num == 0:
+            return self
+
+        for i in range(attack_num):
+            final_damage_random_bonus = random.choice(FINAL_DAMAGE_RANDOM_BONUSES)
+            is_critical = self.is_critical(move_name)
+            final_damage = get_final_damage(self, move_name, final_damage_random_bonus, is_critical)
+
+            opovb = self.reverse()
+            opovb = opovb.damage(final_damage)
+            self = opovb.reverse()
+
+            if self.self_fighters[0].is_faint() or self.opponent_fighters[0].is_faint():
+                break
+
+        if self.self_fighters[0].item == "いのちのたま":
+            life_orb_damage = int(float(self.self_fighters[0].max_hp) * 1.0 / 10.0)
+            life_orb_damage = max([life_orb_damage, 1])
+            self = self.damage(life_orb_damage)
+        return self
+
+    def switch(self, poke_name):
+        poke_names = [pokemon.name for pokemon in self.self_fighters]
+        index = poke_names.index(poke_name)
+
+        assert index != 0, poke_name + "に交代しようとしたが、既に場に出ている"
+        assert index in [1, 2], poke_name + "に交代しようとしたが、存在していない"
+        assert not self.self_fighters[index].is_faint(), poke_name + "に交代しようとしたが、瀕死状態"
+
+        self = copy.deepcopy(self)
+        self.self_fighters[0].bad_poison_elapsed_turn = 0
+        self.self_fighters[0].is_leech_seed = False
+        self.self_fighters[0].atk_rank = 0
+        self.self_fighters[0].def_rank = 0
+        self.self_fighters[0].sp_atk_rank = 0
+        self.self_fighters[0].sp_def_rank = 0
+        self.self_fighters[0].speed_rank = 0
+        self.self_fighters[0].accuracy_rank = 0
+        self.self_fighters[0].evasion_rank = 0
+
+        tmp_self_fighters = copy.deepcopy(self.self_fighters)
+
+        if index == 1:
+            self.self_fighters[0] = tmp_self_fighters[1]
+            self.self_fighters[1] = tmp_self_fighters[0]
+            self.self_fighters[2] = tmp_self_fighters[2]
+        else:
+            self.self_fighters[0] = tmp_self_fighters[2]
+            self.self_fighters[1] = tmp_self_fighters[1]
+            self.self_fighters[2] = tmp_self_fighters[0]
+        return self
+
+    def action(self, command):
+        if command in ALL_MOVE_NAMES:
+            return self.move_use(command)
+        elif command in ALL_POKE_NAMES:
+            return self.switch(command)
+        assert False, "アクションコマンドが不適"
+
+
+class Battle:
+    def __init__(self, ):
+
+
 class ReplayData:
     def __init__(self, file_path):
         data = boa.readlines_txt(file_path, True)
