@@ -33,7 +33,7 @@ class Pokemon(unittest.TestCase):
         self.assertEqual(blastoise.speed, 130)
         self.assertEqual(blastoise.moveset["からをやぶる"].max, 24)
 
-class Manager(unittest.TestCase):
+class Battle(unittest.TestCase):
     def test_damage(self):
         p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
                        seviper.TEMPLATE_POKEMONS["リザードン"],

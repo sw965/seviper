@@ -1,29 +1,33 @@
 import seviper
 import numpy as np
 import pprint
-print(seviper.MIN_PRIORITY_RANK)
-print(seviper.MAX_PRIORITY_RANK)
-team = seviper.Team([seviper.TEMPLATE_POKEMONS["フシギバナ"],
-               seviper.TEMPLATE_POKEMONS["リザードン"],
-               seviper.TEMPLATE_POKEMONS["カメックス"]])
 
 p1_fighters = seviper.Fighters([seviper.TEMPLATE_POKEMONS["フシギバナ"],
-               seviper.TEMPLATE_POKEMONS["リザードン"],
-               seviper.TEMPLATE_POKEMONS["カメックス"]])
+                                seviper.TEMPLATE_POKEMONS["リザードン"],
+                                seviper.TEMPLATE_POKEMONS["カメックス"]])
 
-p2_fighters = seviper.Fighters([seviper.TEMPLATE_POKEMONS["カメックス"],
-               seviper.TEMPLATE_POKEMONS["リザードン"],
-               seviper.TEMPLATE_POKEMONS["フシギバナ"]])
-
-import random
-def random_trainer(battle):
-    return random.choice(battle.p1_fighters.legal_action_commands())
+p2_fighters = seviper.Fighters([seviper.TEMPLATE_POKEMONS["リザードン"],
+                                seviper.TEMPLATE_POKEMONS["カメックス"],
+                                seviper.TEMPLATE_POKEMONS["フシギバナ"]])
 
 battle = seviper.Battle(p1_fighters, p2_fighters)
-battle, uis = seviper.BattleUIsMaker.move_use(battle, seviper.STRUGGLE, True)
+battle, battle_uis = seviper.BattleWithUI.push(battle, {"p1":"ギガドレイン", "p2":"かえんほうしゃ"})
+# print(battle.p1_fighters[0].name)
+# battle, uis = seviper.BattleWithUI.push(battle, {"p1":"やどりぎのタネ", "p2":"カメックス"})
+# battle_uis += uis
+for battle_ui in battle_uis:
+    print(battle_ui)
 
-for ui in uis:
-    print(ui)
+# accum_uis = []
+#
+# battle, uis = seviper.p2_action(battle, "かえんほうしゃ")
+# accum_uis += uis
+#
+# battle, uis = seviper.BattleUIsMaker.p1_action(battle, "ギガドレイン")
+# accum_uis += uis
+#
+# for ui in accum_uis:
+#     print(ui)
 
 # count = 0
 # count2 = 0
