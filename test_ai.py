@@ -11,12 +11,11 @@ p2_fighters = seviper.Fighters([seviper.TEMPLATE_POKEMONS["リザードン"],
                                 seviper.TEMPLATE_POKEMONS["フシギバナ"]])
 
 battle = seviper.Battle(p1_fighters, p2_fighters)
-battle, battle_uis = seviper.BattleWithUI.push(battle, {"p1":"ギガドレイン", "p2":"かえんほうしゃ"})
-# print(battle.p1_fighters[0].name)
-# battle, uis = seviper.BattleWithUI.push(battle, {"p1":"やどりぎのタネ", "p2":"カメックス"})
-# battle_uis += uis
-for battle_ui in battle_uis:
-    print(battle_ui)
+battle_with_ui = battle.new_with_ui()
+battle_with_ui = battle_with_ui.push({"p1":"やどりぎのタネ", "p2":"かえんほうしゃ"})
+
+for ui in battle_with_ui.ui:
+    print(ui)
 
 # accum_uis = []
 #
