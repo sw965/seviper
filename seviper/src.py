@@ -42,6 +42,11 @@ class PokeData:
 
 POKEDEX = {k:PokeData(v) for k, v in base_data.POKEDEX.items()}
 RATE_POKE_NAMES = [poke_name for poke_name in ALL_POKE_NAMES if POKEDEX[poke_name].is_rate_battle_ok()]
+for poke_name in ["ダンバル", "メタモン", "トランセル", "ソーナンス", "サッチムシ",
+                  "ミツハニー", "カジッチュ", "キャタピー", "コイキング", "ソーナノ"]:
+   del RATE_POKE_NAMES[RATE_POKE_NAMES.index(poke_name)]
+del poke_name
+
 RATE_POKE_NAMES_LENGTH = len(RATE_POKE_NAMES)
 
 ALL_ABILITIES = []
@@ -144,7 +149,7 @@ UNKNOWN = "不明"
 ALL_GENDERS = [MALE, FEMALE, UNKNOWN]
 ALL_GENDERS_LENGTH = len(ALL_GENDERS)
 
-def get_valid_genders(gender_data):
+def gender_data_to_valid_genders(gender_data):
     if gender_data == "♂♀両方":
         return [MALE, FEMALE]
     elif gender_data == "♂のみ":
@@ -204,7 +209,10 @@ class PowerPoint:
         self.current = max_v
 
     def __eq__(self, power_point):
-        return self.max_v == power_point.max_v and self.current == power_point.current
+        return self.max == power_point.max and self.current == power_point.current
+
+    def __ne__(self, power_point):
+        return not self.__eq__(power_point)
 
     @staticmethod
     def calc(base_pp, point_up):
@@ -252,7 +260,7 @@ class Pokemon:
         poke_data = POKEDEX[poke_name]
 
         assert ability in poke_data.all_abilities, "特性が不適"
-        assert gender in get_valid_genders(poke_data.gender), "性別が不適"
+        assert gender in gender_data_to_valid_genders(poke_data.gender), "性別が不適"
         assert item in ITEM_FEATURES, "アイテムが不適"
 
         assert MIN_MOVESET_LENGTH <= len(move_names) <= MAX_MOVESET_LENGTH, "覚えさせる技の数が不適"
@@ -316,6 +324,93 @@ class Pokemon:
 
         self.is_roots = False
         self.is_leech_seed = False
+
+    def __eq__(self, pokemon):
+        if self.name != pokemon.name:
+            return False
+        elif self.nature != pokemon.nature:
+            return False
+        elif self.ability != pokemon.ability:
+            return False
+        elif self.gender != pokemon.gender:
+            return False
+        elif self.item != pokemon.item:
+            return False
+        elif len(self.sorted_move_names) != len(pokemon.sorted_move_names):
+            return False
+        elif not all([self.sorted_move_names[i] == pokemon.sorted_move_names[i] for i in range(len(self.sorted_move_names))]):
+            return False
+        elif not all([self.moveset[move_name] == pokemon.moveset[move_name] for move_name in self.sorted_move_names]):
+            return False
+        elif len(self.types) != len(pokemon.types):
+            return False
+        elif not all([type_ in pokemon.types for type_ in self.types]):
+            return False
+        elif self.max_hp != pokemon.max_hp:
+            return False
+        elif self.current_hp != pokemon.current_hp:
+            return False
+        elif self.atk != pokemon.atk:
+            return False
+        elif self.defe != pokemon.defe:
+            return False
+        elif self.sp_atk != pokemon.sp_atk:
+            return False
+        elif self.sp_def != pokemon.sp_def:
+            return False
+        elif self.speed != pokemon.speed:
+            return False
+        elif self.atk_rank != pokemon.atk_rank:
+            return False
+        elif self.def_rank != pokemon.def_rank:
+            return False
+        elif self.sp_atk_rank != pokemon.sp_atk_rank:
+            return False
+        elif self.sp_def_rank != pokemon.sp_def_rank:
+            return False
+        elif self.speed_rank != pokemon.speed_rank:
+            return False
+        elif self.accuracy_rank != pokemon.accuracy_rank:
+            return False
+        elif self.evasion_rank != pokemon.evasion_rank:
+            return False
+        elif self.status_ailment != pokemon.status_ailment:
+            return False
+        elif self.bad_poison_elapsed_turn != pokemon.bad_poison_elapsed_turn:
+            return False
+        elif self.choice_move_name != pokemon.choice_move_name:
+            return False
+        elif self.is_roots != pokemon.is_roots:
+            return False
+        elif self.is_leech_seed != pokemon.is_leech_seed:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def new_random(poke_name):
+        poke_data = POKEDEX[poke_name]
+        nature = random.choice(ALL_NATURES)
+        ability = random.choice(poke_data.all_abilities)
+        gender = random.choice(gender_data_to_valid_genders(poke_data.gender))
+
+        learnset_indices = [i for i in range(len(poke_data.learnset)) if poke_data.learnset[i] in IMPLEMENTED_MOVE_NAMES]
+        random.shuffle(learnset_indices)
+        learnset_indices_end = min([len(learnset_indices), MAX_MOVESET_LENGTH])
+        move_names = [poke_data.learnset[index] for index in learnset_indices[:learnset_indices_end]]
+        point_ups = [random.randint(0, MAX_POINT_UP) for _ in range(len(move_names))]
+
+        state_keys = ["hp", "atk", "defe", "sp_atk", "sp_def", "speed"]
+        individual_dict = {key:random.randint(0, MAX_INDIVIDUAL_VALUE) for key in state_keys}
+        individual = Individual(individual_dict)
+        effort_dict = {key:0 for key in state_keys}
+        while sum(effort_dict.values()) != MAX_SUM_EFFORT:
+            key = random.choice(state_keys)
+            if effort_dict[key] < MAX_EFFORT_VALUE:
+                effort_dict[key] += 1
+        effort = Effort(effort_dict)
+
+        return Pokemon(poke_name, nature, ability, gender, "なし", move_names, point_ups, individual, effort)
 
     def is_full_hp(self):
         return self.max_hp == self.current_hp
@@ -479,10 +574,24 @@ def new_blastoise():
                      Effort({"hp":4, "atk":0, "defe":0, "sp_atk":252, "sp_def":0, "speed":252}))
     return result
 
+def new_gyarados():
+    result = Pokemon("ギャラドス", "いじっぱり", "いかく", "♂", "カゴのみ",
+                     ["たきのぼり", "じしん", "こおりのキバ", "りゅうのまい"], [3, 3, 3, 3],
+                     ALL_MAX_INDIVIDUAL, Effort({"hp":128, "atk":252, "defe":0, "sp_atk":0, "sp_def":0, "speed":128}))
+    return result
+
+def new_garchomp():
+    result = Pokemon("ガブリアス", "ようき", "さめはだ", "♀", "きあいのタスキ",
+                     ["じしん", "ドラゴンクロー", "ストーンエッジ", "つるぎのまい"], [3, 3, 3, 3],
+                     ALL_MAX_INDIVIDUAL, Effort({"hp":4, "atk":252, "defe":0, "sp_atk":0, "sp_def":0, "speed":252}))
+    return result
+
 TEMPLATE_POKEMONS = {
     "フシギバナ":new_venusaur(),
     "リザードン":new_charizard(),
-    "カメックス":new_blastoise()
+    "カメックス":new_blastoise(),
+    "ギャラドス":new_gyarados(),
+    "ガブリアス":new_garchomp()
 }
 
 class Team(list):
@@ -493,6 +602,11 @@ class Team(list):
         super().__init__(pokemons)
         assert Team.MIN_LENGTH <= len(self) <= Team.MAX_LENGTH, "チームの数が不適"
 
+    @staticmethod
+    def select_fighters(self, indices):
+        assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
+        return Fighters([self[indices] for index in indices])
+
     def assert_item_validation():
         items = [pokemon.item for pokemon in team]
         assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
@@ -500,10 +614,26 @@ class Team(list):
 class Fighters(list):
     LENGTH = 3
 
+    def __eq__(self, fighters):
+        return all([self[i] == fighters[i] for i in range(Fighters.LENGTH)])
+
+    def __ne__(self, fighters):
+        return not self.__eq__(fighters)
+
     @staticmethod
-    def select(team, indices):
-        assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
-        return Fighters([team[indices] for index in indices])
+    def new_rate_random():
+        rate_poke_names_indices = [i for i in range(RATE_POKE_NAMES_LENGTH)]
+        random.shuffle(rate_poke_names_indices)
+        poke_names = [RATE_POKE_NAMES[index] for index in rate_poke_names_indices[:Fighters.LENGTH]]
+
+        items_indices = [i for i in range(len(ALL_ITEMS))]
+        random.shuffle(items_indices)
+        items = [ALL_ITEMS[index] for index in items_indices[:Fighters.LENGTH]]
+
+        fighters = Fighters([Pokemon.new_random(poke_name) for poke_name in poke_names])
+        for i in range(Fighters.LENGTH):
+            fighters[i].item = items[i]
+        return fighters
 
     def is_all_faint(self):
         return all([pokemon.is_faint() for pokemon in self])
@@ -549,7 +679,7 @@ RANK_BONUS = {
     6:8.0 / 2.0,
 }
 
-def get_real_rank_fluctuation(rank, v):
+def get_real_rank_up_down(rank, v):
     if v > 0:
         return min([MAX_RANK - rank, v])
     elif v < 0:
@@ -587,7 +717,12 @@ def get_final_power(battle, move_name):
     assert move_data.category != STATUS, \
         "ダメージ計算関連のメソッドは、物理技か変化技の技名でなければならない"
 
-    result = five_over_rounding(float(move_data.power) * float(INIT_POWER_BONUS) / 4096.0)
+    if move_data.power <= 0:
+        power = 50
+    else:
+        power = move_data.power
+
+    result = five_over_rounding(float(power) * float(INIT_POWER_BONUS) / 4096.0)
     return max([result, 1])
 
 def get_physics_attack_bonus(battle):
@@ -692,11 +827,10 @@ FINAL_DAMAGE_RANDOM_BONUSES_LENGTH = len(FINAL_DAMAGE_RANDOM_BONUSES)
 
 def get_final_damage(battle, move_name, final_damage_random_bonus, is_critical):
     move_data = MOVEDEX[move_name]
-    r_battle = battle.reverse()
 
     final_power = get_final_power(battle, move_name)
     final_attack = get_final_attack(battle, move_name, is_critical)
-    final_defense = get_final_defense(r_battle, move_name, is_critical)
+    final_defense = get_final_defense(battle.reverse(), move_name, is_critical)
 
     critical_bonus = CRITICAL_BONUS[is_critical]
     stab = get_same_type_attack_bonus(battle.p1_fighters[0], move_name)
@@ -713,34 +847,30 @@ def get_final_damage(battle, move_name, final_damage_random_bonus, is_critical):
     result = five_over_rounding(float(result) * float(damage_bonus) / 4096.0)
     return result
 
-def get_damage_probability_distribution(battle, move_name):
-	critical_n = battle.critical_n(move_name)
-	critical_p = 1.0 / float(critical_n)
-	no_critical_p = 1.0 - critical_p
-	bool_to_critical_p = {True:critical_p, False:no_critical_p}
-	accuracy_p = battle.real_accuracy(move_name) / 100.0
-	final_damage_random_bonus_p = 1.0 / float(FINAL_DAMAGE_RANDOM_BONUSES_LENGTH)
-
-	result = {0:1.0 - accuracy_p}
-
-	for is_critical in [False, True]:
-		for final_damage_random_bonus in FINAL_DAMAGE_RANDOM_BONUSES:
-			final_damage = get_final_damage(battle, move_name, final_damage_random_bonus, is_critical)
-			p = accuracy_p * final_damage_random_bonus_p * bool_to_critical_p[is_critical]
-
-			if final_damage not in result:
-				result[final_damage] = p
-			else:
-				#確率の加法定理
-			    result[final_damage] += p
-	return result
-
 class Battle:
     def __init__(self, p1_fighters, p2_fighters):
         self.p1_fighters = p1_fighters
         self.p2_fighters = p2_fighters
         self.p1_action_select_num = 0
         self.p2_action_select_num = 0
+
+    def __eq__(self, battle):
+        if self.p1_fighters != battle.p1_fighters:
+            return False
+        elif self.p2_fighters != battle.p2_fighters:
+            return False
+        elif self.p1_action_select_num != battle.p1_action_select_num:
+            return False
+        elif self.p2_action_select_num != battle.p2_action_select_num:
+            return False
+        else:
+            return True
+
+    def __ne__(self, battle):
+        return not self.__eq__(battle)
+
+    def __str__(self):
+        return self.to_ui("", True).__str__()
 
     def reverse(self):
         battle = Battle(self.p2_fighters, self.p1_fighters)
@@ -771,12 +901,14 @@ class Battle:
         return random.randint(0, n - 1) == 0
 
     def damage(self, damage_v):
+        assert damage_v > 0
         damage_v = min([self.p1_fighters[0].current_hp, damage_v])
         self = copy.deepcopy(self)
         self.p1_fighters[0].current_hp -= damage_v
         return self
 
     def heal(self, heal_v):
+        assert heal_v > 0
         heal_v = min([self.p1_fighters[0].current_damage(), heal_v])
         self = copy.deepcopy(self)
         self.p1_fighters[0].current_hp += heal_v
@@ -796,7 +928,7 @@ class Battle:
                 attack_num = 5
             else:
                 attack_num = 0
-                for percent in MIN_TWO_MAX_FIVE_ATTACK_PERCENTS[move_name]:
+                for percent in MIN_TWO_MAX_FIVE_ATTACK_PERCENTS:
                     if not is_hit(percent):
                         break
                     attack_num += 1
@@ -840,8 +972,10 @@ class Battle:
         if move_data.category == STATUS:
             if move_name in HALF_HEAL_MOVE_NAMES:
                 return StatusMove.half_heal(self)
-            else:
+            elif move_name in STATUS_MOVES:
                 return STATUS_MOVES[move_name](self)
+            else:
+                return self
 
         attack_num = self.attack_num(move_name)
         if attack_num == 0:
@@ -886,6 +1020,7 @@ class Battle:
         self.p1_fighters[0].speed_rank = 0
         self.p1_fighters[0].accuracy_rank = 0
         self.p1_fighters[0].evasion_rank = 0
+        self.p1_fighters[0].types = POKEDEX[poke_names[0]].types
 
         tmp_p1_fighters = copy.deepcopy(self.p1_fighters)
 
@@ -900,20 +1035,20 @@ class Battle:
         return self
 
     def p1_action(self, command):
-        if command in ALL_MOVE_NAMES:
+        if command in ALL_MOVE_NAMES + [STRUGGLE]:
             return self.move_use(command)
         elif command in ALL_POKE_NAMES:
             return self.switch(command)
         assert False, "アクションコマンドが不正"
 
     def p2_action(self, command):
-        r_self = self.reverse()
-        if command in ALL_MOVE_NAMES:
-            r_self = r_self.move_use(command)
-            return r_self.reverse()
+        self = self.reverse()
+        if command in ALL_MOVE_NAMES + [STRUGGLE]:
+            self = self.move_use(command)
+            return self.reverse()
         elif command in ALL_POKE_NAMES:
-            r_self = r_self.switch(command)
-            return r_self.reverse()
+            self = self.switch(command)
+            return self.reverse()
         assert False, "アクションコマンドが不正"
 
     def is_p1_only_switch_after_faint_phase(self):
@@ -945,87 +1080,69 @@ class Battle:
             battle = turn_end_f(battle)
             return battle
 
-        def run(self, turn_end_fs):
+        def run(battle, turn_end_fs):
             real_speed_winner = Winner.new_real_speed(self)
             for turn_end_f in turn_end_fs:
                 if real_speed_winner == WINNER_P1:
-                    self = p1_first(self, turn_end_f)
+                    battle = p1_first(battle, turn_end_f)
                 elif real_speed_winner == WINNER_P2:
-                    self = p2_first(self, turn_end_f)
+                    battle = p2_first(battle, turn_end_f)
                 else:
                     f = random.choice([p1_first, p2_first])
-                    self = f(self, turn_end_f)
-            return self
+                    battle = f(battle, turn_end_f)
+            return battle
 
         self = run(self, [TurnEnd.leftovers, TurnEnd.black_sludge])
         self = run(self, [TurnEnd.leech_seed])
         self = run(self, [TurnEnd.bad_poison])
         return self
 
-    def push(self, action_commands):
+    def push(self, action):
         is_p1_only_switch_after_faint_phase = self.is_p1_only_switch_after_faint_phase()
         is_p2_only_switch_after_faint_phase = self.is_p2_only_switch_after_faint_phase()
 
         if is_p1_only_switch_after_faint_phase:
-            assert len(action_commands) == 1 and ("p1" in action_commands), "プレイヤー1のみが行動可能な状態で、不適なコマンドが渡された"
+            assert len(action) == 1 and ("p1" in action), "プレイヤー1のみが行動可能な状態で、不適なコマンドが渡された"
         elif is_p2_only_switch_after_faint_phase:
-            assert len(action_commands) == 1 and ("p2" in action_commands), "プレイヤー2のみが行動可能な状態で、不適なコマンドが渡された"
+            assert len(action) == 1 and ("p2" in action), "プレイヤー2のみが行動可能な状態で、不適なコマンドが渡された"
         else:
-            assert len(action_commands) == 2 and ("p1" in action_commands) and ("p2" in action_commands), \
+            assert len(action) == 2 and ("p1" in action) and ("p2" in action), \
                 "両プレイヤーが行動可能な状態で、不適なコマンドが渡された"
 
         if is_p1_only_switch_after_faint_phase:
-            return self.p1_action(action_commands["p1"])
+            return self.p1_action(action["p1"])
         elif is_p2_only_switch_after_faint_phase:
-            return self.p2_action(action_commands["p2"])
+            return self.p2_action(action["p2"])
         elif self.is_p1_and_p2_switch_after_faint_phase():
-            self = self.p1_action(action_commands["p1"])
-            self = self.p2_action(action_commands["p2"])
+            self = self.p1_action(action["p1"])
+            self = self.p2_action(action["p2"])
             return self
 
-        final_priority = Winner.new_final_priority(self, action_commands["p1"], action_commands["p2"])
+        final_priority = Winner.new_final_priority(self, action["p1"], action["p2"])
 
-        if final_priority == WINNER_P1:
-            is_p1_actions = [True, False]
-        else:
-            is_p1_actions = [False, True]
-
-        for is_p1_action in is_p1_actions:
+        for is_p1_action in {True:[True, False], False:[False, True]}[final_priority == WINNER_P1]:
             if is_p1_action:
-                self = self.p1_action(action_commands["p1"])
+                self = self.p1_action(action["p1"])
             else:
-                self = self.p2_action(action_commands["p2"])
+                self = self.p2_action(action["p2"])
         return self.turn_end()
 
     def is_game_end(self):
         return self.p1_fighters.is_all_faint() or self.p2_fighters.is_all_faint()
 
-    def one_game(self, p1_trainer, p2_trainer, action_select_limit_num):
+    def playout(self, p1_trainer, p2_trainer):
         self = copy.deepcopy(self)
         while True:
-            r_self = self.reverse()
             if self.is_p1_and_p2_phase():
                 p1_action_command = p1_trainer(self)
-                p2_action_command = p2_trainer(r_self)
-                action_commands = {"p1":p1_action_command, "p2":p2_action_command}
-                self.p1_action_select_num += 1
-                self.p2_action_select_num += 1
+                p2_action_command = p2_trainer(self.reverse())
+                action = {"p1":p1_action_command, "p2":p2_action_command}
             elif self.is_p1_only_switch_after_faint_phase():
-                action_commands = {"p1":p1_trainer(self)}
-                self.p1_action_select_num += 1
+                action = {"p1":p1_trainer(self)}
             else:
-                action_commands = {"p2":p2_trainer(r_self)}
-                self.p2_action_select_num += 1
+                action = {"p2":p2_trainer(self.reverse())}
 
-            if action_select_limit_num in [self.p1_action_select_num, self.p2_action_select_num]:
-                if self.p1_action_select_num == self.p2_action_select_num:
-                    return DRAW
-                elif self.p1_action_select_num == action_select_limit_num:
-                    return WINNER_P2
-                else:
-                    return WINNER_P1
-
-            self = self.push(action_commands)
+            self = self.push(action)
 
             if self.is_game_end():
                 break
@@ -1039,6 +1156,37 @@ class Battle:
             return WINNER_P2
         else:
             return WINNER_P1
+
+    def one_game(self, p1_trainer, p2_trainer):
+        self = copy.deepcopy(self)
+        s = []
+        a = []
+        while True:
+            if self.is_p1_and_p2_phase():
+                p1_action_command = p1_trainer(self)
+                p2_action_command = p2_trainer(self.reverse())
+                action = {"p1":p1_action_command, "p2":p2_action_command}
+            elif self.is_p1_only_switch_after_faint_phase():
+                action = {"p1":p1_trainer(self)}
+            else:
+                action = {"p2":p2_trainer(self.reverse())}
+
+            s.append(self)
+            a.append(action)
+            self = self.push(action)
+
+            if self.is_game_end():
+                break
+
+        is_p1_all_faint = self.p1_fighters.is_all_faint()
+        is_p2_all_faint = self.p2_fighters.is_all_faint()
+
+        if is_p1_all_faint and is_p2_all_faint:
+            return s, a, DRAW
+        elif is_p1_all_faint:
+            return s, a, WINNER_P2
+        else:
+            return s, a, WINNER_P1
 
     def damage_probability_distribution(self, move_name):
     	critical_n = self.critical_n(move_name)
@@ -1187,7 +1335,7 @@ class Battle:
         ui.battle_message = battle_message
         return ui
 
-    def new_with_ui(self):
+    def to_with_ui(self):
         return BattleWithUI(self)
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
@@ -1204,6 +1352,7 @@ class TurnEnd:
             return battle
 
         heal = int(float(battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
+        heal = max([heal, 1])
         battle = battle.heal(heal)
         return battle
 
@@ -1235,8 +1384,7 @@ class TurnEnd:
             return battle
 
         damage = int(float(battle.p2_fighters[0].max_hp) * 1.0 / 8.0)
-        if damage < 1:
-            damage = 1
+        damage = max([damage, 1])
         heal = damage
 
         battle = battle.reverse()
@@ -1250,12 +1398,13 @@ class TurnEnd:
         if battle.p1_fighters[0].status_ailment != BAD_POISON:
             return battle
 
+        battle = copy.deepcopy(battle)
+
         if battle.p1_fighters[0].bad_poison_elapsed_turn < 16:
             battle.p1_fighters[0].bad_poison_elapsed_turn += 1
 
         damage = int(float(battle.p1_fighters[0].max_hp) * float(battle.p1_fighters[0].bad_poison_elapsed_turn) / 16.0)
-        if damage < 1:
-            damage = 1
+        damage = max([damage, 1])
         return battle.damage(damage)
 
 class Winner:
@@ -1302,6 +1451,8 @@ class Winner:
         def priority_rank(action_command):
             if action_command in ALL_MOVE_NAMES:
                 return MOVEDEX[action_command].priority_rank
+            elif action_command == STRUGGLE:
+                return 0
             elif action_command in ALL_POKE_NAMES:
                 return 999
             assert False, "アクションコマンドが不適"
@@ -1362,24 +1513,24 @@ class StatusMove:
     @staticmethod
     def swords_dance(battle):
         battle = copy.deepcopy(battle)
-        battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].atk_rank, 2)
+        battle.p1_fighters[0].atk_rank += get_real_rank_up_down(battle.p1_fighters[0].atk_rank, 2)
         return battle
 
     @staticmethod
     def shell_smash(battle):
         battle = copy.deepcopy(battle)
-        battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].atk_rank, 2)
-        battle.p1_fighters[0].sp_atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].sp_atk_rank, 2)
-        battle.p1_fighters[0].speed_rank += get_real_rank_fluctuation(battle.p1_fighters[0].speed_rank, 2)
-        battle.p1_fighters[0].def_rank += get_real_rank_fluctuation(battle.p1_fighters[0].def_rank, -1)
-        battle.p1_fighters[0].sp_def_rank += get_real_rank_fluctuation(battle.p1_fighters[0].sp_def_rank, -1)
+        battle.p1_fighters[0].atk_rank += get_real_rank_up_down(battle.p1_fighters[0].atk_rank, 2)
+        battle.p1_fighters[0].sp_atk_rank += get_real_rank_up_down(battle.p1_fighters[0].sp_atk_rank, 2)
+        battle.p1_fighters[0].speed_rank += get_real_rank_up_down(battle.p1_fighters[0].speed_rank, 2)
+        battle.p1_fighters[0].def_rank += get_real_rank_up_down(battle.p1_fighters[0].def_rank, -1)
+        battle.p1_fighters[0].sp_def_rank += get_real_rank_up_down(battle.p1_fighters[0].sp_def_rank, -1)
         return battle
 
     @staticmethod
     def dragon_dance(battle):
         battle = copy.deepcopy(battle)
-        battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].atk_rank, 1)
-        battle.p1_fighters[0].speed_rank += get_real_rank_fluctuation(battle.p1_fighters[0].speed_rank, 1)
+        battle.p1_fighters[0].atk_rank += get_real_rank_up_down(battle.p1_fighters[0].atk_rank, 1)
+        battle.p1_fighters[0].speed_rank += get_real_rank_up_down(battle.p1_fighters[0].speed_rank, 1)
         return battle
 
     @staticmethod
@@ -1507,15 +1658,12 @@ class BattleMessage(str):
         self._i += 1
         return result
 
-    def map_battle_ui(self, battle, is_real_p1):
-        return [battle.to_ui(battle_msg, is_real_p1) for battle_msg in self]
-
     @staticmethod
     def new_move_use(poke_name, move_name, is_real_p1):
         return BattleMessage(OF_SELF[is_real_p1] + poke_name + " の " + move_name + "!")
 
     @staticmethod
-    def no_effective(poke_name, is_real_p1):
+    def new_no_effective(poke_name, is_real_p1):
         return BattleMessage(OF_SELF[is_real_p1] + poke_name + " には 効果がないようだ...")
 
     @staticmethod
@@ -1536,24 +1684,24 @@ class BattleMessage(str):
 
     @staticmethod
     def new_faint(poke_name, is_real_p1):
-        return BattleMessage(OF_SELF[s] + poke_name + " は 倒れた！")
+        return BattleMessage(OF_SELF[is_real_p1] + poke_name + " は 倒れた！")
 
     @staticmethod
-    def new_rank_fluctuation(poke_name, state, fluctuation_v, is_real_p1):
-        assert v != 0
+    def new_rank_up_down(poke_name, state, fluctuation_v, is_real_p1):
+        assert fluctuation_v != 0
         assert MIN_RANK <= fluctuation_v <= MAX_RANK
 
         h = OF_SELF[is_real_p1] + poke_name + " の " + state
 
-        if v == 1:
+        if fluctuation_v == 1:
             return BattleMessage(h + " が 上がった！")
-        elif v == 2:
+        elif fluctuation_v == 2:
             return BattleMessage(h + " が ぐ～ん と上がった！")
-        elif v > 2:
+        elif fluctuation_v > 2:
             return BattleMessage(h + " が ぐぐ～ん と上がった！")
-        elif v == -1:
+        elif fluctuation_v == -1:
             return BattleMessage(h + "が 下がった！")
-        elif v == -2:
+        elif fluctuation_v == -2:
             return BattleMessage(h + "が がくんと下がった！")
         else:
             return BattleMessage(h + "が がく～んと下がった！")
@@ -1588,12 +1736,15 @@ class BattleMessage(str):
         return BattleMessage("やどりぎが " + OF_SELF[is_real_p1] + poke_name + "の 体力を奪う！")
 
     @staticmethod
-    def new_bad_poison(poke_name, is_real_p1):
+    def new_bad_poisoned(poke_name, is_real_p1):
         return BattleMessage(OF_SELF[is_real_p1] + poke_name +  "は 猛毒を あびた！")
 
     @staticmethod
     def new_bad_poison_damage(poke_name, is_real_p1):
         return BattleMessage(OF_SELF[is_real_p1] + poke_name + "は 毒 で ダメージを受けた")
+
+    def map_battle_ui(self, battle, is_real_p1):
+        return [battle.to_ui(battle_msg, is_real_p1) for battle_msg in self]
 
 GOOD_EFFECTIVE_BATTLE_MESSAGE = BattleMessage("効果 は 抜群だ！")
 BAD_EFFECTIVE_BATTLE_MESSAGE = BattleMessage("効果 は いまひとつのようだ...")
@@ -1607,6 +1758,7 @@ class BattleWithUI:
         self.ui = []
 
     def damage(self, damage_v, is_real_p1):
+        assert damage_v > 0
         damage_v = min([self.battle.p1_fighters[0].current_hp, damage_v])
         battle_message = self.ui[-1].battle_message
         for _ in range(damage_v):
@@ -1616,11 +1768,13 @@ class BattleWithUI:
         return self
 
     def heal(self, heal_v, is_real_p1):
+        assert heal_v > 0
         heal_v = min([self.battle.p1_fighters[0].current_damage(), heal_v])
+        battle_message = self.ui[-1].battle_message
         for _ in range(heal_v):
             self = copy.deepcopy(self)
             self.battle.p1_fighters[0].current_hp += 1
-            self.ui.append(self.battle.to_ui(self.ui[-1].battle_message, is_real_p1))
+            self.ui.append(self.battle.to_ui(battle_message, is_real_p1))
         return self
 
     def move_use(self, move_name, is_real_p1):
@@ -1634,7 +1788,7 @@ class BattleWithUI:
 
         if move_name == STRUGGLE:
             self.ui += move_use_battle_message.map_battle_ui(self.battle, is_real_p1)
-            self = self.damage(battle.p1_fighters[0].current_hp, is_real_p1)
+            self = self.damage(self.battle.p1_fighters[0].current_hp, is_real_p1)
             return self
 
         assert move_name in self.battle.p1_fighters[0].moveset, \
@@ -1665,8 +1819,11 @@ class BattleWithUI:
 
             if move_name in HALF_HEAL_MOVE_NAMES:
                 return StatusMoveWithUI.half_heal(self, is_real_p1)
-            else:
+            elif move_name in STATUS_MOVES_WITH_UI:
                 return STATUS_MOVES_WITH_UI[move_name](self, is_real_p1)
+            else:
+                self.ui += FAILURE_BATTLE_MESSAGE.map_battle_ui(self.battle, is_real_p1)
+                return self
 
         attack_num = self.battle.attack_num(move_name)
         if attack_num == 0:
@@ -1678,9 +1835,6 @@ class BattleWithUI:
             final_damage_random_bonus = random.choice(FINAL_DAMAGE_RANDOM_BONUSES)
             is_critical = self.battle.is_critical(move_name)
 
-            if is_critical:
-                self.ui += CRITICAL_BATTLE_MESSAGE.map_battle_ui(self.battle, is_real_p1)
-
             final_damage = get_final_damage(self.battle, move_name, final_damage_random_bonus, is_critical)
 
             if final_damage == 0:
@@ -1690,19 +1844,22 @@ class BattleWithUI:
             self = self.damage(final_damage, not is_real_p1)
             self.battle = self.battle.reverse()
 
+            if is_critical:
+                self.ui += CRITICAL_BATTLE_MESSAGE.map_battle_ui(self.battle, is_real_p1)
+
             if self.battle.p1_fighters[0].is_faint() or self.battle.p2_fighters[0].is_faint():
                 break
 
         effectiveness_bonus = get_effectiveness_bonus(self.battle.p2_fighters[0], move_name)
 
+        if effectiveness_bonus == 0.0:
+            effective_battle_message = BattleMessage.new_no_effective(self.battle.p2_fighters[0].name, not is_real_p1)
         if effectiveness_bonus > 1.0:
             effective_battle_message = GOOD_EFFECTIVE_BATTLE_MESSAGE
         elif effectiveness_bonus < 1.0:
             effective_battle_message = BAD_EFFECTIVE_BATTLE_MESSAGE
-        elif effectiveness_bonus == 1.0:
-            effective_battle_message = BattleMessage("")
         else:
-            effective_battle_message = BattleMessage.new_no_effective_battle_message(p2_poke_name)
+            effective_battle_message = BattleMessage("")
 
         self.ui += effective_battle_message.map_battle_ui(self.battle, is_real_p1)
 
@@ -1735,8 +1892,6 @@ class BattleWithUI:
         self.battle.p1_fighters[0].accuracy_rank = 0
         self.battle.p1_fighters[0].evasion_rank = 0
 
-        tmp_p1_fighters = copy.deepcopy(self.battle.p1_fighters)
-
         if is_real_p1:
             self.ui += BattleMessage.new_come_back(self.battle.p1_fighters[0].name).map_battle_ui(self.battle, True)
         else:
@@ -1745,19 +1900,31 @@ class BattleWithUI:
         tmp_battle_ui = BattleUI(self.ui[-1].battle_message)
 
         if is_real_p1:
-            tmp_battle_ui.p2_poke_name = self.battle.p2_fighters[0].name
+            tmp_battle_ui.p2_poke_name = self.battle.p1_fighters[0].name
             tmp_battle_ui.p2_level = DEFAULT_LEVEL
-            tmp_battle_ui.p2_gender = self.battle.p2_fighters[0].gender
-            tmp_battle_ui.p2_max_hp = self.battle.p2_fighters[0].max_hp
-            tmp_battle_ui.p2_current_hp = self.battle.p2_fighters[0].current_hp
+            tmp_battle_ui.p2_gender = self.battle.p1_fighters[0].gender
+            tmp_battle_ui.p2_max_hp = self.battle.p1_fighters[0].max_hp
+            tmp_battle_ui.p2_current_hp = self.battle.p1_fighters[0].current_hp
         else:
-            tmp_battle_ui.p1_poke_name = self.battle.p1_fighters[0].name
+            tmp_battle_ui.p1_poke_name = self.battle.p2_fighters[0].name
             tmp_battle_ui.p1_level = DEFAULT_LEVEL
-            tmp_battle_ui.p1_gender = self.battle.p1_fighters[0].gender
-            tmp_battle_ui.p1_max_hp = self.battle.p1_fighters[0].max_hp
-            tmp_battle_ui.p1_current_hp = self.battle.p1_fighters[0].current_hp
+            tmp_battle_ui.p1_gender = self.battle.p2_fighters[0].gender
+            tmp_battle_ui.p1_max_hp = self.battle.p2_fighters[0].max_hp
+            tmp_battle_ui.p1_current_hp = self.battle.p2_fighters[0].current_hp
 
         self.ui.append(tmp_battle_ui)
+
+        if is_real_p1:
+            go_message = BattleMessage.new_go(poke_name)
+        else:
+            go_message = BattleMessage.new_sent_out(poke_name)
+
+        for battle_msg in go_message:
+            tmp = copy.deepcopy(tmp_battle_ui)
+            tmp.battle_message = battle_msg
+            self.ui.append(tmp)
+
+        tmp_p1_fighters = copy.deepcopy(self.battle.p1_fighters)
 
         if index == 1:
             self.battle.p1_fighters[0] = tmp_p1_fighters[1]
@@ -1768,15 +1935,11 @@ class BattleWithUI:
             self.battle.p1_fighters[1] = tmp_p1_fighters[1]
             self.battle.p1_fighters[2] = tmp_p1_fighters[0]
 
-        if is_real_p1:
-            self.ui += BattleMessage.new_go(poke_name).map_battle_ui(self.battle, True)
-        else:
-            self.ui += BattleMessage.new_sent_out(poke_name).map_battle_ui(self.battle, False)
         self.ui.append(self.battle.to_ui(self.ui[-1].battle_message, is_real_p1))
         return self
 
     def p1_action(self, command):
-        if command in ALL_MOVE_NAMES:
+        if command in ALL_MOVE_NAMES + [STRUGGLE]:
             return self.move_use(command, True)
         elif command in ALL_POKE_NAMES:
             return self.switch(command, True)
@@ -1784,7 +1947,7 @@ class BattleWithUI:
 
     def p2_action(self, command):
         self.battle = self.battle.reverse()
-        if command in ALL_MOVE_NAMES:
+        if command in ALL_MOVE_NAMES + [STRUGGLE]:
             self = self.move_use(command, False)
             self.battle = self.battle.reverse()
             return self
@@ -1795,72 +1958,105 @@ class BattleWithUI:
         assert False, "アクションコマンドが不正"
 
     def turn_end(self):
-        def p1_first(battle, turn_end_f):
-            self = turn_end_f(self, True)
-            self.battle = battle.reverse()
-            self = turn_end_f(self, False)
-            self.battle = self.battle.reverse()
-            return self
+        def p1_first(bwu, turn_end_f):
+            bwu = turn_end_f(bwu, True)
+            bwu.battle = bwu.battle.reverse()
+            bwu = turn_end_f(bwu, False)
+            bwu.battle = bwu.battle.reverse()
+            return bwu
 
-        def p2_first(self, turn_end_f):
-            self.battle = self.battle.reverse()
-            battle = turn_end_f(self, False)
-            self.battle = self.battle.reverse()
-            return turn_end_f(self, True)
+        def p2_first(bwu, turn_end_f):
+            bwu = copy.deepcopy(bwu)
+            bwu.battle = bwu.battle.reverse()
+            bwu = turn_end_f(bwu, False)
+            bwu.battle = bwu.battle.reverse()
+            return turn_end_f(bwu, True)
 
-        def run(self, turn_end_fs):
-            real_speed_winner = Winner.new_real_speed(self.battle)
+        def run(bwu, turn_end_fs):
+            real_speed_winner = Winner.new_real_speed(bwu.battle)
 
             for turn_end_f in turn_end_fs:
                 if real_speed_winner == WINNER_P1:
-                    self = p1_first(self, turn_end_f)
+                    bwu = p1_first(bwu, turn_end_f)
                 elif real_speed_winner == WINNER_P2:
-                    self = p2_first(self, turn_end_f)
+                    bwu = p2_first(bwu, turn_end_f)
                 else:
                     f = random.choice([p1_first, p2_first])
-                    self = f(self, turn_end_f)
-            return self
+                    bwu = f(self, turn_end_f)
+            return bwu
 
         self = run(self, [TurnEndWithUI.leftovers, TurnEndWithUI.black_sludge])
         self = run(self, [TurnEndWithUI.leech_seed])
         self = run(self, [TurnEndWithUI.bad_poison])
         return self
 
-    def push(self, action_commands):
+    def push(self, action):
         is_p1_only_switch_after_faint_phase = self.battle.is_p1_only_switch_after_faint_phase()
         is_p2_only_switch_after_faint_phase = self.battle.is_p2_only_switch_after_faint_phase()
 
         if is_p1_only_switch_after_faint_phase:
-            assert len(action_commands) == 1 and ("p1" in action_commands), "プレイヤー1のみが行動可能な状態で、不適なコマンドが渡された"
+            assert len(action) == 1 and ("p1" in action), "プレイヤー1のみが行動可能な状態で、不適なコマンドが渡された"
         elif is_p2_only_switch_after_faint_phase:
-            assert len(action_commands) == 1 and ("p2" in action_commands), "プレイヤー2のみが行動可能な状態で、不適なコマンドが渡された"
+            assert len(action) == 1 and ("p2" in action), "プレイヤー2のみが行動可能な状態で、不適なコマンドが渡された"
         else:
-            assert len(action_commands) == 2 and ("p1" in action_commands) and ("p2" in action_commands), \
+            assert len(action) == 2 and ("p1" in action) and ("p2" in action), \
                 "両プレイヤーが行動可能な状態で、不適なコマンドが渡された"
 
         if is_p1_only_switch_after_faint_phase:
-            return self.p1_action(action_commands["p1"])
+            return self.p1_action(action["p1"])
         elif is_p2_only_switch_after_faint_phase:
-            return self.p2_action(action_commands["p2"])
+            return self.p2_action(action["p2"])
         elif self.battle.is_p1_and_p2_switch_after_faint_phase():
-            self = self.p1_action(action_commands["p1"])
-            self = self.p2_action(action_commands["p2"])
+            self = self.p1_action(action["p1"])
+            self = self.p2_action(action["p2"])
             return self
 
-        final_priority = Winner.new_final_priority(self.battle, action_commands["p1"], action_commands["p2"])
+        final_priority = Winner.new_final_priority(self.battle, action["p1"], action["p2"])
 
-        if final_priority == WINNER_P1:
-            is_p1_actions = [True, False]
-        else:
-            is_p1_actions = [False, True]
-
-        for is_p1_action in is_p1_actions:
+        for is_p1_action in {True:[True, False], False:[False, True]}[final_priority == WINNER_P1]:
             if is_p1_action:
-                self = self.p1_action(action_commands["p1"])
+                self = self.p1_action(action["p1"])
             else:
-                self = self.p2_action(action_commands["p2"])
+                self = self.p2_action(action["p2"])
 
+            if self.battle.p1_fighters[0].is_faint():
+                self.ui += BattleMessage.new_faint(self.battle.p1_fighters[0].name, True).map_battle_ui(self.battle, True)
+
+            if self.battle.p2_fighters[0].is_faint():
+                self.ui += BattleMessage.new_faint(self.battle.p2_fighters[0].name, True).map_battle_ui(self.battle, True)
         return self.turn_end()
+
+    def one_game(self, p1_trainer, p2_trainer):
+        s = []
+        ui = []
+        a = []
+        while True:
+            if self.battle.is_p1_and_p2_phase():
+                p1_action_command = p1_trainer(self.battle)
+                p2_action_command = p2_trainer(self.battle.reverse())
+                action = {"p1":p1_action_command, "p2":p2_action_command}
+            elif self.battle.is_p1_only_switch_after_faint_phase():
+                action = {"p1":p1_trainer(self.battle)}
+            else:
+                action = {"p2":p2_trainer(self.battle.reverse())}
+
+            s.append(self.battle)
+            a.append(action)
+            self = self.push(action)
+
+            if self.battle.is_game_end():
+                ui = self.ui
+                break
+
+        is_p1_all_faint = self.battle.p1_fighters.is_all_faint()
+        is_p2_all_faint = self.battle.p2_fighters.is_all_faint()
+
+        if is_p1_all_faint and is_p2_all_faint:
+            return s, ui, a, DRAW
+        elif is_p1_all_faint:
+            return s, ui, a, WINNER_P2
+        else:
+            return s, ui, a, WINNER_P1
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEndWithUI:
@@ -1876,9 +2072,10 @@ class TurnEndWithUI:
             return bwu
 
         heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
+        heal = max([heal, 1])
         bwu = bwu.heal(heal, is_real_p1)
-        self.ui += BattleMessage.new_leftovers(bwu.battle.p1_fighters[0].name, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
-        return self
+        bwu.ui += BattleMessage.new_leftovers(bwu.battle.p1_fighters[0].name, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        return bwu
 
     @staticmethod
     def black_sludge(bwu, is_real_p1):
@@ -1889,11 +2086,15 @@ class TurnEndWithUI:
             return bwu
 
         if POISON in bwu.battle.p1_fighters[0].types:
+            if bwu.battle.p1_fighters[0].is_full_hp():
+                return bwu
             heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
+            heal = max([heal, 1])
             bwu = bwu.heal(heal, is_real_p1)
             is_heal = True
         else:
-            damage = int(float(battle.p1_fighters[0].max_hp) * 1.0 / 8.0)
+            damage = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 8.0)
+            damage = max([damage, 1])
             bwu = bwu.damage(damage, is_real_p1)
             is_heal = False
 
@@ -1912,6 +2113,7 @@ class TurnEndWithUI:
             return bwu
 
         damage = int(float(bwu.battle.p2_fighters[0].max_hp) * 1.0 / 8.0)
+        damage = max([damage, 1])
         heal = damage
 
         bwu.battle = bwu.battle.reverse()
@@ -1933,11 +2135,9 @@ class TurnEndWithUI:
             bwu.battle.p1_fighters[0].bad_poison_elapsed_turn += 1
 
         damage = int(float(bwu.battle.p1_fighters[0].max_hp) * float(bwu.battle.p1_fighters[0].bad_poison_elapsed_turn) / 16.0)
-        if damage < 1:
-            damage = 1
-
-        bwu = BattleWithUI.damage(damage, is_real_p1)
-        bwu.ui += BattleMessage.new_bad_poison_damage(bwu.battle.p1_fighters[0].name).map_battle_ui(bwu.battle, is_real_p1)
+        damage = max([damage, 1])
+        bwu = bwu.damage(damage, is_real_p1)
+        bwu.ui += BattleMessage.new_bad_poison_damage(bwu.battle.p1_fighters[0].name, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
 class StatusMoveWithUI:
@@ -1945,50 +2145,53 @@ class StatusMoveWithUI:
     def half_heal(bwu, is_real_p1):
         heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 2.0)
         bwu = bwu.heal(heal, is_real_p1)
-        bwu.ui += BattleMessage.new_after_half_heal(bwu.battle.p1_fighters[0], is_real_p1)
+        bwu.ui += BattleMessage.new_after_half_heal(bwu.battle.p1_fighters[0].name, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
     @staticmethod
     def swords_dance(bwu, is_real_p1):
         bwu = copy.deepcopy(bwu)
-        atk_rank_fluctuation_v = 2
-        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(bwu.battle.p1_fighters[0].atk_rank, atk_rank_fluctuation_v)
-        bwu.ui = BattleMessage.new_rank_fluctuation(bwu.battle.p1_fighters[0].name, "攻撃", atk_rank_fluctuation_v, is_real_p1)
+        atk_rank_up = 2
+        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].atk_rank, atk_rank_up)
+        bwu.ui += BattleMessage.new_rank_up_down(bwu.battle.p1_fighters[0].name, "攻撃", atk_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
     @staticmethod
     def shell_smash(bwu, is_real_p1):
         bwu = copy.deepcopy(bwu)
 
-        atk_rank_fluctuation_v = 2
-        sp_atk_rank_fluctuation_v = 2
-        speed_rank_fluctuation_v = 2
-        def_rank_fluctuation_v = -1
-        sp_def_rank_fluctuation_v = -1
+        atk_rank_up = 2
+        sp_atk_rank_up = 2
+        speed_rank_up = 2
+        def_rank_down = -1
+        sp_def_rank_down = -1
 
-        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].atk_rank, atk_rank_fluctuation_v)
-        bwu.battle.p1_fighters[0].sp_atk_rank += get_real_rank_fluctuation(battle.p1_fighters[0].sp_atk_rank, sp_atk_rank_fluctuation_v)
-        bwu.battle.p1_fighters[0].speed_rank += get_real_rank_fluctuation(battle.p1_fighters[0].speed_rank, speed_rank_fluctuation_v)
-        bwu.battle.p1_fighters[0].def_rank += get_real_rank_fluctuation(battle.p1_fighters[0].def_rank, def_rank_fluctuation_v)
-        bwu.battle.p1_fighters[0].sp_def_rank += get_real_rank_fluctuation(battle.p1_fighters[0].sp_def_rank, sp_def_rank_fluctuation_v)
+        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].atk_rank, atk_rank_up)
+        bwu.battle.p1_fighters[0].sp_atk_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].sp_atk_rank, sp_atk_rank_up)
+        bwu.battle.p1_fighters[0].speed_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].speed_rank, speed_rank_up)
+        bwu.battle.p1_fighters[0].def_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].def_rank, def_rank_down)
+        bwu.battle.p1_fighters[0].sp_def_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].sp_def_rank, sp_def_rank_down)
 
         poke_name = bwu.battle.p1_fighters[0].name
-        bwu.ui = BattleMessage.new_rank_fluctuation(poke_name, "攻撃", atk_rank_fluctuation_v, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_fluctuation(poke_name, "特攻", sp_atk_rank_fluctuation_v, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_fluctuation(poke_name, "素早さ", speed_rank_fluctuation_v, is_real_p1).map_battle_uis(bwu.battle, is_real_p1)
-        bwu.ui +- BattleMessage.new_rank_fluctuation(poke_name, "防御", def_rank_fluctuation_v, is_real_p1).map_battle_uis(bwu.battle, is_real_p1)
-        bwu.ui +- BattleMessage.new_rank_fluctuation(poke_name, "特防", sp_def_rank_fluctuation_v, is_real_p1).map_battle_uis(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "特攻", sp_atk_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "防御", def_rank_down, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "特防", sp_def_rank_down, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
     @staticmethod
     def dragon_dance(bwu, is_real_p1):
         bwu = copy.deepcopy(bwu)
-        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_fluctuation(bwu.battle.p1_fighters[0].atk_rank, 1)
-        bwu.battle.p1_fighters[0].speed_rank += get_real_rank_fluctuation(bwu.battle.p1_fighters[0].speed_rank, 1)
+        atk_rank_up = 1
+        speed_rank_up = 1
+
+        bwu.battle.p1_fighters[0].atk_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].atk_rank, atk_rank_up)
+        bwu.battle.p1_fighters[0].speed_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].speed_rank, speed_rank_up)
 
         poke_name = bwu.battle.p1_fighters[0].name
-        bwu.ui += BattleMessage.new_rank_fluctuation(poke_name, atk_rank_fluctuation_v, is_real_p1).map_battle_ui(battle, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_fluctuation(poke_name, speed_rank_fluctuation_v, is_real_p1).map_battle_ui(battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
     @staticmethod
@@ -2001,7 +2204,7 @@ class StatusMoveWithUI:
 
         bwu = copy.deepcopy(bwu)
         bwu.battle.p2_fighters[0].status_ailment = BAD_POISON
-        bwu.ui += BattleMessage.new_bad_poison(bwu.battle.p2_fighters[0].name, not is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
+        bwu.ui += BattleMessage.new_bad_poisoned(bwu.battle.p2_fighters[0].name, not is_real_p1).map_battle_ui(bwu.battle, is_real_p1)
         return bwu
 
     @staticmethod
@@ -2021,3 +2224,8 @@ STATUS_MOVES_WITH_UI = {
     "どくどく":StatusMoveWithUI.toxic,
     "やどりぎのタネ":StatusMoveWithUI.leech_seed,
 }
+
+assert set(STATUS_MOVES.keys()) == set(STATUS_MOVES_WITH_UI.keys())
+
+IMPLEMENTED_MOVE_NAMES = [move_name for move_name in ALL_MOVE_NAMES \
+                          if MOVEDEX[move_name].category != STATUS or move_name in HALF_HEAL_MOVE_NAMES or move_name in STATUS_MOVES]

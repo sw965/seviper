@@ -1,4 +1,5 @@
 import unittest
+import random
 import seviper
 
 class Pokemon(unittest.TestCase):
@@ -42,7 +43,7 @@ class Battle(unittest.TestCase):
                        seviper.TEMPLATE_POKEMONS["リザードン"],
                        seviper.TEMPLATE_POKEMONS["フシギバナ"]]
 
-        test_num = 1920
+        test_num = 1
 
         def test1():
             battle = seviper.Battle(p1_fighters, p2_fighters)
@@ -71,13 +72,9 @@ class Battle(unittest.TestCase):
             self.assertEqual(p2_min_current_hp_result, 9)
             self.assertEqual(p2_max_current_hp_result, 71)
 
-        def test2():
-            ...
-
-
         test1()
 
-    def test_final_damage_probability_distribution(self):
+    def test_all_damage_probability_distribution(self):
         p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
                        seviper.TEMPLATE_POKEMONS["リザードン"],
                        seviper.TEMPLATE_POKEMONS["カメックス"]]
@@ -138,6 +135,49 @@ class Battle(unittest.TestCase):
         """p2のリザードンからp1のリザードンへのダメージ確率分布"""
         damages = [0, 86, 87, 90, 91, 94, 95, 97, 99, 101, 129, 130, 133, 134, 136, 138, 140, 142, 144, 146, 148, 149, 152]
         helper(p2_attack_dpd, damages, 1, 1, "エアスラッシュ")
+
+class BattleWithUI(unittest.TestCase):
+    def test(self):
+        def random_trainer(battle):
+            return random.choice(battle.p1_fighters.legal_action_commands())
+
+        game_num = 1280
+
+        for i in range(game_num):
+            init_battle = seviper.Battle(seviper.Fighters.new_rate_random(), seviper.Fighters.new_rate_random())
+
+            if random.choice([True, False]):
+                init_battle.p1_fighters[0].current_hp //= random.choice([2, 3])
+                init_battle.p1_fighters[1].current_hp //= random.choice([2, 3])
+                init_battle.p1_fighters[2].current_hp //= random.choice([2, 3])
+
+            if random.choice([True, False]):
+                init_battle.p2_fighters[0].current_hp //= random.choice([2, 3])
+                init_battle.p2_fighters[1].current_hp //= random.choice([2, 3])
+                init_battle.p2_fighters[2].current_hp //= random.choice([2, 3])
+
+            init_battle_with_ui = init_battle.to_with_ui()
+            seed = random.randint(0, 100000)
+
+            random.seed(seed)
+            s, a, winner = init_battle.one_game(random_trainer, random_trainer)
+
+            random.seed(seed)
+            s_, ui, a_, winner_ = init_battle_with_ui.one_game(random_trainer, random_trainer)
+
+            for j, battle in enumerate(s):
+                battle_ = s_[j]
+                if battle != battle_:
+                    print(battle, battle_,
+                          battle.p1_fighters[0].item, battle_.p1_fighters[0].item,
+                          battle.p2_fighters[0].item, battle_.p2_fighters[0].item)
+                    for e in ui:
+                        print(e)
+                self.assertTrue(battle == battle_)
+
+            self.assertEqual(a, a_)
+            self.assertEqual(winner, winner_)
+            print(i)
 
 if __name__ == "__main__":
     unittest.main()
