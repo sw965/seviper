@@ -881,7 +881,9 @@ class Battle:
         return result
 
     def reverse(self):
+        turn_num = self.turn_num
         battle = Battle(self.p2_fighters, self.p1_fighters)
+        battle.turn_num = turn_num
         return battle
 
     def real_accuracy(self, move_name):
