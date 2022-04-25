@@ -46,7 +46,7 @@ class Battle(unittest.TestCase):
         test_num = 1
 
         def test1():
-            battle = seviper.Battle(p1_fighters, p2_fighters)
+            battle = seviper.Battle(seviper.Fighters(p1_fighters), seviper.Fighters(p2_fighters))
             results = [battle.push({"p1":"ギガドレイン", "p2":"なみのり"}) for _ in range(test_num)]
 
             p1_expected_damages = [23, 24, 25, 26, 27, 34, 35, 36, 37, 38, 39, 40, 41]
@@ -156,6 +156,9 @@ class BattleWithUI(unittest.TestCase):
                 init_battle.p2_fighters[1].current_hp //= random.choice([2, 3])
                 init_battle.p2_fighters[2].current_hp //= random.choice([2, 3])
 
+            init_battle.p1_fighters[0].item = "くろいヘドロ"
+            init_battle.p2_fighters[0].item = "くろいヘドロ"
+
             init_battle_with_ui = init_battle.to_with_ui()
             seed = random.randint(0, 100000)
 
@@ -168,14 +171,21 @@ class BattleWithUI(unittest.TestCase):
             for j, battle in enumerate(s):
                 battle_ = s_[j]
                 if battle != battle_:
-                    print(battle, battle_,
-                          battle.p1_fighters[0].item, battle_.p1_fighters[0].item,
-                          battle.p2_fighters[0].item, battle_.p2_fighters[0].item)
+                    print("battle")
+                    print(battle)
+                    print("battle_")
+                    print(battle_)
                     for e in ui:
-                        print(e)
+                        print(e, "\n")
                 self.assertTrue(battle == battle_)
 
             self.assertEqual(a, a_)
+
+            if winner != winner_:
+                print(winner.is_p1, winner.is_p2, winner_.is_p1, winner_.is_p2)
+                for e in ui:
+                    print(e)
+                    print("")
             self.assertEqual(winner, winner_)
             print(i)
 
