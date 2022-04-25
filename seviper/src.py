@@ -854,6 +854,7 @@ class Battle:
     def __init__(self, p1_fighters, p2_fighters):
         self.p1_fighters = p1_fighters
         self.p2_fighters = p2_fighters
+        self.turn_num = 1
 
     def __eq__(self, battle):
         if self.p1_fighters != battle.p1_fighters:
@@ -1134,7 +1135,9 @@ class Battle:
         if self.is_game_end():
             return self
 
-        return self.turn_end()
+        self = self.turn_end()
+        self.turn_num += 1
+        return self
 
     def is_game_end(self):
         return self.p1_fighters.is_all_faint() or self.p2_fighters.is_all_faint()
