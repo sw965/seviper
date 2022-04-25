@@ -1256,21 +1256,31 @@ class Battle:
                     for move_name in attack_pokemon.padding_sorted_move_names():
                         data = dpd[key][attack_i][defense_i][move_name]
                         if move_name == "なし":
-                            max_hp_expected_percent = -1.0
-                            current_hp_expected_percent = -1.0
+                            max_hp_expected_damage_percent = -1.0
+                            current_hp_expected_damage_percent = -1.0
                             status_move_feature_v = -1.0
                         if None in data:
-                            max_hp_expected_percent = 0.0
-                            current_hp_expected_percent = 0.0
+                            max_hp_expected_damage_percent = 0.0
+                            current_hp_expected_damage_percent = 0.0
                             status_move_feature_v = 1.0
                         else:
-                            expected_value = sum(damage * percent for damage, percent in dpd[key][attack_i][defense_i][move_name].items())
-                            max_hp_expected_percent = expected_value / float(defense_pokemon.max_hp)
-                            current_hp_expected_percent = expected_value / float(defense_pokemon.current_hp)
+                            expected_damage = sum(damage * percent for damage, percent in dpd[key][attack_i][defense_i][move_name].items())
+                            if defense_pokemon.max_hp < expected_damage:
+                                max_hp_expected_damage_percent = 1.0
+                            else:
+                                max_hp_expected_damage_percent = expected_damage / float(defense_pokemon.max_hp)
+
+                            if defense_pokemon.current_hp < expected_damage:
+                                current_hp_expected_damage_percent = 1.0
+                            elif defense_pokemon.current_hp <= 0:
+                                current_hp_expected_damage_percent = 1.0
+                            else:
+                                current_hp_expected_damage_percent = expected_damage / float(defense_pokemon.current_hp)
+
                             status_move_feature_v = 0.0
 
-                        result.append(max_hp_expected_percent)
-                        result.append(current_hp_expected_percent)
+                        result.append(max_hp_expected_damage_percent)
+                        result.append(current_hp_expected_damage_percent)
                         result.append(status_move_feature_v)
             return result
 
