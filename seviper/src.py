@@ -1145,6 +1145,7 @@ class Battle:
         return self.p1_fighters.is_all_faint() or self.p2_fighters.is_all_faint()
 
     def playout(self, p1_trainer, p2_trainer):
+        assert not self.is_game_end()
         self = copy.deepcopy(self)
         while True:
             if self.is_p1_and_p2_phase():
@@ -1172,6 +1173,7 @@ class Battle:
             return WINNER_P1
 
     def one_game(self, p1_trainer, p2_trainer):
+        assert not self.is_game_end()
         self = copy.deepcopy(self)
         s = []
         a = []
