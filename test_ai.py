@@ -2,25 +2,36 @@ import seviper
 import numpy as np
 import pprint
 import random
+import boa
+import copy
 
 p1_fighters = seviper.Fighters(
-    [seviper.TEMPLATE_POKEMONS["フシギバナ"],
-     seviper.TEMPLATE_POKEMONS["リザードン"],
-     seviper.TEMPLATE_POKEMONS["カメックス"]]
+    [seviper.TEMPLATE_POKEMONS["フシギバナ"](),
+     seviper.TEMPLATE_POKEMONS["リザードン"](),
+     seviper.TEMPLATE_POKEMONS["カメックス"]()]
 )
 
 p2_fighters = seviper.Fighters(
-    [seviper.TEMPLATE_POKEMONS["フシギバナ"],
-     seviper.TEMPLATE_POKEMONS["リザードン"],
-     seviper.TEMPLATE_POKEMONS["カメックス"]]
+    [seviper.TEMPLATE_POKEMONS["フシギバナ"](),
+     seviper.TEMPLATE_POKEMONS["リザードン"](),
+     seviper.TEMPLATE_POKEMONS["カメックス"]()]
 )
 
 init_battle = seviper.Battle(p1_fighters, p2_fighters)
-print(38 * 38)
-print(init_battle.to_feature_array_3d().shape)
-# def random_trainer(battle):
-#     return random.choice(battle.p1_fighters.legal_action_commands())
-#
+
+def random_trainer(battle):
+    return random.choice(battle.p1_fighters.legal_action_commands())
+
+battle_with_ui = init_battle.to_with_ui()
+s, a, ui_history, winner = battle_with_ui.one_game(random_trainer, random_trainer)
+boa.dump_pickle(ui_history, "C:/Python35/pyckage/seviper/text.pkl")
+
+
+s = ""
+for ui in ui_history:
+    print(ui)
+
+
 # game_num = 512
 # win_count = 0
 # draw_count = 0

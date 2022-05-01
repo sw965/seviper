@@ -4,7 +4,7 @@ import seviper
 
 class Pokemon(unittest.TestCase):
     def test_template_venusaur(self):
-        venusaur = seviper.TEMPLATE_POKEMONS["フシギバナ"]
+        venusaur = seviper.TEMPLATE_POKEMONS["フシギバナ"]()
         self.assertEqual(venusaur.max_hp, 187)
         self.assertEqual(venusaur.atk, 91)
         self.assertEqual(venusaur.defe, 103)
@@ -15,7 +15,7 @@ class Pokemon(unittest.TestCase):
         self.assertEqual(venusaur.moveset["ギガドレイン"].max, 16)
 
     def test_template_charizard(self):
-        charizard = seviper.TEMPLATE_POKEMONS["リザードン"]
+        charizard = seviper.TEMPLATE_POKEMONS["リザードン"]()
         self.assertEqual(charizard.speed, 167)
         self.assertEqual(charizard.max_hp, 154)
         self.assertEqual(charizard.atk, 93)
@@ -25,7 +25,7 @@ class Pokemon(unittest.TestCase):
         self.assertEqual(charizard.moveset["オーバーヒート"].max, 8)
 
     def test_template_blastoise(self):
-        blastoise = seviper.TEMPLATE_POKEMONS["カメックス"]
+        blastoise = seviper.TEMPLATE_POKEMONS["カメックス"]()
         self.assertEqual(blastoise.max_hp, 155)
         self.assertEqual(blastoise.atk, 92)
         self.assertEqual(blastoise.defe, 120)
@@ -36,12 +36,12 @@ class Pokemon(unittest.TestCase):
 
 class Battle(unittest.TestCase):
     def test_damage(self):
-        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
-                       seviper.TEMPLATE_POKEMONS["リザードン"],
-                       seviper.TEMPLATE_POKEMONS["カメックス"]]
-        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"],
-                       seviper.TEMPLATE_POKEMONS["リザードン"],
-                       seviper.TEMPLATE_POKEMONS["フシギバナ"]]
+        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"](),
+                       seviper.TEMPLATE_POKEMONS["リザードン"](),
+                       seviper.TEMPLATE_POKEMONS["カメックス"]()]
+        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"](),
+                       seviper.TEMPLATE_POKEMONS["リザードン"](),
+                       seviper.TEMPLATE_POKEMONS["フシギバナ"]()]
 
         test_num = 1
 
@@ -75,12 +75,12 @@ class Battle(unittest.TestCase):
         test1()
 
     def test_all_damage_probability_distribution(self):
-        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"],
-                       seviper.TEMPLATE_POKEMONS["リザードン"],
-                       seviper.TEMPLATE_POKEMONS["カメックス"]]
-        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"],
-                       seviper.TEMPLATE_POKEMONS["リザードン"],
-                       seviper.TEMPLATE_POKEMONS["フシギバナ"]]
+        p1_fighters = [seviper.TEMPLATE_POKEMONS["フシギバナ"](),
+                       seviper.TEMPLATE_POKEMONS["リザードン"](),
+                       seviper.TEMPLATE_POKEMONS["カメックス"]()]
+        p2_fighters = [seviper.TEMPLATE_POKEMONS["カメックス"](),
+                       seviper.TEMPLATE_POKEMONS["リザードン"](),
+                       seviper.TEMPLATE_POKEMONS["フシギバナ"]()]
 
         battle = seviper.Battle(p1_fighters, p2_fighters)
         all_dpd = battle.all_damage_probability_distribution()
@@ -166,7 +166,7 @@ class BattleWithUI(unittest.TestCase):
             s, a, winner = init_battle.one_game(random_trainer, random_trainer)
 
             random.seed(seed)
-            s_, ui, a_, winner_ = init_battle_with_ui.one_game(random_trainer, random_trainer)
+            s_, a_, ui_history, winner_ = init_battle_with_ui.one_game(random_trainer, random_trainer)
 
             for j, battle in enumerate(s):
                 battle_ = s_[j]
@@ -175,16 +175,16 @@ class BattleWithUI(unittest.TestCase):
                     print(battle)
                     print("battle_")
                     print(battle_)
-                    for e in ui:
-                        print(e, "\n")
+                    for ui in ui_history:
+                        print(ui, "\n")
                 self.assertTrue(battle == battle_)
 
             self.assertEqual(a, a_)
 
             if winner != winner_:
                 print(winner.is_p1, winner.is_p2, winner_.is_p1, winner_.is_p2)
-                for e in ui:
-                    print(e)
+                for ui in ui_history:
+                    print(ui)
                     print("")
             self.assertEqual(winner, winner_)
             print(i)

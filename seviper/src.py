@@ -590,11 +590,11 @@ def new_garchomp():
     return result
 
 TEMPLATE_POKEMONS = {
-    "フシギバナ":new_venusaur(),
-    "リザードン":new_charizard(),
-    "カメックス":new_blastoise(),
-    "ギャラドス":new_gyarados(),
-    "ガブリアス":new_garchomp()
+    "フシギバナ":new_venusaur,
+    "リザードン":new_charizard,
+    "カメックス":new_blastoise,
+    "ギャラドス":new_gyarados,
+    "ガブリアス":new_garchomp
 }
 
 class Team(list):
@@ -1146,7 +1146,7 @@ class Battle:
 
     def playout(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
-        self = copy.deepcopy(self)
+
         while True:
             if self.is_p1_and_p2_phase():
                 p1_action_command = p1_trainer(self)
@@ -1174,9 +1174,9 @@ class Battle:
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
-        self = copy.deepcopy(self)
         s = []
         a = []
+
         while True:
             if self.is_p1_and_p2_phase():
                 p1_action_command = p1_trainer(self)
@@ -1331,6 +1331,12 @@ class Battle:
 
     def to_with_ui(self):
         return BattleWithUI(self)
+
+    def new_checkmate_battle():
+        def new_one_on_one():
+            battle = Battle(Fighters.new_rate_random(), Fighters.new_rate_random())
+            s, a, winner = battle.one_game(Trainer.random(), Trainer.random())
+
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
@@ -1557,6 +1563,11 @@ STATUS_MOVES = {
     "やどりぎのタネ":StatusMove.leech_seed,
 }
 
+class Trainer:
+    @staticmethod
+    def random(battle):
+        return random.choice(battle.p1_fighters[0].legal_action_commands())
+
 class BattleUI:
     def __init__(self, battle_message):
         self.real_p1_poke_name = None
@@ -1628,7 +1639,7 @@ class BattleUI:
                + "\n" \
                + real_p2_poke_name + " " + str_real_p2_level + " " + real_p2_gender + " " + str_real_p2_current_hp + "/" + str_real_p2_max_hp \
                + "\n" \
-               + self.battle_message
+               + self.battle_message + "\n"
         return result
 
 OF_SELF = {True:"", False:"相手の "}
@@ -1749,7 +1760,6 @@ CRITICAL_BATTLE_MESSAGE = BattleMessage("急所 に 当たった！")
 class BattleWithUI:
     def __init__(self, battle):
         self.battle = battle
-        self.ui = []
         self.hide_real_p1_ui = False
         self.hide_real_p2_ui = False
 
@@ -1783,38 +1793,46 @@ class BattleWithUI:
         ui.battle_message = battle_message
         return ui
 
-    def damage(self, damage_v, is_real_p1):
+    def damage(self, damage_v, is_real_p1, ui_history):
         assert damage_v > 0
         damage_v = min([self.battle.p1_fighters[0].current_hp, damage_v])
-        battle_message = self.ui[-1].battle_message
-        for _ in range(damage_v):
-            self = copy.deepcopy(self)
-            self.battle.p1_fighters[0].current_hp -= 1
-            self.ui.append(self.to_ui(battle_message, is_real_p1))
-        return self
+        battle_message = ui_history[-1].battle_message
+        selfs = [copy.deepcopy(self) for _ in range(damage_v)]
+        for i in range(damage_v):
+            selfs[i].battle.p1_fighters[0].current_hp -= (i + 1)
+            ui_history.append(selfs[i].to_ui(battle_message, is_real_p1))
 
-    def heal(self, heal_v, is_real_p1):
+        if len(selfs) == 0:
+            return self
+        else:
+            return selfs[-1]
+
+    def heal(self, heal_v, is_real_p1, ui_history):
         assert heal_v > 0
         heal_v = min([self.battle.p1_fighters[0].current_damage(), heal_v])
-        battle_message = self.ui[-1].battle_message
-        for _ in range(heal_v):
-            self = copy.deepcopy(self)
-            self.battle.p1_fighters[0].current_hp += 1
-            self.ui.append(self.to_ui(battle_message, is_real_p1))
-        return self
+        battle_message = ui_history[-1].battle_message
+        selfs = [copy.deepcopy(self) for _ in range(heal_v)]
+        for i in range(heal_v):
+            selfs[i].battle.p1_fighters[0].current_hp += (i + 1)
+            ui_history.append(selfs[i].to_ui(battle_message, is_real_p1))
 
-    def move_use(self, move_name, is_real_p1):
+        if len(selfs) == 0:
+            return self
+        else:
+            return selfs[-1]
+
+    def move_use(self, move_name, is_real_p1, ui_history):
         if self.battle.p1_fighters[0].is_faint():
             return self
 
-        self = copy.deepcopy(self)
         p1_poke_name = self.battle.p1_fighters[0].name
         p2_poke_name = self.battle.p2_fighters[0].name
         move_use_battle_message = BattleMessage.new_move_use(p1_poke_name, move_name, is_real_p1)
 
         if move_name == STRUGGLE:
-            self.ui += move_use_battle_message.apply_bwu(self, is_real_p1)
-            self = self.damage(self.battle.p1_fighters[0].current_hp, is_real_p1)
+            for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
+                ui_history.append(ui)
+            self = self.damage(self.battle.p1_fighters[0].current_hp, is_real_p1, ui_history)
             return self
 
         assert move_name in self.battle.p1_fighters[0].moveset, \
@@ -1824,38 +1842,48 @@ class BattleWithUI:
             p1_poke_name + " は " + move_name + " を繰り出そうとしたが、PPがない"
 
         move_data = MOVEDEX[move_name]
+        self = copy.deepcopy(self)
         self.battle.p1_fighters[0].moveset[move_name].current -= 1
 
         if self.battle.p2_fighters[0].is_faint():
             if move_data.target != "自分":
-                self.ui += move_use_battle_message.apply_bwu(self, is_real_p1)
-                self.ui += FAILURE_BATTLE_MESSAGE.apply_bwu(self, is_real_p1)
+                for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
+                    ui_history.append(ui)
+
+                for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(self, is_real_p1):
+                    ui_history.append(ui)
                 return self
 
         if move_name not in MAX_THREE_ATTACK_MOVE_NAMES:
             real_accuracy = self.battle.real_accuracy(move_name)
             if real_accuracy != -1:
                 if not is_hit(real_accuracy):
-                    self.ui += move_use_battle_message.apply_bwu(self, is_real_p1)
-                    self.ui += MISS_SHOT_BATTLE_MESSAGE.apply_bwu(self, is_real_p1)
+                    for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
+                        ui_history.append(ui)
+
+                    for ui in MISS_SHOT_BATTLE_MESSAGE.apply_bwu(self, is_real_p1):
+                        ui_history.append(ui)
                     return self
 
         if move_data.category == STATUS:
-            self.ui += move_use_battle_message.apply_bwu(self, is_real_p1)
+            for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
+                ui_history.append(ui)
 
             if move_name in HALF_HEAL_MOVE_NAMES:
-                return StatusMoveWithUI.half_heal(self, is_real_p1)
+                return StatusMoveWithUI.half_heal(self, is_real_p1, ui_history)
             elif move_name in STATUS_MOVES_WITH_UI:
-                return STATUS_MOVES_WITH_UI[move_name](self, is_real_p1)
+                return STATUS_MOVES_WITH_UI[move_name](self, is_real_p1, ui_history)
             else:
-                self.ui += FAILURE_BATTLE_MESSAGE.apply_bwu(self, is_real_p1)
+                for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(self, is_real_p1):
+                    ui_history.append(ui)
                 return self
 
         attack_num = self.battle.attack_num(move_name)
         if attack_num == 0:
             return self
 
-        self.ui += move_use_battle_message.apply_bwu(self, is_real_p1)
+        for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
+            ui_history.append(ui)
 
         for i in range(attack_num):
             final_damage_random_bonus = random.choice(FINAL_DAMAGE_RANDOM_BONUSES)
@@ -1867,11 +1895,12 @@ class BattleWithUI:
                 break
 
             self.battle = self.battle.reverse()
-            self = self.damage(final_damage, not is_real_p1)
+            self = self.damage(final_damage, not is_real_p1, ui_history)
             self.battle = self.battle.reverse()
 
             if is_critical:
-                self.ui += CRITICAL_BATTLE_MESSAGE.apply_bwu(self, is_real_p1)
+                for ui in CRITICAL_BATTLE_MESSAGE.apply_bwu(self, is_real_p1):
+                    ui_history.append(ui)
 
             if self.battle.p1_fighters[0].is_faint() or self.battle.p2_fighters[0].is_faint():
                 break
@@ -1887,7 +1916,8 @@ class BattleWithUI:
         else:
             effective_battle_message = BattleMessage("")
 
-        self.ui += effective_battle_message.apply_bwu(self, is_real_p1)
+        for ui in effective_battle_message.apply_bwu(self, is_real_p1):
+            ui_history.append(ui)
 
         if effectiveness_bonus == 0.0:
             return self
@@ -1895,11 +1925,12 @@ class BattleWithUI:
         if self.battle.p1_fighters[0].item == "いのちのたま":
             life_orb_damage = int(float(self.battle.p1_fighters[0].max_hp) * 1.0 / 10.0)
             life_orb_damage = max([life_orb_damage, 1])
-            self = self.damage(life_orb_damage, is_real_p1)
-            self.ui += BattleMessage.new_life_orb_damage(p1_poke_name, is_real_p1).apply_bwu(self, is_real_p1)
+            self = self.damage(life_orb_damage, is_real_p1, ui_history)
+            for ui in BattleMessage.new_life_orb_damage(p1_poke_name, is_real_p1).apply_bwu(self, is_real_p1):
+                ui_history.append(ui)
         return self
 
-    def switch(self, poke_name, is_real_p1):
+    def switch(self, poke_name, is_real_p1, ui_history):
         poke_names = [pokemon.name for pokemon in self.battle.p1_fighters]
         index = poke_names.index(poke_name)
 
@@ -1920,20 +1951,24 @@ class BattleWithUI:
 
         if not self.battle.p1_fighters[0].is_faint():
             if is_real_p1:
-                self.ui += BattleMessage.new_come_back(self.battle.p1_fighters[0].name).apply_bwu(self, True)
+                for ui in BattleMessage.new_come_back(self.battle.p1_fighters[0].name).apply_bwu(self, True):
+                    ui_history.append(ui)
                 self.hide_real_p1_ui = True
             else:
-                self.ui += BattleMessage.new_withdrew(self.battle.p1_fighters[0].name).apply_bwu(self, False)
+                for ui in BattleMessage.new_withdrew(self.battle.p1_fighters[0].name).apply_bwu(self, False):
+                    ui_history.append(ui)
                 self.hide_real_p2_ui = True
 
-            self.ui.append(self.to_ui(self.ui[-1].battle_message, is_real_p1))
+            ui_history.append(self.to_ui(ui_history[-1].battle_message, is_real_p1))
 
         if is_real_p1:
             go_message = BattleMessage.new_go(poke_name)
         else:
             go_message = BattleMessage.new_sent_out(poke_name)
 
-        self.ui += [self.to_ui(battle_msg, is_real_p1) for battle_msg in go_message]
+        for ui in [self.to_ui(battle_msg, is_real_p1) for battle_msg in go_message]:
+            ui_history.append(ui)
+
         tmp_p1_fighters = copy.deepcopy(self.battle.p1_fighters)
 
         if index == 1:
@@ -1950,43 +1985,43 @@ class BattleWithUI:
         else:
             self.hide_real_p2_ui = False
 
-        self.ui.append(self.to_ui(self.ui[-1].battle_message, is_real_p1))
+        ui_history.append(self.to_ui(ui_history[-1].battle_message, is_real_p1))
         return self
 
-    def p1_action(self, command):
+    def p1_action(self, command, ui_history):
         if command in ALL_MOVE_NAMES + [STRUGGLE]:
-            return self.move_use(command, True)
+            self = self.move_use(command, True, ui_history)
+            return self
         elif command in ALL_POKE_NAMES:
-            return self.switch(command, True)
+            return self.switch(command, True, ui_history)
         assert False, "アクションコマンドが不正"
 
-    def p2_action(self, command):
-        self = copy.deepcopy(self)
+    def p2_action(self, command, ui_history):
         self.battle = self.battle.reverse()
         if command in ALL_MOVE_NAMES + [STRUGGLE]:
-            self = self.move_use(command, False)
+            self = self.move_use(command, False, ui_history)
             self.battle = self.battle.reverse()
             return self
         elif command in ALL_POKE_NAMES:
-            self = self.switch(command, False)
+            self = self.switch(command, False, ui_history)
             self.battle = self.battle.reverse()
             return self
         assert False, "アクションコマンドが不正"
 
-    def turn_end(self):
+    def turn_end(self, ui_history):
         def p1_first(bwu, turn_end_f):
-            bwu = turn_end_f(bwu, True)
+            bwu = turn_end_f(bwu, True, ui_history)
             bwu.battle = bwu.battle.reverse()
-            bwu = turn_end_f(bwu, False)
+            bwu = turn_end_f(bwu, False, ui_history)
             bwu.battle = bwu.battle.reverse()
             return bwu
 
         def p2_first(bwu, turn_end_f):
             bwu = copy.deepcopy(bwu)
             bwu.battle = bwu.battle.reverse()
-            bwu = turn_end_f(bwu, False)
+            bwu = turn_end_f(bwu, False, ui_history)
             bwu.battle = bwu.battle.reverse()
-            bwu = turn_end_f(bwu, True)
+            bwu = turn_end_f(bwu, True, ui_history)
             return bwu
 
         def run(bwu, turn_end_fs):
@@ -2007,7 +2042,7 @@ class BattleWithUI:
         self = run(self, [TurnEndWithUI.bad_poison])
         return self
 
-    def push(self, action):
+    def push(self, action, ui_history):
         is_p1_only_switch_after_faint_phase = self.battle.is_p1_only_switch_after_faint_phase()
         is_p2_only_switch_after_faint_phase = self.battle.is_p2_only_switch_after_faint_phase()
 
@@ -2020,12 +2055,12 @@ class BattleWithUI:
                 "両プレイヤーが行動可能な状態で、不適なコマンドが渡された"
 
         if is_p1_only_switch_after_faint_phase:
-            return self.p1_action(action["p1"])
+            return self.p1_action(action["p1"], ui_history)
         elif is_p2_only_switch_after_faint_phase:
-            return self.p2_action(action["p2"])
+            return self.p2_action(action["p2"], ui_history)
         elif self.battle.is_p1_and_p2_switch_after_faint_phase():
-            self = self.p1_action(action["p1"])
-            self = self.p2_action(action["p2"])
+            self = self.p1_action(action["p1"], ui_history)
+            self = self.p2_action(action["p2"], ui_history)
             return self
 
         final_priority = Winner.new_final_priority(self.battle, action["p1"], action["p2"])
@@ -2035,28 +2070,28 @@ class BattleWithUI:
         def p1_faint(self):
             assert not self.hide_real_p1_ui
             nonlocal is_p1_faint
-            for e in BattleMessage.new_faint(self.battle.p1_fighters[0].name, True).apply_bwu(self, True):
-                self.ui.append(e)
+            for ui in BattleMessage.new_faint(self.battle.p1_fighters[0].name, True).apply_bwu(self, True):
+                ui_history.append(ui)
             is_p1_faint = True
             self.hide_real_p1_ui = True
-            self.ui.append(self.to_ui(self.ui[-1].battle_message, True))
+            ui_history.append(self.to_ui(ui_history[-1].battle_message, True))
 
         def p2_faint(self):
             assert not self.hide_real_p2_ui
             nonlocal is_p2_faint
             self.battle = self.battle.reverse()
-            for e in BattleMessage.new_faint(self.battle.p1_fighters[0].name, False).apply_bwu(self, False):
-                self.ui.append(e)
+            for ui in BattleMessage.new_faint(self.battle.p1_fighters[0].name, False).apply_bwu(self, False):
+                ui_history.append(ui)
             is_p2_faint = True
             self.hide_real_p2_ui = True
-            self.ui.append(self.to_ui(self.ui[-1].battle_message, False))
+            ui_history.append(self.to_ui(ui_history[-1].battle_message, False))
             self.battle = self.battle.reverse()
 
         for is_p1_action in {True:[True, False], False:[False, True]}[final_priority == WINNER_P1]:
             if is_p1_action:
-                self = self.p1_action(action["p1"])
+                self = self.p1_action(action["p1"], ui_history)
             else:
-                self = self.p2_action(action["p2"])
+                self = self.p2_action(action["p2"], ui_history)
 
             if self.battle.p1_fighters[0].is_faint() and not is_p1_faint:
                 p1_faint(self)
@@ -2067,7 +2102,7 @@ class BattleWithUI:
         if self.battle.is_game_end():
             return self
 
-        self = self.turn_end()
+        self = self.turn_end(ui_history)
 
         if self.battle.p1_fighters[0].is_faint() and not is_p1_faint:
             p1_faint(self)
@@ -2078,9 +2113,10 @@ class BattleWithUI:
         return self
 
     def one_game(self, p1_trainer, p2_trainer):
+        assert not self.battle.is_game_end()
         s = []
-        ui = []
         a = []
+        ui_history = []
         while True:
             if self.battle.is_p1_and_p2_phase():
                 p1_action_command = p1_trainer(self.battle)
@@ -2093,26 +2129,25 @@ class BattleWithUI:
 
             s.append(self.battle)
             a.append(action)
-            self = self.push(action)
+            self = self.push(action, ui_history)
 
             if self.battle.is_game_end():
-                ui = self.ui
                 break
 
         is_p1_all_faint = self.battle.p1_fighters.is_all_faint()
         is_p2_all_faint = self.battle.p2_fighters.is_all_faint()
 
         if is_p1_all_faint and is_p2_all_faint:
-            return s, ui, a, DRAW
+            return s, a, ui_history, DRAW
         elif is_p1_all_faint:
-            return s, ui, a, WINNER_P2
+            return s, a, ui_history, WINNER_P2
         else:
-            return s, ui, a, WINNER_P1
+            return s, a, ui_history, WINNER_P1
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEndWithUI:
     @staticmethod
-    def leftovers(bwu, is_real_p1):
+    def leftovers(bwu, is_real_p1, ui_history):
         if bwu.battle.p1_fighters[0].item != "たべのこし":
             return bwu
 
@@ -2124,12 +2159,13 @@ class TurnEndWithUI:
 
         heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
         heal = max([heal, 1])
-        bwu = bwu.heal(heal, is_real_p1)
-        bwu.ui += BattleMessage.new_leftovers(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1)
+        bwu = bwu.heal(heal, is_real_p1, ui_history)
+        for ui in BattleMessage.new_leftovers(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def black_sludge(bwu, is_real_p1):
+    def black_sludge(bwu, is_real_p1, ui_history):
         if bwu.battle.p1_fighters[0].item != "くろいヘドロ":
             return bwu
 
@@ -2141,19 +2177,20 @@ class TurnEndWithUI:
                 return bwu
             heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
             heal = max([heal, 1])
-            bwu = bwu.heal(heal, is_real_p1)
+            bwu = bwu.heal(heal, is_real_p1, ui_history)
             is_heal = True
         else:
             damage = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 8.0)
             damage = max([damage, 1])
-            bwu = bwu.damage(damage, is_real_p1)
+            bwu = bwu.damage(damage, is_real_p1, ui_history)
             is_heal = False
 
-        bwu.ui += BattleMessage.new_black_sludge(bwu.battle.p1_fighters[0].name, is_heal, is_real_p1).apply_bwu(bwu, is_real_p1)
+        for ui in BattleMessage.new_black_sludge(bwu.battle.p1_fighters[0].name, is_heal, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def leech_seed(bwu, is_real_p1):
+    def leech_seed(bwu, is_real_p1, ui_history):
         if bwu.battle.p1_fighters[0].is_faint():
             return bwu
 
@@ -2168,15 +2205,16 @@ class TurnEndWithUI:
         heal = damage
 
         bwu.battle = bwu.battle.reverse()
-        bwu = bwu.damage(damage, not is_real_p1)
+        bwu = bwu.damage(damage, not is_real_p1, ui_history)
         bwu.battle = bwu.battle.reverse()
 
-        bwu = bwu.heal(heal, is_real_p1)
-        bwu.ui += BattleMessage.new_leech_seed_drain(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1)
+        bwu = bwu.heal(heal, is_real_p1, ui_history)
+        for ui in BattleMessage.new_leech_seed_drain(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def bad_poison(bwu, is_real_p1):
+    def bad_poison(bwu, is_real_p1, ui_history):
         if bwu.battle.p1_fighters[0].status_ailment != BAD_POISON:
             return bwu
 
@@ -2187,32 +2225,36 @@ class TurnEndWithUI:
 
         damage = int(float(bwu.battle.p1_fighters[0].max_hp) * float(bwu.battle.p1_fighters[0].bad_poison_elapsed_turn) / 16.0)
         damage = max([damage, 1])
-        bwu = bwu.damage(damage, is_real_p1)
-        bwu.ui += BattleMessage.new_bad_poison_damage(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1)
+        bwu = bwu.damage(damage, is_real_p1, ui_history)
+        for ui in BattleMessage.new_bad_poison_damage(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
 class StatusMoveWithUI:
     @staticmethod
-    def half_heal(bwu, is_real_p1):
+    def half_heal(bwu, is_real_p1, ui_history):
         if bwu.battle.p1_fighters[0].is_full_hp():
-            bwu.ui += FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, is_real_p1)
+            for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, is_real_p1):
+                ui_history.append(ui)
             return bwu
 
         heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 2.0)
-        bwu = bwu.heal(heal, is_real_p1)
-        bwu.ui += BattleMessage.new_after_half_heal(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1)
+        bwu = bwu.heal(heal, is_real_p1, ui_history)
+        for ui in BattleMessage.new_after_half_heal(bwu.battle.p1_fighters[0].name, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def swords_dance(bwu, is_real_p1):
+    def swords_dance(bwu, is_real_p1, ui_history):
         bwu = copy.deepcopy(bwu)
         atk_rank_up = 2
         bwu.battle.p1_fighters[0].atk_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].atk_rank, atk_rank_up)
-        bwu.ui += BattleMessage.new_rank_up_down(bwu.battle.p1_fighters[0].name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
+        for ui in BattleMessage.new_rank_up_down(bwu.battle.p1_fighters[0].name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def shell_smash(bwu, is_real_p1):
+    def shell_smash(bwu, is_real_p1, ui_history):
         bwu = copy.deepcopy(bwu)
 
         atk_rank_up = 2
@@ -2228,15 +2270,24 @@ class StatusMoveWithUI:
         bwu.battle.p1_fighters[0].sp_def_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].sp_def_rank, sp_def_rank_down)
 
         poke_name = bwu.battle.p1_fighters[0].name
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "特攻", sp_atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "防御", def_rank_down, is_real_p1).apply_bwu(bwu, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "特防", sp_def_rank_down, is_real_p1).apply_bwu(bwu, is_real_p1)
+        for ui in BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "特攻", sp_atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "防御", def_rank_down, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "特防", sp_def_rank_down, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def dragon_dance(bwu, is_real_p1):
+    def dragon_dance(bwu, is_real_p1, ui_history):
         bwu = copy.deepcopy(bwu)
         atk_rank_up = 1
         speed_rank_up = 1
@@ -2245,31 +2296,49 @@ class StatusMoveWithUI:
         bwu.battle.p1_fighters[0].speed_rank += get_real_rank_up_down(bwu.battle.p1_fighters[0].speed_rank, speed_rank_up)
 
         poke_name = bwu.battle.p1_fighters[0].name
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
-        bwu.ui += BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "攻撃", atk_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
+        for ui in BattleMessage.new_rank_up_down(poke_name, "素早さ", speed_rank_up, is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
+
         return bwu
 
     @staticmethod
-    def toxic(bwu, is_real_p1):
+    def toxic(bwu, is_real_p1, ui_history):
         if bwu.battle.p2_fighters[0].status_ailment != "":
+            for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, not is_real_p1):
+                ui_history.append(ui)
             return bwu
 
         if (POISON in bwu.battle.p2_fighters[0].types) or (STEEL in bwu.battle.p2_fighters[0].types):
+            for ui in BattleMessage.new_no_effective(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, not is_real_p1):
+                ui_history.append(ui)
             return bwu
 
         bwu = copy.deepcopy(bwu)
         bwu.battle.p2_fighters[0].status_ailment = BAD_POISON
-        bwu.ui += BattleMessage.new_bad_poisoned(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1)
+        for ui in BattleMessage.new_bad_poisoned(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
     @staticmethod
-    def leech_seed(bwu, is_real_p1):
+    def leech_seed(bwu, is_real_p1, ui_history):
         if GRASS in bwu.battle.p2_fighters[0].types:
+            for ui in BattleMessage.new_no_effective(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
+                ui_history.append(ui)
+            return bwu
+
+        if bwu.battle.p2_fighters[0].is_leech_seed:
+            for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, not is_real_p1):
+                ui_history.append(ui)
             return bwu
 
         bwu = copy.deepcopy(bwu)
         bwu.battle.p2_fighters[0].is_leech_seed = True
-        bwu.ui += BattleMessage.new_leech_seed_planting(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1)
+        for ui in BattleMessage.new_leech_seed_planting(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
+            ui_history.append(ui)
         return bwu
 
 STATUS_MOVES_WITH_UI = {

@@ -3,53 +3,12 @@ import tkinter.ttk as ttk
 import tkinter.font as tk_font
 import pytkgif
 import boa
-
-class ReplayData:
-    def __init__(self, file_path):
-        data = boa.readlines_txt(file_path, True)
-        self.p1_fighter_names = data[-2].split()
-        self.p2_fighter_names = data[-1].split()
-        keys = ["p1_poke_name", "p1_level", "p1_max_hp", "p1_current_hp",
-                "p2_poke_name", "p2_level", "p2_max_hp", "p2_current_hp"]
-        funcs = [str, int, int, int, str, int, int, int, str]
-        self.battle_surface_statuses = [{key:funcs[i](line.split()[i]) \
-                                         for i, key in enumerate(keys)} for line in data[:-3]]
-
-        messages = [" ".join(line.split()[8:]) for line in data[:-3]]
-        for i in range(len(self.battle_surface_statuses)):
-            self.battle_surface_statuses[i]["message"] = messages[i]
-
-            if self.battle_surface_statuses[i]["p1_poke_name"] == "None":
-                self.battle_surface_statuses[i]["p1_poke_name"] = None
-
-            if self.battle_surface_statuses[i]["p1_level"] == -1:
-                self.battle_surface_statuses[i]["p1_level"] = None
-
-            if self.battle_surface_statuses[i]["p1_max_hp"] == -1:
-                self.battle_surface_statuses[i]["p1_max_hp"] = None
-
-            if self.battle_surface_statuses[i]["p1_current_hp"] == -1:
-                self.battle_surface_statuses[i]["p1_current_hp"] = None
-
-            if self.battle_surface_statuses[i]["p2_poke_name"] == "None":
-                self.battle_surface_statuses[i]["p2_poke_name"] = None
-
-            if self.battle_surface_statuses[i]["p2_level"] == -1:
-                self.battle_surface_statuses[i]["p2_level"] = None
-
-            if self.battle_surface_statuses[i]["p2_max_hp"] == -1:
-                self.battle_surface_statuses[i]["p2_max_hp"] = None
-
-            if self.battle_surface_statuses[i]["p2_current_hp"] == -1:
-                self.battle_surface_statuses[i]["p2_current_hp"] = None
-
+import seviper
 
 class HpBar:
-    IMAGE_PATH = "C:/Python35/pyckage/seviper/image/hp_bar/"
-
-    def __init__(self, master, max_hp, current_hp, details_font_size):
+    def __init__(self, master, max_hp, current_hp, details_font_size, image_path):
         assert max_hp >= current_hp
-
+        self.image_path = image_path
         self.master = master
         self.max_hp = max_hp
         self.current_hp = current_hp
@@ -59,13 +18,13 @@ class HpBar:
         self.details_label = tk.Label(master=master, text=str(max_hp) + " / " + str(current_hp), font=self.details_font)
 
         hp_percent = int((self.current_hp / self.max_hp) * 100)
-        self.image = tk.PhotoImage(file=HpBar.IMAGE_PATH + str(hp_percent) + ".png")
+        self.image = tk.PhotoImage(file=image_path + "/" + str(hp_percent) + ".png")
         self.image_label.configure(image=self.image)
         self.is_animetion_stop = False
 
     def __update(self):
         hp_percent = int((self.current_hp / self.max_hp) * 100)
-        self.image = tk.PhotoImage(file=HpBar.IMAGE_PATH + str(hp_percent) + ".png")
+        self.image = tk.PhotoImage(file=self.image_path + "/" + str(hp_percent) + ".png")
         self.image_label.configure(image=self.image)
         self.details_label.configure(text=str(self.max_hp) + " / " + str(self.current_hp))
 
@@ -90,45 +49,44 @@ class HpBar:
             self.master.after(interval, run_next_frame_animation, None)
         run_next_frame_animation(None)
 
-
 class Replay:
-    def __init__(self, master, file_path):
+    def __init__(self, master, ui_history, hp_bar_image_path, gif_path):
         master.geometry("610x450")
-        self.data = seviper.ReplayData(file_path)
+        self.ui_history = ui_history
+        self.hp_bar_image_path = hp_bar_image_path
+        self.gif_path = gif_path
         self.font_size = 15
-        font = tk_font.Font(family="Lucida Grande", size=self.font_size)
 
+        font = tk_font.Font(family="Lucida Grande", size=self.font_size)
         self.main_frame = tk.Frame(master=master)
 
         self.p1_widget_frame = tk.Frame(master=self.main_frame)
-        p1_poke_name = self.data.p1_fighter_names[0]
-        p1_level = self.data.battle_surface_statuses[0]["p1_level"]
+        p1_poke_name = ui_history[0].real_p1_poke_name
 
-        self.p1_level_label = tk.Label(master=self.p1_widget_frame, text=str(p1_level) + "Lv", font=font)
+        self.p1_level_label = tk.Label(master=self.p1_widget_frame,
+                                       text=str(ui_history[0].real_p1_level) + "Lv", font=font)
         self.p1_poke_name_label = tk.Label(master=self.p1_widget_frame, text=p1_poke_name, font=font)
         self.p1_fighter_gifs = {
-            poke_name:pytkgif.Gif(self.p1_widget_frame, seviper.POKE_GIF_MIRROR_PATH + poke_name + ".gif") \
-            for poke_name in self.data.p1_fighter_names
+            p1_poke_name:pytkgif.Gif(self.p1_widget_frame, pytkgif.Gif.load_images(gif_path + "mirror/" + p1_poke_name + ".gif")[:-1]),
+            None:pytkgif.Gif(self.p1_widget_frame, pytkgif.Gif.load_images(gif_path + "None.gif"))
         }
-        self.p1_fighter_gifs[None] = pytkgif.Gif(self.p1_widget_frame, seviper.POKE_GIF_PATH + "None.gif")
-        self.p1_hp_bar = HpBar(self.p1_widget_frame, self.data.battle_surface_statuses[0]["p1_max_hp"],
-                               self.data.battle_surface_statuses[0]["p1_current_hp"], self.font_size)
+        self.p1_hp_bar = HpBar(self.p1_widget_frame, ui_history[0].real_p1_max_hp,
+                               ui_history[0].real_p1_current_hp, self.font_size, hp_bar_image_path)
 
         self.p2_widget_frame = tk.Frame(master=self.main_frame)
-        p2_poke_name = self.data.p2_fighter_names[0]
-        p2_level = self.data.battle_surface_statuses[0]["p2_level"]
+        p2_poke_name = ui_history[0].real_p2_poke_name
 
-        self.p2_level_label = tk.Label(master=self.p2_widget_frame, text=str(p2_level) + "Lv", font=font)
+        self.p2_level_label = tk.Label(master=self.p2_widget_frame,
+                                       text=str(ui_history[0].real_p2_level) + "Lv", font=font)
         self.p2_poke_name_label = tk.Label(master=self.p2_widget_frame, text=p2_poke_name, font=font)
         self.p2_fighter_gifs = {
-            poke_name:pytkgif.Gif(self.p2_widget_frame, seviper.POKE_GIF_NORMAL_PATH + poke_name + ".gif") \
-            for poke_name in self.data.p2_fighter_names
+            p2_poke_name:pytkgif.Gif(self.p2_widget_frame, pytkgif.Gif.load_images(gif_path + "normal/" + p2_poke_name + ".gif")[:-1]),
+            None:pytkgif.Gif(self.p2_widget_frame, pytkgif.Gif.load_images(gif_path + "None.gif")[:-1])
         }
-        self.p2_fighter_gifs[None] = pytkgif.Gif(self.p2_widget_frame, seviper.POKE_GIF_PATH + "None.gif")
-        self.p2_hp_bar = HpBar(self.p2_widget_frame, self.data.battle_surface_statuses[0]["p2_max_hp"],
-                               self.data.battle_surface_statuses[0]["p2_current_hp"], self.font_size)
+        self.p2_hp_bar = HpBar(self.p2_widget_frame, ui_history[0].real_p2_max_hp,
+                               ui_history[0].real_p2_current_hp, self.font_size, hp_bar_image_path)
 
-        self.message_entry = tk.Entry(master=master, width=30, font=font)
+        self.battle_message_entry = tk.Entry(master=master, width=80, font=font)
         self.master = master
 
     def run_animation(self):
@@ -166,7 +124,7 @@ class Replay:
         for row in range(row_size):
             self.main_frame.grid_columnconfigure(row, minsize=205)
         self.main_frame.grid_rowconfigure(0, minsize=350)
-        self.message_entry.pack()
+        self.battle_message_entry.pack()
 
         interval = 60
 
@@ -180,7 +138,12 @@ class Replay:
                 level_label.grid(**level_label_pos)
                 level_label.configure(text=str(next_level) + "Lv")
 
-        def update_fighter_gif(fighter_gifs, poke_name_label, next_poke_name):
+        def update_fighter_gif(fighter_gifs, widget_frame, poke_name_label, next_poke_name, is_p1):
+            if next_poke_name not in fighter_gifs:
+                path = {True:self.gif_path + "mirror/", False:self.gif_path + "normal/"}[is_p1]
+                fighter_gifs[next_poke_name] = pytkgif.Gif(widget_frame, pytkgif.Gif.load_images(path + next_poke_name + ".gif")[:-1])
+                fighter_gifs[next_poke_name].run_animation(50)
+
             poke_name = poke_name_label.cget("text")
 
             if next_poke_name != poke_name:
@@ -209,7 +172,7 @@ class Replay:
             elif (next_max_hp != hp_bar.max_hp) or (not hp_bar.image_label.winfo_ismapped()):
                 hp_bar.image_label.grid_forget()
                 hp_bar.details_label.grid_forget()
-                hp_bar = HpBar(master, next_max_hp, next_current_hp, self.font_size)
+                hp_bar = HpBar(master, next_max_hp, next_current_hp, self.font_size, self.hp_bar_image_path)
                 hp_bar.image_label.grid(**hp_bar_image_label_pos)
                 hp_bar.details_label.grid(**hp_bar_details_label_pos)
             elif next_current_hp != hp_bar.current_hp:
@@ -225,25 +188,25 @@ class Replay:
             return hp_bar, is_hp_bar_animation_phase
 
         def run_next_frame_animation(index):
-            if len(self.data.battle_surface_statuses) == index:
+            if len(self.ui_history) == index:
                 return
 
-            battle_surface_scene = self.data.battle_surface_statuses[index]
+            battle_ui = self.ui_history[index]
 
-            next_p1_level = battle_surface_scene["p1_level"]
-            next_p2_level = battle_surface_scene["p2_level"]
-            next_p1_poke_name = battle_surface_scene["p1_poke_name"]
-            next_p2_poke_name = battle_surface_scene["p2_poke_name"]
-            next_p1_max_hp = battle_surface_scene["p1_max_hp"]
-            next_p2_max_hp = battle_surface_scene["p2_max_hp"]
-            next_p1_current_hp = battle_surface_scene["p1_current_hp"]
-            next_p2_current_hp = battle_surface_scene["p2_current_hp"]
+            next_p1_level = battle_ui.real_p1_level
+            next_p2_level = battle_ui.real_p2_level
+            next_p1_poke_name = battle_ui.real_p1_poke_name
+            next_p2_poke_name = battle_ui.real_p2_poke_name
+            next_p1_max_hp = battle_ui.real_p1_max_hp
+            next_p2_max_hp = battle_ui.real_p2_max_hp
+            next_p1_current_hp = battle_ui.real_p1_current_hp
+            next_p2_current_hp = battle_ui.real_p2_current_hp
 
             update_level_label(self.p1_level_label, next_p1_level)
             update_level_label(self.p2_level_label, next_p2_level)
 
-            update_fighter_gif(self.p1_fighter_gifs, self.p1_poke_name_label, next_p1_poke_name)
-            update_fighter_gif(self.p2_fighter_gifs, self.p2_poke_name_label, next_p2_poke_name)
+            update_fighter_gif(self.p1_fighter_gifs, self.p1_widget_frame, self.p1_poke_name_label, next_p1_poke_name, True)
+            update_fighter_gif(self.p2_fighter_gifs, self.p2_widget_frame, self.p2_poke_name_label, next_p2_poke_name, False)
 
             update_poke_name_label(self.p1_poke_name_label, next_p1_poke_name)
             update_poke_name_label(self.p2_poke_name_label, next_p2_poke_name)
@@ -253,25 +216,25 @@ class Replay:
             self.p2_hp_bar, is_p2_hp_bar_animation_phase = \
                 update_hp_bar(self.p2_widget_frame, self.p2_hp_bar, next_p2_max_hp, next_p2_current_hp)
 
-            next_message = battle_surface_scene["message"]
+            next_battle_message = battle_ui.battle_message
 
-            if next_message != self.message_entry.cget("text"):
-                self.message_entry.delete(0, tk.END)
-                self.message_entry.insert(tk.END, next_message)
+            if next_battle_message != self.battle_message_entry.cget("text"):
+                self.battle_message_entry.delete(0, tk.END)
+                self.battle_message_entry.insert(tk.END, next_battle_message)
 
             if any([is_p1_hp_bar_animation_phase, is_p2_hp_bar_animation_phase]):
                 interval = 30
-            elif next_message in [seviper.GOOD_EFFECTIVE_BATTLE_MSG,
-                                  seviper.BAD_EFFECTIVE_BATTLE_MSG,
-                                  seviper.NO_EFFECTIVE_BATTLE_MSG]:
+            elif next_battle_message in [seviper.GOOD_EFFECTIVE_BATTLE_MESSAGE,
+                                         seviper.BAD_EFFECTIVE_BATTLE_MESSAGE,
+                                         "効果がない"]:
                 interval = 600
-            elif "戻れ！" in next_message and next_message.count("！") == 2:
+            elif "戻れ！" in next_battle_message and next_battle_message.count("！") == 2:
                 interval = 600
-            elif "行け！" in next_message and next_message.count("！") == 2:
+            elif "行け！" in next_battle_message and next_battle_message.count("！") == 2:
                 interval = 600
-            elif any([move_name in next_message for move_name in seviper.MOVEDEX]) and "！" in next_message:
+            elif any([move_name in next_battle_message for move_name in seviper.MOVEDEX]) and "！" in next_battle_message:
                 interval = 120
-            elif ("戻" not in next_message) and ("行" not in next_message) and ("！" in next_message):
+            elif ("戻" not in next_battle_message) and ("行" not in next_battle_message) and ("！" in next_battle_message):
                 interval = 600
             else:
                 interval = 45
@@ -283,7 +246,7 @@ if __name__ == "__main__":
     main_master = tk.Tk()
     main_master.geometry("500x500")
 
-    replay = Replay(main_master, "C:/Python35/pyckage/seviper/replay/0.txt")
+    replay = Replay(main_master, ui_history)
     replay_start_button = tk.Button(master=main_master, text="リプレイ開始")
     replay_start_button.pack()
 
