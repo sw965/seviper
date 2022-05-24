@@ -328,6 +328,31 @@ class Pokemon:
         pokemon.is_leech_seed = False
         return pokemon
 
+    @staticmethod
+    def new_random(poke_name):
+        poke_data = POKEDEX[poke_name]
+        nature = random.choice(ALL_NATURES)
+        ability = random.choice(poke_data.all_abilities)
+        gender = random.choice(gender_data_to_valid_genders(poke_data.gender))
+
+        learnset_indices = [i for i in range(len(poke_data.learnset)) if poke_data.learnset[i] in IMPLEMENTED_MOVE_NAMES]
+        random.shuffle(learnset_indices)
+        learnset_indices_end = min([len(learnset_indices), MAX_MOVESET_LENGTH])
+        move_names = [poke_data.learnset[index] for index in learnset_indices[:learnset_indices_end]]
+        point_ups = [random.randint(0, MAX_POINT_UP) for _ in range(len(move_names))]
+
+        state_keys = ["hp", "atk", "defe", "sp_atk", "sp_def", "speed"]
+        individual_dict = {key:random.randint(0, MAX_INDIVIDUAL_VALUE) for key in state_keys}
+        individual = Individual(individual_dict)
+        effort_dict = {key:0 for key in state_keys}
+        while sum(effort_dict.values()) != MAX_SUM_EFFORT:
+            key = random.choice(state_keys)
+            if effort_dict[key] < MAX_EFFORT_VALUE:
+                effort_dict[key] += 1
+        effort = Effort(effort_dict)
+
+        return Pokemon.new(poke_name, nature, ability, gender, "なし", move_names, point_ups, individual, effort)
+
     def __eq__(self, pokemon):
         if self.name != pokemon.name:
             return False
@@ -389,31 +414,6 @@ class Pokemon:
             return False
         else:
             return True
-
-    @staticmethod
-    def new_random(poke_name):
-        poke_data = POKEDEX[poke_name]
-        nature = random.choice(ALL_NATURES)
-        ability = random.choice(poke_data.all_abilities)
-        gender = random.choice(gender_data_to_valid_genders(poke_data.gender))
-
-        learnset_indices = [i for i in range(len(poke_data.learnset)) if poke_data.learnset[i] in IMPLEMENTED_MOVE_NAMES]
-        random.shuffle(learnset_indices)
-        learnset_indices_end = min([len(learnset_indices), MAX_MOVESET_LENGTH])
-        move_names = [poke_data.learnset[index] for index in learnset_indices[:learnset_indices_end]]
-        point_ups = [random.randint(0, MAX_POINT_UP) for _ in range(len(move_names))]
-
-        state_keys = ["hp", "atk", "defe", "sp_atk", "sp_def", "speed"]
-        individual_dict = {key:random.randint(0, MAX_INDIVIDUAL_VALUE) for key in state_keys}
-        individual = Individual(individual_dict)
-        effort_dict = {key:0 for key in state_keys}
-        while sum(effort_dict.values()) != MAX_SUM_EFFORT:
-            key = random.choice(state_keys)
-            if effort_dict[key] < MAX_EFFORT_VALUE:
-                effort_dict[key] += 1
-        effort = Effort(effort_dict)
-
-        return Pokemon.new(poke_name, nature, ability, gender, "なし", move_names, point_ups, individual, effort)
 
     def is_full_hp(self):
         return self.max_hp == self.current_hp
@@ -641,23 +641,23 @@ class Fighters(list):
     def is_all_faint(self):
         return all([pokemon.is_faint() for pokemon in self])
 
-    def legal_action_commands(self):
-        legal_back_poke_name_action_commands = [pokemon.name for pokemon in self[1:] if not pokemon.is_faint()]
+    def legal_action_cmds(self):
+        legal_back_poke_name_action_cmds = [pokemon.name for pokemon in self[1:] if not pokemon.is_faint()]
 
         if self[0].is_faint():
-            return legal_back_poke_name_action_commands
+            return legal_back_poke_name_action_cmds
 
         if self[0].choice_move_name != "":
-            legal_move_name_action_commands = [self[0].choice_move_name]
+            legal_move_name_action_cmds = [self[0].choice_move_name]
         else:
-            legal_move_name_action_commands = self[0].sorted_move_names
+            legal_move_name_action_cmds = self[0].sorted_move_names
 
-        legal_move_name_action_commands = [move_name for move_name in legal_move_name_action_commands \
+        legal_move_name_action_cmds = [move_name for move_name in legal_move_name_action_cmds \
                                            if self[0].moveset[move_name].current > 0]
 
-        if len(legal_move_name_action_commands) == 0:
-            legal_move_name_action_commands = [STRUGGLE]
-        return legal_move_name_action_commands + legal_back_poke_name_action_commands
+        if len(legal_move_name_action_cmds) == 0:
+            legal_move_name_action_cmds = [STRUGGLE]
+        return legal_move_name_action_cmds + legal_back_poke_name_action_cmds
 
     def to_feature_list(self):
         return [pokemon.to_feature_list() for pokemon in self]
@@ -822,13 +822,13 @@ def get_damage_bonus(battle):
         result = five_over_rounding(float(result) * 5324.0 / 4096.0)
     return result
 
-FINAL_DAMAGE_RANDOM_BONUSES = [
+RANDOM_DAMAGE_BONUSES = [
     0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.0
 ]
 
-FINAL_DAMAGE_RANDOM_BONUSES_LENGTH = len(FINAL_DAMAGE_RANDOM_BONUSES)
+RANDOM_DAMAGE_BONUSES_LENGTH = len(RANDOM_DAMAGE_BONUSES)
 
-def get_final_damage(battle, move_name, final_damage_random_bonus, is_critical):
+def get_final_damage(battle, move_name, random_damage_bonus, is_critical):
     move_data = MOVEDEX[move_name]
 
     final_power = get_final_power(battle, move_name)
@@ -844,7 +844,7 @@ def get_final_damage(battle, move_name, final_damage_random_bonus, is_critical):
     result = int(float(result) * float(final_power) * float(final_attack) / float(final_defense))
     result = result // 50 + 2
     result = five_over_rounding(float(result) * critical_bonus)
-    result = int(float(result) * final_damage_random_bonus)
+    result = int(float(result) * random_damage_bonus)
     result = five_over_rounding(float(result) * stab)
     result = int(float(result) * effectiveness_bonus)
     result = five_over_rounding(float(result) * float(damage_bonus) / 4096.0)
@@ -990,9 +990,9 @@ class Battle:
             return self
 
         for i in range(attack_num):
-            final_damage_random_bonus = random.choice(FINAL_DAMAGE_RANDOM_BONUSES)
+            random_damage_bonus = random.choice(RANDOM_DAMAGE_BONUSES)
             is_critical = self.is_critical(move_name)
-            final_damage = get_final_damage(self, move_name, final_damage_random_bonus, is_critical)
+            final_damage = get_final_damage(self, move_name, random_damage_bonus, is_critical)
 
             if final_damage == 0:
                 return self
@@ -1072,6 +1072,16 @@ class Battle:
         #両者の先頭のポケモンが瀕死状態もしくは両者の先頭のポケモンがが瀕死ではない状態ならば
         return self.p1_fighters[0].is_faint() == self.p2_fighters[0].is_faint()
 
+    def p1_legal_action_cmds(self):
+        if not self.p1_fighters[0].is_faint() and self.p2_fighters[0].is_faint():
+            return []
+        return self.p1_fighters.legal_action_cmds()
+
+    def p2_legal_action_cmds(self):
+        if self.p1_fighters[0].is_faint() and not self.p2_fighters[0].is_faint():
+            return []
+        return self.p2_fighters.legal_action_cmds()
+
     #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
     def turn_end(self):
         def p1_first(battle, turn_end_f):
@@ -1144,14 +1154,24 @@ class Battle:
     def is_game_end(self):
         return self.p1_fighters.is_all_faint() or self.p2_fighters.is_all_faint()
 
+    def winner(self):
+        is_p1_all_faint = self.p1_fighters.is_all_faint()
+        is_p2_all_faint = self.p2_fighters.is_all_faint()
+        if is_p1_all_faint and is_p2_all_faint:
+            return DRAW
+        elif is_p1_all_faint:
+            return WINNER_P2
+        else:
+            return WINNER_P1
+
     def playout(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
 
         while True:
             if self.is_p1_and_p2_phase():
-                p1_action_command = p1_trainer(self)
-                p2_action_command = p2_trainer(self.reverse())
-                action = {"p1":p1_action_command, "p2":p2_action_command}
+                p1_action_cmd = p1_trainer(self)
+                p2_action_cmd = p2_trainer(self.reverse())
+                action = {"p1":p1_action_cmd, "p2":p2_action_cmd}
             elif self.is_p1_only_switch_after_faint_phase():
                 action = {"p1":p1_trainer(self)}
             else:
@@ -1174,21 +1194,21 @@ class Battle:
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
-        s = []
-        a = []
+        ss = []
+        actions = []
 
         while True:
             if self.is_p1_and_p2_phase():
-                p1_action_command = p1_trainer(self)
-                p2_action_command = p2_trainer(self.reverse())
-                action = {"p1":p1_action_command, "p2":p2_action_command}
+                p1_action_cmd = p1_trainer(self)
+                p2_action_cmd = p2_trainer(self.reverse())
+                action = {"p1":p1_action_cmd, "p2":p2_action_cmd}
             elif self.is_p1_only_switch_after_faint_phase():
                 action = {"p1":p1_trainer(self)}
             else:
                 action = {"p2":p2_trainer(self.reverse())}
 
-            s.append(self)
-            a.append(action)
+            ss.append(self)
+            actions.append(action)
             self = self.push(action)
 
             if self.is_game_end():
@@ -1198,11 +1218,11 @@ class Battle:
         is_p2_all_faint = self.p2_fighters.is_all_faint()
 
         if is_p1_all_faint and is_p2_all_faint:
-            return s, a, DRAW
+            return ss, actions, DRAW
         elif is_p1_all_faint:
-            return s, a, WINNER_P2
+            return ss, actions, WINNER_P2
         else:
-            return s, a, WINNER_P1
+            return ss, actions, WINNER_P1
 
     def damage_probability_distribution(self, move_name):
     	critical_n = self.critical_n(move_name)
@@ -1210,14 +1230,14 @@ class Battle:
     	no_critical_p = 1.0 - critical_p
     	bool_to_critical_p = {True:critical_p, False:no_critical_p}
     	accuracy_p = self.real_accuracy(move_name) / 100.0
-    	final_damage_random_bonus_p = 1.0 / float(FINAL_DAMAGE_RANDOM_BONUSES_LENGTH)
+    	random_damage_bonus_p = 1.0 / float(RANDOM_DAMAGE_BONUSES_LENGTH)
 
     	result = {0:1.0 - accuracy_p}
 
     	for is_critical in [False, True]:
-    		for final_damage_random_bonus in FINAL_DAMAGE_RANDOM_BONUSES:
-    			final_damage = get_final_damage(self, move_name, final_damage_random_bonus, is_critical)
-    			p = accuracy_p * final_damage_random_bonus_p * bool_to_critical_p[is_critical]
+    		for random_damage_bonus in RANDOM_DAMAGE_BONUSES:
+    			final_damage = get_final_damage(self, move_name, random_damage_bonus, is_critical)
+    			p = accuracy_p * random_damage_bonus_p * bool_to_critical_p[is_critical]
 
     			if final_damage not in result:
     				result[final_damage] = p
@@ -1332,12 +1352,6 @@ class Battle:
     def to_with_ui(self):
         return BattleWithUI(self)
 
-    def new_checkmate_battle():
-        def new_one_on_one():
-            battle = Battle(Fighters.new_rate_random(), Fighters.new_rate_random())
-            s, a, winner = battle.one_game(Trainer.random(), Trainer.random())
-
-
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
     @staticmethod
@@ -1447,18 +1461,18 @@ class Winner:
             return DRAW
 
     @staticmethod
-    def new_action_priority(battle, p1_action_command, p2_action_command):
-        def priority_rank(action_command):
-            if action_command in ALL_MOVE_NAMES:
-                return MOVEDEX[action_command].priority_rank
-            elif action_command == STRUGGLE:
+    def new_action_priority(battle, p1_action_cmd, p2_action_cmd):
+        def priority_rank(action_cmd):
+            if action_cmd in ALL_MOVE_NAMES:
+                return MOVEDEX[action_cmd].priority_rank
+            elif action_cmd == STRUGGLE:
                 return 0
-            elif action_command in ALL_POKE_NAMES:
+            elif action_cmd in ALL_POKE_NAMES:
                 return 999
             assert False, "アクションコマンドが不適"
 
-        p1_priority_rank = priority_rank(p1_action_command)
-        p2_priority_rank = priority_rank(p2_action_command)
+        p1_priority_rank = priority_rank(p1_action_cmd)
+        p2_priority_rank = priority_rank(p2_action_cmd)
 
         if p1_priority_rank > p2_priority_rank:
             return WINNER_P1
@@ -1468,8 +1482,8 @@ class Winner:
             return DRAW
 
     @staticmethod
-    def new_final_priority(battle, p1_action_command, p2_action_command):
-        priority_winner = Winner.new_action_priority(battle, p1_action_command, p2_action_command)
+    def new_final_priority(battle, p1_action_cmd, p2_action_cmd):
+        priority_winner = Winner.new_action_priority(battle, p1_action_cmd, p2_action_cmd)
         if priority_winner != DRAW:
             return priority_winner
 
@@ -1565,8 +1579,8 @@ STATUS_MOVES = {
 
 class Trainer:
     @staticmethod
-    def random(battle):
-        return random.choice(battle.p1_fighters[0].legal_action_commands())
+    def random_instruction(battle):
+        return random.choice(battle.p1_fighters.legal_action_cmds())
 
 class BattleUI:
     def __init__(self, battle_message):
@@ -1886,10 +1900,10 @@ class BattleWithUI:
             ui_history.append(ui)
 
         for i in range(attack_num):
-            final_damage_random_bonus = random.choice(FINAL_DAMAGE_RANDOM_BONUSES)
+            random_damage_bonus = random.choice(RANDOM_DAMAGE_BONUSES)
             is_critical = self.battle.is_critical(move_name)
 
-            final_damage = get_final_damage(self.battle, move_name, final_damage_random_bonus, is_critical)
+            final_damage = get_final_damage(self.battle, move_name, random_damage_bonus, is_critical)
 
             if final_damage == 0:
                 break
@@ -2114,21 +2128,21 @@ class BattleWithUI:
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.battle.is_game_end()
-        s = []
-        a = []
+        ss = []
+        actions = []
         ui_history = []
         while True:
             if self.battle.is_p1_and_p2_phase():
-                p1_action_command = p1_trainer(self.battle)
-                p2_action_command = p2_trainer(self.battle.reverse())
-                action = {"p1":p1_action_command, "p2":p2_action_command}
+                p1_action_cmd = p1_trainer(self.battle)
+                p2_action_cmd = p2_trainer(self.battle.reverse())
+                action = {"p1":p1_action_cmd, "p2":p2_action_cmd}
             elif self.battle.is_p1_only_switch_after_faint_phase():
                 action = {"p1":p1_trainer(self.battle)}
             else:
                 action = {"p2":p2_trainer(self.battle.reverse())}
 
-            s.append(self.battle)
-            a.append(action)
+            ss.append(self.battle)
+            actions.append(action)
             self = self.push(action, ui_history)
 
             if self.battle.is_game_end():
@@ -2138,11 +2152,11 @@ class BattleWithUI:
         is_p2_all_faint = self.battle.p2_fighters.is_all_faint()
 
         if is_p1_all_faint and is_p2_all_faint:
-            return s, a, ui_history, DRAW
+            return ss, actions, ui_history, DRAW
         elif is_p1_all_faint:
-            return s, a, ui_history, WINNER_P2
+            return ss, actions, ui_history, WINNER_P2
         else:
-            return s, a, ui_history, WINNER_P1
+            return ss, actions, ui_history, WINNER_P1
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEndWithUI:
@@ -2331,7 +2345,7 @@ class StatusMoveWithUI:
             return bwu
 
         if bwu.battle.p2_fighters[0].is_leech_seed:
-            for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, not is_real_p1):
+            for ui in FAILURE_BATTLE_MESSAGE.apply_bwu(bwu, is_real_p1):
                 ui_history.append(ui)
             return bwu
 
