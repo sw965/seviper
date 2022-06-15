@@ -1377,17 +1377,6 @@ ALL_MOVE_NAMES = [
  'ワンダースチーム',
  'ワンダールーム']
 
-HALF_HEAL_MOVE_NAMES = [
- 'あさのひざし',
- 'こうごうせい',
- 'じこさいせい',
- 'すなあつめ',
- 'タマゴうみ',
- 'つきのひかり',
- 'なまける',
- 'はねやすめ',
- 'ミルクのみ']
-
 ONE_HIT_KO_MOVE_NAMES = ['ハサミギロチン', 'つのドリル', 'じわれ', 'ぜったいれいど']
 TWO_ATTACK_MOVE_NAMES = ['ダブルウイング', 'ホネブーメラン', 'ギアソーサー', 'ドラゴンアロー', 'にどげり', 'ダブルアタック', 'ダブルパンツァー']
 MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES = [
@@ -1404,7 +1393,6 @@ MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES = [
  'スケイルショット']
 
 MAX_THREE_ATTACK_MOVE_NAMES = ['トリプルキック', 'トリプルアクセル']
-
 
 ALL_NATURES = [
  'さみしがり',
@@ -1466,7 +1454,19 @@ ALL_TYPES = [
  'はがね',
  'フェアリー']
 
-POKEDEX = {
+HALF_HEAL_MOVE_NAMES = [
+  "あさのひざし",
+  "こうごうせい",
+  "じこさいせい",
+  "すなあつめ",
+  "タマゴうみ",
+  "つきのひかり",
+  "なまける",
+  "はねやすめ",
+  "ミルクのみ"
+]
+
+__POKEDEX = {
   'アイアント': {'AllAbilities': ['むしのしらせ', 'はりきり', 'なまけ'],
            'BaseAtk': 109,
            'BaseDef': 112,
@@ -52432,7 +52432,7 @@ POKEDEX = {
            'Types': ['かくとう'],
            'Weight': 19.5}}
 
-MOVEDEX = {
+__MOVEDEX = {
  '10まんばりき': {'Accuracy': 95,
              'BasePP': 10,
              'Category': '物理',
@@ -64044,7 +64044,7 @@ MOVEDEX = {
              'Target': '全体の場',
              'Type': 'エスパー'}}
 
-NATUREDEX = {
+__NATUREDEX = {
  'いじっぱり': {'AtkBonus': 1.1,
            'DefBonus': 1.0,
            'SpAtkBonus': 0.9,
@@ -64497,14 +64497,93 @@ TYPEDEX = {
            'ノーマル': 1.0,
            'フェアリー': 1.0}}
 
-assert set(HALF_HEAL_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(ONE_HIT_KO_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(TWO_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
 assert set(MAX_THREE_ATTACK_MOVE_NAMES).issubset(ALL_MOVE_NAMES)
-assert set(POKEDEX.keys()) == set(ALL_POKE_NAMES)
-assert set(MOVEDEX.keys()) == set(ALL_MOVE_NAMES)
-assert set(NATUREDEX.keys()) == set(ALL_NATURES)
+assert set(__POKEDEX.keys()) == set(ALL_POKE_NAMES)
+assert set(__MOVEDEX.keys()) == set(ALL_MOVE_NAMES)
+assert set(__NATUREDEX.keys()) == set(ALL_NATURES)
 assert set(TYPEDEX.keys()) == set(ALL_TYPES)
 assert all([set(v.keys()) == set(ALL_TYPES) for v in TYPEDEX.values()])
 assert len(ALL_TYPES) == 18
+
+class PokeData:
+    def __init__(self, dict_data):
+        self.normal_abilities = dict_data["NormalAbilities"]
+        self.hidden_ability = dict_data["HiddenAbility"]
+        self.all_abilities = dict_data["AllAbilities"]
+        self.gender = dict_data["Gender"]
+        self.types = dict_data["Types"]
+
+        self.base_hp = dict_data["BaseHP"]
+        self.base_atk = dict_data["BaseAtk"]
+        self.base_def = dict_data["BaseDef"]
+        self.base_sp_atk = dict_data["BaseSpAtk"]
+        self.base_sp_def = dict_data["BaseSpDef"]
+        self.base_speed = dict_data["BaseSpeed"]
+
+        self.height = dict_data["Height"]
+        self.weight = dict_data["Weight"]
+        self.egg_groups = dict_data["EggGroups"]
+        self.category = dict_data["Category"]
+        self.learnset = dict_data["Learnset"]
+
+    def is_rate_battle_ok(self):
+        return self.category != "伝説のポケモン" and self.category != "幻のポケモン"
+
+POKEDEX = {k:PokeData(v) for k, v in __POKEDEX.items()}
+
+RATE_POKE_NAMES = [poke_name for poke_name in ALL_POKE_NAMES if POKEDEX[poke_name].is_rate_battle_ok()]
+
+for poke_name in ["ダンバル", "メタモン", "トランセル", "ソーナンス", "サッチムシ",
+                  "ミツハニー", "カジッチュ", "キャタピー", "コイキング", "ソーナノ"]:
+   del RATE_POKE_NAMES[RATE_POKE_NAMES.index(poke_name)]
+
+del poke_name
+
+RATE_POKE_NAMES_LENGTH = len(RATE_POKE_NAMES)
+
+ALL_ABILITIES = []
+for poke_name in ALL_POKE_NAMES:
+    for ability in POKEDEX[poke_name].all_abilities:
+        if ability not in ALL_ABILITIES:
+            ALL_ABILITIES.append(ability)
+
+del poke_name
+
+class MoveData:
+    def __init__(self, dict_data):
+        self.type = dict_data["Type"]
+        self.category = dict_data["Category"]
+        self.power = dict_data["Power"]
+        self.accuracy = dict_data["Accuracy"]
+        self.base_pp = dict_data["BasePP"]
+        self.target = dict_data["Target"]
+
+        self.contact = dict_data["Contact"]
+        self.protect = dict_data["Protect"]
+        self.magic_coat = dict_data["MagicCoat"]
+        self.snatch = dict_data["Snatch"]
+        self.mirror_move = dict_data["MirrorMove"]
+        self.substitute = dict_data["Substitute"]
+
+        self.gigantamax_move = dict_data["GigantamaxMove"]
+        self.gigantamax_power = dict_data["GigantamaxPower"]
+        self.priority_rank = dict_data["PriorityRank"]
+        self.critical_rank = dict_data["CriticalRank"]
+
+        self.min_attack_num = dict_data["MinAttackNum"]
+        self.max_attack_num = dict_data["MaxAttackNum"]
+
+MOVEDEX = {k:MoveData(v) for k, v in __MOVEDEX.items()}
+
+class NatureData:
+    def __init__(self, dict_data):
+        self.atk_bonus = dict_data["AtkBonus"]
+        self.def_bonus = dict_data["DefBonus"]
+        self.sp_atk_bonus = dict_data["SpAtkBonus"]
+        self.sp_def_bonus = dict_data["SpDefBonus"]
+        self.speed_bonus = dict_data["SpeedBonus"]
+
+NATUREDEX = {k:NatureData(v) for k, v in __NATUREDEX.items()}

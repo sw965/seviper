@@ -1,601 +1,22 @@
-import copy
 import random
-import itertools
-import numpy as np
+import copy
 import seviper.base_data as base_data
-
-ALL_POKE_NAMES = base_data.ALL_POKE_NAMES
-ALL_MOVE_NAMES = base_data.ALL_MOVE_NAMES
-ALL_MOVE_NAMES_LENGTH = len(ALL_MOVE_NAMES)
-HALF_HEAL_MOVE_NAMES = base_data.HALF_HEAL_MOVE_NAMES
-ONE_HIT_KO_MOVE_NAMES = base_data.ONE_HIT_KO_MOVE_NAMES
-TWO_ATTACK_MOVE_NAMES = base_data.TWO_ATTACK_MOVE_NAMES
-MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES = base_data.MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES
-MAX_THREE_ATTACK_MOVE_NAMES = base_data.MAX_THREE_ATTACK_MOVE_NAMES
-ALL_NATURES = base_data.ALL_NATURES
-ALL_ITEMS = base_data.ALL_ITEMS
-ALL_TYPES = base_data.ALL_TYPES
-
-class PokeData:
-    def __init__(self, dict_data):
-        self.normal_abilities = dict_data["NormalAbilities"]
-        self.hidden_ability = dict_data["HiddenAbility"]
-        self.all_abilities = dict_data["AllAbilities"]
-        self.gender = dict_data["Gender"]
-        self.types = dict_data["Types"]
-
-        self.base_hp = dict_data["BaseHP"]
-        self.base_atk = dict_data["BaseAtk"]
-        self.base_def = dict_data["BaseDef"]
-        self.base_sp_atk = dict_data["BaseSpAtk"]
-        self.base_sp_def = dict_data["BaseSpDef"]
-        self.base_speed = dict_data["BaseSpeed"]
-
-        self.height = dict_data["Height"]
-        self.weight = dict_data["Weight"]
-        self.egg_groups = dict_data["EggGroups"]
-        self.category = dict_data["Category"]
-        self.learnset = dict_data["Learnset"]
-
-    def is_rate_battle_ok(self):
-        return self.category != "伝説のポケモン" and self.category != "幻のポケモン"
-
-POKEDEX = {k:PokeData(v) for k, v in base_data.POKEDEX.items()}
-RATE_POKE_NAMES = [poke_name for poke_name in ALL_POKE_NAMES if POKEDEX[poke_name].is_rate_battle_ok()]
-for poke_name in ["ダンバル", "メタモン", "トランセル", "ソーナンス", "サッチムシ",
-                  "ミツハニー", "カジッチュ", "キャタピー", "コイキング", "ソーナノ"]:
-   del RATE_POKE_NAMES[RATE_POKE_NAMES.index(poke_name)]
-del poke_name
-
-RATE_POKE_NAMES_LENGTH = len(RATE_POKE_NAMES)
-
-ALL_ABILITIES = []
-for poke_name in ALL_POKE_NAMES:
-    for ability in POKEDEX[poke_name].all_abilities:
-        if ability not in ALL_ABILITIES:
-            ALL_ABILITIES.append(ability)
-
-del poke_name
-
-MAX_BASE_HP = 0
-for poke_data in POKEDEX.values():
-    MAX_BASE_HP = max([poke_data.base_hp, MAX_BASE_HP])
-
-MAX_BASE_STATE = 0
-for poke_data in POKEDEX.values():
-    MAX_BASE_STATE = max([poke_data.base_atk, poke_data.base_def, poke_data.base_sp_atk,
-                          poke_data.base_sp_def, poke_data.base_speed, MAX_BASE_STATE])
-
-class MoveData:
-    def __init__(self, dict_data):
-        self.type = dict_data["Type"]
-        self.category = dict_data["Category"]
-        self.power = dict_data["Power"]
-        self.accuracy = dict_data["Accuracy"]
-        self.base_pp = dict_data["BasePP"]
-        self.target = dict_data["Target"]
-
-        self.contact = dict_data["Contact"]
-        self.protect = dict_data["Protect"]
-        self.magic_coat = dict_data["MagicCoat"]
-        self.snatch = dict_data["Snatch"]
-        self.mirror_move = dict_data["MirrorMove"]
-        self.substitute = dict_data["Substitute"]
-
-        self.gigantamax_move = dict_data["GigantamaxMove"]
-        self.gigantamax_power = dict_data["GigantamaxPower"]
-        self.priority_rank = dict_data["PriorityRank"]
-        self.critical_rank = dict_data["CriticalRank"]
-
-        self.min_attack_num = dict_data["MinAttackNum"]
-        self.max_attack_num = dict_data["MaxAttackNum"]
-
-MOVEDEX = {k:MoveData(v) for k, v in base_data.MOVEDEX.items()}
-
-MAX_MOVE_POWER = max([MOVEDEX[move_name].power for move_name in ALL_MOVE_NAMES])
-MIN_ATTACK_NUM = min([MOVEDEX[move_name].min_attack_num for move_name in ALL_MOVE_NAMES])
-MAX_ATTACK_NUM = max([MOVEDEX[move_name].max_attack_num for move_name in ALL_MOVE_NAMES])
-
-PHYSICS = "物理"
-SPECIAL = "特殊"
-STATUS = "変化"
+import seviper.parts as parts
+import seviper.damage_tools as dt
 
 STRUGGLE = "わるあがき"
-
-MIN_PRIORITY_RANK = min([move_data.priority_rank for move_data in MOVEDEX.values()])
-MAX_PRIORITY_RANK = max([move_data.priority_rank for move_data in MOVEDEX.values()])
-
-def get_sorted_move_names(move_names):
-    indices = sorted([ALL_MOVE_NAMES.index(move_name) for move_name in move_names])
-    return [ALL_MOVE_NAMES[index] for index in indices]
-
 #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
 MIN_TWO_MAX_FIVE_ATTACK_PERCENTS = [100, 100, 35, 35, 15, 15]
 
-class NatureData:
-    def __init__(self, dict_data):
-        self.atk_bonus = dict_data["AtkBonus"]
-        self.def_bonus = dict_data["DefBonus"]
-        self.sp_atk_bonus = dict_data["SpAtkBonus"]
-        self.sp_def_bonus = dict_data["SpDefBonus"]
-        self.speed_bonus = dict_data["SpeedBonus"]
-
-NATUREDEX = {k:NatureData(v) for k, v in base_data.NATUREDEX.items()}
-TYPEDEX = base_data.TYPEDEX
-
-NORMAL = "ノーマル"
-FIRE = "ほのお"
-WATER = "みず"
-GRASS = "くさ"
-ELECTRIC = "でんき"
-ICE = "こおり"
-FIGHTING = "かくとう"
-POISON = "どく"
-GROUND = "じめん"
-FLYING = "ひこう"
-PSYCHIC = "エスパー"
-BUG = "むし"
-ROCK = "いわ"
-GHOST = "ゴースト"
-DRAGON = "ドラゴン"
-DARK = "あく"
-STEEL = "はがね"
-FAIRY = "フェアリー"
-
-MALE = "♂"
-FEMALE = "♀"
-UNKNOWN = "不明"
-
-ALL_GENDERS = [MALE, FEMALE, UNKNOWN]
-ALL_GENDERS_LENGTH = len(ALL_GENDERS)
-
-def gender_data_to_valid_genders(gender_data):
-    if gender_data == "♂♀両方":
-        return [MALE, FEMALE]
-    elif gender_data == "♂のみ":
-        return [MALE]
-    elif gender_data == "♀のみ":
-        return [FEMALE]
-    else:
-        return [UNKNOWN]
-
-DEFAULT_LEVEL = 50
-
-ALL_INDIVIDUAL_VALUES = [i for i in range(32)]
-MIN_INDIVIDUAL_VALUE = min(ALL_INDIVIDUAL_VALUES)
-MAX_INDIVIDUAL_VALUE = max(ALL_INDIVIDUAL_VALUES)
-
-class Individual:
-    def __init__(self, dict_data):
-        self.hp = dict_data["hp"]
-        self.atk = dict_data["atk"]
-        self.defe = dict_data["defe"]
-        self.sp_atk = dict_data["sp_atk"]
-        self.sp_def = dict_data["sp_def"]
-        self.speed = dict_data["speed"]
-
-ALL_MIN_INDIVIDUAL = Individual({"hp":0, "atk":0, "defe":0, "sp_atk":0, "sp_def":0, "speed":0})
-ALL_MAX_INDIVIDUAL = Individual({"hp":31, "atk":31, "defe":31, "sp_atk":31, "sp_def":31, "speed":31})
-
-ALL_EFFORT_VALUES = [i for i in range(253)]
-MIN_EFFORT_VALUE = min(ALL_EFFORT_VALUES)
-MAX_EFFORT_VALUE = max(ALL_EFFORT_VALUES)
-EFFECTIVE_EFFORT_VALUES = [ev for ev in ALL_EFFORT_VALUES if ev%4 == 0]
-MAX_SUM_EFFORT = 510
-
-class Effort:
-    def __init__(self, dict_data):
-        self.hp = dict_data["hp"]
-        self.atk = dict_data["atk"]
-        self.defe = dict_data["defe"]
-        self.sp_atk = dict_data["sp_atk"]
-        self.sp_def = dict_data["sp_def"]
-        self.speed = dict_data["speed"]
-
-    def sum(self):
-        return self.hp + self.atk + self.defe + self.sp_atk + self.sp_def + self.speed
-
-    def is_valid_sum(self):
-        return 0 <= self.sum() <= MAX_SUM_EFFORT
-
-ALL_POINT_UPS = [0, 1, 2, 3]
-MIN_POINT_UP = min(ALL_POINT_UPS)
-MAX_POINT_UP = max(ALL_POINT_UPS)
-
-class PowerPoint:
-    def __init__(self, base_pp, point_up):
-        max_v = PowerPoint.calc(base_pp, point_up)
-        self.max = max_v
-        self.current = max_v
-
-    def __eq__(self, power_point):
-        return self.max == power_point.max and self.current == power_point.current
-
-    def __ne__(self, power_point):
-        return not self.__eq__(power_point)
-
-    @staticmethod
-    def calc(base_pp, point_up):
-        result = (5.0 + float(point_up)) / 5.0
-        return int(base_pp * result)
-
-MAX_BASE_PP = max([move_data.base_pp for move_data in MOVEDEX.values()])
-MAX_POWER_POINT = PowerPoint.calc(MAX_BASE_PP, MAX_POINT_UP)
-
-MIN_MOVESET_LENGTH = 1
-MAX_MOVESET_LENGTH = 4
-
-def calc_hp_state(base_hp, individual_value, effort_value):
-    return ((base_hp * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + DEFAULT_LEVEL + 10
-
-def calc_state(base_state, individual_value, effort_value, nature_bonus):
-    result = ( (base_state * 2) + individual_value + (effort_value // 4) ) * DEFAULT_LEVEL // 100 + 5
-    return int(float(result) * nature_bonus)
-
-MAX_HP = calc_hp_state(MAX_BASE_HP, 31, 252)
-MAX_STATE = calc_state(MAX_BASE_STATE, 31, 31, 1.1)
-
-NORMAL_POISON = "どく"
-BAD_POISON = "もうどく"
-SLEEP = "ねむり"
-BURN = "やけど"
-PARALYSIS = "まひ"
-FREEZE = "こおり"
-
-ALL_STATUS_AILMENT = [
-    NORMAL_POISON, BAD_POISON, SLEEP, BURN, PARALYSIS, FREEZE
-]
-
-BUILD_POKE_NAME_FEATURES = RATE_POKE_NAMES + ["なし"]
-ITEM_FEATURES = ALL_ITEMS + ["なし"]
-ITEM_FEATURES_LENGTH = len(ITEM_FEATURES)
-BUILD_MOVE_NAME_FEATURES = ALL_MOVE_NAMES + ["なし"]
-STATUS_AILMENT_FEATURES = [""] + ALL_STATUS_AILMENT
-STATUS_AILMENT_FEATURES_LENGTH = len(STATUS_AILMENT_FEATURES)
-
-class Pokemon:
-    @staticmethod
-    def new(poke_name, nature, ability, gender, item, move_names, point_ups, individual, effort):
-        assert poke_name in ALL_POKE_NAMES, "ポケモン名が不適"
-        assert nature in ALL_NATURES, "性格が不適"
-        poke_data = POKEDEX[poke_name]
-
-        assert ability in poke_data.all_abilities, "特性が不適"
-        assert gender in gender_data_to_valid_genders(poke_data.gender), "性別が不適"
-        assert item in ITEM_FEATURES, "アイテムが不適"
-
-        assert MIN_MOVESET_LENGTH <= len(move_names) <= MAX_MOVESET_LENGTH, "覚えさせる技の数が不適"
-        assert len(move_names) == len(point_ups), "覚えさせる技の数とポイントアップリストの数が一致していない"
-
-        for move_name in move_names:
-            assert move_name in poke_data.learnset, poke_name + " は " + move_name + " を 覚えない"
-
-        for i, point_up in enumerate(point_ups):
-            assert MIN_POINT_UP <= point_up <= MAX_POINT_UP, move_names[i] + " の ポイントアップ が 不適"
-
-        assert MIN_INDIVIDUAL_VALUE <= individual.hp <= MAX_INDIVIDUAL_VALUE, "HP個体値が不適"
-        assert MIN_INDIVIDUAL_VALUE <= individual.atk <= MAX_INDIVIDUAL_VALUE, "攻撃個体値が不適"
-        assert MIN_INDIVIDUAL_VALUE <= individual.defe <= MAX_INDIVIDUAL_VALUE, "防御個体値が不適"
-        assert MIN_INDIVIDUAL_VALUE <= individual.sp_atk <= MAX_INDIVIDUAL_VALUE, "特攻個体値が不適"
-        assert MIN_INDIVIDUAL_VALUE <= individual.sp_def <= MAX_INDIVIDUAL_VALUE, "特防個体値が不適"
-        assert MIN_INDIVIDUAL_VALUE <= individual.speed <= MAX_INDIVIDUAL_VALUE, "素早さ個体値が不適"
-
-        assert MIN_EFFORT_VALUE <= effort.hp <= MAX_EFFORT_VALUE, "HP努力値が不適"
-        assert MIN_EFFORT_VALUE <= effort.atk <= MAX_EFFORT_VALUE, "攻撃努力値が不適"
-        assert MIN_EFFORT_VALUE <= effort.defe <= MAX_EFFORT_VALUE, "防御努力値が不適"
-        assert MIN_EFFORT_VALUE <= effort.sp_atk <= MAX_EFFORT_VALUE, "特攻努力値が不適"
-        assert MIN_EFFORT_VALUE <= effort.sp_def <= MAX_EFFORT_VALUE, "特防努力値が不適"
-        assert MIN_EFFORT_VALUE <= effort.speed <= MAX_EFFORT_VALUE, "素早さ努力値が不適"
-        assert effort.is_valid_sum(), "努力値の合計値が不適"
-
-        nature_data = NATUREDEX[nature]
-        pokemon = Pokemon()
-
-        pokemon.name = poke_name
-        pokemon.nature = nature
-        pokemon.ability = ability
-        pokemon.gender = gender
-        pokemon.item = item
-
-        pokemon.sorted_move_names = get_sorted_move_names(move_names)
-        pokemon.moveset = {move_name:PowerPoint(MOVEDEX[move_name].base_pp, point_ups[i]) \
-                        for i, move_name in enumerate(move_names)}
-
-        pokemon.types = poke_data.types
-
-        hp = calc_hp_state(poke_data.base_hp, individual.hp, effort.hp)
-        pokemon.max_hp = hp
-        pokemon.current_hp = hp
-        pokemon.atk = calc_state(poke_data.base_atk, individual.atk, effort.atk, nature_data.atk_bonus)
-        pokemon.defe = calc_state(poke_data.base_def, individual.defe, effort.defe, nature_data.def_bonus)
-        pokemon.sp_atk = calc_state(poke_data.base_sp_atk, individual.sp_atk, effort.sp_atk, nature_data.sp_atk_bonus)
-        pokemon.sp_def = calc_state(poke_data.base_sp_def, individual.sp_def, effort.sp_def, nature_data.sp_def_bonus)
-        pokemon.speed = calc_state(poke_data.base_speed, individual.speed, effort.speed, nature_data.speed_bonus)
-
-        pokemon.atk_rank = 0
-        pokemon.def_rank = 0
-        pokemon.sp_atk_rank = 0
-        pokemon.sp_def_rank = 0
-        pokemon.speed_rank = 0
-        pokemon.accuracy_rank = 0
-        pokemon.evasion_rank = 0
-
-        pokemon.status_ailment = ""
-        pokemon.bad_poison_elapsed_turn = 0
-        pokemon.choice_move_name = ""
-
-        pokemon.is_roots = False
-        pokemon.is_leech_seed = False
-        return pokemon
-
-    @staticmethod
-    def new_random(poke_name):
-        poke_data = POKEDEX[poke_name]
-        nature = random.choice(ALL_NATURES)
-        ability = random.choice(poke_data.all_abilities)
-        gender = random.choice(gender_data_to_valid_genders(poke_data.gender))
-
-        learnset_indices = [i for i in range(len(poke_data.learnset)) if poke_data.learnset[i] in IMPLEMENTED_MOVE_NAMES]
-        random.shuffle(learnset_indices)
-        learnset_indices_end = min([len(learnset_indices), MAX_MOVESET_LENGTH])
-        move_names = [poke_data.learnset[index] for index in learnset_indices[:learnset_indices_end]]
-        point_ups = [random.randint(0, MAX_POINT_UP) for _ in range(len(move_names))]
-
-        state_keys = ["hp", "atk", "defe", "sp_atk", "sp_def", "speed"]
-        individual_dict = {key:random.randint(0, MAX_INDIVIDUAL_VALUE) for key in state_keys}
-        individual = Individual(individual_dict)
-        effort_dict = {key:0 for key in state_keys}
-        while sum(effort_dict.values()) != MAX_SUM_EFFORT:
-            key = random.choice(state_keys)
-            if effort_dict[key] < MAX_EFFORT_VALUE:
-                effort_dict[key] += 1
-        effort = Effort(effort_dict)
-
-        return Pokemon.new(poke_name, nature, ability, gender, "なし", move_names, point_ups, individual, effort)
-
-    def __eq__(self, pokemon):
-        if self.name != pokemon.name:
-            return False
-        elif self.nature != pokemon.nature:
-            return False
-        elif self.ability != pokemon.ability:
-            return False
-        elif self.gender != pokemon.gender:
-            return False
-        elif self.item != pokemon.item:
-            return False
-        elif len(self.sorted_move_names) != len(pokemon.sorted_move_names):
-            return False
-        elif not all([self.sorted_move_names[i] == pokemon.sorted_move_names[i] for i in range(len(self.sorted_move_names))]):
-            return False
-        elif not all([self.moveset[move_name] == pokemon.moveset[move_name] for move_name in self.sorted_move_names]):
-            return False
-        elif len(self.types) != len(pokemon.types):
-            return False
-        elif not all([type_ in pokemon.types for type_ in self.types]):
-            return False
-        elif self.max_hp != pokemon.max_hp:
-            return False
-        elif self.current_hp != pokemon.current_hp:
-            return False
-        elif self.atk != pokemon.atk:
-            return False
-        elif self.defe != pokemon.defe:
-            return False
-        elif self.sp_atk != pokemon.sp_atk:
-            return False
-        elif self.sp_def != pokemon.sp_def:
-            return False
-        elif self.speed != pokemon.speed:
-            return False
-        elif self.atk_rank != pokemon.atk_rank:
-            return False
-        elif self.def_rank != pokemon.def_rank:
-            return False
-        elif self.sp_atk_rank != pokemon.sp_atk_rank:
-            return False
-        elif self.sp_def_rank != pokemon.sp_def_rank:
-            return False
-        elif self.speed_rank != pokemon.speed_rank:
-            return False
-        elif self.accuracy_rank != pokemon.accuracy_rank:
-            return False
-        elif self.evasion_rank != pokemon.evasion_rank:
-            return False
-        elif self.status_ailment != pokemon.status_ailment:
-            return False
-        elif self.bad_poison_elapsed_turn != pokemon.bad_poison_elapsed_turn:
-            return False
-        elif self.choice_move_name != pokemon.choice_move_name:
-            return False
-        elif self.is_roots != pokemon.is_roots:
-            return False
-        elif self.is_leech_seed != pokemon.is_leech_seed:
-            return False
-        else:
-            return True
-
-    def is_full_hp(self):
-        return self.max_hp == self.current_hp
-
-    def is_faint(self):
-        return self.current_hp <= 0
-
-    def is_faint_damage(self, damage):
-        return damage >= self.current_hp
-
-    def current_damage(self):
-        return self.max_hp - self.current_hp
-
-    def padding_sorted_move_names(self):
-        return self.sorted_move_names + ["なし" for _ in range(MAX_MOVESET_LENGTH - len(self.sorted_move_names))]
-
-    def nature_feature_list(self):
-        nature_data = NATUREDEX[self.nature]
-        nature_feature = [nature_data.atk_bonus, nature_data.def_bonus,
-                          nature_data.sp_atk_bonus, nature_data.sp_def_bonus, nature_data.speed_bonus]
-        return nature_feature
-
-    def ability_feature_list(self):
-        poke_data = POKEDEX[self.name]
-        ability_feature = [0, 0, 0]
-        ability_feature[poke_data.all_abilities.index(self.ability)] = 1
-        return ability_feature
-
-    def gender_feature_list(self):
-        gender_feature = [0 for _ in range(len(ALL_GENDERS))]
-        gender_feature[ALL_GENDERS.index(self.gender)] = 1
-        return gender_feature
-
-    def to_feature_list(self):
-        poke_name_start = 0
-
-        nature_atk_bonus_start = RATE_POKE_NAMES_LENGTH
-        nature_def_bonus_start = nature_atk_bonus_start + 1
-        nature_sp_atk_bonus_start = nature_def_bonus_start + 1
-        nature_sp_def_bonus_start = nature_sp_atk_bonus_start + 1
-        nature_sp_def_bonus_start = nature_sp_def_bonus_start + 1
-        nature_speed_bonus_start = nature_sp_def_bonus_start + 1
-
-        ability_start = nature_speed_bonus_start + 1
-        gender_start = ability_start + 3
-        item_start = gender_start + ALL_GENDERS_LENGTH
-        move_name_start = item_start + ITEM_FEATURES_LENGTH
-        priority_start = move_name_start + (MAX_PRIORITY_RANK - MIN_PRIORITY_RANK)
-
-        max_power_point1_start = priority_start + ALL_MOVE_NAMES_LENGTH
-        max_power_point2_start = max_power_point1_start + 1
-        max_power_point3_start = max_power_point2_start + 1
-        max_power_point4_start = max_power_point3_start + 1
-
-        current_power_point1_start = max_power_point4_start + 1
-        current_power_point2_start = current_power_point1_start + 1
-        current_power_point3_start = current_power_point2_start + 1
-        current_power_point4_start = current_power_point3_start + 1
-
-        max_hp_start = current_power_point4_start + 1
-        current_hp_start = max_hp_start + 1
-        atk_start = current_hp_start + 1
-        defe_start = atk_start + 1
-        sp_atk_start = defe_start + 1
-        sp_def_start = sp_atk_start + 1
-        speed_start = sp_def_start + 1
-
-        atk_rank_start = speed_start + 1
-        def_rank_start = atk_rank_start + 1
-        sp_atk_rank_start = def_rank_start + 1
-        sp_def_rank_start = sp_atk_rank_start + 1
-        speed_rank_start = sp_def_rank_start + 1
-        accuracy_rank_start = speed_rank_start + 1
-        evasion_rank_start = accuracy_rank_start + 1
-
-        status_ailment_start = evasion_rank_start + 1
-        bad_poison_elapsed_turn_start = status_ailment_start + STATUS_AILMENT_FEATURES_LENGTH
-
-        choice_move_name_start = bad_poison_elapsed_turn_start + 1
-        is_roots_start = choice_move_name_start + MAX_MOVESET_LENGTH
-        is_leech_seed_start = is_roots_start + 1
-
-        result = [0 for _ in range(is_leech_seed_start + 1)]
-
-        def input_with_validation(start, i, v):
-            index = start + i
-            assert result[index] == 0
-            result[index] = v
-
-        poke_data = POKEDEX[self.name]
-        nature_data = NATUREDEX[self.nature]
-
-        input_with_validation(poke_name_start, RATE_POKE_NAMES.index(self.name), 1)
-        input_with_validation(nature_atk_bonus_start, 0, nature_data.atk_bonus)
-        input_with_validation(nature_def_bonus_start, 0, nature_data.def_bonus)
-        input_with_validation(nature_sp_atk_bonus_start, 0, nature_data.sp_atk_bonus)
-        input_with_validation(nature_sp_def_bonus_start, 0, nature_data.sp_def_bonus)
-        input_with_validation(nature_speed_bonus_start, 0, nature_data.speed_bonus)
-        input_with_validation(ability_start, poke_data.all_abilities.index(self.ability), 1)
-        input_with_validation(gender_start, ALL_GENDERS.index(self.gender), 1)
-        input_with_validation(item_start, ITEM_FEATURES.index(self.item), 1)
-
-        max_power_point_starts = [max_power_point1_start, max_power_point2_start, max_power_point3_start, max_power_point4_start]
-        current_power_point_starts = [current_power_point1_start, current_power_point2_start,
-                                      current_power_point3_start, current_power_point4_start]
-
-        for i, move_name in enumerate(self.sorted_move_names):
-            max_power_point = float(self.moveset[move_name].max)
-            input_with_validation(move_name_start, ALL_MOVE_NAMES.index(move_name), 1.0)
-            input_with_validation(priority_start, 0, float(MOVEDEX[move_name].priority_rank))
-            input_with_validation(max_power_point_starts[i], 0, self.moveset[move_name].max / 10.0)
-            input_with_validation(current_power_point_starts[i], 0, float(self.moveset[move_name].current) / max_power_point)
-
-        input_with_validation(max_hp_start, 0, float(self.max_hp) / 100.0)
-        input_with_validation(current_hp_start, 0, float(self.current_hp) / float(self.max_hp))
-        input_with_validation(atk_start, 0, float(self.atk) / 100.0)
-        input_with_validation(defe_start, 0, float(self.defe) / 100.0)
-        input_with_validation(sp_atk_start, 0, float(self.sp_atk) / 100.0)
-        input_with_validation(sp_def_start, 0, float(self.sp_def) / 100.0)
-        input_with_validation(speed_start, 0, float(self.speed) / 100.0)
-
-        input_with_validation(atk_rank_start, 0, float(self.atk_rank))
-        input_with_validation(def_rank_start, 0, float(self.def_rank))
-        input_with_validation(sp_atk_rank_start, 0, float(self.sp_atk_rank))
-        input_with_validation(sp_def_rank_start, 0, float(self.sp_def_rank))
-        input_with_validation(speed_rank_start, 0, float(self.speed_rank))
-        input_with_validation(accuracy_rank_start, 0, float(self.accuracy_rank))
-        input_with_validation(evasion_rank_start, 0, float(self.evasion_rank))
-
-        input_with_validation(status_ailment_start, STATUS_AILMENT_FEATURES.index(self.status_ailment), 1)
-        input_with_validation(bad_poison_elapsed_turn_start, 0, float(self.bad_poison_elapsed_turn) / 16.0)
-
-        if self.choice_move_name != "":
-            input_with_validation(choice_move_name_start, self.sorted_move_names.index(choice_move_name), 1)
-
-        if self.is_roots:
-            input_with_validation(is_roots_start, 0, 1)
-
-        if self.is_leech_seed:
-            input_with_validation(is_leech_seed_start, 0, 1)
-        return result
-
-def new_venusaur():
-    result = Pokemon.new("フシギバナ", "おだやか", "しんりょく", "♀", "くろいヘドロ",
-                     ["ギガドレイン", "ヘドロばくだん", "やどりぎのタネ", "どくどく"], [3, 3, 3, 3],
-                     ALL_MAX_INDIVIDUAL,
-                     Effort({"hp":252, "atk":0, "defe":0, "sp_atk":0, "sp_def":252, "speed":4}))
-    return result
-
-def new_charizard():
-    result = Pokemon.new("リザードン", "おくびょう", "もうか", "♂", "いのちのたま",
-                     ["かえんほうしゃ", "エアスラッシュ", "りゅうのはどう", "オーバーヒート"], [3, 3, 3, 3],
-                      ALL_MAX_INDIVIDUAL,
-                      Effort({"hp":4, "atk":0, "defe":0, "sp_atk":252, "sp_def":0, "speed":252}))
-    return result
-
-def new_blastoise():
-    result = Pokemon.new("カメックス", "ひかえめ", "げきりゅう", "♂", "オボンのみ",
-                     ["からをやぶる", "なみのり", "れいとうビーム", "あくのはどう"], [3, 3, 3, 3],
-                     ALL_MAX_INDIVIDUAL,
-                     Effort({"hp":4, "atk":0, "defe":0, "sp_atk":252, "sp_def":0, "speed":252}))
-    return result
-
-def new_gyarados():
-    result = Pokemon.new("ギャラドス", "いじっぱり", "いかく", "♂", "カゴのみ",
-                     ["たきのぼり", "じしん", "こおりのキバ", "りゅうのまい"], [3, 3, 3, 3],
-                     ALL_MAX_INDIVIDUAL, Effort({"hp":128, "atk":252, "defe":0, "sp_atk":0, "sp_def":0, "speed":128}))
-    return result
-
-def new_garchomp():
-    result = Pokemon.new("ガブリアス", "ようき", "さめはだ", "♀", "きあいのタスキ",
-                     ["じしん", "ドラゴンクロー", "ストーンエッジ", "つるぎのまい"], [3, 3, 3, 3],
-                     ALL_MAX_INDIVIDUAL, Effort({"hp":4, "atk":252, "defe":0, "sp_atk":0, "sp_def":0, "speed":252}))
-    return result
-
-TEMPLATE_POKEMONS = {
-    "フシギバナ":new_venusaur,
-    "リザードン":new_charizard,
-    "カメックス":new_blastoise,
-    "ギャラドス":new_gyarados,
-    "ガブリアス":new_garchomp
-}
+def is_hit(percent):
+    return random.randint(0, 99) < percent
+
+def get_real_rank_up_down(rank, v):
+    if v > 0:
+        return min([parts.MAX_RANK - rank, v])
+    elif v < 0:
+        return max([parts.MIN_RANK - rank, v])
+    assert False
 
 class Team(list):
     MIN_LENGTH = 3
@@ -610,10 +31,6 @@ class Team(list):
         assert all([indices.count(index) == 1 for index in indices]), "同じポケモンは選出出来ない"
         return Fighters([self[indices] for index in indices])
 
-    def assert_item_validation():
-        items = [pokemon.item for pokemon in team]
-        assert all([items.count(pokemon.item) == 1 for pokemon in team]), "同じアイテムを持ったポケモンがいる"
-
 class Fighters(list):
     LENGTH = 3
 
@@ -625,15 +42,15 @@ class Fighters(list):
 
     @staticmethod
     def new_rate_random():
-        rate_poke_names_indices = [i for i in range(RATE_POKE_NAMES_LENGTH)]
+        rate_poke_names_indices = [i for i in range(base_data.RATE_POKE_NAMES_LENGTH)]
         random.shuffle(rate_poke_names_indices)
-        poke_names = [RATE_POKE_NAMES[index] for index in rate_poke_names_indices[:Fighters.LENGTH]]
+        poke_names = [base_data.RATE_POKE_NAMES[index] for index in rate_poke_names_indices[:Fighters.LENGTH]]
 
-        items_indices = [i for i in range(len(ALL_ITEMS))]
+        items_indices = [i for i in range(len(base_data.ALL_ITEMS))]
         random.shuffle(items_indices)
-        items = [ALL_ITEMS[index] for index in items_indices[:Fighters.LENGTH]]
+        items = [base_data.ALL_ITEMS[index] for index in items_indices[:Fighters.LENGTH]]
 
-        fighters = Fighters([Pokemon.new_random(poke_name) for poke_name in poke_names])
+        fighters = Fighters([parts.Pokemon.new_random(poke_name) for poke_name in poke_names])
         for i in range(Fighters.LENGTH):
             fighters[i].item = items[i]
         return fighters
@@ -659,196 +76,8 @@ class Fighters(list):
             legal_move_name_action_cmds = [STRUGGLE]
         return legal_move_name_action_cmds + legal_back_poke_name_action_cmds
 
-    def to_feature_list(self):
-        return [pokemon.to_feature_list() for pokemon in self]
-
-MIN_RANK = -6
-MAX_RANK = 6
-
-#https://wiki.xn--rckteqa2e.com/wiki/%E3%83%A9%E3%83%B3%E3%82%AF%E8%A3%9C%E6%AD%A3
-RANK_BONUS = {
-    -6:2.0 / 8.0,
-    -5:2.0 / 7.0,
-    -4:2.0 / 6.0,
-    -3:2.0 / 5.0,
-    -2:2.0 / 4.0,
-    -1:2.0 / 3.0,
-    0:2.0 / 2.0,
-    1:3.0 / 2.0,
-    2:4.0 / 2.0,
-    3:5.0 / 2.0,
-    4:6.0 / 2.0,
-    5:7.0 / 2.0,
-    6:8.0 / 2.0,
-}
-
-def get_real_rank_up_down(rank, v):
-    if v > 0:
-        return min([MAX_RANK - rank, v])
-    elif v < 0:
-        return max([MIN_RANK - rank, v])
-    assert False
-
-def is_hit(percent):
-    return random.randint(0, 99) < percent
-
-CRITICAL_BONUS = {True:6144.0 / 4096.0, False:1.0}
-
-#https://latest.pokewiki.net/%E3%83%80%E3%83%A1%E3%83%BC%E3%82%B8%E8%A8%88%E7%AE%97%E5%BC%8F
-#小数点以下がが0.5以上ならば、繰り上げ
-def five_or_more_rounding(x):
-	after_the_decimal_point = float(x) - float(int(x))
-	if after_the_decimal_point >= 0.5:
-		return int(x + 1)
-	else:
-		return int(x)
-
-#小数点以下が0.5より大きいならば、繰り上げ
-def five_over_rounding(x):
-	after_the_decimal_point = float(x) - float(int(x))
-	if after_the_decimal_point > 0.5:
-		return int(x + 1)
-	else:
-		return int(x)
-
-INIT_POWER_BONUS = 4096
-INIT_PHYSICS_ATTACK_BONUS = 4096
-INIT_SPECIAL_ATTACK_BONUS = 4096
-
-def get_final_power(battle, move_name):
-    move_data = MOVEDEX[move_name]
-    assert move_data.category != STATUS, \
-        "ダメージ計算関連のメソッドは、物理技か変化技の技名でなければならない"
-
-    if move_data.power <= 0:
-        power = 50
-    else:
-        power = move_data.power
-
-    result = five_over_rounding(float(power) * float(INIT_POWER_BONUS) / 4096.0)
-    return max([result, 1])
-
-def get_physics_attack_bonus(battle):
-    result = INIT_PHYSICS_ATTACK_BONUS
-    if battle.p1_fighters[0].item == "こだわりハチマキ":
-        result = five_over_rounding(float(result) * 6144.0 / 4096.0)
-    return result
-
-def get_special_attack_bonus(battle):
-    result = INIT_SPECIAL_ATTACK_BONUS
-    if battle.p1_fighters[0].item == "こだわりメガネ":
-        result = five_over_rounding(float(result) * 6144.0 / 4096.0)
-    return result
-
-def get_final_attack(battle, move_name, is_critical):
-    move_data = MOVEDEX[move_name]
-
-    if move_data.category == PHYSICS:
-        attack_state = battle.p1_fighters[0].atk
-        rank = battle.p1_fighters[0].atk_rank
-        attack_bonus = get_physics_attack_bonus(battle)
-    elif move_data.category == SPECIAL:
-        attack_state = battle.p1_fighters[0].sp_atk
-        rank = battle.p1_fighters[0].sp_atk_rank
-        attack_bonus = get_special_attack_bonus(battle)
-    else:
-        assert False, "ダメージ計算関連の関数で、変化技の技名が入力された"
-
-    if (rank < 0) and is_critical:
-        rank = 0
-
-    rank_bonus = RANK_BONUS[rank]
-
-    result = int(float(attack_state) * float(rank_bonus))
-    result = five_over_rounding(float(result) * float(attack_bonus) / 4096.0)
-    return max([result, 1])
-
-INIT_PHYSICS_DEFENSE_BONUS = 4096
-INIT_SPECIAL_DEFENSE_BONUS = 4096
-INIT_DEFENSE_BONUS = 4096
-
-def get_physics_defense_bonus(battle):
-	result = INIT_PHYSICS_DEFENSE_BONUS
-	return result
-
-def get_special_defense_bonus(battle):
-    result = INIT_SPECIAL_DEFENSE_BONUS
-    if battle.p1_fighters[0].item == "とつげきチョッキ":
-        result = five_or_more_rounding(float(result) * 6144.0 / 4096.0)
-    return result
-
-def get_final_defense(battle, move_name, is_critical):
-    category = MOVEDEX[move_name].category
-
-    if category == PHYSICS:
-        defense_state = battle.p1_fighters[0].defe
-        rank = battle.p1_fighters[0].def_rank
-        defense_bonus = get_physics_defense_bonus(battle)
-    elif category == SPECIAL:
-        defense_state = battle.p1_fighters[0].sp_def
-        rank = battle.p1_fighters[0].sp_def_rank
-        defense_bonus = get_special_defense_bonus(battle)
-    else:
-        assert False, "ダメージ計算関連の関数で、変化技の技名が入力された"
-
-    if (rank > 0) and is_critical:
-        rank = 0
-
-    rank_bonus = RANK_BONUS[rank]
-
-    result = int(float(defense_state) * float(rank_bonus))
-    result = five_over_rounding(float(result) * float(defense_bonus) / 4096.0)
-    return max([result, 1])
-
-def get_same_type_attack_bonus(pokemon, move_name):
-    move_type = MOVEDEX[move_name].type
-    if move_type in pokemon.types:
-        return 6144.0 / 4096.0
-    else:
-        return 1.0
-
-def get_effectiveness_bonus(pokemon, move_name):
-    result = 1.0
-    move_type = MOVEDEX[move_name].type
-    for poke_type in pokemon.types:
-        result *= TYPEDEX[move_type][poke_type]
-    return result
-
-INIT_DAMAGE_BONUS = 4096
-
-def get_damage_bonus(battle):
-    result = INIT_DAMAGE_BONUS
-    if battle.p1_fighters[0].item == "いのちのたま":
-        result = five_over_rounding(float(result) * 5324.0 / 4096.0)
-    return result
-
-RANDOM_DAMAGE_BONUSES = [
-    0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.0
-]
-
-RANDOM_DAMAGE_BONUSES_LENGTH = len(RANDOM_DAMAGE_BONUSES)
-
-def get_final_damage(battle, move_name, random_damage_bonus, is_critical):
-    move_data = MOVEDEX[move_name]
-
-    final_power = get_final_power(battle, move_name)
-    final_attack = get_final_attack(battle, move_name, is_critical)
-    final_defense = get_final_defense(battle.reverse(), move_name, is_critical)
-
-    critical_bonus = CRITICAL_BONUS[is_critical]
-    stab = get_same_type_attack_bonus(battle.p1_fighters[0], move_name)
-    effectiveness_bonus = get_effectiveness_bonus(battle.p2_fighters[0], move_name)
-    damage_bonus = get_damage_bonus(battle)
-
-    result = DEFAULT_LEVEL*2//5 + 2
-    result = int(float(result) * float(final_power) * float(final_attack) / float(final_defense))
-    result = result // 50 + 2
-    result = five_over_rounding(float(result) * critical_bonus)
-    result = int(float(result) * random_damage_bonus)
-    result = five_over_rounding(float(result) * stab)
-    result = int(float(result) * effectiveness_bonus)
-    result = five_over_rounding(float(result) * float(damage_bonus) / 4096.0)
-    return result
+    def two_d_feature_list(self):
+        return sum([pokemon.two_d_feature_list() for pokemon in self], [])
 
 class Battle:
     def __init__(self, p1_fighters, p2_fighters):
@@ -887,14 +116,14 @@ class Battle:
         return battle
 
     def real_accuracy(self, move_name):
-        if move_name == "どくどく" and POISON in self.p1_fighters[0].types:
+        if move_name == "どくどく" and parts.POISON in self.p1_fighters[0].types:
             return 100
         else:
-            move_data = MOVEDEX[move_name]
+            move_data = base_data.MOVEDEX[move_name]
             return move_data.accuracy
 
     def critical_n(self, move_name):
-        rank = MOVEDEX[move_name].critical_rank
+        rank = base_data.MOVEDEX[move_name].critical_rank
         if rank == 0:
             return 24
         elif rank == 1:
@@ -924,14 +153,14 @@ class Battle:
 
     #https://wiki.xn--rckteqa2e.com/wiki/%E9%80%A3%E7%B6%9A%E6%94%BB%E6%92%83%E6%8A%80
     def attack_num(self, move_name):
-        if move_name in MAX_THREE_ATTACK_MOVE_NAMES:
+        if move_name in base_data.MAX_THREE_ATTACK_MOVE_NAMES:
             real_accuracy = self.real_accuracy(move_name)
             attack_num = 0
             for _ in range(3):
                 if not is_hit(real_accuracy):
                     break
                 attack_num += 1
-        elif move_name in MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES:
+        elif move_name in base_data.MIN_TWO_MAX_FIVE_ATTACK_MOVE_NAMES:
             if self.p1_fighters[0].ability == "スキルリンク":
                 attack_num = 5
             else:
@@ -941,7 +170,7 @@ class Battle:
                         break
                     attack_num += 1
         else:
-            move_data = MOVEDEX[move_name]
+            move_data = base_data.MOVEDEX[move_name]
             attack_num = random.randint(move_data.min_attack_num, move_data.max_attack_num)
 
         return attack_num
@@ -964,21 +193,21 @@ class Battle:
         assert self.p1_fighters[0].moveset[move_name].current > 0, \
             lead_poke_name + " は " + move_name + " を繰り出そうとしたが、PPがない"
 
-        move_data = MOVEDEX[move_name]
+        move_data = base_data.MOVEDEX[move_name]
         self.p1_fighters[0].moveset[move_name].current -= 1
 
         if self.p2_fighters[0].is_faint():
             if move_data.target != "自分":
                 return self
 
-        if move_name not in MAX_THREE_ATTACK_MOVE_NAMES:
+        if move_name not in base_data.MAX_THREE_ATTACK_MOVE_NAMES:
             real_accuracy = self.real_accuracy(move_name)
             if real_accuracy != -1:
                 if not is_hit(real_accuracy):
                     return self
 
-        if move_data.category == STATUS:
-            if move_name in HALF_HEAL_MOVE_NAMES:
+        if move_data.category == parts.STATUS:
+            if move_name in base_data.HALF_HEAL_MOVE_NAMES:
                 return StatusMove.half_heal(self)
             elif move_name in STATUS_MOVES:
                 return STATUS_MOVES[move_name](self)
@@ -990,9 +219,9 @@ class Battle:
             return self
 
         for i in range(attack_num):
-            random_damage_bonus = random.choice(RANDOM_DAMAGE_BONUSES)
+            random_damage_bonus = random.choice(dt.RANDOM_DAMAGE_BONUSES)
             is_critical = self.is_critical(move_name)
-            final_damage = get_final_damage(self, move_name, random_damage_bonus, is_critical)
+            final_damage = dt.get_final_damage(self, move_name, random_damage_bonus, is_critical)
 
             if final_damage == 0:
                 return self
@@ -1028,7 +257,7 @@ class Battle:
         self.p1_fighters[0].speed_rank = 0
         self.p1_fighters[0].accuracy_rank = 0
         self.p1_fighters[0].evasion_rank = 0
-        self.p1_fighters[0].types = POKEDEX[poke_names[0]].types
+        self.p1_fighters[0].types = base_data.POKEDEX[poke_names[0]].types
 
         tmp_p1_fighters = copy.deepcopy(self.p1_fighters)
 
@@ -1043,18 +272,18 @@ class Battle:
         return self
 
     def p1_action(self, command):
-        if command in ALL_MOVE_NAMES + [STRUGGLE]:
+        if command in base_data.ALL_MOVE_NAMES + [STRUGGLE]:
             return self.move_use(command)
-        elif command in ALL_POKE_NAMES:
+        elif command in base_data.ALL_POKE_NAMES:
             return self.switch(command)
         assert False, "アクションコマンドが不正"
 
     def p2_action(self, command):
         self = self.reverse()
-        if command in ALL_MOVE_NAMES + [STRUGGLE]:
+        if command in base_data.ALL_MOVE_NAMES + [STRUGGLE]:
             self = self.move_use(command)
             return self.reverse()
-        elif command in ALL_POKE_NAMES:
+        elif command in base_data.ALL_POKE_NAMES:
             self = self.switch(command)
             return self.reverse()
         assert False, "アクションコマンドが不正"
@@ -1194,35 +423,43 @@ class Battle:
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
-        ss = []
-        actions = []
+        p1_battles = []
+        p1_action_cmds = []
+
+        p2_battles = []
+        p2_action_cmds = []
 
         while True:
+            reverse_self = self.reverse()
             if self.is_p1_and_p2_phase():
                 p1_action_cmd = p1_trainer(self)
-                p2_action_cmd = p2_trainer(self.reverse())
+                p2_action_cmd = p2_trainer(reverse_self)
                 action = {"p1":p1_action_cmd, "p2":p2_action_cmd}
-            elif self.is_p1_only_switch_after_faint_phase():
-                action = {"p1":p1_trainer(self)}
-            else:
-                action = {"p2":p2_trainer(self.reverse())}
 
-            ss.append(self)
-            actions.append(action)
+                p1_battles.append(self)
+                p1_action_cmds.append(p1_action_cmd)
+                p2_battles.append(reverse_self)
+                p2_action_cmds.append(p2_action_cmd)
+            elif self.is_p1_only_switch_after_faint_phase():
+                p1_action_cmd = p1_trainer(self)
+                action = {"p1":p1_action_cmd}
+
+                p1_battles.append(self)
+                p1_action_cmds.append(p1_action_cmd)
+            else:
+                p2_action_cmd = p2_trainer(reverse_self)
+                action = {"p2":p2_action_cmd}
+
+                p2_battles.append(reverse_self)
+                p2_action_cmds.append(p2_action_cmd)
+
             self = self.push(action)
 
             if self.is_game_end():
                 break
 
-        is_p1_all_faint = self.p1_fighters.is_all_faint()
-        is_p2_all_faint = self.p2_fighters.is_all_faint()
-
-        if is_p1_all_faint and is_p2_all_faint:
-            return ss, actions, DRAW
-        elif is_p1_all_faint:
-            return ss, actions, WINNER_P2
-        else:
-            return ss, actions, WINNER_P1
+        winner = self.winner()
+        return p1_battles, p2_battles, p1_action_cmds, p2_action_cmds, winner
 
     def damage_probability_distribution(self, move_name):
     	critical_n = self.critical_n(move_name)
@@ -1230,13 +467,13 @@ class Battle:
     	no_critical_p = 1.0 - critical_p
     	bool_to_critical_p = {True:critical_p, False:no_critical_p}
     	accuracy_p = self.real_accuracy(move_name) / 100.0
-    	random_damage_bonus_p = 1.0 / float(RANDOM_DAMAGE_BONUSES_LENGTH)
+    	random_damage_bonus_p = 1.0 / float(dt.RANDOM_DAMAGE_BONUSES_LENGTH)
 
     	result = {0:1.0 - accuracy_p}
 
     	for is_critical in [False, True]:
-    		for random_damage_bonus in RANDOM_DAMAGE_BONUSES:
-    			final_damage = get_final_damage(self, move_name, random_damage_bonus, is_critical)
+    		for random_damage_bonus in dt.RANDOM_DAMAGE_BONUSES:
+    			final_damage = dt.get_final_damage(self, move_name, random_damage_bonus, is_critical)
     			p = accuracy_p * random_damage_bonus_p * bool_to_critical_p[is_critical]
 
     			if final_damage not in result:
@@ -1260,7 +497,7 @@ class Battle:
                 for fighters2 in fighterses2:
                     tmp = {}
                     for move_name in fighters1[0].sorted_move_names:
-                        if MOVEDEX[move_name].category == STATUS:
+                        if base_data.MOVEDEX[move_name].category == parts.STATUS:
                             damage_probability_distribution = {None:None}
                         else:
                             battle = Battle(fighters1, fighters2)
@@ -1273,84 +510,13 @@ class Battle:
         p2_result = get_result(p2_fighterses, p1_fighterses)
         return {"p1_attack":p1_result, "p2_attack":p2_result}
 
-    def to_feature_list(self):
-        dpd = self.all_damage_probability_distribution()
-
-        def get(attack_fighters, defense_fighters, key):
-            result = []
-            for attack_i, attack_pokemon in enumerate(attack_fighters):
-                for defense_i, defense_pokemon in enumerate(defense_fighters):
-                    for move_name in attack_pokemon.padding_sorted_move_names():
-                        data = dpd[key][attack_i][defense_i][move_name]
-                        if move_name == "なし":
-                            max_hp_expected_damage_percent = -1.0
-                            current_hp_expected_damage_percent = -1.0
-                            status_move_feature_v = -1.0
-                        if None in data:
-                            max_hp_expected_damage_percent = 0.0
-                            current_hp_expected_damage_percent = 0.0
-                            status_move_feature_v = 1.0
-                        else:
-                            expected_damage = sum(damage * percent for damage, percent in dpd[key][attack_i][defense_i][move_name].items())
-                            if defense_pokemon.max_hp < expected_damage:
-                                max_hp_expected_damage_percent = 1.0
-                            else:
-                                max_hp_expected_damage_percent = expected_damage / float(defense_pokemon.max_hp)
-
-                            if defense_pokemon.current_hp < expected_damage:
-                                current_hp_expected_damage_percent = 1.0
-                            elif defense_pokemon.current_hp <= 0:
-                                current_hp_expected_damage_percent = 1.0
-                            else:
-                                current_hp_expected_damage_percent = expected_damage / float(defense_pokemon.current_hp)
-
-                            status_move_feature_v = 0.0
-
-                        result.append(max_hp_expected_damage_percent)
-                        result.append(current_hp_expected_damage_percent)
-                        result.append(status_move_feature_v)
-            return result
-
-        p1_dpd_feature_list = get(self.p1_fighters, self.p2_fighters, "p1_attack")
-        p2_dpd_feature_list = get(self.p2_fighters, self.p1_fighters, "p2_attack")
-
-        p1_feature_list = self.p1_fighters.to_feature_list()
-        p2_feature_list = self.p2_fighters.to_feature_list()
-
-        fighters_indices = [[0, 1, 2], [1, 0, 2], [2, 0, 1]]
-        battles = [Battle([self.p1_fighters[index] for index in p1_indices],
-                          [self.p2_fighters[index] for index in p2_indices]) \
-                           for p1_indices in fighters_indices for p2_indices in fighters_indices]
-
-        real_speed_winners = [Winner.new_real_speed(battle) for battle in battles]
-        p1_real_speed_winner_feature_list = sum([real_speed_winner.to_binary_list() for real_speed_winner in real_speed_winners], [])
-        p2_real_speed_winner_feature_list = sum([real_speed_winner.reverse().to_binary_list() for real_speed_winner in real_speed_winners], [])
-
-        rsw_i = len(real_speed_winners) // Fighters.LENGTH
-        dpb_i = len(p1_dpd_feature_list) // Fighters.LENGTH
-
-        p1_feature_list[0] += (p1_dpd_feature_list[0:dpb_i] + p1_real_speed_winner_feature_list[0:rsw_i])
-        p1_feature_list[1] += (p1_dpd_feature_list[dpb_i:dpb_i*2] + p1_real_speed_winner_feature_list[rsw_i:rsw_i*2])
-        p1_feature_list[2] += (p1_dpd_feature_list[dpb_i*2:dpb_i*3] + p1_real_speed_winner_feature_list[rsw_i*2:rsw_i*3])
-
-        p2_feature_list[0] += (p2_dpd_feature_list[0:dpb_i] + p2_real_speed_winner_feature_list[0:rsw_i])
-        p2_feature_list[1] += (p2_dpd_feature_list[dpb_i:dpb_i*2] + p2_real_speed_winner_feature_list[rsw_i:rsw_i*2])
-        p2_feature_list[2] += (p2_dpd_feature_list[dpb_i*2:dpb_i*3] + p2_real_speed_winner_feature_list[rsw_i*2:rsw_i*3])
-        return p1_feature_list + p2_feature_list
-
-    def to_feature_array_3d(self):
-        feature_list = self.to_feature_list()
-        padding_size = 18
-        feature_list[0] += [0 for _ in range(padding_size)]
-        feature_list[1] += [0 for _ in range(padding_size)]
-        feature_list[2] += [0 for _ in range(padding_size)]
-        feature_list[3] += [0 for _ in range(padding_size)]
-        feature_list[4] += [0 for _ in range(padding_size)]
-        feature_list[5] += [0 for _ in range(padding_size)]
-        return np.array(feature_list).reshape(38, 38, Fighters.LENGTH * 2)
-
     def to_with_ui(self):
         return BattleWithUI(self)
+
+    def two_d_feature_list(self):
+        p1_fighters_2d_feature_list = self.p1_fighters.two_d_feature_list()
+        p2_fighters_2d_feature_list = self.p2_fighters.two_d_feature_list()
+        return p1_fighters_2d_feature_list + p2_fighters_2d_feature_list
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:
@@ -1378,7 +544,7 @@ class TurnEnd:
         if battle.p1_fighters[0].is_faint():
             return battle
 
-        if POISON in battle.p1_fighters[0].types:
+        if parts.POISON in battle.p1_fighters[0].types:
             heal = int(float(battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
             battle = battle.heal(heal)
         else:
@@ -1409,7 +575,7 @@ class TurnEnd:
 
     @staticmethod
     def bad_poison(battle):
-        if battle.p1_fighters[0].status_ailment != BAD_POISON:
+        if battle.p1_fighters[0].status_ailment != parts.BAD_POISON:
             return battle
 
         battle = copy.deepcopy(battle)
@@ -1440,14 +606,6 @@ class Winner:
         else:
             return DRAW
 
-    def to_binary_list(self):
-        if self == WINNER_P1:
-            return [1, 0, 0]
-        elif self == WINNER_P2:
-            return [0, 1, 0]
-        else:
-            return [0, 0, 1]
-
     @staticmethod
     def new_real_speed(battle):
         p1_real_speed = get_real_speed(battle)
@@ -1463,11 +621,11 @@ class Winner:
     @staticmethod
     def new_action_priority(battle, p1_action_cmd, p2_action_cmd):
         def priority_rank(action_cmd):
-            if action_cmd in ALL_MOVE_NAMES:
-                return MOVEDEX[action_cmd].priority_rank
+            if action_cmd in base_data.ALL_MOVE_NAMES:
+                return base_data.MOVEDEX[action_cmd].priority_rank
             elif action_cmd == STRUGGLE:
                 return 0
-            elif action_cmd in ALL_POKE_NAMES:
+            elif action_cmd in base_data.ALL_POKE_NAMES:
                 return 999
             assert False, "アクションコマンドが不適"
 
@@ -1504,17 +662,17 @@ PARALYSIS_BONUS = {True:2048.0 / 4096.0, False:1.0}
 def get_speed_bonus(battle):
     result = INIT_SPEED_BONUS
     if battle.p1_fighters[0].item == "こだわりスカーフ":
-        result = five_or_more_rounding(float(result) * 6144.0 / 4096.0)
+        result = dt.five_or_more_rounding(float(result) * 6144.0 / 4096.0)
     return result
 
 def get_real_speed(battle):
     speed = battle.p1_fighters[0].speed
-    rank_bonus = RANK_BONUS[battle.p1_fighters[0].speed_rank]
+    rank_bonus = dt.RANK_BONUS[battle.p1_fighters[0].speed_rank]
     speed_bonus = get_speed_bonus(battle)
-    paralysis_bonus = PARALYSIS_BONUS[battle.p1_fighters[0].status_ailment == PARALYSIS]
+    paralysis_bonus = PARALYSIS_BONUS[battle.p1_fighters[0].status_ailment == parts.PARALYSIS]
 
     result = int(float(speed) * float(rank_bonus))
-    result = five_over_rounding(float(result) * float(speed_bonus) / 4096.0)
+    result = dt.five_over_rounding(float(result) * float(speed_bonus) / 4096.0)
     return result
 
 class StatusMove:
@@ -1553,17 +711,17 @@ class StatusMove:
         if battle.p2_fighters[0].status_ailment != "":
             return battle
 
-        if (POISON in battle.p2_fighters[0].types) or (STEEL in battle.p2_fighters[0].types):
+        if (parts.POISON in battle.p2_fighters[0].types) or (parts.STEEL in battle.p2_fighters[0].types):
             return battle
 
         battle = copy.deepcopy(battle)
-        battle.p2_fighters[0].status_ailment = BAD_POISON
+        battle.p2_fighters[0].status_ailment = parts.BAD_POISON
         return battle
 
     @staticmethod
     def leech_seed(battle):
         battle = copy.deepcopy(battle)
-        if GRASS in battle.p2_fighters[0].types:
+        if parts.GRASS in battle.p2_fighters[0].types:
             return battle
 
         battle.p2_fighters[0].is_leech_seed = True
@@ -1708,7 +866,7 @@ class BattleMessage(str):
     @staticmethod
     def new_rank_up_down(poke_name, state, fluctuation_v, is_real_p1):
         assert fluctuation_v != 0
-        assert MIN_RANK <= fluctuation_v <= MAX_RANK
+        assert parts.MIN_RANK <= fluctuation_v <= parts.MAX_RANK
 
         h = OF_SELF[is_real_p1] + poke_name + " の " + state
 
@@ -1792,14 +950,14 @@ class BattleWithUI:
 
         if not self.hide_real_p1_ui:
             ui.real_p1_poke_name = real_p1_pokemon.name
-            ui.real_p1_level = DEFAULT_LEVEL
+            ui.real_p1_level = parts.DEFAULT_LEVEL
             ui.real_p1_gender = real_p1_pokemon.gender
             ui.real_p1_max_hp = real_p1_pokemon.max_hp
             ui.real_p1_current_hp = real_p1_pokemon.current_hp
 
         if not self.hide_real_p2_ui:
             ui.real_p2_poke_name = real_p2_pokemon.name
-            ui.real_p2_level = DEFAULT_LEVEL
+            ui.real_p2_level = parts.DEFAULT_LEVEL
             ui.real_p2_gender = real_p2_pokemon.gender
             ui.real_p2_max_hp = real_p2_pokemon.max_hp
             ui.real_p2_current_hp = real_p2_pokemon.current_hp
@@ -1855,7 +1013,7 @@ class BattleWithUI:
         assert self.battle.p1_fighters[0].moveset[move_name].current > 0, \
             p1_poke_name + " は " + move_name + " を繰り出そうとしたが、PPがない"
 
-        move_data = MOVEDEX[move_name]
+        move_data = base_data.MOVEDEX[move_name]
         self = copy.deepcopy(self)
         self.battle.p1_fighters[0].moveset[move_name].current -= 1
 
@@ -1868,7 +1026,7 @@ class BattleWithUI:
                     ui_history.append(ui)
                 return self
 
-        if move_name not in MAX_THREE_ATTACK_MOVE_NAMES:
+        if move_name not in base_data.MAX_THREE_ATTACK_MOVE_NAMES:
             real_accuracy = self.battle.real_accuracy(move_name)
             if real_accuracy != -1:
                 if not is_hit(real_accuracy):
@@ -1879,11 +1037,11 @@ class BattleWithUI:
                         ui_history.append(ui)
                     return self
 
-        if move_data.category == STATUS:
+        if move_data.category == parts.STATUS:
             for ui in move_use_battle_message.apply_bwu(self, is_real_p1):
                 ui_history.append(ui)
 
-            if move_name in HALF_HEAL_MOVE_NAMES:
+            if move_name in base_data.HALF_HEAL_MOVE_NAMES:
                 return StatusMoveWithUI.half_heal(self, is_real_p1, ui_history)
             elif move_name in STATUS_MOVES_WITH_UI:
                 return STATUS_MOVES_WITH_UI[move_name](self, is_real_p1, ui_history)
@@ -1900,10 +1058,10 @@ class BattleWithUI:
             ui_history.append(ui)
 
         for i in range(attack_num):
-            random_damage_bonus = random.choice(RANDOM_DAMAGE_BONUSES)
+            random_damage_bonus = random.choice(dt.RANDOM_DAMAGE_BONUSES)
             is_critical = self.battle.is_critical(move_name)
 
-            final_damage = get_final_damage(self.battle, move_name, random_damage_bonus, is_critical)
+            final_damage = dt.get_final_damage(self.battle, move_name, random_damage_bonus, is_critical)
 
             if final_damage == 0:
                 break
@@ -1919,7 +1077,7 @@ class BattleWithUI:
             if self.battle.p1_fighters[0].is_faint() or self.battle.p2_fighters[0].is_faint():
                 break
 
-        effectiveness_bonus = get_effectiveness_bonus(self.battle.p2_fighters[0], move_name)
+        effectiveness_bonus = dt.get_effectiveness_bonus(self.battle.p2_fighters[0], move_name)
 
         if effectiveness_bonus == 0.0:
             effective_battle_message = BattleMessage.new_no_effective(self.battle.p2_fighters[0].name, not is_real_p1)
@@ -2003,20 +1161,20 @@ class BattleWithUI:
         return self
 
     def p1_action(self, command, ui_history):
-        if command in ALL_MOVE_NAMES + [STRUGGLE]:
+        if command in base_data.ALL_MOVE_NAMES + [STRUGGLE]:
             self = self.move_use(command, True, ui_history)
             return self
-        elif command in ALL_POKE_NAMES:
+        elif command in base_data.ALL_POKE_NAMES:
             return self.switch(command, True, ui_history)
         assert False, "アクションコマンドが不正"
 
     def p2_action(self, command, ui_history):
         self.battle = self.battle.reverse()
-        if command in ALL_MOVE_NAMES + [STRUGGLE]:
+        if command in base_data.ALL_MOVE_NAMES + [STRUGGLE]:
             self = self.move_use(command, False, ui_history)
             self.battle = self.battle.reverse()
             return self
-        elif command in ALL_POKE_NAMES:
+        elif command in base_data.ALL_POKE_NAMES:
             self = self.switch(command, False, ui_history)
             self.battle = self.battle.reverse()
             return self
@@ -2128,35 +1286,43 @@ class BattleWithUI:
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.battle.is_game_end()
-        ss = []
-        actions = []
+        p1_battles = []
+        p1_action_cmds = []
+        p2_battles = []
+        p2_action_cmds = []
         ui_history = []
+
         while True:
+            reverse_battle = self.battle.reverse()
             if self.battle.is_p1_and_p2_phase():
                 p1_action_cmd = p1_trainer(self.battle)
-                p2_action_cmd = p2_trainer(self.battle.reverse())
+                p2_action_cmd = p2_trainer(reverse_battle)
                 action = {"p1":p1_action_cmd, "p2":p2_action_cmd}
-            elif self.battle.is_p1_only_switch_after_faint_phase():
-                action = {"p1":p1_trainer(self.battle)}
-            else:
-                action = {"p2":p2_trainer(self.battle.reverse())}
 
-            ss.append(self.battle)
-            actions.append(action)
+                p1_battles.append(self.battle)
+                p2_battles.append(reverse_battle)
+                p1_action_cmds.append(p1_action_cmd)
+                p2_action_cmds.append(p2_action_cmd)
+            elif self.battle.is_p1_only_switch_after_faint_phase():
+                p1_action_cmd = p1_trainer(self.battle)
+                action = {"p1":p1_action_cmd}
+
+                p1_battles.append(self.battle)
+                p1_action_cmds.append(p1_action_cmd)
+            else:
+                p2_action_cmd = p2_trainer(reverse_battle)
+                action = {"p2":p2_action_cmd}
+
+                p2_battles.append(reverse_battle)
+                p2_action_cmds.append(p2_action_cmd)
+
             self = self.push(action, ui_history)
 
             if self.battle.is_game_end():
                 break
 
-        is_p1_all_faint = self.battle.p1_fighters.is_all_faint()
-        is_p2_all_faint = self.battle.p2_fighters.is_all_faint()
-
-        if is_p1_all_faint and is_p2_all_faint:
-            return ss, actions, ui_history, DRAW
-        elif is_p1_all_faint:
-            return ss, actions, ui_history, WINNER_P2
-        else:
-            return ss, actions, ui_history, WINNER_P1
+        winner = self.battle.winner()
+        return p1_battles, p2_battles, p1_action_cmds, p2_action_cmds, ui_history, winner
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEndWithUI:
@@ -2186,7 +1352,7 @@ class TurnEndWithUI:
         if bwu.battle.p1_fighters[0].is_faint():
             return bwu
 
-        if POISON in bwu.battle.p1_fighters[0].types:
+        if parts.POISON in bwu.battle.p1_fighters[0].types:
             if bwu.battle.p1_fighters[0].is_full_hp():
                 return bwu
             heal = int(float(bwu.battle.p1_fighters[0].max_hp) * 1.0 / 16.0)
@@ -2229,7 +1395,7 @@ class TurnEndWithUI:
 
     @staticmethod
     def bad_poison(bwu, is_real_p1, ui_history):
-        if bwu.battle.p1_fighters[0].status_ailment != BAD_POISON:
+        if bwu.battle.p1_fighters[0].status_ailment != parts.BAD_POISON:
             return bwu
 
         bwu = copy.deepcopy(bwu)
@@ -2326,20 +1492,20 @@ class StatusMoveWithUI:
                 ui_history.append(ui)
             return bwu
 
-        if (POISON in bwu.battle.p2_fighters[0].types) or (STEEL in bwu.battle.p2_fighters[0].types):
+        if (parts.POISON in bwu.battle.p2_fighters[0].types) or (parts.STEEL in bwu.battle.p2_fighters[0].types):
             for ui in BattleMessage.new_no_effective(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, not is_real_p1):
                 ui_history.append(ui)
             return bwu
 
         bwu = copy.deepcopy(bwu)
-        bwu.battle.p2_fighters[0].status_ailment = BAD_POISON
+        bwu.battle.p2_fighters[0].status_ailment = parts.BAD_POISON
         for ui in BattleMessage.new_bad_poisoned(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
             ui_history.append(ui)
         return bwu
 
     @staticmethod
     def leech_seed(bwu, is_real_p1, ui_history):
-        if GRASS in bwu.battle.p2_fighters[0].types:
+        if parts.GRASS in bwu.battle.p2_fighters[0].types:
             for ui in BattleMessage.new_no_effective(bwu.battle.p2_fighters[0].name, not is_real_p1).apply_bwu(bwu, is_real_p1):
                 ui_history.append(ui)
             return bwu
@@ -2365,5 +1531,5 @@ STATUS_MOVES_WITH_UI = {
 
 assert set(STATUS_MOVES.keys()) == set(STATUS_MOVES_WITH_UI.keys())
 
-IMPLEMENTED_MOVE_NAMES = [move_name for move_name in ALL_MOVE_NAMES \
-                          if MOVEDEX[move_name].category != STATUS or move_name in HALF_HEAL_MOVE_NAMES or move_name in STATUS_MOVES]
+IMPLEMENTED_MOVE_NAMES = [move_name for move_name in base_data.ALL_MOVE_NAMES \
+                          if base_data.MOVEDEX[move_name].category != parts.STATUS or move_name in base_data.HALF_HEAL_MOVE_NAMES or move_name in STATUS_MOVES]

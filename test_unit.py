@@ -43,7 +43,7 @@ class Battle(unittest.TestCase):
                        seviper.TEMPLATE_POKEMONS["リザードン"](),
                        seviper.TEMPLATE_POKEMONS["フシギバナ"]()]
 
-        test_num = 1
+        test_num = 1280
 
         def test1():
             battle = seviper.Battle(seviper.Fighters(p1_fighters), seviper.Fighters(p2_fighters))
@@ -139,7 +139,7 @@ class Battle(unittest.TestCase):
 class BattleWithUI(unittest.TestCase):
     def test(self):
         def random_trainer(battle):
-            return random.choice(battle.p1_fighters.legal_action_commands())
+            return random.choice(battle.p1_fighters.legal_action_cmds())
 
         game_num = 1280
 
@@ -156,20 +156,17 @@ class BattleWithUI(unittest.TestCase):
                 init_battle.p2_fighters[1].current_hp //= random.choice([2, 3])
                 init_battle.p2_fighters[2].current_hp //= random.choice([2, 3])
 
-            init_battle.p1_fighters[0].item = "くろいヘドロ"
-            init_battle.p2_fighters[0].item = "くろいヘドロ"
-
             init_battle_with_ui = init_battle.to_with_ui()
             seed = random.randint(0, 100000)
 
             random.seed(seed)
-            s, a, winner = init_battle.one_game(random_trainer, random_trainer)
+            p1_battles, p2_battles, p1_action_cmds, p2_action_cmds, winner = init_battle.one_game(random_trainer, random_trainer)
 
             random.seed(seed)
-            s_, a_, ui_history, winner_ = init_battle_with_ui.one_game(random_trainer, random_trainer)
+            p1_battles_, p2_battles_, p1_action_cmds_, p2_action_cmds_, ui_history, winner_ = init_battle_with_ui.one_game(random_trainer, random_trainer)
 
-            for j, battle in enumerate(s):
-                battle_ = s_[j]
+            for j, battle in enumerate(p1_battles):
+                battle_ = p1_battles_[j]
                 if battle != battle_:
                     print("battle")
                     print(battle)
@@ -179,7 +176,19 @@ class BattleWithUI(unittest.TestCase):
                         print(ui, "\n")
                 self.assertTrue(battle == battle_)
 
-            self.assertEqual(a, a_)
+            for k, battle in enumerate(p2_battles):
+                battle_ = p2_battles_[k]
+                if battle != battle_:
+                    print("battle")
+                    print(battle)
+                    print("battle_")
+                    print(battle_)
+                    for ui in ui_history:
+                        print(ui, "\n")
+                self.assertTrue(battle == battle_)
+
+            self.assertEqual(p1_action_cmds, p1_action_cmds_)
+            self.assertEqual(p2_action_cmds, p2_action_cmds_)
 
             if winner != winner_:
                 print(winner.is_p1, winner.is_p2, winner_.is_p1, winner_.is_p2)
@@ -187,6 +196,7 @@ class BattleWithUI(unittest.TestCase):
                     print(ui)
                     print("")
             self.assertEqual(winner, winner_)
+
             print(i)
 
 if __name__ == "__main__":
