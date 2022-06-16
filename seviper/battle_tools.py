@@ -1284,6 +1284,7 @@ class BattleWithUI:
         if self.battle.p2_fighters[0].is_faint() and not is_p2_faint:
             p2_faint(self)
 
+        self.battle.turn_num += 1
         return self
 
     def one_game(self, p1_trainer, p2_trainer):
@@ -1323,7 +1324,7 @@ class BattleWithUI:
             if self.battle.is_game_end():
                 break
 
-            if self.turn_num == MAX_TURN_NUM:
+            if self.battle.turn_num == MAX_TURN_NUM:
                 break
 
         winner = self.battle.winner()
