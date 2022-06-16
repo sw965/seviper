@@ -93,7 +93,7 @@ class Battle:
         elif self.p2_fighters != battle.p2_fighters:
             return False
         else:
-            return True
+            return self.turn_num == battle.turn_num
 
     def __ne__(self, battle):
         return not self.__eq__(battle)
@@ -1321,6 +1321,9 @@ class BattleWithUI:
             self = self.push(action, ui_history)
 
             if self.battle.is_game_end():
+                break
+
+            if self.turn_num == MAX_TURN_NUM:
                 break
 
         winner = self.battle.winner()
