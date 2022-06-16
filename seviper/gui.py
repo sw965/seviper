@@ -4,6 +4,7 @@ import tkinter.font as tk_font
 import pytkgif
 import boa
 import seviper
+import seviper.base_data as base_data
 
 class HpBar:
     def __init__(self, master, max_hp, current_hp, details_font_size, image_path):
@@ -232,7 +233,7 @@ class Replay:
                 interval = 600
             elif "行け！" in next_battle_message and next_battle_message.count("！") == 2:
                 interval = 600
-            elif any([move_name in next_battle_message for move_name in seviper.MOVEDEX]) and "！" in next_battle_message:
+            elif any([move_name in next_battle_message for move_name in base_data.MOVEDEX]) and "！" in next_battle_message:
                 interval = 120
             elif ("戻" not in next_battle_message) and ("行" not in next_battle_message) and ("！" in next_battle_message):
                 interval = 600

@@ -79,6 +79,8 @@ class Fighters(list):
     def two_d_feature_list(self):
         return sum([pokemon.two_d_feature_list() for pokemon in self], [])
 
+MAX_TURN_NUM = 256
+
 class Battle:
     def __init__(self, p1_fighters, p2_fighters):
         self.p1_fighters = p1_fighters
@@ -390,8 +392,11 @@ class Battle:
             return DRAW
         elif is_p1_all_faint:
             return WINNER_P2
-        else:
+        elif is_p2_all_faint:
             return WINNER_P1
+        elif self.turn_num == MAX_TURN_NUM:
+            return DRAW
+        assert False, "battle.winnerが確定出来ない状態で呼び出された"
 
     def playout(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
@@ -411,15 +416,9 @@ class Battle:
             if self.is_game_end():
                 break
 
-        is_p1_all_faint = self.p1_fighters.is_all_faint()
-        is_p2_all_faint = self.p2_fighters.is_all_faint()
-
-        if is_p1_all_faint and is_p2_all_faint:
-            return DRAW
-        elif is_p1_all_faint:
-            return WINNER_P2
-        else:
-            return WINNER_P1
+            if self.turn_num == MAX_TURN_NUM:
+                break
+        return self.winner()
 
     def one_game(self, p1_trainer, p2_trainer):
         assert not self.is_game_end()
@@ -456,6 +455,9 @@ class Battle:
             self = self.push(action)
 
             if self.is_game_end():
+                break
+
+            if self.turn_num == MAX_TURN_NUM:
                 break
 
         winner = self.winner()
