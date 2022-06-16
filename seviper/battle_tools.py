@@ -79,7 +79,7 @@ class Fighters(list):
     def two_d_feature_list(self):
         return sum([pokemon.two_d_feature_list() for pokemon in self], [])
 
-MAX_TURN_NUM = 256
+MAX_TURN_NUM = 128
 
 class Battle:
     def __init__(self, p1_fighters, p2_fighters):
