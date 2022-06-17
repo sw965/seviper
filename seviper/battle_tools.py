@@ -76,8 +76,8 @@ class Fighters(list):
             legal_move_name_action_cmds = [STRUGGLE]
         return legal_move_name_action_cmds + legal_back_poke_name_action_cmds
 
-    def two_d_feature_list(self):
-        return sum([pokemon.two_d_feature_list() for pokemon in self], [])
+    def feature(self):
+        return sum([pokemon.feature() for pokemon in self], [])
 
 MAX_TURN_NUM = 128
 
@@ -515,10 +515,39 @@ class Battle:
     def to_with_ui(self):
         return BattleWithUI(self)
 
-    def two_d_feature_list(self):
-        p1_fighters_2d_feature_list = self.p1_fighters.two_d_feature_list()
-        p2_fighters_2d_feature_list = self.p2_fighters.two_d_feature_list()
-        return p1_fighters_2d_feature_list + p2_fighters_2d_feature_list
+    def feature(self):
+        p1_fighters_feature = self.p1_fighters.feature()
+        p2_fighters_feature = self.p2_fighters.feature()
+
+        adpd = self.all_damage_probability_distribution()
+        p1_attack_dpd = adpd["p1_attack"]
+        p2_attack_dpd = adpd["p2_attack"]
+        adpd_feature = []
+
+        def make_dpdf(fighters, dpd):
+            result = []
+            for i in range(Fighters.LENGTH):
+                for j in range(Fighters.LENGTH):
+                    for move_name in fighters[i].padding_sorted_move_names():
+                        tmp = parts.make_zeros_feature()
+                        if move_name == parts.EMPTY:
+                            result.append(tmp)
+                            continue
+                        for damage, percent in dpd[i][j][move_name].items():
+                            if damage is None:
+                                break
+                            else:
+                                h, w = parts.ALL_2D_FEATURE_INDICES[damage]
+                                tmp[h][w] = percent
+                        result.append(tmp)
+            return result
+
+        adpd_feature += make_dpdf(self.p1_fighters, p1_attack_dpd)
+        adpd_feature += make_dpdf(self.p2_fighters, p2_attack_dpd)
+        turn_num_feature = parts.make_zeros_feature()
+        h, w = parts.ALL_2D_FEATURE_INDICES[self.turn_num]
+        turn_num_feature[h][w] = 1
+        return p1_fighters_feature + p2_fighters_feature + adpd_feature + [turn_num_feature]
 
 #https://latest.pokewiki.net/%E3%83%90%E3%83%88%E3%83%AB%E4%B8%AD%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E9%A0%86%E7%95%AA
 class TurnEnd:

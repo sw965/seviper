@@ -40,7 +40,7 @@ UNKNOWN = "不明"
 ALL_GENDERS = [MALE, FEMALE, UNKNOWN]
 ALL_GENDERS_LENGTH = len(ALL_GENDERS)
 
-def gender_data_to_valid_genders(gender_data):
+def get_valid_genders(gender_data):
     if gender_data == "♂♀両方":
         return [MALE, FEMALE]
     elif gender_data == "♂のみ":
@@ -156,11 +156,11 @@ def get_feature_height_and_width():
 FEATURE_HEIGHT, FEATURE_WIDTH = get_feature_height_and_width()
 ALL_2D_FEATURE_INDICES = [(h, w) for h in range(FEATURE_HEIGHT) for w in range(FEATURE_WIDTH)]
 
-def make_2d_zeros_feature():
-    return [[0 for w in range(FEATURE_WIDTH)] for h in range(FEATURE_HEIGHT)]
+def make_zeros_feature():
+    return [[0.0 for w in range(FEATURE_WIDTH)] for h in range(FEATURE_HEIGHT)]
 
-def make_2d_ones_feature():
-    return [[1 for w in range(FEATURE_WIDTH)] for h in range(FEATURE_HEIGHT)]
+def make_ones_feature():
+    return [[1.0 for w in range(FEATURE_WIDTH)] for h in range(FEATURE_HEIGHT)]
 
 class Pokemon:
     @staticmethod
@@ -170,7 +170,7 @@ class Pokemon:
         poke_data = base_data.POKEDEX[poke_name]
 
         assert ability in poke_data.all_abilities, "特性が不適"
-        assert gender in gender_data_to_valid_genders(poke_data.gender), "性別が不適"
+        assert gender in get_valid_genders(poke_data.gender), "性別が不適"
         assert item in base_data.ALL_ITEMS + [EMPTY], "アイテムが不適"
 
         assert MIN_MOVESET_LENGTH <= len(move_names) <= MAX_MOVESET_LENGTH, "覚えさせる技の数が不適"
@@ -242,7 +242,7 @@ class Pokemon:
         poke_data = base_data.POKEDEX[poke_name]
         nature = random.choice(base_data.ALL_NATURES)
         ability = random.choice(poke_data.all_abilities)
-        gender = random.choice(gender_data_to_valid_genders(poke_data.gender))
+        gender = random.choice(get_valid_genders(poke_data.gender))
 
         learnset_indices = [i for i in range(len(poke_data.learnset)) if poke_data.learnset[i] in base_data.ALL_MOVE_NAMES]
         random.shuffle(learnset_indices)
@@ -339,62 +339,64 @@ class Pokemon:
     def padding_sorted_move_names(self):
         return self.sorted_move_names + [EMPTY for _ in range(MAX_MOVESET_LENGTH - len(self.sorted_move_names))]
 
-    def poke_name_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def poke_name_feature(self):
+        result = make_zeros_feature()
         h, w = ALL_2D_FEATURE_INDICES[base_data.RATE_POKE_NAMES.index(self.name)]
         result[h][w] = 1
         return result
 
-    def nature_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def nature_feature(self):
+        result = make_zeros_feature()
         h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_NATURES.index(self.nature)]
         result[h][w] = 1
         return result
 
-    def ability_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def ability_feature(self):
+        result = make_zeros_feature()
         h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_ABILITIES.index(self.ability)]
         result[h][w] = 1
         return result
 
-    def gender_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def gender_feature(self):
+        result = make_zeros_feature()
         h, w = ALL_2D_FEATURE_INDICES[ALL_GENDERS.index(self.gender)]
         result[h][w] = 1
         return result
 
-    def item_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def item_feature(self):
+        result = make_zeros_feature()
+        if self.item == EMPTY:
+            return result
         h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_ITEMS.index(self.item)]
         result[h][w] = 1
         return result
 
-    def move_name_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def move_name_feature(self):
+        result = make_zeros_feature()
         for move_name in self.sorted_move_names:
             h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_MOVE_NAMES.index(move_name)]
             assert result[h][w] == 0
             result[h][w] = 1
         return result
 
-    def max_power_point_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def max_power_point_feature(self):
+        result = make_zeros_feature()
         for i, move_name in enumerate(self.sorted_move_names):
             power_point = self.moveset[move_name]
             h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_MOVE_NAMES.index(move_name)]
             result[h][w] = float(power_point.max) / 10.0
         return result
 
-    def current_power_point_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def current_power_point_feature(self):
+        result = make_zeros_feature()
         for i, move_name in enumerate(self.sorted_move_names):
             power_point = self.moveset[move_name]
             h, w = ALL_2D_FEATURE_INDICES[base_data.ALL_MOVE_NAMES.index(move_name)]
             result[h][w] = float(power_point.current) / float(power_point.max)
         return result
 
-    def state_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def state_feature(self):
+        result = make_zeros_feature()
 
         h, w = ALL_2D_FEATURE_INDICES[0]
         result[h][w] = float(self.max_hp) / 100.0
@@ -418,8 +420,8 @@ class Pokemon:
         result[h][w] = float(self.speed) /100.0
         return result
 
-    def rank_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def rank_feature(self):
+        result = make_zeros_feature()
 
         h, w = ALL_2D_FEATURE_INDICES[0]
         result[h][w] = float(self.atk_rank)
@@ -443,55 +445,55 @@ class Pokemon:
         result[h][w] = float(self.evasion_rank)
         return result
 
-    def status_ailment_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def status_ailment_feature(self):
+        result = make_zeros_feature()
         if self.status_ailment != "":
             h, w = ALL_2D_FEATURE_INDICES[ALL_STATUS_AILMENT.index(self.status_ailment)]
             result[h][w] = 1
         return result
 
-    def bad_poison_elapsed_turn_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def bad_poison_elapsed_turn_feature(self):
+        result = make_zeros_feature()
         h, w = ALL_2D_FEATURE_INDICES[self.bad_poison_elapsed_turn]
         result[h][w] = 1
         return result
 
-    def choice_move_name_2d_feature_list(self):
-        result = make_2d_zeros_feature()
+    def choice_move_name_feature(self):
+        result = make_zeros_feature()
         if self.choice_move_name != "":
             h, w = ALL_2D_FEATURE_INDICES[ALL_MOVE_NAMES.index(self.choice_move_name)]
             result[h][w] = 1
         return result
 
-    def roots_2d_feature_list(self):
+    def roots_feature(self):
         if self.is_roots:
-            return make_2d_ones_feature()
+            return make_ones_feature()
         else:
-            return make_2d_zeros_feature()
+            return make_zeros_feature()
 
-    def leech_seed_2d_feature_list(self):
+    def leech_seed_feature(self):
         if self.is_leech_seed:
-            return make_2d_ones_feature()
+            return make_ones_feature()
         else:
-            return make_2d_zeros_feature()
+            return make_zeros_feature()
 
-    def two_d_feature_list(self):
+    def feature(self):
         result = [
-            self.poke_name_2d_feature_list(),
-            self.nature_2d_feature_list(),
-            self.ability_2d_feature_list(),
-            self.gender_2d_feature_list(),
-            self.item_2d_feature_list(),
-            self.move_name_2d_feature_list(),
-            self.max_power_point_2d_feature_list(),
-            self.current_power_point_2d_feature_list(),
-            self.state_2d_feature_list(),
-            self.rank_2d_feature_list(),
-            self.status_ailment_2d_feature_list(),
-            self.bad_poison_elapsed_turn_2d_feature_list(),
-            self.choice_move_name_2d_feature_list(),
-            self.roots_2d_feature_list(),
-            self.leech_seed_2d_feature_list()
+            self.poke_name_feature(),
+            self.nature_feature(),
+            self.ability_feature(),
+            self.gender_feature(),
+            self.item_feature(),
+            self.move_name_feature(),
+            self.max_power_point_feature(),
+            self.current_power_point_feature(),
+            self.state_feature(),
+            self.rank_feature(),
+            self.status_ailment_feature(),
+            self.bad_poison_elapsed_turn_feature(),
+            self.choice_move_name_feature(),
+            self.roots_feature(),
+            self.leech_seed_feature()
         ]
         return result
 
